@@ -1,0 +1,113 @@
+! This run should be equivalent to the thick shell dynamo of
+! Soderlund et al., Icarus, 2013
+&problemsize_namelist
+ n_r = 384
+ n_theta = 768
+ nprow = 256
+ npcol = 128
+ aspect_ratio = 0.2d0
+ shell_depth = 1.0d0
+/
+&numerical_controls_namelist
+ chebyshev = .true.
+/
+&physical_controls_namelist
+ rotation  = .true.
+ magnetism = .true.
+ viscous_heating = .false.
+ ohmic_heating = .false.
+/
+&temporal_controls_namelist
+ max_time_step = 1.0d-4
+ min_time_step = 1.0d-13
+ max_time_minutes = 53.0
+! max_time_minutes = 345.0
+ alpha_implicit = 0.51d0
+ checkpoint_interval = 25000
+ quicksave_interval = 1000
+ num_quicksaves = 2
+ cflmin = 0.4d0
+ cflmax = 0.6d0
+ save_last_timestep = .true
+/
+&io_controls_namelist
+stdout_flush_interval=1000
+stdout_file='rayleigh.out17'
+/
+&output_namelist
+shellslice_levels    = 1,62,89,110,128,146,162,177,192,223,256,296,384 ! [0.2,0.3,0.4,0.5,0.6,0.65,0.7,0.75,0.8,0.85,0.9,0.95,1]*ro 
+shellslice_values    = 1,2,3,64,65,70,401,402,403 !velocity, temperature, pressure, temperature_dr, B-field
+shellslice_frequency = 1000
+shellslice_nrec      = 1
+
+shellspectra_levels    = 1,62,89,110,128,146,162,177,192,223,256,296,384 ! [0.2,0.3,0.4,0.5,0.6,0.65,0.7,0.75,0.8,0.85,0.9,0.95,1]*ro 
+shellspectra_values    = 1,2,3,64,401,402,403 ! velocity, temperature, B-field
+shellspectra_frequency = 1000
+shellspectra_nrec      = 1
+
+azavg_values = 1,2,3,64,61,62,401,402,403 ! velocity, temperature, mean r&t mass flux, B-field 
+azavg_frequency = 1000
+azavg_nrec = 1
+
+!velocity, entropy, gradp, energy fluxes, various kin ene, advec, buo, cor, vis, mag ene, lor
+shellavg_values = 1,2,3, 64, 71,89,95, 116,117,118,120,121,122, 125,126,127,128,130,131,132, 155,156,157, 170, 173,174,175, 182,183,184, 475,47
+6,477,478,480,481,482, 487,488,489
+shellavg_frequency = 1000
+shellavg_nrec = 10
+
+equatorial_values    = 1,2,3,64,401,402,403
+equatorial_frequency = 1000
+equatorial_nrec      = 1
+
+meridional_values    = 1,384,768,1152
+meridional_frequency = 1000
+meridional_nrec      = 1
+
+! KE, {radial, theta, phi} KE, Mean {radial, theta, phi} KE 
+! ME, {radial, theta, phi} ME, Mean {radial, theta, phi} ME 
+globalavg_values = 125,126,127,128,130,131,132,475,476,477,478,480,481,482
+globalavg_frequency = 100
+globalavg_nrec = 100
+
+!full3d_values = 4
+!full3d_frequency = 10000
+/
+
+&Boundary_Conditions_Namelist
+no_slip_boundaries = .false.
+strict_L_Conservation = .false.
+dtdr_bottom = 0.0d0
+T_Top    = 0.0d0
+T_Bottom = 1.0d0
+fix_tvar_top = .true.
+fix_tvar_bottom = .true.
+fix_dtdr_bottom = .false.
+/
+&Initial_Conditions_Namelist
+init_type = -1
+magnetic_init_type = -1
+!mag_amp = 1.0d0
+!temp_amp = 0.0001d0
+!temp_w = 0.01d4
+conductive_profile=.true.
+restart_iter = 0 
+/
+&Test_Namelist
+/
+&Reference_Namelist
+Ekman_Number = 3.0d-4
+Rayleigh_Number = 2.22d7
+Prandtl_Number = 1.0d0
+Magnetic_Prandtl_Number =1.0d0
+reference_type = 1
+heating_type = 0
+gravity_power = 1.0d0
+dimensional = .false.
+/
+&Transport_Namelist
+hyperdiffusion = .false.
+hyperdiffusion_alpha = 1.0d0
+hyperdiffusion_beta = 1.0d0
+eta_type=3
+custom_eta_file='Diffusivity_IceGiants_w0.60_c0.25_nr384.dat'
+/
