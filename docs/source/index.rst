@@ -14,13 +14,6 @@ INCITE data consists of three targets: Geodynamo, Jovian atomosphere, Dynamos in
    INCITE/mheimpel_Outeline
    INCITE/ryadav_Outeline.rst
 
-List of parameters for the all cases
--------------------------------------------
-.. csv-table:: 
-   :file: parameters.csv
-   :encoding: UTF-8
-   :header-rows: 1
-
-# * :ref:`genindex`
-# * :ref:`modindex`
-# * :ref:`search`
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
