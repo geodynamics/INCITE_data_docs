@@ -1,0 +1,47 @@
+#
+#
+#
+#
+SHELL= @SHELL@
+#
+
+HOMEDIR= @abs_top_srcdir@
+
+GMAKE=  @GMAKE@
+F90=  @FC@
+CC=  @CC@
+
+F90OPTFLAGS = @FCFLAGS@
+OPTFLAGS =    @CFLAGS@
+#
+# ------------------Do not edit the following------------------------
+#
+
+BINDIR=   $(HOMEDIR)/bin
+WORKDIR=  $(HOMEDIR)/work
+
+all: $(TARGET_CHECKPOINT)
+	mkdir -p $(BINDIR); \
+	cd $(WORKDIR); \
+		$(GMAKE) \
+		SHELL="$(SHELL)" \
+		HOMEDIR="$(HOMEDIR)" \
+		BINDIR="$(BINDIR)" \
+		F90="$(F90)" \
+		CC="$(CC)" \
+		F90OPTFLAGS="$(F90OPTFLAGS)" \
+		OPTFLAGS="$(OPTFLAGS)"
+
+
+clean:
+	rm -f $(WORKDIR)/*.o ;
+	rm -f $(WORKDIR)/*.mod ;
+	rm -f $(WORKDIR)/*~ ;
+	rm -f *.o ;
+	rm -f *.mod ;
+	rm -f *~
+
+distclean: clean
+	rm -fr Makefile config.log autom4te.cache;
+	rm -fr INCITE_convert/__pycache__ ;
+	rm -fr $(BINDIR)
