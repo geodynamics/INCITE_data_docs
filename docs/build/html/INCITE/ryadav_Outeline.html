@@ -16,7 +16,7 @@
     <script src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="ryadav/ensemble2/Pm0.1_Pr1_eta0.35_Ek1E-6_Ra1E10_no-slip_dyn/" href="ryadav/ensemble2/Pm0.1_Pr1_eta0.35_Ek1E-6_Ra1E10_no-slip_dyn/Case_doc.html" />
+    <link rel="next" title="Run-G2" href="ryadav/ensemble2/Pm0.1_Pr1_eta0.35_Ek1E-6_Ra1E10_no-slip_dyn/Case_doc.html" />
     <link rel="prev" title="Jovian Atomosphere (mheimpel)" href="mheimpel_Outeline.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -39,911 +39,146 @@
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="ryadav/ensemble2/Pm0.1_Pr1_eta0.35_Ek1E-6_Ra1E10_no-slip_dyn/Case_doc.html">ryadav/ensemble2/Pm0.1_Pr1_eta0.35_Ek1E-6_Ra1E10_no-slip_dyn/</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ryadav/ensemble2/Pm0.1_Pr1_eta0.35_Ek1E-6_Ra1E10_no-slip_dyn/Case_doc.html">Run-G2</a></li>
 </ul>
 </div>
-<p>Simulations for geodynamo by Rakesh Yadav (Herverd University). Simulations are thermally driven magnetohydrodynamics (MHD) simulaiton in a rotating spherical shell modeled on the Earth’s outer core. In the present simulations, the ratio of the inner to outer radii is set to 0.35, and spherical shell is filled by a electorically conductive fluid. The thermally driven convection is assumed with the Boussinesq approximation. Important parameters in the simulations are listed in the following table.</p>
+<dl class="simple">
+<dt>Simulations for geodynamo by Rakesh Yadav (Herverd University). Simulations are thermally driven magnetohydrodynamics (MHD) simulaiton in a rotating spherical shell modeled on the Earth’s outer core. In the present simulations, the ratio of the inner to outer radii is set to 0.35, and spherical shell is filled by a electorically conductive fluid. The thermally driven convection is assumed with the Boussinesq approximation. The inner core is assumed to be co-rotating with mantle (outside pf the spherical shell).</dt><dd><p>The non-slop boundary condition is applied to the inner and outer boundaries for the velocity, and temperature is fixed to be 1.0 and 0.0 at the inner and outer boundaries, respectively. The inner core and mantle is assumed to be electorically insulated. Consequently, the mangetic field is connected to potential magnetic fields at the inner and outer boundaries.</p>
+</dd>
+</dl>
+<p>Spatial resolution, dimenstionless number, and hyperdiffusivity settings for each case are listed in the following table as a parameter setting in ‘main_input’. The definision of the paremter is described in <a class="reference external" href="https://rayleigh-documentation.readthedocs.io/en/latest/index.html">the Rayleigh document</a>.</p>
 <table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head"><p>folder</p></th>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>folder</p></th>
 <th class="head"><p>n_r</p></th>
 <th class="head"><p>n_theta</p></th>
-<th class="head"><p>aspect_ratio</p></th>
-<th class="head"><p>shell_depth</p></th>
-<th class="head"><p>chebyshev</p></th>
-<th class="head"><p>rotation</p></th>
-<th class="head"><p>magnetism</p></th>
-<th class="head"><p>viscous_heating</p></th>
-<th class="head"><p>ohmic_heating</p></th>
 <th class="head"><p>Ekman_Number</p></th>
 <th class="head"><p>Prandtl_Number</p></th>
 <th class="head"><p>Magnetic_Prandtl_Number</p></th>
 <th class="head"><p>Rayleigh_Number</p></th>
-<th class="head"><p>Modified_Rayleigh_Number</p></th>
-<th class="head"><p>no_slip_boundaries</p></th>
-<th class="head"><p>fix_tvar_bottom</p></th>
-<th class="head"><p>T_bottom</p></th>
-<th class="head"><p>fix_dtdr_bottom</p></th>
-<th class="head"><p>dTdr_bottom</p></th>
-<th class="head"><p>fix_tvar_top</p></th>
-<th class="head"><p>T_top</p></th>
-<th class="head"><p>fix_dtdr_top</p></th>
-<th class="head"><p>dTdr_top</p></th>
 <th class="head"><p>hyperdiffusion</p></th>
 <th class="head"><p>hyperdiffusion_alpha</p></th>
 <th class="head"><p>hyperdiffusion_beta</p></th>
-<th class="head"></th>
+<th class="head"><p>Publication</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>ryadav/full_convec</p></td>
-<td><p>256</p></td>
-<td><p>384</p></td>
-<td><p>5E-02</p></td>
-<td><p>1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.True.</p></td>
-<td><p>.true.</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>1E-04</p></td>
-<td><p>1E-01</p></td>
-<td><p>1E+00</p></td>
-<td><p>-1E+00</p></td>
-<td><p>3E+00</p></td>
-<td><p>.false.</p></td>
-<td><p>.true.</p></td>
-<td><p>1E+00</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.false.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>2E+01</p></td>
-<td><p>3E+00</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>ryadav/test</p></td>
-<td><p>256</p></td>
-<td><p>768</p></td>
-<td><p>3.5E-01</p></td>
-<td><p>1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.True.</p></td>
-<td><p>.true.</p></td>
-<td><p>.false.</p></td>
-<td><p>.false.</p></td>
-<td><p>1E-06</p></td>
-<td><p>1E+00</p></td>
-<td><p>1E+00</p></td>
-<td><p>3E+09</p></td>
-<td><p>-1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.true.</p></td>
-<td><p>1E+00</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.false.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>-1.000000015047E+30</p></td>
-<td><p>-1.000000015047E+30</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p>ryadav/ensemble2/Pm0.05_Pr1_eta0.35_Ek1E-6_Ra2.5E10_no-slip_dyn</p></td>
+<tr class="row-even"><td><p>Run-G1</p></td>
+<td><p>ryadav/ensemble2/Pm0.05_Pr1_eta0.35_Ek1E-6_Ra2.5E10_no-slip_dyn</p></td>
 <td><p>512</p></td>
 <td><p>1536</p></td>
-<td><p>3.5E-01</p></td>
-<td><p>1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.True.</p></td>
-<td><p>.true.</p></td>
-<td><p>.false.</p></td>
-<td><p>.false.</p></td>
 <td><p>1E-06</p></td>
 <td><p>1E+00</p></td>
 <td><p>5E-02</p></td>
 <td><p>2.5E+10</p></td>
-<td><p>-1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.true.</p></td>
-<td><p>1E+00</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.false.</p></td>
-<td><p>0E+00</p></td>
 <td><p>.true.</p></td>
 <td><p>3E+00</p></td>
 <td><p>7E+00</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>ryadav/ensemble2/Pm0.1_Pr1_eta0.35_Ek1E-6_Ra1E10_no-slip_dyn</p></td>
+<tr class="row-odd"><td><p>Run-G2</p></td>
+<td><p>ryadav/ensemble2/Pm0.1_Pr1_eta0.35_Ek1E-6_Ra1E10_no-slip_dyn</p></td>
 <td><p>512</p></td>
 <td><p>768</p></td>
-<td><p>3.5E-01</p></td>
-<td><p>1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.True.</p></td>
-<td><p>.true.</p></td>
-<td><p>.false.</p></td>
-<td><p>.false.</p></td>
 <td><p>1E-06</p></td>
 <td><p>1E+00</p></td>
 <td><p>1E-01</p></td>
 <td><p>1E+10</p></td>
-<td><p>-1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.true.</p></td>
-<td><p>1E+00</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.false.</p></td>
-<td><p>0E+00</p></td>
 <td><p>.true.</p></td>
 <td><p>4E+00</p></td>
 <td><p>7E+00</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p>ryadav/ensemble2/Pm0.2_Pr1_eta0.35_Ek1E-6_Ra5E9_no-slip_dyn</p></td>
+<tr class="row-even"><td><p>Run-G3</p></td>
+<td><p>ryadav/ensemble2/Pm0.2_Pr1_eta0.35_Ek1E-6_Ra5E9_no-slip_dyn</p></td>
 <td><p>512</p></td>
 <td><p>768</p></td>
-<td><p>3.5E-01</p></td>
-<td><p>1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.True.</p></td>
-<td><p>.true.</p></td>
-<td><p>.false.</p></td>
-<td><p>.false.</p></td>
 <td><p>1E-06</p></td>
 <td><p>1E+00</p></td>
 <td><p>2E-01</p></td>
 <td><p>5E+09</p></td>
-<td><p>-1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.true.</p></td>
-<td><p>1E+00</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>0E+00</p></td>
 <td><p>.false.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.false.</p></td>
-<td><p>5E+00</p></td>
-<td><p>7E+00</p></td>
+<td></td>
+<td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>ryadav/ensemble3/Pm0.05_Pr0.1_eta0.35_Ek1E-6_Ra2.5E9_no-slip_dyn</p></td>
+<tr class="row-odd"><td><p>Run-G4</p></td>
+<td><p>ryadav/ensemble3/Pm0.05_Pr0.1_eta0.35_Ek1E-6_Ra2.5E9_no-slip_dyn</p></td>
 <td><p>256</p></td>
 <td><p>768</p></td>
-<td><p>3.5E-01</p></td>
-<td><p>1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.True.</p></td>
-<td><p>.true.</p></td>
-<td><p>.false.</p></td>
-<td><p>.false.</p></td>
 <td><p>1E-06</p></td>
 <td><p>1E-01</p></td>
 <td><p>5E-02</p></td>
 <td><p>2.5E+09</p></td>
-<td><p>-1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.true.</p></td>
-<td><p>1E+00</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.false.</p></td>
-<td><p>0E+00</p></td>
 <td><p>.true.</p></td>
 <td><p>4E+00</p></td>
 <td><p>7E+00</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p>ryadav/ensemble3/Pm0.5_Pr1_eta0.35_Ek1E-6_Ra3E9_no-slip_dyn</p></td>
+<tr class="row-even"><td><p>Run-G5</p></td>
+<td><p>ryadav/ensemble3/Pm0.5_Pr1_eta0.35_Ek1E-6_Ra3E9_no-slip_dyn</p></td>
 <td><p>256</p></td>
 <td><p>768</p></td>
-<td><p>3.5E-01</p></td>
-<td><p>1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.True.</p></td>
-<td><p>.true.</p></td>
-<td><p>.false.</p></td>
-<td><p>.false.</p></td>
 <td><p>1E-06</p></td>
 <td><p>1E+00</p></td>
 <td><p>5E-01</p></td>
 <td><p>3E+09</p></td>
-<td><p>-1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.true.</p></td>
-<td><p>1E+00</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>0E+00</p></td>
 <td><p>.false.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>-1.000000015047E+30</p></td>
-<td><p>-1.000000015047E+30</p></td>
 <td></td>
+<td></td>
+<td><p>Cao, H. Et al. (2018)</p></td>
 </tr>
-<tr class="row-odd"><td><p>ryadav/ensemble3/Pm1_Pr1_eta0.35_Ek1E-6_Ra3E9_no-slip_dyn</p></td>
+<tr class="row-odd"><td><p>Run-G6</p></td>
+<td><p>ryadav/ensemble3/Pm1_Pr1_eta0.35_Ek1E-6_Ra3E9_no-slip_dyn</p></td>
 <td><p>256</p></td>
 <td><p>768</p></td>
-<td><p>3.5E-01</p></td>
-<td><p>1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.True.</p></td>
-<td><p>.true.</p></td>
-<td><p>.false.</p></td>
-<td><p>.false.</p></td>
 <td><p>1E-06</p></td>
 <td><p>1E+00</p></td>
 <td><p>1E+00</p></td>
 <td><p>3E+09</p></td>
-<td><p>-1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.true.</p></td>
-<td><p>1E+00</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.false.</p></td>
-<td><p>0E+00</p></td>
 <td><p>.true.</p></td>
 <td><p>3E+00</p></td>
 <td><p>6E+00</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p>ryadav/ensemble4/Pm0.03_Pr1_eta0.35_Ek1E-7_Ra3E11_no-slip_dyn</p></td>
+<tr class="row-even"><td><p>Run-G7</p></td>
+<td><p>ryadav/ensemble4/Pm0.03_Pr1_eta0.35_Ek1E-7_Ra3E11_no-slip_dyn</p></td>
 <td><p>512</p></td>
 <td><p>1536</p></td>
-<td><p>3.5E-01</p></td>
-<td><p>1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.True.</p></td>
-<td><p>.true.</p></td>
-<td><p>.false.</p></td>
-<td><p>.false.</p></td>
 <td><p>1E-07</p></td>
 <td><p>1E+00</p></td>
 <td><p>3E-02</p></td>
 <td><p>3E+11</p></td>
-<td><p>-1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.true.</p></td>
-<td><p>1E+00</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.false.</p></td>
-<td><p>0E+00</p></td>
 <td><p>.true.</p></td>
 <td><p>8E+00</p></td>
 <td><p>5E+00</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>ryadav/ensemble4/Pm0.05_Pr1_eta0.35_Ek1E-7_Ra1.5E11_no-slip_dyn</p></td>
+<tr class="row-odd"><td><p>Run-G8</p></td>
+<td><p>ryadav/ensemble4/Pm0.05_Pr1_eta0.35_Ek1E-7_Ra1.5E11_no-slip_dyn</p></td>
 <td><p>512</p></td>
 <td><p>1536</p></td>
-<td><p>3.5E-01</p></td>
-<td><p>1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.True.</p></td>
-<td><p>.true.</p></td>
-<td><p>.false.</p></td>
-<td><p>.false.</p></td>
 <td><p>1E-07</p></td>
 <td><p>1E+00</p></td>
 <td><p>5E-02</p></td>
 <td><p>1.5E+11</p></td>
-<td><p>-1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.true.</p></td>
-<td><p>1E+00</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.false.</p></td>
-<td><p>0E+00</p></td>
 <td><p>.true.</p></td>
 <td><p>3E+00</p></td>
 <td><p>1E+01</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p>ryadav/ensemble4/Pm0.2_Pr1_eta0.35_Ek1E-7_Ra3E10_no-slip_dyn</p></td>
+<tr class="row-even"><td><p>Run-G9</p></td>
+<td><p>ryadav/ensemble4/Pm0.2_Pr1_eta0.35_Ek1E-7_Ra3E10_no-slip_dyn</p></td>
 <td><p>512</p></td>
 <td><p>1536</p></td>
-<td><p>3.5E-01</p></td>
-<td><p>1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.True.</p></td>
-<td><p>.true.</p></td>
-<td><p>.false.</p></td>
-<td><p>.false.</p></td>
 <td><p>1E-07</p></td>
 <td><p>1E+00</p></td>
 <td><p>2E-01</p></td>
 <td><p>6E+10</p></td>
-<td><p>-1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.true.</p></td>
-<td><p>1E+00</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.false.</p></td>
-<td><p>0E+00</p></td>
 <td><p>.true.</p></td>
 <td><p>2E+00</p></td>
 <td><p>9E+00</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>ryadav/ensemble_test/test1</p></td>
-<td><p>128</p></td>
-<td><p>512</p></td>
-<td><p>3.5E-01</p></td>
-<td><p>1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.True.</p></td>
-<td><p>.true.</p></td>
-<td><p>.false.</p></td>
-<td><p>.false.</p></td>
-<td><p>1E-06</p></td>
-<td><p>1E+00</p></td>
-<td><p>5E-01</p></td>
-<td><p>3E+09</p></td>
-<td><p>-1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.true.</p></td>
-<td><p>1E+00</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.false.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>-1.000000015047E+30</p></td>
-<td><p>-1.000000015047E+30</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p>ryadav/ensemble_test/test2</p></td>
-<td><p>128</p></td>
-<td><p>512</p></td>
-<td><p>3.5E-01</p></td>
-<td><p>1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.True.</p></td>
-<td><p>.true.</p></td>
-<td><p>.false.</p></td>
-<td><p>.false.</p></td>
-<td><p>1E-06</p></td>
-<td><p>1E+00</p></td>
-<td><p>5E-01</p></td>
-<td><p>3E+09</p></td>
-<td><p>-1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.true.</p></td>
-<td><p>1E+00</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.false.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>-1.000000015047E+30</p></td>
-<td><p>-1.000000015047E+30</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>ryadav/ensemble_test/test3</p></td>
-<td><p>128</p></td>
-<td><p>512</p></td>
-<td><p>3.5E-01</p></td>
-<td><p>1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.True.</p></td>
-<td><p>.true.</p></td>
-<td><p>.false.</p></td>
-<td><p>.false.</p></td>
-<td><p>1E-06</p></td>
-<td><p>1E+00</p></td>
-<td><p>5E-01</p></td>
-<td><p>3E+09</p></td>
-<td><p>-1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.true.</p></td>
-<td><p>1E+00</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.false.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>-1.000000015047E+30</p></td>
-<td><p>-1.000000015047E+30</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p>ryadav/short_runs_for_analysis/Pm0.05_Pr1_eta0.35_Ek1E-7_Ra1.5E11_no-slip_dyn_short</p></td>
-<td><p>512</p></td>
-<td><p>1536</p></td>
-<td><p>3.5E-01</p></td>
-<td><p>1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.True.</p></td>
-<td><p>.true.</p></td>
-<td><p>.false.</p></td>
-<td><p>.false.</p></td>
-<td><p>1E-07</p></td>
-<td><p>1E+00</p></td>
-<td><p>5E-02</p></td>
-<td><p>1.5E+11</p></td>
-<td><p>-1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.true.</p></td>
-<td><p>1E+00</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.false.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>3E+00</p></td>
-<td><p>1E+01</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>ryadav/short_runs_for_analysis/Pm0.2_Pr1_eta0.35_Ek1E-6_Ra5E9_no-slip_dyn_short</p></td>
-<td><p>512</p></td>
-<td><p>768</p></td>
-<td><p>3.5E-01</p></td>
-<td><p>1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.True.</p></td>
-<td><p>.true.</p></td>
-<td><p>.false.</p></td>
-<td><p>.false.</p></td>
-<td><p>1E-06</p></td>
-<td><p>1E+00</p></td>
-<td><p>2E-01</p></td>
-<td><p>5E+09</p></td>
-<td><p>-1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.true.</p></td>
-<td><p>1E+00</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.false.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.false.</p></td>
-<td><p>5E+00</p></td>
-<td><p>7E+00</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p>ryadav/ensemble2/Pm0.05_Pr1_eta0.35_Ek1E-6_Ra2.5E10_no-slip_dyn</p></td>
-<td><p>512</p></td>
-<td><p>1536</p></td>
-<td><p>3.5E-01</p></td>
-<td><p>1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.True.</p></td>
-<td><p>.true.</p></td>
-<td><p>.false.</p></td>
-<td><p>.false.</p></td>
-<td><p>1E-06</p></td>
-<td><p>1E+00</p></td>
-<td><p>5E-02</p></td>
-<td><p>2.5E+10</p></td>
-<td><p>-1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.true.</p></td>
-<td><p>1E+00</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.false.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>3E+00</p></td>
-<td><p>7E+00</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>ryadav/ensemble2/Pm0.1_Pr1_eta0.35_Ek1E-6_Ra1E10_no-slip_dyn</p></td>
-<td><p>512</p></td>
-<td><p>768</p></td>
-<td><p>3.5E-01</p></td>
-<td><p>1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.True.</p></td>
-<td><p>.true.</p></td>
-<td><p>.false.</p></td>
-<td><p>.false.</p></td>
-<td><p>1E-06</p></td>
-<td><p>1E+00</p></td>
-<td><p>1E-01</p></td>
-<td><p>1E+10</p></td>
-<td><p>-1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.true.</p></td>
-<td><p>1E+00</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.false.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>4E+00</p></td>
-<td><p>7E+00</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p>ryadav/ensemble2/Pm0.2_Pr1_eta0.35_Ek1E-6_Ra5E9_no-slip_dyn</p></td>
-<td><p>512</p></td>
-<td><p>768</p></td>
-<td><p>3.5E-01</p></td>
-<td><p>1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.True.</p></td>
-<td><p>.true.</p></td>
-<td><p>.false.</p></td>
-<td><p>.false.</p></td>
-<td><p>1E-06</p></td>
-<td><p>1E+00</p></td>
-<td><p>2E-01</p></td>
-<td><p>5E+09</p></td>
-<td><p>-1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.true.</p></td>
-<td><p>1E+00</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.false.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.false.</p></td>
-<td><p>5E+00</p></td>
-<td><p>7E+00</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>ryadav/ensemble3/Pm0.05_Pr0.1_eta0.35_Ek1E-6_Ra2.5E9_no-slip_dyn</p></td>
-<td><p>256</p></td>
-<td><p>768</p></td>
-<td><p>3.5E-01</p></td>
-<td><p>1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.True.</p></td>
-<td><p>.true.</p></td>
-<td><p>.false.</p></td>
-<td><p>.false.</p></td>
-<td><p>1E-06</p></td>
-<td><p>1E-01</p></td>
-<td><p>5E-02</p></td>
-<td><p>2.5E+09</p></td>
-<td><p>-1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.true.</p></td>
-<td><p>1E+00</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.false.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>4E+00</p></td>
-<td><p>7E+00</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p>ryadav/ensemble3/Pm0.5_Pr1_eta0.35_Ek1E-6_Ra3E9_no-slip_dyn</p></td>
-<td><p>256</p></td>
-<td><p>768</p></td>
-<td><p>3.5E-01</p></td>
-<td><p>1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.True.</p></td>
-<td><p>.true.</p></td>
-<td><p>.false.</p></td>
-<td><p>.false.</p></td>
-<td><p>1E-06</p></td>
-<td><p>1E+00</p></td>
-<td><p>5E-01</p></td>
-<td><p>3E+09</p></td>
-<td><p>-1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.true.</p></td>
-<td><p>1E+00</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.false.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>-1.000000015047E+30</p></td>
-<td><p>-1.000000015047E+30</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>ryadav/ensemble3/Pm1_Pr1_eta0.35_Ek1E-6_Ra3E9_no-slip_dyn</p></td>
-<td><p>256</p></td>
-<td><p>768</p></td>
-<td><p>3.5E-01</p></td>
-<td><p>1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.True.</p></td>
-<td><p>.true.</p></td>
-<td><p>.false.</p></td>
-<td><p>.false.</p></td>
-<td><p>1E-06</p></td>
-<td><p>1E+00</p></td>
-<td><p>1E+00</p></td>
-<td><p>3E+09</p></td>
-<td><p>-1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.true.</p></td>
-<td><p>1E+00</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.false.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>3E+00</p></td>
-<td><p>6E+00</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p>ryadav/ensemble4/Pm0.03_Pr1_eta0.35_Ek1E-7_Ra3E11_no-slip_dyn</p></td>
-<td><p>512</p></td>
-<td><p>1536</p></td>
-<td><p>3.5E-01</p></td>
-<td><p>1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.True.</p></td>
-<td><p>.true.</p></td>
-<td><p>.false.</p></td>
-<td><p>.false.</p></td>
-<td><p>1E-07</p></td>
-<td><p>1E+00</p></td>
-<td><p>3E-02</p></td>
-<td><p>3E+11</p></td>
-<td><p>-1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.true.</p></td>
-<td><p>1E+00</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.false.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>8E+00</p></td>
-<td><p>5E+00</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>ryadav/ensemble4/Pm0.05_Pr1_eta0.35_Ek1E-7_Ra1.5E11_no-slip_dyn</p></td>
-<td><p>512</p></td>
-<td><p>1536</p></td>
-<td><p>3.5E-01</p></td>
-<td><p>1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.True.</p></td>
-<td><p>.true.</p></td>
-<td><p>.false.</p></td>
-<td><p>.false.</p></td>
-<td><p>1E-07</p></td>
-<td><p>1E+00</p></td>
-<td><p>5E-02</p></td>
-<td><p>1.5E+11</p></td>
-<td><p>-1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.true.</p></td>
-<td><p>1E+00</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.false.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>3E+00</p></td>
-<td><p>1E+01</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p>ryadav/ensemble4/Pm0.2_Pr1_eta0.35_Ek1E-7_Ra3E10_no-slip_dyn</p></td>
-<td><p>512</p></td>
-<td><p>1536</p></td>
-<td><p>3.5E-01</p></td>
-<td><p>1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.True.</p></td>
-<td><p>.true.</p></td>
-<td><p>.false.</p></td>
-<td><p>.false.</p></td>
-<td><p>1E-07</p></td>
-<td><p>1E+00</p></td>
-<td><p>2E-01</p></td>
-<td><p>6E+10</p></td>
-<td><p>-1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.true.</p></td>
-<td><p>1E+00</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.false.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>2E+00</p></td>
-<td><p>9E+00</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>ryadav/ensemble_test/test1</p></td>
-<td><p>128</p></td>
-<td><p>512</p></td>
-<td><p>3.5E-01</p></td>
-<td><p>1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.True.</p></td>
-<td><p>.true.</p></td>
-<td><p>.false.</p></td>
-<td><p>.false.</p></td>
-<td><p>1E-06</p></td>
-<td><p>1E+00</p></td>
-<td><p>5E-01</p></td>
-<td><p>3E+09</p></td>
-<td><p>-1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.true.</p></td>
-<td><p>1E+00</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.false.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>-1.000000015047E+30</p></td>
-<td><p>-1.000000015047E+30</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p>ryadav/ensemble_test/test2</p></td>
-<td><p>128</p></td>
-<td><p>512</p></td>
-<td><p>3.5E-01</p></td>
-<td><p>1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.True.</p></td>
-<td><p>.true.</p></td>
-<td><p>.false.</p></td>
-<td><p>.false.</p></td>
-<td><p>1E-06</p></td>
-<td><p>1E+00</p></td>
-<td><p>5E-01</p></td>
-<td><p>3E+09</p></td>
-<td><p>-1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.true.</p></td>
-<td><p>1E+00</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.false.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>-1.000000015047E+30</p></td>
-<td><p>-1.000000015047E+30</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>ryadav/ensemble_test/test3</p></td>
-<td><p>128</p></td>
-<td><p>512</p></td>
-<td><p>3.5E-01</p></td>
-<td><p>1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.True.</p></td>
-<td><p>.true.</p></td>
-<td><p>.false.</p></td>
-<td><p>.false.</p></td>
-<td><p>1E-06</p></td>
-<td><p>1E+00</p></td>
-<td><p>5E-01</p></td>
-<td><p>3E+09</p></td>
-<td><p>-1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.true.</p></td>
-<td><p>1E+00</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.false.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>-1.000000015047E+30</p></td>
-<td><p>-1.000000015047E+30</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p>ryadav/short_runs_for_analysis/Pm0.05_Pr1_eta0.35_Ek1E-7_Ra1.5E11_no-slip_dyn_short</p></td>
-<td><p>512</p></td>
-<td><p>1536</p></td>
-<td><p>3.5E-01</p></td>
-<td><p>1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.True.</p></td>
-<td><p>.true.</p></td>
-<td><p>.false.</p></td>
-<td><p>.false.</p></td>
-<td><p>1E-07</p></td>
-<td><p>1E+00</p></td>
-<td><p>5E-02</p></td>
-<td><p>1.5E+11</p></td>
-<td><p>-1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.true.</p></td>
-<td><p>1E+00</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.false.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>3E+00</p></td>
-<td><p>1E+01</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>ryadav/short_runs_for_analysis/Pm0.2_Pr1_eta0.35_Ek1E-6_Ra5E9_no-slip_dyn_short</p></td>
-<td><p>512</p></td>
-<td><p>768</p></td>
-<td><p>3.5E-01</p></td>
-<td><p>1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.True.</p></td>
-<td><p>.true.</p></td>
-<td><p>.false.</p></td>
-<td><p>.false.</p></td>
-<td><p>1E-06</p></td>
-<td><p>1E+00</p></td>
-<td><p>2E-01</p></td>
-<td><p>5E+09</p></td>
-<td><p>-1E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>.true.</p></td>
-<td><p>1E+00</p></td>
-<td><p>.DEFAULT.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.true.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.false.</p></td>
-<td><p>0E+00</p></td>
-<td><p>.false.</p></td>
-<td><p>5E+00</p></td>
-<td><p>7E+00</p></td>
 <td></td>
 </tr>
 </tbody>
@@ -969,12 +204,12 @@
 <h3>Navigation</h3>
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="ksoderlu_Outeline.html">Icy Giants (ksoderlu)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mheimpel_Outeline.html">Jovian Atomosphere (mheimpel)</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Geodynamo (ryadav)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ryadav/ensemble2/Pm0.1_Pr1_eta0.35_Ek1E-6_Ra1E10_no-slip_dyn/Case_doc.html">ryadav/ensemble2/Pm0.1_Pr1_eta0.35_Ek1E-6_Ra1E10_no-slip_dyn/</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ryadav/ensemble2/Pm0.1_Pr1_eta0.35_Ek1E-6_Ra1E10_no-slip_dyn/Case_doc.html">Run-G2</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../Tools/tools.html">Data conversion program</a></li>
 </ul>
 
 <div class="relations">
@@ -982,7 +217,7 @@
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
       <li>Previous: <a href="mheimpel_Outeline.html" title="previous chapter">Jovian Atomosphere (mheimpel)</a></li>
-      <li>Next: <a href="ryadav/ensemble2/Pm0.1_Pr1_eta0.35_Ek1E-6_Ra1E10_no-slip_dyn/Case_doc.html" title="next chapter">ryadav/ensemble2/Pm0.1_Pr1_eta0.35_Ek1E-6_Ra1E10_no-slip_dyn/</a></li>
+      <li>Next: <a href="ryadav/ensemble2/Pm0.1_Pr1_eta0.35_Ek1E-6_Ra1E10_no-slip_dyn/Case_doc.html" title="next chapter">Run-G2</a></li>
   </ul></li>
 </ul>
 </div>

@@ -1,6 +1,13 @@
 ---------------------------------------------------------------
-ryadav/ensemble2/Pm0.1_Pr1_eta0.35_Ek1E-6_Ra1E10_no-slip_dyn/
+Run-G2
 ---------------------------------------------------------------
+
+Links for data directories.
+================================
+Here is the link to access data directory:
+
+(Add Hyperlink to directory)
+
 
 Parameters.
 ================================
@@ -9,6 +16,16 @@ The following parameters are used:
 
 .. csv-table:: 
    :file: param.csv
+   :encoding: UTF-8
+   :header-rows: 1
+
+Avaiable data.
+================================
+
+The following data are aviable:
+
+.. csv-table:: 
+   :file: outputs.csv
    :encoding: UTF-8
    :header-rows: 1
 
