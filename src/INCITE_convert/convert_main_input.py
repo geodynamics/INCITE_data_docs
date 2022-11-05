@@ -35,47 +35,65 @@ nml_lower = nml.strip().lower()
 in_output = in_list.vals['output']
 # print(in_output)
 
-in_shellslice = in_output['shellslice_values']
-print('shellslice_values: ', in_shellslice)
-new_str = convert_field_list(in_shellslice)
-main_input.set(self=in_list, nml="output",var="shellslice_values",
-               val=new_str, force = True)
-print('To: ', new_str)
+if('shellslice_values' in in_output):
+    in_shellslice = in_output['shellslice_values']
+    print('shellslice_values: ', in_shellslice)
+    new_str = convert_field_list(in_shellslice)
+    main_input.set(self=in_list, nml="output",var="shellslice_values",
+                   val=new_str, force = True)
+    print('To: ', new_str)
+else:
+    print("'shellslice_values' is missing... skip")
 
-in_shellspectra = in_output['shellspectra_values']
-print('shellspectra_values: ', in_shellspectra)
-new_str = convert_field_list(in_shellspectra)
-main_input.set(self=in_list, nml="output",var="shellspectra_values",
-               val=new_str, force = True)
-print('To: ', new_str)
+if('shellspectra_values' in in_output):
+    in_shellspectra = in_output['shellspectra_values']
+    print('shellspectra_values: ', in_shellspectra)
+    new_str = convert_field_list(in_shellspectra)
+    main_input.set(self=in_list, nml="output",var="shellspectra_values",
+                   val=new_str, force = True)
+    print('To: ', new_str)
+else:
+    print("'shellspectra_values' is missing... skip")
 
-in_azavg = in_output['azavg_values']
-print('azavg_values: ', in_azavg)
-new_str = convert_field_list(in_azavg)
-main_input.set(self=in_list, nml="output",var="azavg_values",
-               val=new_str, force = True)
-print('To: ', new_str)
+if('azavg_values' in in_output):
+    in_azavg = in_output['azavg_values']
+    print('azavg_values: ', in_azavg)
+    new_str = convert_field_list(in_azavg)
+    main_input.set(self=in_list, nml="output",var="azavg_values",
+                   val=new_str, force = True)
+    print('To: ', new_str)
+else:
+    print("'azavg_values' is missing... skip")
 
-in_shellavg_values = in_output['shellavg_values']
-print('shellavg_values: ', in_shellavg_values)
-new_str = convert_field_list(in_shellavg_values)
-main_input.set(self=in_list, nml="output",var="shellavg_values",
-               val=new_str, force = True)
-print('To: ', new_str)
+if('shellavg_values' in in_output):
+    in_shellavg_values = in_output['shellavg_values']
+    print('shellavg_values: ', in_shellavg_values)
+    new_str = convert_field_list(in_shellavg_values)
+    main_input.set(self=in_list, nml="output",var="shellavg_values",
+                   val=new_str, force = True)
+    print('To: ', new_str)
+else:
+    print("'shellavg_values' is missing... skip")
 
-in_equatorial_values = in_output['equatorial_values']
-print('equatorial_values: ', in_equatorial_values)
-new_str = convert_field_list(in_equatorial_values)
-main_input.set(self=in_list, nml="output",var="equatorial_values",
-               val=new_str, force = True)
-print('To: ', new_str)
+if ('equatorial_values' in in_output):
+    in_equatorial_values = in_output['equatorial_values']
+    print('equatorial_values: ', in_equatorial_values)
+    new_str = convert_field_list(in_equatorial_values)
+    main_input.set(self=in_list, nml="output",var="equatorial_values",
+                   val=new_str, force = True)
+    print('To: ', new_str)
+else:
+    print("'equatorial_values' is missing... skip")
 
-in_globalavg_values = in_output['globalavg_values']
-print('globalavg_values: ', in_globalavg_values)
-new_str = convert_field_list(in_globalavg_values)
-main_input.set(self=in_list, nml="output",var="globalavg_values",
-               val=new_str, force = True)
-print('To: ', new_str)
+if('globalavg_values' in in_output):
+    in_globalavg_values = in_output['globalavg_values']
+    print('globalavg_values: ', in_globalavg_values)
+    new_str = convert_field_list(in_globalavg_values)
+    main_input.set(self=in_list, nml="output",var="globalavg_values",
+                   val=new_str, force = True)
+    print('To: ', new_str)
+else:
+    print("'globalavg_values' is missing... skip")
 
 
 main_input.write(self=in_list, verbose = False, file=new_file, ndecimal=6, namelist=in_list)

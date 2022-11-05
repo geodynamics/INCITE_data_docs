@@ -1,0 +1,8 @@
+Description, Folder,
+Zonal means, AZ_Avgs, 
+Checkpoints to restart, Checkpoints
+Equatorial section (z = 0), Equatorial_Slices
+Averaged fields over the domain, G_Avgs
+Averaged fields over spherical shells, Shell_Avgs, 
+Fields at specific radius, Shell_Slices, 
+Spherical harmonics coefficients at specific radius, Shell_Spectra, 
