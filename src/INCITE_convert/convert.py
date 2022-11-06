@@ -96,11 +96,17 @@ old_to_new = {
 
 old_code_to_new_code = dict([(k, code_given_name[old_to_new.get(v,v)]) for k, v in INCITE_name_given_code.items()])
 
+def each_convert(f):
+    f = os.path.abspath(f)
+    print('file to convert: ', f)
+    # get type of output from path
+    type = os.path.basename(os.path.dirname(f))
+    fobj = getattr(ra, type + '_file')(f)
+    # overwrite qv in place
+    fobj.qv[:] = [old_code_to_new_code[k] for k in fobj.qv]
+    return
+
+
 if __name__ == '__main__':
     for f in sys.argv[1:]:
-        f = os.path.abspath(f)
-        # get type of output from path
-        type = os.path.basename(os.path.dirname(f))
-        fobj = getattr(ra, type + '_file')(f)
-        # overwrite qv in place
-        fobj.qv[:] = [old_code_to_new_code[k] for k in fobj.qv]
+        each_convert(f)
