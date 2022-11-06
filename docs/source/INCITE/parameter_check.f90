@@ -1218,7 +1218,7 @@
           write(id_out,'(a)') 'Examples of visualized images.'
           write(id_out,'(a)') '======================================='
           write(id_out,'(a)') 
-          write(id_out,'(a)') '.. figure:: ./Images/KE_vs_time.png'
+          write(id_out,'(a)') '.. figure:: ./images/KE_vs_time.png'
           write(id_out,'(a)') '   :scale: 200%'
           write(id_out,'(a)') '   :height: 200px'
           write(id_out,'(a)') '   :width: 300px'
@@ -1232,7 +1232,7 @@
      &            ' :math:`\tau_{\eta} = L^{2} / \eta`.'
 
           write(id_out,'(a)')    
-          write(id_out,'(a)') '.. figure:: ./Images/Ur_equator.png'
+          write(id_out,'(a)') '.. figure:: ./images/Ur_equator.png'
           write(id_out,'(a)') '   :scale: 200%'
           write(id_out,'(a)') '   :height: 240px'
           write(id_out,'(a)') '   :width: 300px'
@@ -1245,7 +1245,7 @@
      &           ' the equatorial plane :math:`z = 0`.'
 
           write(id_out,'(a)')    
-          write(id_out,'(a)') '.. figure:: ./Images/U_spectr_l.png'
+          write(id_out,'(a)') '.. figure:: ./images/U_spectr_l.png'
           write(id_out,'(a)') '   :scale: 200%'
           write(id_out,'(a)') '   :height: 240px'
           write(id_out,'(a)') '   :width: 300px'
@@ -1321,37 +1321,43 @@
           write(id_out,'(a)') 'Examples of visualized images.'
           write(id_out,'(a)') '======================================='
           write(id_out,'(a)') 
-          write(id_out,'(a)') '.. figure:: ./Images/KE_vs_time.png'
+          write(id_out,'(a)')                                           &
+     &                '.. figure:: ./images/energy_trace.pdf'
           write(id_out,'(a)') '   :scale: 200%'
-          write(id_out,'(a)') '   :height: 200px'
-          write(id_out,'(a)') '   :width: 300px'
+          write(id_out,'(a)') '   :height: 216px'
+          write(id_out,'(a)') '   :width: 720px'
           write(id_out,'(a)') '   :align: center'
           write(id_out,'(a)')    
-          write(id_out,'(5a)')                                          &
+          write(id_out,'(7a)')                                          &
      &            'Time evolution of kinetic energy density',           &
      &            ' :math:`E_{kin} = \frac{1}{2} v^{2}`',               &
+     &            ' and magnetic energy density',                       &
+     &            ' :math:`E_{mag} = \frac{1}{2Pm E} B^{2}`',           &
      &            ' in the spherical shell as function of time',        &
-     &            ' normalized by the magnetic diffusion time',         &
-     &            ' :math:`\tau_{\eta} = L^{2} / \eta`.'
-          write(id_out,'(a)')    
-          write(id_out,'(a)') '.. figure:: ./Images/ME_vs_time.png'
+     &            ' normalized by the viscous diffusion time',          &
+     &            ' :math:`\tau_{\nu} = L^{2} / \nu`.'
+
+          write(id_out,'(a)') 
+          write(id_out,'(a)')                                           &
+     &                '.. figure:: ./images/me_ke_ratio.pdf'
           write(id_out,'(a)') '   :scale: 200%'
-          write(id_out,'(a)') '   :height: 200px'
-          write(id_out,'(a)') '   :width: 300px'
+          write(id_out,'(a)') '   :height: 216px'
+          write(id_out,'(a)') '   :width: 720px'
           write(id_out,'(a)') '   :align: center'
-
+          write(id_out,'(a)')    
           write(id_out,'(5a)')                                          &
-     &             'Time evolution of magnetic energy density',         &
-     &             ' :math:`E_{mag} = \frac{1}{2Pm E} B^{2}`',          &
-     &             ' in the spherical shell as function of time',       &
-     &             ' normalized by the magnetic diffusion time',        &
-     &             ' :math:`\tau_{\eta} = L^{2} / \eta`.'
+     &            'Time evolution of the ratio of',                     &
+     &            ' magetic to kinetic energy densities',               &
+     &            ' in the spherical shell as function of time',        &
+     &            ' normalized by the viscous diffusion time',          &
+     &            ' :math:`\tau_{\nu} = L^{2} / \nu`.'
 
           write(id_out,'(a)')    
-          write(id_out,'(a)') '.. figure:: ./Images/Br_CMB.png'
+          write(id_out,'(a)')                                           &
+     &            '.. figure:: ./images/Shell_Slices_Br_0.pdf'
           write(id_out,'(a)') '   :scale: 200%'
-          write(id_out,'(a)') '   :height: 150px'
-          write(id_out,'(a)') '   :width: 300px'
+          write(id_out,'(a)') '   :height: 360px'
+          write(id_out,'(a)') '   :width: 864px'
           write(id_out,'(a)') '   :align: center'
 !
           write(id_out,'(a)')    
@@ -1360,7 +1366,54 @@
      &             ' at the outer boundary :math:`r = r_o`.'
 
           write(id_out,'(a)')    
-          write(id_out,'(a)')  '.. figure:: ./Images/Bz_equator.png'
+          write(id_out,'(a)')                                           &
+     &            '.. figure:: ./images/Shell_Slices_Ur_2.pdf'
+          write(id_out,'(a)') '   :scale: 200%'
+          write(id_out,'(a)') '   :height: 360px'
+          write(id_out,'(a)') '   :width: 864px'
+          write(id_out,'(a)') '   :align: center'
+!
+          write(id_out,'(a)')    
+          write(id_out,'(2a)')                                          &
+     &             'Radial velocity field :math:`u_r`',                 &
+     &             ' in the fluid shell.'
+
+          write(id_out,'(a)')    
+          write(id_out,'(a)')                                           &
+     &            '.. figure:: ./images/Shell_Slices_temp_2.pdf'
+          write(id_out,'(a)') '   :scale: 200%'
+          write(id_out,'(a)') '   :height: 360px'
+          write(id_out,'(a)') '   :width: 864px'
+          write(id_out,'(a)') '   :align: center'
+!
+          write(id_out,'(a)')    
+          write(id_out,'(2a)')                                          &
+     &             'Temperature :math:`T`',                             &
+     &             ' in the fluid shell.'
+
+          write(id_out,'(a)')    
+          write(id_out,'(2a)')                                          &
+     &             'Radial velocity field :math:`u_r`',                 &
+     &             ' in the fluid shell.'
+
+          write(id_out,'(a)')    
+          write(id_out,'(a)')                                           &
+     &            '.. figure:: ./images/AZ_Avgs.pdf'
+          write(id_out,'(a)') '   :scale: 200%'
+          write(id_out,'(a)') '   :height: 1620px'
+          write(id_out,'(a)') '   :width: 1926px'
+          write(id_out,'(a)') '   :align: center'
+!
+          write(id_out,'(a)')    
+          write(id_out,'(4a)')                                          &
+     &             'Temperature :math:`T`, (left), ',                   &
+     &             ' zonal velocity field :math:`u_\phi`, (middle), ',  &
+     &             ' and zonal magnetic field :math:`B_\phi`, (right)', &
+     &             ' in the fluid shell.'
+
+          write(id_out,'(a)')    
+          write(id_out,'(a)')                                           &
+     &             '.. figure:: ./images/Equatorial_Slice_Bz.pdf'
           write(id_out,'(a)') '   :scale: 200%'
           write(id_out,'(a)') '   :height: 240px'
           write(id_out,'(a)') '   :width: 300px'
@@ -1373,10 +1426,11 @@
      &            ' :math:`B_z` at the equatorial plane :math:`z = 0`.'
 
           write(id_out,'(a)')    
-          write(id_out,'(a)') '.. figure:: ./Images/Ur_equator.png'
+          write(id_out,'(a)')                                           &
+     &             '.. figure:: ./images/Equatorial_Slice_Ur.pdf'
           write(id_out,'(a)') '   :scale: 200%'
-          write(id_out,'(a)') '   :height: 240px'
-          write(id_out,'(a)') '   :width: 300px'
+          write(id_out,'(a)') '   :height: 576px'
+          write(id_out,'(a)') '   :width: 576px'
           write(id_out,'(a)') '   :align: center'
           write(id_out,'(a)') '   :alt: Alternate Text'
 
@@ -1386,10 +1440,10 @@
      &           ' the equatorial plane :math:`z = 0`.'
 
           write(id_out,'(a)')    
-          write(id_out,'(a)') '.. figure:: ./Images/B_spectr_l.png'
+          write(id_out,'(a)') '.. figure:: ./images/MPower_0.pdf'
           write(id_out,'(a)') '   :scale: 200%'
-          write(id_out,'(a)') '   :height: 240px'
-          write(id_out,'(a)') '   :width: 300px'
+          write(id_out,'(a)') '   :height: 228px'
+          write(id_out,'(a)') '   :width: 432px'
           write(id_out,'(a)') '   :align: center'
           write(id_out,'(a)') '   :alt: Alternate Text'
    
@@ -1399,10 +1453,10 @@
      &           ' of spherical harmonic degree :math:`l`.'
 
           write(id_out,'(a)')    
-          write(id_out,'(a)') '.. figure:: ./Images/U_spectr_l.png'
+          write(id_out,'(a)') '.. figure:: ./images/KPower_2.pdf'
           write(id_out,'(a)') '   :scale: 200%'
-          write(id_out,'(a)') '   :height: 240px'
-          write(id_out,'(a)') '   :width: 300px'
+          write(id_out,'(a)') '   :height: 228px'
+          write(id_out,'(a)') '   :width: 432px'
           write(id_out,'(a)') '   :align: center'
           write(id_out,'(a)') '   :alt: Alternate Text'
    

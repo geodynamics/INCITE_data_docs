@@ -137,6 +137,7 @@ def s_plot_G_Avgs_moritz(path):
     
     i0 = i1
   
+  time = time - time[0]
   
 # The Lookup Table (LUT)
 # ------------------
@@ -152,8 +153,8 @@ def s_plot_G_Avgs_moritz(path):
 #The indices associated with our various outputs are stored in a lookup table
 #as part of the GlobalAverage data structure.  We define several variables to
 #hold those indices here:
-  
   lut = a.lut
+  print('lut',lut)
   ke  = lut[401]  # Kinetic Energy (KE)
   rke = lut[402]  # KE associated with radial motion
   tke = lut[403]  # KE associated with theta motion
@@ -174,10 +175,10 @@ def s_plot_G_Avgs_moritz(path):
   
   
 # To begin with, let's plot the total, mean, and fluctuating kinetic energy density during the initial transient phase, and then during the equilibrated phase.
-  
+  print(ke)
   sizetuple=(10,3)
   fig, ax = plt.subplots(ncols=1, figsize=sizetuple)
-  ax.plot(time, gavgs[:,ke], label='KE')
+  ax.plot(time, gavgs[:,0], label='KE')
 #  ax.plot(time, gavgs[:,mke],label='MKE')
 #  ax.plot(time, gavgs[:,fke], label='FKE')
   ax.legend(loc='center right', shadow=True)

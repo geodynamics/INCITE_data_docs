@@ -32,30 +32,57 @@ The following data for analysis are aviable:
 Examples of visualized images.
 =======================================
 
-.. figure:: ./Images/KE_vs_time.png
+.. figure:: ./images/energy_trace.pdf
    :scale: 200%
-   :height: 200px
-   :width: 300px
+   :height: 216px
+   :width: 720px
    :align: center
 
-Time evolution of kinetic energy density :math:`E_{kin} = \frac{1}{2} v^{2}` in the spherical shell as function of time normalized by the magnetic diffusion time :math:`\tau_{\eta} = L^{2} / \eta`.
+Time evolution of kinetic energy density :math:`E_{kin} = \frac{1}{2} v^{2}` and magnetic energy density :math:`E_{mag} = \frac{1}{2Pm E} B^{2}` in the spherical shell as function of time normalized by the viscous diffusion time :math:`\tau_{\nu} = L^{2} / \nu`.
 
-.. figure:: ./Images/ME_vs_time.png
+.. figure:: ./images/me_ke_ratio.pdf
    :scale: 200%
-   :height: 200px
-   :width: 300px
+   :height: 216px
+   :width: 720px
    :align: center
-Time evolution of magnetic energy density :math:`E_{mag} = \frac{1}{2Pm E} B^{2}` in the spherical shell as function of time normalized by the magnetic diffusion time :math:`\tau_{\eta} = L^{2} / \eta`.
 
-.. figure:: ./Images/Br_CMB.png
+Time evolution of the ratio of magetic to kinetic energy densities in the spherical shell as function of time normalized by the viscous diffusion time :math:`\tau_{\nu} = L^{2} / \nu`.
+
+.. figure:: ./images/Shell_Slices_Br_0.pdf
    :scale: 200%
-   :height: 150px
-   :width: 300px
+   :height: 360px
+   :width: 864px
    :align: center
 
 Radial magnetic field :math:`B_r` at the outer boundary :math:`r = r_o`.
 
-.. figure:: ./Images/Bz_equator.png
+.. figure:: ./images/Shell_Slices_Ur_2.pdf
+   :scale: 200%
+   :height: 360px
+   :width: 864px
+   :align: center
+
+Radial velocity field :math:`u_r` in the fluid shell.
+
+.. figure:: ./images/Shell_Slices_temp_2.pdf
+   :scale: 200%
+   :height: 360px
+   :width: 864px
+   :align: center
+
+Temperature :math:`T` in the fluid shell.
+
+Radial velocity field :math:`u_r` in the fluid shell.
+
+.. figure:: ./images/AZ_Avgs.pdf
+   :scale: 200%
+   :height: 1620px
+   :width: 1926px
+   :align: center
+
+Temperature :math:`T`, (left),  zonal velocity field :math:`u_\phi`, (middle),  and zonal magnetic field :math:`B_\phi`, (right) in the fluid shell.
+
+.. figure:: ./images/Equatorial_Slice_Bz.pdf
    :scale: 200%
    :height: 240px
    :width: 300px
@@ -64,28 +91,28 @@ Radial magnetic field :math:`B_r` at the outer boundary :math:`r = r_o`.
 
 :math:`z`-component of the magnetic field :math:`B_z` at the equatorial plane :math:`z = 0`.
 
-.. figure:: ./Images/Ur_equator.png
+.. figure:: ./images/Equatorial_Slice_Ur.pdf
    :scale: 200%
-   :height: 240px
-   :width: 300px
+   :height: 576px
+   :width: 576px
    :align: center
    :alt: Alternate Text
 
 Radial velocity :math:`u_r` at the equatorial plane :math:`z = 0`.
 
-.. figure:: ./Images/B_spectr_l.png
+.. figure:: ./images/MPower_0.pdf
    :scale: 200%
-   :height: 240px
-   :width: 300px
+   :height: 228px
+   :width: 432px
    :align: center
    :alt: Alternate Text
 
 Magnetic energy density spectra as a function of spherical harmonic degree :math:`l`.
 
-.. figure:: ./Images/U_spectr_l.png
+.. figure:: ./images/KPower_2.pdf
    :scale: 200%
-   :height: 240px
-   :width: 300px
+   :height: 228px
+   :width: 432px
    :align: center
    :alt: Alternate Text
 Kinetic energy density spectra as a function of spherical harmonic degree :math:`l`.

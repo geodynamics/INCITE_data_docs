@@ -95,7 +95,16 @@ def s_plot_Shell_Slices_moritz(path):
   
 #  istring = '00040000'
   ss = Shell_Slices(istring)
+  print(ss.radius)
   
+  icou = 0
+  for rindex in ss.rad_inds:
+    plot_each_r_Shell_Slices_moritz(ss, icou, icou)
+    icou = icou + 1
+  
+  return
+
+def plot_each_r_Shell_Slices_moritz(ss, icou, rindex):
   ntheta = ss.ntheta
   nphi = ss.nphi
   costheta = ss.costheta
@@ -104,7 +113,11 @@ def s_plot_Shell_Slices_moritz(path):
   
   
   tindex = 0 # All example quantities were output with same cadence.  Grab second time-index from all.
-  rindex = 1 # only output one radius
+#   rindex = 1 # only output one radius
+  depth = ss.radius[0] - ss.radius[rindex]
+  ttitle = 'Temperature $T$ at $r = r_o -$ {:.3f}'.format(depth)
+  utitle = 'Radial Velocity $u_r$ at $r = r_o$ - {:.3f}'.format(depth)
+  
   sizetuple=(12,5)
   
   vr =   ss.vals[:,:,rindex,ss.lut[1],tindex]
@@ -113,19 +126,21 @@ def s_plot_Shell_Slices_moritz(path):
   fig = plt.figure(figsize=sizetuple)
   ax1 = fig.add_subplot(111, projection='mollweide')
   
-  plot1 = ax1.pcolormesh(phi, theta, temp.transpose(), 
-                         shading='auto', cmap='hot', rasterized=True)
+  v_max = np.max(temp)
+  v_min = np.min(temp)
+  plot1 = ax1.pcolormesh(phi, theta, temp.transpose(), shading='auto', 
+                         cmap='hot',vmin=v_min,vmax=v_max, rasterized=True)
   
   ax1.set_xticklabels([])
   ax1.set_yticklabels([])
   
 #  ax1.set_xlabel( 'Longitude')
 #  ax1.set_ylabel( 'Latitude')
-  ax1.set_title(  'temperature')
+  ax1.set_title(ttitle)
   
-  plt.colorbar(plot1, label='U_r')
+  plt.colorbar(plot1, label=r'$T$')
   plt.tight_layout()
-  savefile = 'images/Shell_Slices_temp_mid.pdf'
+  savefile = 'images/Shell_Slices_temp_' + str(icou) + '.pdf'
   print('Saving figure to: ', savefile)
   plt.savefig(savefile)
   
@@ -133,21 +148,26 @@ def s_plot_Shell_Slices_moritz(path):
   fig = plt.figure(figsize=sizetuple)
   ax2 = fig.add_subplot(111, projection='mollweide')
   
+  v_max = np.max(vr)
+  v_min = -v_max
   plot1 = ax2.pcolormesh(phi, theta, vr.transpose(), shading='auto', 
-                         cmap='seismic', rasterized=True)
+                         cmap='seismic',vmin=v_min,vmax=v_max,
+                         rasterized=True)
   
   ax2.set_xticklabels([])
   ax2.set_yticklabels([])
   
 #  ax2.set_xlabel( 'Longitude')
 #  ax2.set_ylabel( 'Latitude')
-  ax2.set_title(  'Radial Velocity')
+  ax2.set_title(utitle)
   
-  plt.colorbar(plot1, label='U_r')
+  plt.colorbar(plot1, label=r'$U_r$')
   plt.tight_layout()
-  savefile = 'images/Shell_Slices_Ur_mid.pdf'
+  savefile = 'images/Shell_Slices_Ur_' + str(icou) + '.pdf'
   print('Saving figure to: ', savefile)
   plt.savefig(savefile)
+  
+  return
 
 
 if __name__ == '__main__':

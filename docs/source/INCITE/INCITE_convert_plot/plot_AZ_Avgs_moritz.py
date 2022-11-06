@@ -150,10 +150,10 @@ def s_plot_AZ_Avgs_moritz(path):
   
 #   In[16]:
   
-#     We do a single row of 3 images 
+#     We do a single row of 2 images 
 #     Spacing is default spacing set up by subplot
   figdpi=300
-  sizetuple=(5.5*3,3*3)
+  sizetuple=(5.0*3,6.0*3)
   
   
   tsize = 20     # title font size
@@ -163,21 +163,20 @@ def s_plot_AZ_Avgs_moritz(path):
 
 #  temperature
 #  ax1 = f1.add_subplot(1,3,1)
-  units = '(nondimensional)'
-  plot_azav(fig,ax[0],temperature,radius,costheta,sintheta,mycmap='RdYlBu_r',
-            boundsfactor = 2, boundstype='rms', units=units, fontsize = cbfsize)
-  ax[0].set_xlim(-0.3, 1.3)
-  ax[0].set_ylim(0, 1.6)
-  ax[0].set_title('Temperature',fontsize=tsize)
+  units = '$T$'
+  plot_azav(fig,ax[0],temperature,radius,costheta,sintheta,mycmap='hot',
+            boundsfactor = 2.0, boundstype='rms', units=units, fontsize = cbfsize)
+  ax[0].set_xlim(-0.3, 1.0)
+  ax[0].set_ylim(-1.0, 1.0)
+  ax[0].set_title('Temperature $T$',fontsize=tsize)
   
 #  Differential Rotation
 #  ax1 = f1.add_subplot(1,3,2)
-  units = '(nondimensional)'
-  plot_azav(fig,ax[1],omega,radius,costheta,sintheta,
-            mycmap='RdYlBu_r',boundsfactor = 1.5, 
-            boundstype='rms', units=units, fontsize = cbfsize)
-  ax[1].set_xlim(-0.3, 1.3)
-  ax[1].set_ylim(0, 1.6)
+  units = '$\omega$'
+  plot_azav(fig,ax[1],omega,radius,costheta,sintheta,mycmap='seismic',
+            boundsfactor = 0.5, boundstype='rms', units=units, fontsize = cbfsize)
+  ax[1].set_xlim(-0.3, 1.0)
+  ax[1].set_ylim(-1.0, 1.0)
   ax[1].set_title(r'Angular velocity $\omega$',fontsize=tsize)
   
 #  Mass Flux

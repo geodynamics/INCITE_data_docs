@@ -12,11 +12,11 @@ from convert import each_convert
 
 def plot_each_Moritz_examples(d):
 #    Directory setting for Farm
-  source_dir = '/group/cigfs3-incite/mheimpel/' + d
-  dest_dir = '/home/hrmatsui/git/INCITE_data_docs/docs/source/INCITE/mheimpel/' + d
+#  source_dir = '/group/cigfs3-incite/' + d
+#  dest_dir = '/home/hrmatsui/git/INCITE_data_docs/docs/source/INCITE/' + d
 #    Directory setting for local Mac
-#  source_dir = '/Users/matsui/Desktop/FARM_INCITE/' + d
-#  dest_dir = '/Users/matsui/git/INCITE_data_docs/docs/source/INCITE/' + d
+  source_dir = '/Users/matsui/Desktop/FARM_INCITE/' + d
+  dest_dir = '/Users/matsui/git/INCITE_data_docs/docs/source/INCITE/' + d
   
   print('source:',  source_dir)
   print('destination', dest_dir)

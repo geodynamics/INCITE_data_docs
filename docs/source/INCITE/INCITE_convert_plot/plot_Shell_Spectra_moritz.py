@@ -90,34 +90,40 @@ def s_plot_Shell_Spectra_moritz(path):
   print('File to plot: ', istring)
   
 #  istring = '00159000'
-  
-  
-  tind = 0
-  rind = 0
-  
   vpower = Power_Spectrum(istring)
+  icou = 0
+  for rindex in vpower.rad_inds:
+    plot_each_Shell_Spectra_moritz(vpower, icou, icou)
+    icou = icou + 1
   
-  power = vpower.power
+  return
+
+
+def plot_each_Shell_Spectra_moritz(vpower, icou, rindex):
+  tind = 0
+#  rindex = 1
+  
+  
+  lmax = vpower.lmax
+  kpower = vpower.power
+  depth = vpower.radius[0] - vpower.radius[rindex]
+  title_u = 'Velocity Power at r = r_o-{:.3f}'.format(depth)
   
   fig, ax = plt.subplots(nrows=1, figsize=(6,4))
-  ax.plot(power[:,rind,tind,0])
+  ax.plot(kpower[:,rindex,tind,0], label='Total')
   ax.set_xlabel(r'Degree $\ell$')
-  ax.set_title('Velocity Power')
+  ax.set_title(title_u)
   ax.set_xscale('log')
   ax.set_yscale('log')
   
-  ax.plot(power[:,rind,tind,1])
+  ax.plot(kpower[:,rindex,tind,1], label='Axisymmetric')
+  ax.plot(kpower[:,rindex,tind,2], label='Non-axisymmetric')
+  ax.set_xlim(1, lmax+10)
+  ax.legend(loc='lower left', shadow=True)
   ax.set_xlabel(r'Degree $\ell$')
-#  ax.set_title('Velocity Power (m=0)')
-  
-#  ax[2].plot(power[:,rind,tind,2])
-#  ax[2].set_xlabel(r'Degree $\ell$')
-#  ax[2].set_title('Velocity Power ( total - {m=0} )')
-#  ax[2].set_xscale('log')
-#  ax[2].set_yscale('log')
   
   plt.tight_layout()
-  savefile = 'images/Power_1D.pdf'
+  savefile = 'images/KPower_' + str(icou) + '.pdf'
   print('Saving figure to: ', savefile)
   plt.savefig(savefile)
   return
@@ -125,4 +131,4 @@ def s_plot_Shell_Spectra_moritz(path):
 
 if __name__ == '__main__':
   path = "Shell_Spectra"
-  s_plot_AZ_Avgs_moritz(path)
+  s_plot_Shell_Spectra_moritz(path)
