@@ -1,6 +1,6 @@
 # /bin/sh
 
-python3 INCITE_convert_plot/plot_Moritz_examples.py 
+python3 INCITE_convert_plot/plot_Moritz_examples.py \
 "mheimpel/JupNatGeo/E1n3/run1/" \
 "mheimpel/JupNatGeo/E1n3/run2/" \
 "mheimpel/JupNatGeo/E1n4/run1/" \

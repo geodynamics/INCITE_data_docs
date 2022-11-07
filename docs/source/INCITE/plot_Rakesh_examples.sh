@@ -1,6 +1,6 @@
 # /bin/sh
 
-python3 INCITE_convert_plot/plot_Rakesh_examples.py 
+python3 INCITE_convert_plot/plot_Rakesh_examples.py \
 "ryadav/ensemble2/Pm0.05_Pr1_eta0.35_Ek1E-6_Ra2.5E10_no-slip_dyn/" \
 "ryadav/ensemble2/Pm0.1_Pr1_eta0.35_Ek1E-6_Ra1E10_no-slip_dyn/" \
 "ryadav/ensemble2/Pm0.2_Pr1_eta0.35_Ek1E-6_Ra5E9_no-slip_dyn/" \
