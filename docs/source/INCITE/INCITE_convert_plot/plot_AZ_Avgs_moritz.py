@@ -35,7 +35,7 @@
 # 
 # Azimuthally-Averaged outputs are particularly useful for examining a system's mean flows (i.e., differential rotation and meridional circulation). 
 # 
-# Examining the *main_input* file, we see that the following output values have been denoted for the Azimuthal Averages (see *rayleigh_output_variables.pdf* for mathematical formulae):
+# Examining the *main_input* file, we see that the following output values have been denoted for the Azimuthal Averages (see *rayleigh_output_variables.png* for mathematical formulae):
 # 
 # 
 # | Menu Code  | Description |
@@ -186,7 +186,7 @@ def s_plot_AZ_Avgs_moritz(path):
 #           boundstype='rms', units=units, fontsize = cbfsize, underlay = rhovm)
 #  ax[2].set_title('Mass Flux',fontsize = tsize)
   
-  savefile = 'images/AZ_Avgs.pdf'
+  savefile = 'images/AZ_Avgs.png'
   print('Saving figure to: ', savefile)
   plt.savefig(savefile)
   return

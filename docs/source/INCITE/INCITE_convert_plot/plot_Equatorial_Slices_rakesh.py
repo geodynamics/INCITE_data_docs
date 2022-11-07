@@ -34,7 +34,7 @@
 # 
 # The equatorial-slice output type allows us to examine how the fluid properties vary in longitude and radius.
 # 
-# Examining the *main_input* file, we see that the following output values have been denoted for the Equatorial Slices (see *rayleigh_output_variables.pdf* for mathematical formulae):
+# Examining the *main_input* file, we see that the following output values have been denoted for the Equatorial Slices (see *rayleigh_output_variables.png* for mathematical formulae):
 # 
 # 
 # | Menu Code  | Description |
@@ -132,7 +132,7 @@ def s_plot_Equatorial_Slices_rakesh(istring):
   
   
   plt.tight_layout()
-  savefile = 'images/Equatorial_Slice_Ur.pdf'
+  savefile = 'images/Equatorial_Slice_Ur.png'
   print('Saving figure to: ', savefile)
   plt.savefig(savefile)
 
@@ -166,7 +166,7 @@ def s_plot_Equatorial_Slices_rakesh(istring):
   
   
   plt.tight_layout()
-  savefile = 'images/Equatorial_Slice_Bz.pdf'
+  savefile = 'images/Equatorial_Slice_Bz.png'
   print('Saving figure to: ', savefile)
   plt.savefig(savefile)
 

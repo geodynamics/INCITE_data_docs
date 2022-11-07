@@ -1292,7 +1292,7 @@
 
           write(id_out,'(a)')    
           write(id_out,'(a)')                                           &
-     &            '.. figure:: ./images/AZ_Avgs.pdf'
+     &            '.. figure:: ./images/AZ_Avgs.png'
 !          write(id_out,'(a)') '   :scale: 30%'
 !          write(id_out,'(a)') '   :height: 1620px'
           write(id_out,'(a)') '   :width: 800px'
@@ -1485,7 +1485,7 @@
 
           write(id_out,'(a)')    
           write(id_out,'(a)')                                           &
-     &            '.. figure:: ./images/AZ_Avgs.pdf'
+     &            '.. figure:: ./images/AZ_Avgs.png'
 !          write(id_out,'(a)') '   :scale: 30%'
 !          write(id_out,'(a)') '   :height: 1620px'
           write(id_out,'(a)') '   :width: 800px'
@@ -1500,7 +1500,7 @@
 
           write(id_out,'(a)')    
           write(id_out,'(a)')                                           &
-     &             '.. figure:: ./images/Equatorial_Slice_Bz.pdf'
+     &             '.. figure:: ./images/Equatorial_Slice_Bz.png'
 !          write(id_out,'(a)') '   :scale: 30%'
 !          write(id_out,'(a)') '   :height: 1620px'
           write(id_out,'(a)') '   :width: 800px'
@@ -1514,7 +1514,7 @@
 
           write(id_out,'(a)')    
           write(id_out,'(a)')                                           &
-     &             '.. figure:: ./images/Equatorial_Slice_Ur.pdf'
+     &             '.. figure:: ./images/Equatorial_Slice_Ur.png'
 !          write(id_out,'(a)') '   :scale: 30%'
 !          write(id_out,'(a)') '   :height: 1620px'
           write(id_out,'(a)') '   :width: 800px'
