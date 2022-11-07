@@ -2,7 +2,7 @@ import sys
 import os
 import shutil
 
-from plot_G_Avgs_rakesh import s_plot_G_Avgs_rakesh, 
+from plot_G_Avgs_rakesh import s_plot_G_Avgs_rakesh, write_G_Avgs_rakesh_captions
 from plot_Shell_Spectra_rakesh import s_plot_Shell_Spectra_rakesh
 from plot_Shell_Slices_rakesh import s_plot_Shell_Slices_rakesh
 from plot_Equatorial_Slices_rakesh import plot_each_Equatorial_Slices_rakesh
@@ -185,7 +185,7 @@ def plot_each_Rakesh_examples(d):
   
   s_plot_Shell_Spectra_rakesh(dest_Shell_Spectra)
   s_plot_Shell_Slices_rakesh(dest_Shell_Slices)
-  plot_each_Equatorial_Slices_rakesh(Equatorial_Slices_lastfile)
+  plot_each_Equatorial_Slices_rakesh(Equatorial_Slices_lastfile, init_time)
   s_plot_AZ_Avgs_rakesh(dest_AZ_Avgs)
   
   s_convert_main_input(main_input_org, main_input)

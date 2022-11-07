@@ -56,10 +56,15 @@
 
 # In[1]:
 
+from find_first_last_Rayleigh_data import find_first_last2_Rayleigh_data
 from rayleigh_diagnostics import G_Avgs, build_file_list
 import matplotlib.pyplot as plt
 import numpy
 import os
+
+G_Avgs_path = "G_Avgs"
+G_Avgs_caption_file = 'G_Avgs_caption.rst'
+G_Avgs_energy_trace_file = 'images/energy_trace.pdf'
 
 # The preamble for each plotting example will look similar to that above.  We import the numpy and matplotlib.pyplot modules, aliasing the latter to *plt*.   We also import two items from *rayleigh_diagnostics*: a helper function *build_file_list* and the *GlobalAverage* class. 
 # 
@@ -67,31 +72,21 @@ import os
 # 
 # We will use the build_file_list function in many of the examples that follow.  It's useful when processing a time series of data, as opposed to a single snapshot.  This function accepts three parameters: a beginning time step, an ending time step, and a subdirectory (path).  It returns a list of all files found in that directory that lie within the inclusive range [beginning time step, ending time step].  The file names are prepended with the subdirectory name, as shown below.
 
-def s_plot_G_Avgs_moritz(path):
-# Get file list in G_Aves
-  filelist = []
-  filelist = os.listdir(path)
-#  print(filelist)
-  nfile=len(filelist)
-  if(nfile < 1):
-    print('No file')
+def s_plot_G_Avgs_moritz(G_path):
+  start_end2_files = find_first_last2_Rayleigh_data(G_path)
+  print(start_end2_files)
+  if(start_end2_files[0] == 'NO_FILE'):
     return
-#  print(nfile)
   
-  min_step = int(filelist[0])
-  max_step = int(filelist[0])
-  for fname in filelist:
-    istep = int(fname)
-    if(istep < min_step):
-      min_step = istep
-    if(istep > max_step):
-      max_step = istep
+  min_step = int(start_end2_files[0])
+  max_step = int(start_end2_files[1])
+  max2step = int(start_end2_files[2])
   
-  print('Step range: ', min_step, max_step)
+  print('Step range: ', min_step, max2step)
   
 # Build a list of all files ranging from iteration 0 million to 1 million
-  files = build_file_list(min_step,max_step,path='G_Avgs')
-  print(files)
+  files = build_file_list(min_step,max2step,path=G_path)
+#  print(files)
   
   
 # We can create an instance of the G_Avgs class by initializing it with a filename.  The optional keyword parameter *path* is used to specify the directory.  If *path* is not specified, its value will default to the subdirectory name associated with the datastructure (*G_Avgs* in this instance).  
@@ -137,7 +132,8 @@ def s_plot_G_Avgs_moritz(path):
     
     i0 = i1
   
-  time = time - time[0]
+  init_time = time[0]
+  time = time - init_time
   
 # The Lookup Table (LUT)
 # ------------------
@@ -196,13 +192,37 @@ def s_plot_G_Avgs_moritz(path):
 #  ax[1].set_ylabel('Energy')
   
   saveplot = True # Plots appear in the notebook and are not written to disk (set to True to save to disk)
-  savefile = 'images/energy_trace.pdf'  #Change .pdf to .png if pdf conversion gives issues
+  savefile = G_Avgs_energy_trace_file  #Change .pdf to .png if pdf conversion gives issues
   plt.tight_layout()
   
   print('Saving figure to: ', savefile)
   plt.savefig(savefile)
+  
+  return init_time
 
+def write_G_Avgs_moritz_captions(caption_file_name):
+  print('Write ', caption_file_name)
+  fp = open(caption_file_name, 'w')
+  fp.write('\n')
+  
+  ftext = '.. figure:: ./' + G_Avgs_energy_trace_file + ' \n'
+  fp.write(ftext)
+  fp.write('   :width: 800px \n')
+  fp.write('   :align: center \n')
+  fp.write('\n')
+  
+  fp.write('Time evolution of kinetic energy density')
+  fp.write(' :math:`E_{kin} = \\frac{1}{2} v^{2}`')
+  fp.write(' in the spherical shell as function of time')
+  fp.write(' normalized by the viscous diffusion time')
+  fp.write(' :math:`\\tau_{\\nu} = L^{2} / \\nu`. from the first data output time.')
+  fp.write('\n')
+  fp.write('\n')
+  
+  fp.close()
+  return
 
 if __name__ == '__main__':
-  path = "G_Avgs"
-  s_plot_G_Avgs_moritz(path)
+  ini_time = s_plot_G_Avgs_moritz(G_Avgs_path)
+  write_G_Avgs_moritz_captions(G_Avgs_caption_file);
+  print(ini_time)

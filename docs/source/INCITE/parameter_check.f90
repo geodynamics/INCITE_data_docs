@@ -1250,21 +1250,9 @@
           write(id_out,'(a)') 'Examples of visualized images.'
           write(id_out,'(a)') '======================================='
           write(id_out,'(a)') 
-          write(id_out,'(a)')                                           &
-     &                '.. figure:: ./images/energy_trace.pdf'
-!          write(id_out,'(a)') '   :scale: 30%'
-!          write(id_out,'(a)') '   :height: 1620px'
-          write(id_out,'(a)') '   :width: 800px'
-          write(id_out,'(a)') '   :align: center'
+          write(id_out,'(a)') '.. include:: ./G_Avgs_caption.rst'
           write(id_out,'(a)')    
-          write(id_out,'(7a)')                                          &
-     &            'Time evolution of kinetic energy density',           &
-     &            ' :math:`E_{kin} = \frac{1}{2} v^{2}`',               &
-     &            ' in the spherical shell as function of time',        &
-     &            ' normalized by the viscous diffusion time',          &
-     &            ' :math:`\tau_{\nu} = L^{2} / \nu`.'
 
-          write(id_out,'(a)')    
           write(id_out,'(a)')                                           &
      &            '.. figure:: ./images/Shell_Slices_Ur_1.pdf'
 !          write(id_out,'(a)') '   :scale: 30%'
@@ -1413,36 +1401,8 @@
           write(id_out,'(a)') 'Examples of visualized images.'
           write(id_out,'(a)') '======================================='
           write(id_out,'(a)') 
-          write(id_out,'(a)')                                           &
-     &                '.. figure:: ./images/energy_trace.pdf'
-!          write(id_out,'(a)') '   :scale: 30%'
-!          write(id_out,'(a)') '   :height: 1620px'
-          write(id_out,'(a)') '   :width: 800px'
-          write(id_out,'(a)') '   :align: center'
+          write(id_out,'(a)') '.. include:: ./G_Avgs_caption.rst'
           write(id_out,'(a)')    
-          write(id_out,'(7a)')                                          &
-     &            'Time evolution of kinetic energy density',           &
-     &            ' :math:`E_{kin} = \frac{1}{2} v^{2}`',               &
-     &            ' and magnetic energy density',                       &
-     &            ' :math:`E_{mag} = \frac{1}{2Pm E} B^{2}`',           &
-     &            ' in the spherical shell as function of time',        &
-     &            ' normalized by the viscous diffusion time',          &
-     &            ' :math:`\tau_{\nu} = L^{2} / \nu`.'
-
-          write(id_out,'(a)') 
-          write(id_out,'(a)')                                           &
-     &                '.. figure:: ./images/me_ke_ratio.pdf'
-!          write(id_out,'(a)') '   :scale: 30%'
-!          write(id_out,'(a)') '   :height: 1620px'
-          write(id_out,'(a)') '   :width: 800px'
-          write(id_out,'(a)') '   :align: center'
-          write(id_out,'(a)')    
-          write(id_out,'(5a)')                                          &
-     &            'Time evolution of the ratio of',                     &
-     &            ' magetic to kinetic energy densities',               &
-     &            ' in the spherical shell as function of time',        &
-     &            ' normalized by the viscous diffusion time',          &
-     &            ' :math:`\tau_{\nu} = L^{2} / \nu`.'
 
           write(id_out,'(a)')    
           write(id_out,'(a)')                                           &

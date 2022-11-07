@@ -84,11 +84,11 @@ def s_plot_G_Avgs_rakesh(G_path):
   max_step = int(start_end2_files[1])
   max2step = int(start_end2_files[2])
   
-  print('Step range: ', min_step, max_step)
+  print('Step range: ', min_step, max2step)
   
 # Build a list of all files ranging from iteration 0 million to 1 million
-  files = build_file_list(min_step,max_step,path=G_path)
-  print(files)
+  files = build_file_list(min_step,max2step,path=G_path)
+#  print(files)
   
   
 # We can create an instance of the G_Avgs class by initializing it with a filename.  The optional keyword parameter *path* is used to specify the directory.  If *path* is not specified, its value will default to the subdirectory name associated with the datastructure (*G_Avgs* in this instance).  

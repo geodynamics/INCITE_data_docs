@@ -79,6 +79,7 @@ def find_first_last2_Rayleigh_data(dir_name):
       files[0] = fname
   
   max_step = int(filelist[0])
+  files[2] = filelist[0]
   for fname in filelist:
     if(fname == files[1]):
       continue

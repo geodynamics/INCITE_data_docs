@@ -2,7 +2,7 @@ import sys
 import os
 import shutil
 
-from plot_G_Avgs_moritz import s_plot_G_Avgs_moritz
+from plot_G_Avgs_moritz import s_plot_G_Avgs_moritz, write_G_Avgs_moritz_captions
 from plot_Shell_Spectra_moritz import s_plot_Shell_Spectra_moritz
 from plot_Shell_Slices_moritz import s_plot_Shell_Slices_moritz
 from plot_AZ_Avgs_moritz import s_plot_AZ_Avgs_moritz
@@ -38,6 +38,8 @@ def plot_each_Moritz_examples(d):
   main_input_org = 'main_input.org'
   
   dir_images =       'images/'
+  
+  G_Avgs_caption_file = 'G_Avgs_caption.rst'
   
 #  Copy volume average
   org_G_Avgs = source_dir + dir_G_Avgs
@@ -152,12 +154,15 @@ def plot_each_Moritz_examples(d):
   if(os.path.isdir(dir_images) == False):
     os.makedirs(dir_images)
   
-  s_plot_G_Avgs_moritz(dest_G_Avgs)
+  init_time = s_plot_G_Avgs_moritz(dest_G_Avgs)
   s_plot_Shell_Spectra_moritz(dest_Shell_Spectra)
   s_plot_Shell_Slices_moritz(dest_Shell_Slices)
   s_plot_AZ_Avgs_moritz(dest_AZ_Avgs)
   
   s_convert_main_input(main_input_org, main_input)
+  
+  file_name = dest_dir + G_Avgs_caption_file
+  write_G_Avgs_moritz_captions(file_name)
   
   shutil.rmtree(dest_AZ_Avgs)
   shutil.rmtree(dest_Shell_Slices)
