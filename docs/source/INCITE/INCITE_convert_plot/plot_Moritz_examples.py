@@ -174,4 +174,4 @@ if __name__ == '__main__':
       print(d)
       plot_each_Moritz_examples(d)
   else:
-    print('set directory names below mheimpel')
+    print('Set directory names for runs from "mheimpel"')

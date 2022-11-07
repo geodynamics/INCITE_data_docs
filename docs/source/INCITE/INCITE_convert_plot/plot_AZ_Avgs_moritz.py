@@ -163,12 +163,12 @@ def s_plot_AZ_Avgs_moritz(path):
 
 #  temperature
 #  ax1 = f1.add_subplot(1,3,1)
-  units = '$T$'
+  units = ''
   plot_azav(fig,ax[0],temperature,radius,costheta,sintheta,mycmap='hot',
             boundsfactor = 2.0, boundstype='rms', units=units, fontsize = cbfsize)
   ax[0].set_xlim(-0.3, 1.0)
   ax[0].set_ylim(-1.0, 1.0)
-  ax[0].set_title('Temperature $T$',fontsize=tsize)
+  ax[0].set_title(r'Temperature perturbation',fontsize=tsize)
   
 #  Differential Rotation
 #  ax1 = f1.add_subplot(1,3,2)

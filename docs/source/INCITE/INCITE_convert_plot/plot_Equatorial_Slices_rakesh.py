@@ -53,18 +53,30 @@
 # In[31]:
 
 from rayleigh_diagnostics import Equatorial_Slices
+import sys
+import os
 import numpy
 import matplotlib.pyplot as plt
 from matplotlib import ticker, font_manager
 
 
-def s_plot_Equatorial_Slices_rakesh(istring):
+
+
+def plot_each_Equatorial_Slices_rakesh(istring, init_time):
   es = Equatorial_Slices(istring)
   tindex =0 # Grab first time index from this file
   
 ################################
 # Equatorial Slice 
 #Set up the grid
+  
+  niter = es.niter
+  iters = es.iters[tindex]
+  time = es.time[tindex] - init_time
+  
+#  print('niter: ', niter)
+#  print('iters: ', iters)
+#  print('time: ', time)
   
   remove_mean = False # Remove the m=0 mean
   nr = es.nr
@@ -89,15 +101,26 @@ def s_plot_Equatorial_Slices_rakesh(istring):
   field_B[0:nphi,:] = -es.vals[:,:,qindex,tindex]  # B_z = -B_theta
   field_B[nphi,:] = field_B[0,:]  #replicate phi=0 values at phi=2pi
   
+  qindex = es.lut[501] # temperature
+  field_T = numpy.zeros((nphi+1,nr),dtype='float64')
+  field_T[0:nphi,:] = es.vals[:,:,qindex,tindex]
+  field_T[nphi,:] = field_T[0,:]  #replicate phi=0 values at phi=2pi
+
 #remove the mean if desired (usually a good idea, but not always)
   if (remove_mean):
     for i in range(nr):
       the_mean = numpy.mean(field_u[:,i])
       field_u[:,i] = field_u[:,i]-the_mean
+  
   if (remove_mean):
     for i in range(nr):
       the_mean = numpy.mean(field_B[:,i])
       field_B[:,i] = field_B[:,i]-the_mean
+  
+  if (remove_mean):
+    for i in range(nr):
+      the_mean = numpy.mean(field_T[:,i])
+      field_T[:,i] = field_T[:,i]-the_mean
 
 #Plot
   figdpi=300
@@ -170,8 +193,61 @@ def s_plot_Equatorial_Slices_rakesh(istring):
   savefile = 'images/Equatorial_Slice_Bz.png'
   print('Saving figure to: ', savefile)
   plt.savefig(savefile)
+  
+  
+  #Plot T
+  fig, ax = plt.subplots(figsize=sizetuple,dpi=figdpi)
+  tsize = 20     # title font size
+  cbfsize = 10   # colorbar font size
+  v_max = numpy.max(field_T)
+  v_min = numpy.min(field_T)
+  img = ax.pcolormesh(X,Y,field_T,cmap='hot',vmin=v_min,vmax=v_max)
+  ax.axis('equal')  # Ensure that x & y axis ranges have a 1:1 aspect ratio
+  ax.axis('off')    # Do not plot x & y axes
+  
+# Plot bounding circles
+  ax.plot(r[nr-1]*numpy.cos(phi), r[nr-1]*numpy.sin(phi), color='black')  # Inner circle
+  ax.plot(r[0]*numpy.cos(phi), r[0]*numpy.sin(phi), color='black')  # Outer circle
+  
+  ax.set_title(r'Temperature $T$', fontsize=20)
+  bbox_props = dict(boxstyle="round", fc="w", ec="0.5", alpha=1.0)
+  ttxt = "$z = 0.0$ \n $t = $ {:.3f}".format(time)
+  ax.text(0.78, -0.95, ttxt, ha="center", va="center", size=14, bbox=bbox_props)
+#colorbar ...
+  cbar = plt.colorbar(img,orientation='horizontal', shrink=0.5, aspect = 15, ax=ax)
+  cbar.set_label(r'$T$')
+  
+  tick_locator = ticker.MaxNLocator(nbins=5)
+  cbar.locator = tick_locator
+  cbar.update_ticks()
+  cbar.ax.tick_params(labelsize=cbfsize)   #font size for the ticks
+  
+  t = cbar.ax.xaxis.label
+  t.set_fontsize(cbfsize)  # font size for the axis title
+  
+  
+  plt.tight_layout()
+  savefile = 'images/Equatorial_Slice_temp.png'
+  print('Saving figure to: ', savefile)
+  plt.savefig(savefile)
+
+
+def s_plot_Equatorial_Slices_rakesh(dir_name):
+  filelist = []
+  filelist = os.listdir(dir_name)
+  nfile=len(filelist)
+  max_step = int(filelist[0])
+  lastfile = filelist[0]
+  for fname in filelist:
+    istep = int(fname)
+    if(istep > max_step):
+      max_step = istep
+      lastfile = fname
+  
+  plot_each_Equatorial_Slices_rakesh(lastfile, init_time)
+  return
 
 if __name__ == '__main__':
-  istring = '00040000'
-  s_plot_Equatorial_Slices_rakesh(istring)
+  dir_Equatorial_Slices =  'Equatorial_Slices/'
+  s_plot_Equatorial_Slices_rakesh(dir_Equatorial_Slices)
 

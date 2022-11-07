@@ -134,8 +134,8 @@ def s_plot_AZ_Avgs_rakesh(path):
 # In[15]:
 
 #Subtrace the ell=0 component from temperature at each radius
-  for i in range(nr):
-    temperature[:,i]=temperature[:,i] - numpy.mean(temperature[:,i])
+#  for i in range(nr):
+#    temperature[:,i]=temperature[:,i] - numpy.mean(temperature[:,i])
 
 #Convert v_phi to an Angular velocity
   omega=numpy.zeros((ntheta,nr))
