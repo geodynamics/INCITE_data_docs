@@ -65,20 +65,20 @@ Radial velocity field :math:`u_r` in the fluid shell.
 
 Temperature :math:`T` in the fluid shell.
 
-.. figure:: ./images/AZ_Avgs.pdf
+.. figure:: ./images/AZ_Avgs.png
    :width: 800px
    :align: center
 
 Temperature :math:`T`, (left),  zonal velocity field :math:`u_\phi`, (middle),  and zonal magnetic field :math:`B_\phi`, (right) in the fluid shell.
 
-.. figure:: ./images/Equatorial_Slice_Bz.pdf
+.. figure:: ./images/Equatorial_Slice_Bz.png
    :width: 800px
    :align: center
    :alt: Alternate Text
 
 :math:`z`-component of the magnetic field :math:`B_z` at the equatorial plane :math:`z = 0`.
 
-.. figure:: ./images/Equatorial_Slice_Ur.pdf
+.. figure:: ./images/Equatorial_Slice_Ur.png
    :width: 800px
    :align: center
    :alt: Alternate Text

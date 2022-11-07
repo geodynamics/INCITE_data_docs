@@ -100,10 +100,11 @@ def s_plot_Equatorial_Slices_rakesh(istring):
       field_B[:,i] = field_B[:,i]-the_mean
 
 #Plot
+  figdpi=300
   sizetuple=(8,8)
  
 #Plot Ur
-  fig, ax = plt.subplots(figsize=(8,8))
+  fig, ax = plt.subplots(figsize=sizetuple,dpi=figdpi)
   tsize = 20     # title font size
   cbfsize = 10   # colorbar font size
   v_max = numpy.std(field_u)
@@ -116,11 +117,11 @@ def s_plot_Equatorial_Slices_rakesh(istring):
   ax.plot(r[nr-1]*numpy.cos(phi), r[nr-1]*numpy.sin(phi), color='black')  # Inner circle
   ax.plot(r[0]*numpy.cos(phi), r[0]*numpy.sin(phi), color='black')  # Outer circle
   
-  ax.set_title(r'$v_r$', fontsize=20)
+  ax.set_title(r'$u_r$', fontsize=20)
   
 #colorbar ...
   cbar = plt.colorbar(img,orientation='horizontal', shrink=0.5, aspect = 15, ax=ax)
-  cbar.set_label(r'$v_r$')
+  cbar.set_label(r'$u_r$')
   
   tick_locator = ticker.MaxNLocator(nbins=5)
   cbar.locator = tick_locator
@@ -137,7 +138,7 @@ def s_plot_Equatorial_Slices_rakesh(istring):
   plt.savefig(savefile)
 
 #Plot Bz
-  fig, ax = plt.subplots(figsize=(8,8))
+  fig, ax = plt.subplots(figsize=sizetuple,dpi=figdpi)
   tsize = 20     # title font size
   cbfsize = 10   # colorbar font size
   v_max = numpy.max(field_B)

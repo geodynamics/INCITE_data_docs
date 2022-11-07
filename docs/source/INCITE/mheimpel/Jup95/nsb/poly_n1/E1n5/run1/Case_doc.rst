@@ -53,7 +53,7 @@ Radial velocity field :math:`u_r` in the fluid shell.
 
 Temperature :math:`T` in the fluid shell.
 
-.. figure:: ./images/AZ_Avgs.pdf
+.. figure:: ./images/AZ_Avgs.png
    :width: 800px
    :align: center
 
