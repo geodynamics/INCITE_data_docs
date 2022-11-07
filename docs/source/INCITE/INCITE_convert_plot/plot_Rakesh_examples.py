@@ -5,7 +5,7 @@ import shutil
 from plot_G_Avgs_rakesh import s_plot_G_Avgs_rakesh, write_G_Avgs_rakesh_captions
 from plot_Shell_Spectra_rakesh import s_plot_Shell_Spectra_rakesh
 from plot_Shell_Slices_rakesh import s_plot_Shell_Slices_rakesh
-from plot_Equatorial_Slices_rakesh import plot_each_Equatorial_Slices_rakesh
+from plot_Equatorial_Slices_rakesh import plot_each_Equatorial_Slices_rakesh, write_Equatorial_Slices_rakesh_captions
 from plot_AZ_Avgs_rakesh import s_plot_AZ_Avgs_rakesh
 from convert_main_input import s_convert_main_input
 from convert import each_convert
@@ -29,19 +29,20 @@ def plot_each_Rakesh_examples(d):
   destlist = os.listdir(dest_dir)
 #  print('files in destination: ', destlist)
   
-  dir_G_Avgs =        'G_Avgs/'
-  dir_Shell_Avgs =    'Shell_Avgs/'
-  dir_Shell_Spectra = 'Shell_Spectra/'
-  dir_Shell_Slices =  'Shell_Slices/'
+  dir_G_Avgs =             'G_Avgs/'
+  dir_Shell_Avgs =         'Shell_Avgs/'
+  dir_Shell_Spectra =      'Shell_Spectra/'
+  dir_Shell_Slices =       'Shell_Slices/'
   dir_Equatorial_Slices =  'Equatorial_Slices/'
-  dir_AZ_Avgs =       'AZ_Avgs/'
+  dir_AZ_Avgs =            'AZ_Avgs/'
   
   main_input =     'main_input'
   main_input_org = 'main_input.org'
   
   dir_images =       'images/'
   
-  G_Avgs_caption_file = 'G_Avgs_caption.rst'
+  G_Avgs_caption_file =            'G_Avgs_caption.rst'
+  Equatorial_Slices_caption_file = 'Equatorial_Slices_caption.rst'
   
   
 #  Copy volume average
@@ -185,13 +186,15 @@ def plot_each_Rakesh_examples(d):
   
   s_plot_Shell_Spectra_rakesh(dest_Shell_Spectra)
   s_plot_Shell_Slices_rakesh(dest_Shell_Slices)
-  plot_each_Equatorial_Slices_rakesh(Equatorial_Slices_lastfile, init_time)
+  time_EQ = plot_each_Equatorial_Slices_rakesh(Equatorial_Slices_lastfile, init_time)
   s_plot_AZ_Avgs_rakesh(dest_AZ_Avgs)
   
   s_convert_main_input(main_input_org, main_input)
   
   file_name = dest_dir + G_Avgs_caption_file
   write_G_Avgs_rakesh_captions(file_name)
+  file_name = dest_dir + Equatorial_Slices_caption_file
+  write_Equatorial_Slices_rakesh_captions(file_name, time_EQ)
   
   shutil.rmtree(dest_AZ_Avgs)
   shutil.rmtree(dest_Equatorial_Slices)

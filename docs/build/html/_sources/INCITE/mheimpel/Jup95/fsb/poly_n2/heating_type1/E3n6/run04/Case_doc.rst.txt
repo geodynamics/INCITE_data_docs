@@ -35,11 +35,7 @@ The following data for analysis are aviable:
 Examples of visualized images.
 =======================================
 
-.. figure:: ./images/energy_trace.pdf
-   :width: 800px
-   :align: center
-
-Time evolution of kinetic energy density :math:`E_{kin} = \frac{1}{2} v^{2}` in the spherical shell as function of time normalized by the viscous diffusion time :math:`\tau_{\nu} = L^{2} / \nu`.
+.. include:: ./G_Avgs_caption.rst
 
 .. figure:: ./images/Shell_Slices_Ur_1.pdf
    :width: 800px

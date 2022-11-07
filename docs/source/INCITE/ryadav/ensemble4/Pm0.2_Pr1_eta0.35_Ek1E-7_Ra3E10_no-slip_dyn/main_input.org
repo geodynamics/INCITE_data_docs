@@ -1,0 +1,101 @@
+&problemsize_namelist
+ n_r = 512
+ n_theta = 1536
+ npcol = 256
+ nprow = 512
+ dealias_by=32
+ aspect_ratio = 0.35d0
+ shell_depth = 1.0d0
+/
+&numerical_controls_namelist
+ chebyshev = .true.
+/
+&physical_controls_namelist
+ rotation  = .True.
+ magnetism = .true.
+ viscous_heating = .false.
+ ohmic_heating = .false.
+/
+&temporal_controls_namelist
+ max_time_step = 1.5d-9
+ max_iterations = 200000
+ alpha_implicit = 0.5d0
+ checkpoint_interval = 40000
+ cflmin = 0.4d0
+ cflmax = 0.6d0
+ num_quicksaves = 2
+ quicksave_interval =  4000
+ save_last_timestep = .true.
+ chk_type = 2
+/
+&io_controls_namelist
+ stdout_flush_interval = 50
+ stdout_file = 'rayleigh.out7'
+/
+&output_namelist
+mem_friendly = .true.
+
+shellslice_levels    = 1,5,10,30,60,90,140,190,240,300,400
+shellslice_values    = 1,2,3,64,70,401,402,403 !velocity, temperature, B-field
+shellslice_frequency = 5000
+shellslice_nrec      = 1
+
+shellspectra_levels    = 1,16,32,48,64,120,160,200,300,400
+shellspectra_values    = 1,2,3,64,401,402,403 ! velocity, temperature, B-field
+shellspectra_frequency = 10000
+shellspectra_nrec      = 1
+
+azavg_values = 1,2,3,64,61,62,70,401,402,403
+azavg_frequency = 2000
+azavg_nrec = 2
+
+!velocity, temp, RadDer temp and pre, 1/r ThetaDer and 1/rSinTheta PhiDer pre, various fluxes, various KEs, advec,buo,Cor,vis, B, various MEs, Lor
+shellavg_values = 1,2,3, 64,66,68, 70,71,72,73,74,75, 89,91,93,95,97,99, 116,117,118,119,120,121,122,123,124, 125,126,127,128,129,130,131,132,133,134,135,136, 155,156,157,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190, 401,402,403, 475,476,477,478,479,480,481,482,483,484,485,486, 487,488,489
+shellavg_frequency = 5000
+shellavg_nrec = 10
+
+equatorial_values    = 1,2,3,64,70,401,402,403
+equatorial_frequency = 10000
+equatorial_nrec      = 1
+
+! KE, {radial, theta, phi} KE, Mean {radial, theta, phi} KE
+! ME, {radial, theta, phi} ME, Mean {radial, theta, phi} ME
+globalavg_values = 125,126,127,128,130,131,132,475,476,477,478,480,481,482
+globalavg_frequency = 100
+globalavg_nrec = 100
+
+/
+&Boundary_Conditions_Namelist
+ no_slip_boundaries = .true.
+ fix_tvar_top = .true.
+ fix_dtdr_top = .false.
+ T_top = 0.0
+ T_bottom = 1.0
+ fix_tvar_bottom = .true.
+ fix_dtdr_top = .false.
+ dTdr_top = 0.0
+ dTdr_bottom = 0.0
+/
+&Initial_Conditions_Namelist
+!rescale_bfield = .true.
+!bfield_scale = 0.5
+init_type = -1
+magnetic_init_type = -1
+restart_iter = 0
+/
+&Test_Namelist
+/
+&Reference_Namelist
+Ekman_Number = 1.0d-7
+Rayleigh_Number = 6.0d10
+Prandtl_Number = 1
+Magnetic_Prandtl_Number = 0.2d0
+reference_type = 1
+gravity_power = 1.0d0
+dimensional = .false.
+/
+&Transport_Namelist
+hyperdiffusion = .true.
+hyperdiffusion_alpha =2.0
+hyperdiffusion_beta = 9.0
+/

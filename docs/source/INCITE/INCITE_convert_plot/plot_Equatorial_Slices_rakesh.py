@@ -52,15 +52,19 @@
 
 # In[31]:
 
+from find_first_last_Rayleigh_data import find_last2_Rayleigh_data
 from rayleigh_diagnostics import Equatorial_Slices
 import sys
 import os
+import math
 import numpy
 import matplotlib.pyplot as plt
 from matplotlib import ticker, font_manager
 
 
-
+Equatorial_Slices_path =         "Equatorial_Slices/"
+Equatorial_Slices_caption_file = 'Equatorial_Slices_caption.rst'
+Equatorial_Slices_image_file =   'images/Equatorial_Slice.png'
 
 def plot_each_Equatorial_Slices_rakesh(istring, init_time):
   es = Equatorial_Slices(istring)
@@ -74,9 +78,14 @@ def plot_each_Equatorial_Slices_rakesh(istring, init_time):
   iters = es.iters[tindex]
   time = es.time[tindex] - init_time
   
+  tpow = math.floor(numpy.log10(time))
+  tnum = time * 10.0**(-tpow)
+  ttext = "{:.3f} \\times 10^{{{:d}}}".format(tnum, tpow)
+  
 #  print('niter: ', niter)
 #  print('iters: ', iters)
 #  print('time: ', time)
+#  print('time: ', time, tnum, tpow)
   
   remove_mean = False # Remove the m=0 mean
   nr = es.nr
@@ -124,26 +133,28 @@ def plot_each_Equatorial_Slices_rakesh(istring, init_time):
 
 #Plot
   figdpi=300
-  sizetuple=(8,8)
+  sizetuple=(6*3,6.2)
  
+  bbox_props = dict(boxstyle="round", fc="w", ec="0.5", alpha=1.0)
+  textbox = "$z = 0.0$ \n $t = " + ttext + "$"
 #Plot Ur
-  fig, ax = plt.subplots(figsize=sizetuple,dpi=figdpi)
+  fig, ax = plt.subplots(ncols=3,figsize=sizetuple,dpi=figdpi)
   tsize = 20     # title font size
   cbfsize = 10   # colorbar font size
   v_max = numpy.std(field_u)
   v_min = -v_max
-  img = ax.pcolormesh(X,Y,field_u,cmap='seismic',vmin=v_min,vmax=v_max)
-  ax.axis('equal')  # Ensure that x & y axis ranges have a 1:1 aspect ratio
-  ax.axis('off')    # Do not plot x & y axes
+  img = ax[0].pcolormesh(X,Y,field_u,cmap='seismic',vmin=v_min,vmax=v_max)
+  ax[0].axis('equal')  # Ensure that x & y axis ranges have a 1:1 aspect ratio
+  ax[0].axis('off')    # Do not plot x & y axes
   
 # Plot bounding circles
-  ax.plot(r[nr-1]*numpy.cos(phi), r[nr-1]*numpy.sin(phi), color='black')  # Inner circle
-  ax.plot(r[0]*numpy.cos(phi), r[0]*numpy.sin(phi), color='black')  # Outer circle
+  ax[0].plot(r[nr-1]*numpy.cos(phi), r[nr-1]*numpy.sin(phi), color='black')  # Inner circle
+  ax[0].plot(r[0]*numpy.cos(phi), r[0]*numpy.sin(phi), color='black')  # Outer circle
   
-  ax.set_title(r'$u_r$', fontsize=20)
-  
+  ax[0].set_title(r'$u_r$', fontsize=20)
+  ax[0].text(0.6, -1.2, textbox, ha="center", va="center", size=12, bbox=bbox_props)
 #colorbar ...
-  cbar = plt.colorbar(img,orientation='horizontal', shrink=0.5, aspect = 15, ax=ax)
+  cbar = plt.colorbar(img,orientation='horizontal', shrink=0.5, aspect = 15, ax=ax[0])
   cbar.set_label(r'$u_r$')
   
   tick_locator = ticker.MaxNLocator(nbins=5)
@@ -154,30 +165,30 @@ def plot_each_Equatorial_Slices_rakesh(istring, init_time):
   t = cbar.ax.xaxis.label
   t.set_fontsize(cbfsize)  # font size for the axis title
   
-  
-  plt.tight_layout()
-  savefile = 'images/Equatorial_Slice_Ur.png'
-  print('Saving figure to: ', savefile)
-  plt.savefig(savefile)
+#  
+#  plt.tight_layout()
+#  savefile = 'images/Equatorial_Slice_Ur.png'
+#  print('Saving figure to: ', savefile)
+#  plt.savefig(savefile)
 
 #Plot Bz
-  fig, ax = plt.subplots(figsize=sizetuple,dpi=figdpi)
-  tsize = 20     # title font size
-  cbfsize = 10   # colorbar font size
+#  fig, ax = plt.subplots(figsize=sizetuple,dpi=figdpi)
+#  tsize = 20     # title font size
+#  cbfsize = 10   # colorbar font size
   v_max = numpy.max(field_B)
   v_min = -v_max
-  img = ax.pcolormesh(X,Y,field_B,cmap='seismic',vmin=v_min,vmax=v_max)
-  ax.axis('equal')  # Ensure that x & y axis ranges have a 1:1 aspect ratio
-  ax.axis('off')    # Do not plot x & y axes
+  img = ax[1].pcolormesh(X,Y,field_B,cmap='seismic',vmin=v_min,vmax=v_max)
+  ax[1].axis('equal')  # Ensure that x & y axis ranges have a 1:1 aspect ratio
+  ax[1].axis('off')    # Do not plot x & y axes
   
 # Plot bounding circles
-  ax.plot(r[nr-1]*numpy.cos(phi), r[nr-1]*numpy.sin(phi), color='black')  # Inner circle
-  ax.plot(r[0]*numpy.cos(phi), r[0]*numpy.sin(phi), color='black')  # Outer circle
+  ax[1].plot(r[nr-1]*numpy.cos(phi), r[nr-1]*numpy.sin(phi), color='black')  # Inner circle
+  ax[1].plot(r[0]*numpy.cos(phi), r[0]*numpy.sin(phi), color='black')  # Outer circle
   
-  ax.set_title(r'$B_z$', fontsize=20)
-  
+  ax[1].set_title(r'$B_z$', fontsize=20)
+  ax[1].text(0.6, -1.2, textbox, ha="center", va="center", size=12, bbox=bbox_props)
 #colorbar ...
-  cbar = plt.colorbar(img,orientation='horizontal', shrink=0.5, aspect = 15, ax=ax)
+  cbar = plt.colorbar(img,orientation='horizontal', shrink=0.5, aspect = 15, ax=ax[1])
   cbar.set_label(r'$B_z$')
   
   tick_locator = ticker.MaxNLocator(nbins=5)
@@ -189,32 +200,30 @@ def plot_each_Equatorial_Slices_rakesh(istring, init_time):
   t.set_fontsize(cbfsize)  # font size for the axis title
   
   
-  plt.tight_layout()
-  savefile = 'images/Equatorial_Slice_Bz.png'
-  print('Saving figure to: ', savefile)
-  plt.savefig(savefile)
-  
+#  plt.tight_layout()
+#  savefile = 'images/Equatorial_Slice_Bz.png'
+#  print('Saving figure to: ', savefile)
+#  plt.savefig(savefile)
+#  
   
   #Plot T
-  fig, ax = plt.subplots(figsize=sizetuple,dpi=figdpi)
-  tsize = 20     # title font size
-  cbfsize = 10   # colorbar font size
+#  fig, ax = plt.subplots(figsize=sizetuple,dpi=figdpi)
+#  tsize = 20     # title font size
+#  cbfsize = 10   # colorbar font size
   v_max = numpy.max(field_T)
   v_min = numpy.min(field_T)
-  img = ax.pcolormesh(X,Y,field_T,cmap='hot',vmin=v_min,vmax=v_max)
-  ax.axis('equal')  # Ensure that x & y axis ranges have a 1:1 aspect ratio
-  ax.axis('off')    # Do not plot x & y axes
+  img = ax[2].pcolormesh(X,Y,field_T,cmap='hot',vmin=v_min,vmax=v_max)
+  ax[2].axis('equal')  # Ensure that x & y axis ranges have a 1:1 aspect ratio
+  ax[2].axis('off')    # Do not plot x & y axes
   
 # Plot bounding circles
-  ax.plot(r[nr-1]*numpy.cos(phi), r[nr-1]*numpy.sin(phi), color='black')  # Inner circle
-  ax.plot(r[0]*numpy.cos(phi), r[0]*numpy.sin(phi), color='black')  # Outer circle
+  ax[2].plot(r[nr-1]*numpy.cos(phi), r[nr-1]*numpy.sin(phi), color='black')  # Inner circle
+  ax[2].plot(r[0]*numpy.cos(phi), r[0]*numpy.sin(phi), color='black')  # Outer circle
   
-  ax.set_title(r'Temperature $T$', fontsize=20)
-  bbox_props = dict(boxstyle="round", fc="w", ec="0.5", alpha=1.0)
-  ttxt = "$z = 0.0$ \n $t = $ {:.3f}".format(time)
-  ax.text(0.78, -0.95, ttxt, ha="center", va="center", size=14, bbox=bbox_props)
+  ax[2].set_title(r'Temperature $T$', fontsize=20)
+  ax[2].text(0.6, -1.2, textbox, ha="center", va="center", size=12, bbox=bbox_props)
 #colorbar ...
-  cbar = plt.colorbar(img,orientation='horizontal', shrink=0.5, aspect = 15, ax=ax)
+  cbar = plt.colorbar(img,orientation='horizontal', shrink=0.5, aspect = 15, ax=ax[2])
   cbar.set_label(r'$T$')
   
   tick_locator = ticker.MaxNLocator(nbins=5)
@@ -227,27 +236,45 @@ def plot_each_Equatorial_Slices_rakesh(istring, init_time):
   
   
   plt.tight_layout()
-  savefile = 'images/Equatorial_Slice_temp.png'
-  print('Saving figure to: ', savefile)
-  plt.savefig(savefile)
-
-
-def s_plot_Equatorial_Slices_rakesh(dir_name):
-  filelist = []
-  filelist = os.listdir(dir_name)
-  nfile=len(filelist)
-  max_step = int(filelist[0])
-  lastfile = filelist[0]
-  for fname in filelist:
-    istep = int(fname)
-    if(istep > max_step):
-      max_step = istep
-      lastfile = fname
+  print('Saving figure to: ', Equatorial_Slices_image_file)
+  plt.savefig(Equatorial_Slices_image_file)
   
-  plot_each_Equatorial_Slices_rakesh(lastfile, init_time)
+  return time
+
+
+def s_plot_Equatorial_Slices_rakesh(dir_name, init_time):
+  last2_file_names = find_last2_Rayleigh_data(dir_name)
+  time = plot_each_Equatorial_Slices_rakesh(last2_file_names[1], init_time)
+  return time
+
+def write_Equatorial_Slices_rakesh_captions(caption_file_name, time):
+  print('Write ', caption_file_name)
+  fp = open(caption_file_name, 'w')
+  fp.write('\n')
+  
+  ftext = '.. figure:: ./' + Equatorial_Slices_image_file + ' \n'
+  fp.write(ftext)
+  fp.write('   :width: 800px \n')
+  fp.write('   :align: center \n')
+  fp.write('\n')
+  
+  tpow = math.floor(numpy.log10(time))
+  tnum = time * 10.0**(-tpow)
+  ttext = " at :math:`t = {:.3f} \\times 10^{{{:d}}} \\tau_{{\\nu}}`. \n".format(tnum, tpow)
+  fp.write('Radial component of the velocity field :math:`u_r` (left), ')
+  fp.write(' :math:`z`-component of the magnetic field :math:`B_z` (middle), ')
+  fp.write(' and temperature :math:`T` (right)')
+  fp.write(' at the equatorial plane :math:`z = 0.0` and ')
+  fp.write(ttext)
+  fp.write('\n')
+  fp.write('\n')
+  
+  fp.close()
   return
 
 if __name__ == '__main__':
-  dir_Equatorial_Slices =  'Equatorial_Slices/'
-  s_plot_Equatorial_Slices_rakesh(dir_Equatorial_Slices)
+  init_time = 0.0
+  time_EQ = s_plot_Equatorial_Slices_rakesh(Equatorial_Slices_path, init_time)
+  print(time_EQ)
+  write_Equatorial_Slices_rakesh_captions(Equatorial_Slices_caption_file, time_EQ)
 

@@ -1402,7 +1402,7 @@
           write(id_out,'(a)') '======================================='
           write(id_out,'(a)') 
           write(id_out,'(a)') '.. include:: ./G_Avgs_caption.rst'
-          write(id_out,'(a)')    
+          write(id_out,'(a)') 
 
           write(id_out,'(a)')    
           write(id_out,'(a)')                                           &
@@ -1458,35 +1458,12 @@
      &             ' and zonal magnetic field :math:`B_\phi`, (right)', &
      &             ' in the fluid shell.'
 
-          write(id_out,'(a)')    
+          write(id_out,'(a)') 
           write(id_out,'(a)')                                           &
-     &             '.. figure:: ./images/Equatorial_Slice_Bz.png'
-!          write(id_out,'(a)') '   :scale: 30%'
-!          write(id_out,'(a)') '   :height: 1620px'
-          write(id_out,'(a)') '   :width: 800px'
-          write(id_out,'(a)') '   :align: center'
-          write(id_out,'(a)') '   :alt: Alternate Text'
-   
-          write(id_out,'(a)')    
-          write(id_out,'(2a)')                                          &
-     &            ':math:`z`-component of the magnetic field',          &
-     &            ' :math:`B_z` at the equatorial plane :math:`z = 0`.'
+     &             '.. include:: ./Equatorial_Slices_caption.rst'
+          write(id_out,'(a)') 
 
-          write(id_out,'(a)')    
-          write(id_out,'(a)')                                           &
-     &             '.. figure:: ./images/Equatorial_Slice_Ur.png'
-!          write(id_out,'(a)') '   :scale: 30%'
-!          write(id_out,'(a)') '   :height: 1620px'
-          write(id_out,'(a)') '   :width: 800px'
-          write(id_out,'(a)') '   :align: center'
-          write(id_out,'(a)') '   :alt: Alternate Text'
-
-          write(id_out,'(a)')    
-          write(id_out,'(2a)')                                          &
-     &           'Radial velocity :math:`u_r` at',                      &
-     &           ' the equatorial plane :math:`z = 0`.'
-
-          write(id_out,'(a)')    
+          write(id_out,'(a)')
           write(id_out,'(a)') '.. figure:: ./images/MPower_0.pdf'
 !          write(id_out,'(a)') '   :scale: 30%'
 !          write(id_out,'(a)') '   :height: 1620px'

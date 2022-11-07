@@ -20,16 +20,17 @@ def find_last2_Rayleigh_data(dir_name):
   filelist = []
   filelist = os.listdir(dir_name)
   nfile=len(filelist)
+#  print(filelist)
   
-  last_files = []
   if(nfile < 1):
     print('No file in ', dir_name)
-    last_files[0] = last_files.append('NO_FILE')
-    last_files[1] = last_files.append('NO_FILE')
-    return last_files
+    missing = []
+    missing.append('NO_FILE')
+    missing.append('NO_FILE')
+    return missing
   
-  last_files[0] = last_files.append(filelist[0])
-  last_files[1] = last_files.append(filelist[0])
+  last_files = []
+  last_files.append(filelist[0])
   max_step = int(filelist[0])
   for fname in filelist:
     istep = int(fname)
@@ -38,6 +39,7 @@ def find_last2_Rayleigh_data(dir_name):
       last_files[0] = fname
   
   max_step = int(filelist[0])
+  last_files.append(filelist[0])
   for fname in filelist:
     if(fname == last_files[0]):
       continue
@@ -56,17 +58,17 @@ def find_first_last2_Rayleigh_data(dir_name):
   nfile=len(filelist)
 #  print('Number of files: ", nfile)
   
-  files = []
   if(nfile < 1):
     print('No file in ', dir_name)
-    files[0] = files.append('NO_FILE')
-    files[1] = files.append('NO_FILE')
-    files[2] = files.append('NO_FILE')
-    return files
+    missing = []
+    missing.append('NO_FILE')
+    missing.append('NO_FILE')
+    missing.append('NO_FILE')
+    return missing
   
-  files[0] = files.append(filelist[0])
-  files[1] = files.append(filelist[0])
-  files[2] = files.append(filelist[0])
+  files = []
+  files.append(filelist[0])
+  files.append(filelist[0])
   min_step = int(filelist[0])
   max_step = int(filelist[0])
   for fname in filelist:
@@ -79,7 +81,7 @@ def find_first_last2_Rayleigh_data(dir_name):
       files[0] = fname
   
   max_step = int(filelist[0])
-  files[2] = filelist[0]
+  files.append(filelist[0])
   for fname in filelist:
     if(fname == files[1]):
       continue
