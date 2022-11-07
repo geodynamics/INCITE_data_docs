@@ -2,11 +2,11 @@
 Geo-5
 -----------------------------------------------------------
 
-Links for data directories.
+Directory.
 =========================================
-Here is the link to access data directory:
+Data is stored in the following directory:
 
-(Add Hyperlink to directory)
+- `ryadav/ensemble3/Pm0.5_Pr1_eta0.35_Ek1E-6_Ra3E9_no-slip_dyn <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/ryadav/ensemble3/Pm0.5_Pr1_eta0.35_Ek1E-6_Ra3E9_no-slip_dyn>`_
 
 Parameters.
 =========================================
@@ -23,96 +23,78 @@ Avaiable data.
 
 The following data for analysis are aviable:
 
-.. csv-table::
-   :file: ../../outputs.csv
-   :encoding: UTF-8
-   :header-rows: 1
-
-
+- Parameter file (original): `main_input.org <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/ryadav/ensemble3/Pm0.5_Pr1_eta0.35_Ek1E-6_Ra3E9_no-slip_dyn/main_input.org>`_
+- Parameter file (for current version): `main_input <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/ryadav/ensemble3/Pm0.5_Pr1_eta0.35_Ek1E-6_Ra3E9_no-slip_dyn/main_input>`_
+- Checkpoint data directory: `Checkpoint <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/ryadav/ensemble3/Pm0.5_Pr1_eta0.35_Ek1E-6_Ra3E9_no-slip_dyn/Checkpoint>`_
+- Global averaged data directory: `G_Avgs <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/ryadav/ensemble3/Pm0.5_Pr1_eta0.35_Ek1E-6_Ra3E9_no-slip_dyn/G_Avgs>`_
+- Sphere averaged data directory: `Shell_Avgs <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/ryadav/ensemble3/Pm0.5_Pr1_eta0.35_Ek1E-6_Ra3E9_no-slip_dyn/Shell_Avgs>`_
+- Shell spectrum data directory: `Shell_Spectra <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/ryadav/ensemble3/Pm0.5_Pr1_eta0.35_Ek1E-6_Ra3E9_no-slip_dyn/Shell_Spectra>`_
+- Longitudinal averaged data directory: `AZ_Avgs <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/ryadav/ensemble3/Pm0.5_Pr1_eta0.35_Ek1E-6_Ra3E9_no-slip_dyn/AZ_Avgs>`_
+- Fields on spheres directory: `Shell_Slices <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/ryadav/ensemble3/Pm0.5_Pr1_eta0.35_Ek1E-6_Ra3E9_no-slip_dyn/Shell_Slices>`_
+- Equatorial fields directory: `Equatorial_Slices <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/ryadav/ensemble3/Pm0.5_Pr1_eta0.35_Ek1E-6_Ra3E9_no-slip_dyn/Equatorial_Slices>`_
 Examples of visualized images.
 =======================================
 
 .. figure:: ./images/energy_trace.pdf
-   :scale: 200%
-   :height: 216px
-   :width: 720px
+   :width: 800px
    :align: center
 
 Time evolution of kinetic energy density :math:`E_{kin} = \frac{1}{2} v^{2}` and magnetic energy density :math:`E_{mag} = \frac{1}{2Pm E} B^{2}` in the spherical shell as function of time normalized by the viscous diffusion time :math:`\tau_{\nu} = L^{2} / \nu`.
 
 .. figure:: ./images/me_ke_ratio.pdf
-   :scale: 200%
-   :height: 216px
-   :width: 720px
+   :width: 800px
    :align: center
 
 Time evolution of the ratio of magetic to kinetic energy densities in the spherical shell as function of time normalized by the viscous diffusion time :math:`\tau_{\nu} = L^{2} / \nu`.
 
 .. figure:: ./images/Shell_Slices_Br_0.pdf
-   :scale: 200%
-   :height: 360px
-   :width: 864px
+   :width: 800px
    :align: center
 
 Radial magnetic field :math:`B_r` at the outer boundary :math:`r = r_o`.
 
 .. figure:: ./images/Shell_Slices_Ur_2.pdf
-   :scale: 200%
-   :height: 360px
-   :width: 864px
+   :width: 800px
    :align: center
 
 Radial velocity field :math:`u_r` in the fluid shell.
 
 .. figure:: ./images/Shell_Slices_temp_2.pdf
-   :scale: 200%
-   :height: 360px
-   :width: 864px
+   :width: 800px
    :align: center
 
 Temperature :math:`T` in the fluid shell.
 
-Radial velocity field :math:`u_r` in the fluid shell.
-
 .. figure:: ./images/AZ_Avgs.pdf
-   :scale: 200%
-   :height: 1620px
-   :width: 1926px
+   :width: 800px
    :align: center
 
 Temperature :math:`T`, (left),  zonal velocity field :math:`u_\phi`, (middle),  and zonal magnetic field :math:`B_\phi`, (right) in the fluid shell.
 
 .. figure:: ./images/Equatorial_Slice_Bz.pdf
-   :scale: 200%
-   :height: 240px
-   :width: 300px
+   :width: 800px
    :align: center
    :alt: Alternate Text
 
 :math:`z`-component of the magnetic field :math:`B_z` at the equatorial plane :math:`z = 0`.
 
 .. figure:: ./images/Equatorial_Slice_Ur.pdf
-   :scale: 200%
-   :height: 576px
-   :width: 576px
+   :width: 800px
    :align: center
    :alt: Alternate Text
 
 Radial velocity :math:`u_r` at the equatorial plane :math:`z = 0`.
 
 .. figure:: ./images/MPower_0.pdf
-   :scale: 200%
-   :height: 228px
-   :width: 432px
+   :width: 800px
    :align: center
    :alt: Alternate Text
 
 Magnetic energy density spectra as a function of spherical harmonic degree :math:`l`.
 
 .. figure:: ./images/KPower_2.pdf
-   :scale: 200%
-   :height: 228px
-   :width: 432px
+   :width: 800px
    :align: center
    :alt: Alternate Text
+
 Kinetic energy density spectra as a function of spherical harmonic degree :math:`l`.

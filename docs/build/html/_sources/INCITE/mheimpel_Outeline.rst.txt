@@ -2,6 +2,22 @@
 Jovian Atomosphere (mheimpel)
 -------------------------------------------
 
+Overview
+=================================
+
+Simulations for Jovian or Uranucian atomosphere have been performed by Moriz Heimpel (Univ. of Alberta). Simulations are thermally drivenconvection simulaiton in a rotating spherical shell modeled on the Jupiter's atomosphere. 
+
+List of parameters
+=================================
+
+.. csv-table:: 
+   :file: mheimpel_parameters.csv
+   :encoding: UTF-8
+   :header-rows: 1
+
+Link to each case
+=================================
+
 .. toctree::
     :maxdepth: 1
     :caption: Contents of runs:
@@ -170,13 +186,3 @@ Jovian Atomosphere (mheimpel)
     mheimpel/Uranus75/N5/E1n3/run2/Case_doc
     mheimpel/Uranus75/N5/E1n4/run1/Case_doc
     mheimpel/Uranus75/N5/E3n4/run1/Case_doc
-
-Overview
-=================================
-
-Simulations for Jovian atomosphere have been performed by Moriz Heimpel (Univ. of Alberta). Simulations are thermally drivenconvection simulaiton in a rotating spherical shell modeled on the Jupiter's atomosphere. 
-
-.. csv-table:: 
-   :file: mheimpel_parameters.csv
-   :encoding: UTF-8
-   :header-rows: 1

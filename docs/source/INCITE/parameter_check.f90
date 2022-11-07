@@ -1184,11 +1184,13 @@
         write(id_out,'(a)')                                             &
      &    '-----------------------------------------------------------'
         write(id_out,'(a)')
-        write(id_out,'(a)') 'Links for data directories.'
+        write(id_out,'(a)') 'Directory.'
         write(id_out,'(a)') '========================================='
-        write(id_out,'(a)') 'Here is the link to access data directory:'
+        write(id_out,'(a)') 'Data is stored in the following directory:'
         write(id_out,'(a)')
-        write(id_out,'(a)') '(Add Hyperlink to directory)'
+        write(id_out,'(5a)') '- `', trim(param(i)%dir_name),            &
+     &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
+     &          trim(param(i)%dir_name), '>`_'
         write(id_out,'(a)')
         write(id_out,'(a)') 'Parameters.'
         write(id_out,'(a)') '========================================='
@@ -1206,56 +1208,113 @@
         write(id_out,'(a)')                                             &
      &              'The following data for analysis are aviable:'
         write(id_out,'(a)')
-        write(id_out,'(a)') '.. csv-table::'
-        write(id_out,'(a)') '   :file: ../../../outputs.csv'
-        write(id_out,'(a)') '   :encoding: UTF-8'
-        write(id_out,'(a)') '   :header-rows: 1'
-        write(id_out,'(a)')
+!
+        write(id_out,'(4a)')                                            &
+     &          '- Parameter file (original): `main_input.org',         &
+     &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
+     &          trim(param(i)%dir_name), '/main_input.org>`_'
+        write(id_out,'(4a)')                                            &
+     &          '- Parameter file (for current version): `main_input',  &
+     &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
+     &          trim(param(i)%dir_name), '/main_input>`_'
+!
+        write(id_out,'(4a)')                                            &
+     &          '- Checkpoint data directory: `Checkpoint',             &
+     &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
+     &          trim(param(i)%dir_name), '/Checkpoint>`_'
+!
+        write(id_out,'(4a)')                                            &
+     &          '- Global averaged data directory: `G_Avgs',            &
+     &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
+     &          trim(param(i)%dir_name), '/G_Avgs>`_'
+        write(id_out,'(4a)')                                            &
+     &          '- Sphere averaged data directory: `Shell_Avgs',        &
+     &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
+     &          trim(param(i)%dir_name), '/Shell_Avgs>`_'
+        write(id_out,'(4a)')                                            &
+     &          '- Shell spectrum data directory: `Shell_Spectra',      &
+     &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
+     &          trim(param(i)%dir_name), '/Shell_Spectra>`_'
+!
+        write(id_out,'(4a)')                                            &
+     &          '- Longitudinal averaged data directory: `AZ_Avgs',     &
+     &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
+     &          trim(param(i)%dir_name), '/AZ_Avgs>`_'
+        write(id_out,'(4a)')                                            &
+     &          '- Fields on spheres directory: `Shell_Slices',         &
+     &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
+     &          trim(param(i)%dir_name), '/Shell_Slices>`_'
+        
         write(id_out,'(a)')
 !
-        if(param(i)%dir_name(1:1) .eq. 'm') then
-        else if(param(i)%dir_name(1:1) .eq. 'r') then
           write(id_out,'(a)') 'Examples of visualized images.'
           write(id_out,'(a)') '======================================='
           write(id_out,'(a)') 
-          write(id_out,'(a)') '.. figure:: ./images/KE_vs_time.png'
-          write(id_out,'(a)') '   :scale: 200%'
-          write(id_out,'(a)') '   :height: 200px'
-          write(id_out,'(a)') '   :width: 300px'
+          write(id_out,'(a)')                                           &
+     &                '.. figure:: ./images/energy_trace.pdf'
+!          write(id_out,'(a)') '   :scale: 30%'
+!          write(id_out,'(a)') '   :height: 1620px'
+          write(id_out,'(a)') '   :width: 800px'
           write(id_out,'(a)') '   :align: center'
           write(id_out,'(a)')    
-          write(id_out,'(5a)')                                          &
+          write(id_out,'(7a)')                                          &
      &            'Time evolution of kinetic energy density',           &
      &            ' :math:`E_{kin} = \frac{1}{2} v^{2}`',               &
      &            ' in the spherical shell as function of time',        &
-     &            ' normalized by the magnetic diffusion time',         &
-     &            ' :math:`\tau_{\eta} = L^{2} / \eta`.'
+     &            ' normalized by the viscous diffusion time',          &
+     &            ' :math:`\tau_{\nu} = L^{2} / \nu`.'
 
           write(id_out,'(a)')    
-          write(id_out,'(a)') '.. figure:: ./images/Ur_equator.png'
-          write(id_out,'(a)') '   :scale: 200%'
-          write(id_out,'(a)') '   :height: 240px'
-          write(id_out,'(a)') '   :width: 300px'
+          write(id_out,'(a)')                                           &
+     &            '.. figure:: ./images/Shell_Slices_Ur_1.pdf'
+!          write(id_out,'(a)') '   :scale: 30%'
+!          write(id_out,'(a)') '   :height: 1620px'
+          write(id_out,'(a)') '   :width: 800px'
           write(id_out,'(a)') '   :align: center'
-          write(id_out,'(a)') '   :alt: Alternate Text'
-
+!
           write(id_out,'(a)')    
           write(id_out,'(2a)')                                          &
-     &           'Radial velocity :math:`u_r` at',                      &
-     &           ' the equatorial plane :math:`z = 0`.'
+     &             'Radial velocity field :math:`u_r`',                 &
+     &             ' in the fluid shell.'
 
           write(id_out,'(a)')    
-          write(id_out,'(a)') '.. figure:: ./images/U_spectr_l.png'
-          write(id_out,'(a)') '   :scale: 200%'
-          write(id_out,'(a)') '   :height: 240px'
-          write(id_out,'(a)') '   :width: 300px'
+          write(id_out,'(a)')                                           &
+     &            '.. figure:: ./images/Shell_Slices_temp_1.pdf'
+!          write(id_out,'(a)') '   :scale: 30%'
+!          write(id_out,'(a)') '   :height: 1620px'
+          write(id_out,'(a)') '   :width: 800px'
+          write(id_out,'(a)') '   :align: center'
+!
+          write(id_out,'(a)')    
+          write(id_out,'(2a)')                                          &
+     &             'Temperature :math:`T`',                             &
+     &             ' in the fluid shell.'
+
+          write(id_out,'(a)')    
+          write(id_out,'(a)')                                           &
+     &            '.. figure:: ./images/AZ_Avgs.pdf'
+!          write(id_out,'(a)') '   :scale: 30%'
+!          write(id_out,'(a)') '   :height: 1620px'
+          write(id_out,'(a)') '   :width: 800px'
+          write(id_out,'(a)') '   :align: center'
+!
+          write(id_out,'(a)')    
+          write(id_out,'(4a)')                                          &
+     &             'Temperature :math:`T`, (left) and ',                &
+     &             ' zonal velocity field :math:`u_\phi`, (right) ',    &
+     &             ' in the fluid shell.'
+
+          write(id_out,'(a)')    
+          write(id_out,'(a)') '.. figure:: ./images/KPower_1.pdf'
+!          write(id_out,'(a)') '   :scale: 30%'
+!          write(id_out,'(a)') '   :height: 1620px'
+          write(id_out,'(a)') '   :width: 800px'
           write(id_out,'(a)') '   :align: center'
           write(id_out,'(a)') '   :alt: Alternate Text'
-   
+          write(id_out,'(a)')    
           write(id_out,'(2a)')                                          &
      &           'Kinetic energy density spectra as a function',        &
      &           ' of spherical harmonic degree :math:`l`.'
-        end if
 !
         close(id_out)
   95    continue
@@ -1287,11 +1346,13 @@
         write(id_out,'(a)')                                             &
      &    '-----------------------------------------------------------'
         write(id_out,'(a)')
-        write(id_out,'(a)') 'Links for data directories.'
+        write(id_out,'(a)') 'Directory.'
         write(id_out,'(a)') '========================================='
-        write(id_out,'(a)') 'Here is the link to access data directory:'
+        write(id_out,'(a)') 'Data is stored in the following directory:'
         write(id_out,'(a)')
-        write(id_out,'(a)') '(Add Hyperlink to directory)'
+        write(id_out,'(5a)') '- `', trim(param(i)%dir_name),            &
+     &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
+     &          trim(param(i)%dir_name), '>`_'
         write(id_out,'(a)')
         write(id_out,'(a)') 'Parameters.'
         write(id_out,'(a)') '========================================='
@@ -1309,23 +1370,54 @@
         write(id_out,'(a)')                                             &
      &              'The following data for analysis are aviable:'
         write(id_out,'(a)')
-        write(id_out,'(a)') '.. csv-table::'
-        write(id_out,'(a)') '   :file: ../../outputs.csv'
-        write(id_out,'(a)') '   :encoding: UTF-8'
-        write(id_out,'(a)') '   :header-rows: 1'
-        write(id_out,'(a)')
-        write(id_out,'(a)')
+        write(id_out,'(4a)')                                            &
+     &          '- Parameter file (original): `main_input.org',         &
+     &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
+     &          trim(param(i)%dir_name), '/main_input.org>`_'
+        write(id_out,'(4a)')                                            &
+     &          '- Parameter file (for current version): `main_input',  &
+     &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
+     &          trim(param(i)%dir_name), '/main_input>`_'
 !
-        if(param(i)%dir_name(1:1) .eq. 'm') then
-        else if(param(i)%dir_name(1:1) .eq. 'r') then
+        write(id_out,'(4a)')                                            &
+     &          '- Checkpoint data directory: `Checkpoint',             &
+     &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
+     &          trim(param(i)%dir_name), '/Checkpoint>`_'
+!
+        write(id_out,'(4a)')                                            &
+     &          '- Global averaged data directory: `G_Avgs',            &
+     &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
+     &          trim(param(i)%dir_name), '/G_Avgs>`_'
+        write(id_out,'(4a)')                                            &
+     &          '- Sphere averaged data directory: `Shell_Avgs',        &
+     &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
+     &          trim(param(i)%dir_name), '/Shell_Avgs>`_'
+        write(id_out,'(4a)')                                            &
+     &          '- Shell spectrum data directory: `Shell_Spectra',      &
+     &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
+     &          trim(param(i)%dir_name), '/Shell_Spectra>`_'
+!
+        write(id_out,'(4a)')                                            &
+     &          '- Longitudinal averaged data directory: `AZ_Avgs',     &
+     &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
+     &          trim(param(i)%dir_name), '/AZ_Avgs>`_'
+        write(id_out,'(4a)')                                            &
+     &          '- Fields on spheres directory: `Shell_Slices',         &
+     &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
+     &          trim(param(i)%dir_name), '/Shell_Slices>`_'
+        write(id_out,'(4a)')                                            &
+     &          '- Equatorial fields directory: `Equatorial_Slices',    &
+     &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
+     &          trim(param(i)%dir_name), '/Equatorial_Slices>`_'
+!
           write(id_out,'(a)') 'Examples of visualized images.'
           write(id_out,'(a)') '======================================='
           write(id_out,'(a)') 
           write(id_out,'(a)')                                           &
      &                '.. figure:: ./images/energy_trace.pdf'
-          write(id_out,'(a)') '   :scale: 200%'
-          write(id_out,'(a)') '   :height: 216px'
-          write(id_out,'(a)') '   :width: 720px'
+!          write(id_out,'(a)') '   :scale: 30%'
+!          write(id_out,'(a)') '   :height: 1620px'
+          write(id_out,'(a)') '   :width: 800px'
           write(id_out,'(a)') '   :align: center'
           write(id_out,'(a)')    
           write(id_out,'(7a)')                                          &
@@ -1340,9 +1432,9 @@
           write(id_out,'(a)') 
           write(id_out,'(a)')                                           &
      &                '.. figure:: ./images/me_ke_ratio.pdf'
-          write(id_out,'(a)') '   :scale: 200%'
-          write(id_out,'(a)') '   :height: 216px'
-          write(id_out,'(a)') '   :width: 720px'
+!          write(id_out,'(a)') '   :scale: 30%'
+!          write(id_out,'(a)') '   :height: 1620px'
+          write(id_out,'(a)') '   :width: 800px'
           write(id_out,'(a)') '   :align: center'
           write(id_out,'(a)')    
           write(id_out,'(5a)')                                          &
@@ -1355,9 +1447,9 @@
           write(id_out,'(a)')    
           write(id_out,'(a)')                                           &
      &            '.. figure:: ./images/Shell_Slices_Br_0.pdf'
-          write(id_out,'(a)') '   :scale: 200%'
-          write(id_out,'(a)') '   :height: 360px'
-          write(id_out,'(a)') '   :width: 864px'
+!          write(id_out,'(a)') '   :scale: 30%'
+!          write(id_out,'(a)') '   :height: 1620px'
+          write(id_out,'(a)') '   :width: 800px'
           write(id_out,'(a)') '   :align: center'
 !
           write(id_out,'(a)')    
@@ -1368,9 +1460,9 @@
           write(id_out,'(a)')    
           write(id_out,'(a)')                                           &
      &            '.. figure:: ./images/Shell_Slices_Ur_2.pdf'
-          write(id_out,'(a)') '   :scale: 200%'
-          write(id_out,'(a)') '   :height: 360px'
-          write(id_out,'(a)') '   :width: 864px'
+!          write(id_out,'(a)') '   :scale: 30%'
+!          write(id_out,'(a)') '   :height: 1620px'
+          write(id_out,'(a)') '   :width: 800px'
           write(id_out,'(a)') '   :align: center'
 !
           write(id_out,'(a)')    
@@ -1381,9 +1473,9 @@
           write(id_out,'(a)')    
           write(id_out,'(a)')                                           &
      &            '.. figure:: ./images/Shell_Slices_temp_2.pdf'
-          write(id_out,'(a)') '   :scale: 200%'
-          write(id_out,'(a)') '   :height: 360px'
-          write(id_out,'(a)') '   :width: 864px'
+!          write(id_out,'(a)') '   :scale: 30%'
+!          write(id_out,'(a)') '   :height: 1620px'
+          write(id_out,'(a)') '   :width: 800px'
           write(id_out,'(a)') '   :align: center'
 !
           write(id_out,'(a)')    
@@ -1392,16 +1484,11 @@
      &             ' in the fluid shell.'
 
           write(id_out,'(a)')    
-          write(id_out,'(2a)')                                          &
-     &             'Radial velocity field :math:`u_r`',                 &
-     &             ' in the fluid shell.'
-
-          write(id_out,'(a)')    
           write(id_out,'(a)')                                           &
      &            '.. figure:: ./images/AZ_Avgs.pdf'
-          write(id_out,'(a)') '   :scale: 200%'
-          write(id_out,'(a)') '   :height: 1620px'
-          write(id_out,'(a)') '   :width: 1926px'
+!          write(id_out,'(a)') '   :scale: 30%'
+!          write(id_out,'(a)') '   :height: 1620px'
+          write(id_out,'(a)') '   :width: 800px'
           write(id_out,'(a)') '   :align: center'
 !
           write(id_out,'(a)')    
@@ -1414,9 +1501,9 @@
           write(id_out,'(a)')    
           write(id_out,'(a)')                                           &
      &             '.. figure:: ./images/Equatorial_Slice_Bz.pdf'
-          write(id_out,'(a)') '   :scale: 200%'
-          write(id_out,'(a)') '   :height: 240px'
-          write(id_out,'(a)') '   :width: 300px'
+!          write(id_out,'(a)') '   :scale: 30%'
+!          write(id_out,'(a)') '   :height: 1620px'
+          write(id_out,'(a)') '   :width: 800px'
           write(id_out,'(a)') '   :align: center'
           write(id_out,'(a)') '   :alt: Alternate Text'
    
@@ -1428,9 +1515,9 @@
           write(id_out,'(a)')    
           write(id_out,'(a)')                                           &
      &             '.. figure:: ./images/Equatorial_Slice_Ur.pdf'
-          write(id_out,'(a)') '   :scale: 200%'
-          write(id_out,'(a)') '   :height: 576px'
-          write(id_out,'(a)') '   :width: 576px'
+!          write(id_out,'(a)') '   :scale: 30%'
+!          write(id_out,'(a)') '   :height: 1620px'
+          write(id_out,'(a)') '   :width: 800px'
           write(id_out,'(a)') '   :align: center'
           write(id_out,'(a)') '   :alt: Alternate Text'
 
@@ -1441,12 +1528,11 @@
 
           write(id_out,'(a)')    
           write(id_out,'(a)') '.. figure:: ./images/MPower_0.pdf'
-          write(id_out,'(a)') '   :scale: 200%'
-          write(id_out,'(a)') '   :height: 228px'
-          write(id_out,'(a)') '   :width: 432px'
+!          write(id_out,'(a)') '   :scale: 30%'
+!          write(id_out,'(a)') '   :height: 1620px'
+          write(id_out,'(a)') '   :width: 800px'
           write(id_out,'(a)') '   :align: center'
           write(id_out,'(a)') '   :alt: Alternate Text'
-   
           write(id_out,'(a)')    
           write(id_out,'(2a)')                                          &
      &           'Magnetic energy density spectra as a function',       &
@@ -1454,16 +1540,15 @@
 
           write(id_out,'(a)')    
           write(id_out,'(a)') '.. figure:: ./images/KPower_2.pdf'
-          write(id_out,'(a)') '   :scale: 200%'
-          write(id_out,'(a)') '   :height: 228px'
-          write(id_out,'(a)') '   :width: 432px'
+!          write(id_out,'(a)') '   :scale: 30%'
+!          write(id_out,'(a)') '   :height: 1620px'
+          write(id_out,'(a)') '   :width: 800px'
           write(id_out,'(a)') '   :align: center'
           write(id_out,'(a)') '   :alt: Alternate Text'
-   
+          write(id_out,'(a)')    
           write(id_out,'(2a)')                                          &
      &           'Kinetic energy density spectra as a function',        &
      &           ' of spherical harmonic degree :math:`l`.'
-        end if
 !
         close(id_out)
   95    continue

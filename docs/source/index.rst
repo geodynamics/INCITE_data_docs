@@ -10,9 +10,10 @@ INCITE data consists of three targets: Geodynamo and Jovian atomosphere. The par
    :maxdepth: 2
    :caption: Contents:
 
+   citation
    INCITE/mheimpel_Outeline
-   INCITE/ryadav_Outeline.rst
-   Tools/tools.rst
+   INCITE/ryadav_Outeline
+   tools
 
 * :ref:`genindex`
 * :ref:`modindex`
