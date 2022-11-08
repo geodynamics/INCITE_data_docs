@@ -8,16 +8,6 @@ Data is stored in the following directory:
 
 - `mheimpel/JupNatGeo/E3n5/run1 <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/mheimpel/JupNatGeo/E3n5/run1>`_
 
-Parameters.
-=========================================
-
-The following parameters are used:
-
-.. csv-table::
-   :file: param.csv
-   :encoding: UTF-8
-   :header-rows: 1
-
 Avaiable data.
 ==========================================
 
@@ -32,32 +22,27 @@ The following data for analysis are aviable:
 - Longitudinal averaged data directory: `AZ_Avgs <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/mheimpel/JupNatGeo/E3n5/run1/AZ_Avgs>`_
 - Fields on spheres directory: `Shell_Slices <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/mheimpel/JupNatGeo/E3n5/run1/Shell_Slices>`_
 
+Parameters.
+=========================================
+
+The following parameters are used:
+
+.. csv-table::
+   :file: param.csv
+   :encoding: UTF-8
+   :header-rows: 1
+
 Examples of visualized images.
 =======================================
 
 .. include:: ./G_Avgs_caption.rst
 
-.. figure:: ./images/Shell_Slices_Ur_1.pdf
-   :width: 800px
-   :align: center
+.. include:: ./Shell_Slices_caption_Ur_1.rst
 
-Radial velocity field :math:`u_r` in the fluid shell.
+.. include:: ./Shell_Slices_caption_temp_1.rst
 
-.. figure:: ./images/Shell_Slices_temp_1.pdf
-   :width: 800px
-   :align: center
+.. include:: ./AZ_Avgs_caption.rst
 
-Temperature :math:`T` in the fluid shell.
 
-.. figure:: ./images/AZ_Avgs.png
-   :width: 800px
-   :align: center
+.. include:: ./Spectr_caption_KE_0.rst
 
-Temperature :math:`T`, (left) and  zonal velocity field :math:`u_\phi`, (right)  in the fluid shell.
-
-.. figure:: ./images/KPower_1.pdf
-   :width: 800px
-   :align: center
-   :alt: Alternate Text
-
-Kinetic energy density spectra as a function of spherical harmonic degree :math:`l`.

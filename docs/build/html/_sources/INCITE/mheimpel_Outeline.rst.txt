@@ -5,7 +5,11 @@ Jovian Atomosphere (mheimpel)
 Overview
 =================================
 
-Simulations for Jovian or Uranucian atomosphere have been performed by Moriz Heimpel (Univ. of Alberta). Simulations are thermally drivenconvection simulaiton in a rotating spherical shell modeled on the Jupiter's atomosphere. 
+Simulations for Jovian or Uranucian atomosphere have been performed by Moriz Heimpel (Univ. of Alberta). Simulations are thermally driven convection simulaiton in a rotating spherical shell modeled on the Jupiter's atomosphere. It is noted that magnetic field is not take account into these simulations. In the present simulation, anelastic approximation is applied, and system is solved in the non-dimensionally. The ratio of the inner bounday to the outer boundary is set to be :math:`r_i / r_o = 0.95` or 0.90 for the Jovian atomosphere model, and to be :math:`r_i / r_o = 0.75` forr the Uranus model.
+ The free-slip boundary condition is applied to the velocity. Fixed heat flux (i.e. dT/dr) is applied for the inner and out boundaries.
+ 
+ Spatial resolution, dimenstionless number, amplidtude of dT/dr, and hyperdiffusivity settings for each case are listed in the following table as a parameter setting in 'main_input'. The definision of the paremter is described in `the Rayleigh document <https://rayleigh-documentation.readthedocs.io/en/latest/index.html>`_.
+
 
 List of parameters
 =================================
