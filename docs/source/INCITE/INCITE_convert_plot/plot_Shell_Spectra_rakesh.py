@@ -97,8 +97,8 @@ def plot_each_Shell_Spectra_rakesh(vpower, icou, rindex, init_time):
   bbox_props = dict(boxstyle="round", fc="w", ec="0.5", alpha=1.0)
   rtext = "{:.3f}".format(depth)
   textbox = " at $r = r_o - $ " + rtext + " and $t = " + ttext + "$"
-  title_u = 'Velocity Power ' + textbox
-  title_B = 'Magnetic Field Power ' + textbox
+  title_u = 'Velocity Power \n ' + textbox
+  title_B = 'Magnetic Field Power \n ' + textbox
   r_and_t_text = "at :math:`r = r_o - " + rtext + "` and :math:`t = " + ttext + "`"
   
   fig, ax = plt.subplots(nrows=1, figsize=(6,4))
