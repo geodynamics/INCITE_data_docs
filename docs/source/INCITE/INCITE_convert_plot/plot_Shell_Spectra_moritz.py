@@ -62,73 +62,102 @@
 
 # In[23]:
 
+from find_first_last_Rayleigh_data import find_last2_Rayleigh_data
+from rayleigh_diagnostics import Shell_Spectra, Power_Spectrum
 import matplotlib.pyplot as plt
 from matplotlib import ticker
 import numpy
-from rayleigh_diagnostics import Shell_Spectra, Power_Spectrum
 import os
+import math
+
+Shell_Spectra_path =         "Shell_Spectra/"
+Shell_Spectra_caption_prefix = 'Spectr_caption_'
+Shell_Spectra_image_prefix =   'images/SSpectr_'
+KE_postfix =   'KE_'
 
 
-def s_plot_Shell_Spectra_moritz(path):
-# Get file list in G_Aves
-  filelist = []
-  filelist = os.listdir(path)
-#  print(filelist)
-  nfile=len(filelist)
-  if(nfile < 1):
-    print('No file')
-    return
-#  print(nfile)
+def plot_each_Shell_Spectra_moritz(vpower, icou, rindex, init_time):
+  niter = vpower.niter
+  tindex = niter - 1 # All example quantities were output with same cadence.  Grab second time-index from all.
   
-  istring = filelist[0]
-  max_step = int(filelist[0])
-  for fname in filelist:
-    istep = int(fname)
-    if(istep > max_step):
-      max_step = istep
-      istring = fname
-  print('File to plot: ', istring)
+  time = vpower.time[tindex] - init_time
+  tpow = math.floor(numpy.log10(time))
+  tnum = time * 10.0**(-tpow)
+  ttext = "{:.3f} \\times 10^{{{:d}}}".format(tnum, tpow)
   
-#  istring = '00159000'
-  vpower = Power_Spectrum(istring)
-  icou = 0
-  for rindex in vpower.rad_inds:
-    plot_each_Shell_Spectra_moritz(vpower, icou, icou)
-    icou = icou + 1
-  
-  return
-
-
-def plot_each_Shell_Spectra_moritz(vpower, icou, rindex):
-  tind = 0
-#  rindex = 1
-  
-  
-  lmax = vpower.lmax
   kpower = vpower.power
   depth = vpower.radius[0] - vpower.radius[rindex]
-  title_u = 'Velocity Power at r = r_o-{:.3f}'.format(depth)
+  lmax = vpower.lmax
+  
+  bbox_props = dict(boxstyle="round", fc="w", ec="0.5", alpha=1.0)
+  rtext = "{:.3f}".format(depth)
+  textbox = " at $r = r_o - $ " + rtext + " and $t = " + ttext + "$"
+  title_u = 'Velocity Power \n ' + textbox
+  r_and_t_text = "at :math:`r = r_o - " + rtext + "` and :math:`t = " + ttext + "`"
   
   fig, ax = plt.subplots(nrows=1, figsize=(6,4))
-  ax.plot(kpower[:,rindex,tind,0], label='Total')
+  ax.plot(kpower[:,rindex,tindex,0], label='Total')
   ax.set_xlabel(r'Degree $\ell$')
   ax.set_title(title_u)
   ax.set_xscale('log')
   ax.set_yscale('log')
   
-  ax.plot(kpower[:,rindex,tind,1], label='Axisymmetric')
-  ax.plot(kpower[:,rindex,tind,2], label='Non-axisymmetric')
+  ax.plot(kpower[:,rindex,tindex,1], label='Axisymmetric')
+  ax.plot(kpower[:,rindex,tindex,2], label='Non-axisymmetric')
   ax.set_xlim(1, lmax+10)
   ax.legend(loc='lower left', shadow=True)
   ax.set_xlabel(r'Degree $\ell$')
   
   plt.tight_layout()
-  savefile = 'images/KPower_' + str(icou) + '.pdf'
+  savefile = Shell_Spectra_image_prefix + KE_postfix + str(icou) + '.pdf'
   print('Saving figure to: ', savefile)
   plt.savefig(savefile)
+  return r_and_t_text
+
+def write_Shell_Spectr_moritz_captions(caption_prefix, r_and_t_text, icou):
+  caption_file_name = caption_prefix + KE_postfix + str(icou) + '.rst'
+  print('Write ', caption_file_name)
+  fp = open(caption_file_name, 'w')
+  fp.write('\n')
+  
+  ftext = '.. figure:: ./' + Shell_Spectra_image_prefix \
+          + KE_postfix + str(icou) + '.pdf' + ' \n'
+  fp.write(ftext)
+  fp.write('   :width: 600px \n')
+  fp.write('   :align: center \n')
+  fp.write('\n')
+  
+  fp.write('Kinetic energy density spectra as a function')
+  fp.write(' of spherical harmonic degree :math:`l` ')
+  fp.write(r_and_t_text)
+  fp.write('\n')
+  fp.write('\n')
+  fp.close()
+  
+  return
+
+
+def s_plot_Shell_Spectra_moritz(Gpath, caption_prefix, init_time):
+  last2_file_name = find_last2_Rayleigh_data(Gpath)
+  if(last2_file_name[0] == 'NO_FILE'):
+    return
+  
+  print('file to plot: ', last2_file_name[1])
+  
+  vpower = Power_Spectrum(last2_file_name[1])
+  
+  r_and_t_textlist = []
+  icou = 0
+  for rindex in vpower.rad_inds:
+    text_tmp = plot_each_Shell_Spectra_moritz(vpower, icou, icou, init_time)
+    write_Shell_Spectr_moritz_captions(caption_prefix, text_tmp, icou)
+    r_and_t_textlist.append(text_tmp)
+    icou = icou + 1
+  
   return
 
 
 if __name__ == '__main__':
-  path = "Shell_Spectra"
-  s_plot_Shell_Spectra_moritz(path)
+  init_time = 0.0
+  s_plot_Shell_Spectra_moritz(Shell_Spectra_path, \
+                              Shell_Spectra_caption_prefix, init_time)

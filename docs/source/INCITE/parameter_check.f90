@@ -1094,64 +1094,64 @@
         write(id_log,'(a, a2,a)')  trim(hd_chebyshev), ', ',      &
      &                                  trim(param(i)%chebyshev)
 !, 
-        write(id_log,'(a, a2,a)')  trim(hd_rotation), ', ',      &
+        write(id_log,'(a, a2,a)')  trim(hd_rotation), ', ',             &
      &                                  trim(param(i)%rotation)
-        write(id_log,'(a, a2,a)')  trim(hd_magnetism), ', ',      &
+        write(id_log,'(a, a2,a)')  trim(hd_magnetism), ', ',            &
      &                                  trim(param(i)%magnetism)
         write(id_log,'(a, a2,a)')  trim(hd_viscous), ', ',              &
      &                                  trim(param(i)%viscous_heating)
         write(id_log,'(a, a2,a)')  trim(hd_ohmic), ', ',                &
      &                                  trim(param(i)%ohmic_heating)
 !, 
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_Ek), ', ',            &
+        write(id_log,'(a, a2,1pe10.2)')  trim(hd_Ek), ', ',             &
      &                            param(i)%Ekman_Number
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_Pr), ', ',            &
+        write(id_log,'(a, a2,1pe10.2)')  trim(hd_Pr), ', ',             &
      &                            param(i)%Prandtl_Number
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_Pm), ', ',            &
+        write(id_log,'(a, a2,1pe10.2)')  trim(hd_Pm), ', ',             &
      &                            param(i)%Magnetic_Prandtl_Number
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_Ra), ', ',            &
+        write(id_log,'(a, a2,1pe10.2)')  trim(hd_Ra), ', ',             &
      &                            param(i)%Rayleigh_Number
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_mod_Ra), ', ',        &
+        write(id_log,'(a, a2,1pe10.2)')  trim(hd_mod_Ra), ', ',         &
      &                            param(i)%Modified_Rayleigh_Number
 !, 
         write(id_log,'(a, a2,a)') trim(hd_no_slip), ', ',               &
      &                            trim(param(i)%no_slip_boundaries)
         write(id_log,'(a, a2,a)') trim(hd_fix_tvar_bottom), ', ',       &
      &                            trim(param(i)%fix_tvar_bottom)
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_T_bottom), ', ',      &
+        write(id_log,'(a, a2,1pe10.2)')  trim(hd_T_bottom), ', ',       &
      &                                  param(i)%T_bottom
         write(id_log,'(a, a2,a)')  trim(hd_fix_dtdr_bottom), ', ',      &
      &                                  trim(param(i)%fix_dtdr_bottom)
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_dTdr_bottom), ', ',   &
+        write(id_log,'(a, a2,1pe10.2)')  trim(hd_dTdr_bottom), ', ',    &
      &                                  param(i)%dTdr_bottom
         write(id_log,'(a, a2,a)') trim(hd_fix_tvar_top), ', ',          &
      &                                   trim(param(i)%fix_tvar_top)
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_T_top), ', ',         &
+        write(id_log,'(a, a2,1pe10.2)')  trim(hd_T_top), ', ',          &
      &                                   param(i)%T_top
         write(id_log,'(a, a2,a)') trim(hd_fix_dtdr_top), ', ',          &
      &                                   trim(param(i)%fix_dtdr_top)
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_dTdr_top), ', ',      &
+        write(id_log,'(a, a2,1pe10.2)')  trim(hd_dTdr_top), ', ',       &
      &                                   param(i)%dTdr_top
 !
         write(id_log,'(a, a2,i8)')  trim(hd_reference_type), ', ',      &
      &                                   param(i)%reference_type
         write(id_log,'(a, a2,i8)')  trim(hd_heating_type), ', ',        &
      &                                   param(i)%heating_type
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_poly_n), ', ',        &
+        write(id_log,'(a, a2,1pe10.2)')  trim(hd_poly_n), ', ',         &
      &                                   param(i)%poly_n
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_poly_Nrho), ', ',     &
+        write(id_log,'(a, a2,1pe10.2)')  trim(hd_poly_Nrho), ', ',      &
      &                                   param(i)%poly_Nrho
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_gravity_power), ', ', &
+        write(id_log,'(a, a2,1pe10.2)')  trim(hd_gravity_power), ', ',  &
      &                                   param(i)%gravity_power
         write(id_log,'(a, a2,a)') trim(hd_dimensional), ', ',           &
      &                                   trim(param(i)%dimensional)
 !
         write(id_log,'(a, a2,a)') trim(hd_hyperdiffusion), ', ',        &
      &                                   trim(param(i)%hyperdiffusion)
-        write(id_log,'(a, a2,1pe10.2)')                                &
+        write(id_log,'(a, a2,1pe10.2)')                                 &
      &                       trim(hd_hyperdiffusion_alpha), ', ',       &
      &                       param(i)%hyperdiffusion_alpha
-        write(id_log,'(a, a2,1pe10.2)')                                &
+        write(id_log,'(a, a2,1pe10.2)')                                 &
      &                       trim(hd_hyperdiffusion_beta), ', ',        &
      &                       param(i)%hyperdiffusion_beta
         close(id_log)
@@ -1192,16 +1192,7 @@
      &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
      &          trim(param(i)%dir_name), '>`_'
         write(id_out,'(a)')
-        write(id_out,'(a)') 'Parameters.'
-        write(id_out,'(a)') '========================================='
-        write(id_out,'(a)')
-        write(id_out,'(a)') 'The following parameters are used:'
-        write(id_out,'(a)')
-        write(id_out,'(a)') '.. csv-table::'
-        write(id_out,'(a)') '   :file: param.csv'
-        write(id_out,'(a)') '   :encoding: UTF-8'
-        write(id_out,'(a)') '   :header-rows: 1'
-        write(id_out,'(a)')
+!
         write(id_out,'(a)') 'Avaiable data.'
         write(id_out,'(a)') '=========================================='
         write(id_out,'(a)')
@@ -1244,37 +1235,38 @@
      &          '- Fields on spheres directory: `Shell_Slices',         &
      &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
      &          trim(param(i)%dir_name), '/Shell_Slices>`_'
-        
         write(id_out,'(a)')
 !
-          write(id_out,'(a)') 'Examples of visualized images.'
-          write(id_out,'(a)') '======================================='
-          write(id_out,'(a)') 
-          write(id_out,'(a)') '.. include:: ./G_Avgs_caption.rst'
-          write(id_out,'(a)')    
+        write(id_out,'(a)') 'Parameters.'
+        write(id_out,'(a)') '========================================='
+        write(id_out,'(a)')
+        write(id_out,'(a)') 'The following parameters are used:'
+        write(id_out,'(a)')
+        write(id_out,'(a)') '.. csv-table::'
+        write(id_out,'(a)') '   :file: param.csv'
+        write(id_out,'(a)') '   :encoding: UTF-8'
+        write(id_out,'(a)') '   :header-rows: 1'
+        write(id_out,'(a)')
+!
+        write(id_out,'(a)') 'Examples of visualized images.'
+        write(id_out,'(a)') '======================================='
+        write(id_out,'(a)') 
+        write(id_out,'(a)') '.. include:: ./G_Avgs_caption.rst'
+        write(id_out,'(a)')    
 
-          write(id_out,'(a)')                                           &
+        write(id_out,'(a)')                                             &
      &             '.. include:: ./Shell_Slices_caption_Ur_1.rst'
-          write(id_out,'(a)') 
-          write(id_out,'(a)')                                           &
+        write(id_out,'(a)') 
+        write(id_out,'(a)')                                             &
      &             '.. include:: ./Shell_Slices_caption_temp_1.rst'
-          write(id_out,'(a)') 
-
-          write(id_out,'(a)')                                           &
+        write(id_out,'(a)') 
+        write(id_out,'(a)')                                             &
      &             '.. include:: ./AZ_Avgs_caption.rst'
-          write(id_out,'(a)') 
+        write(id_out,'(a)') 
 
-          write(id_out,'(a)')    
-          write(id_out,'(a)') '.. figure:: ./images/KPower_1.pdf'
-!          write(id_out,'(a)') '   :scale: 30%'
-!          write(id_out,'(a)') '   :height: 1620px'
-          write(id_out,'(a)') '   :width: 800px'
-          write(id_out,'(a)') '   :align: center'
-          write(id_out,'(a)') '   :alt: Alternate Text'
-          write(id_out,'(a)')    
-          write(id_out,'(2a)')                                          &
-     &           'Kinetic energy density spectra as a function',        &
-     &           ' of spherical harmonic degree :math:`l`.'
+        write(id_out,'(a)') 
+        write(id_out,'(a)') '.. include:: ./Spectr_caption_KE_0.rst'
+        write(id_out,'(a)') 
 !
         close(id_out)
   95    continue
@@ -1314,16 +1306,7 @@
      &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
      &          trim(param(i)%dir_name), '>`_'
         write(id_out,'(a)')
-        write(id_out,'(a)') 'Parameters.'
-        write(id_out,'(a)') '========================================='
-        write(id_out,'(a)')
-        write(id_out,'(a)') 'The following parameters are used:'
-        write(id_out,'(a)')
-        write(id_out,'(a)') '.. csv-table::'
-        write(id_out,'(a)') '   :file: param.csv'
-        write(id_out,'(a)') '   :encoding: UTF-8'
-        write(id_out,'(a)') '   :header-rows: 1'
-        write(id_out,'(a)')
+!
         write(id_out,'(a)') 'Avaiable data.'
         write(id_out,'(a)') '=========================================='
         write(id_out,'(a)')
@@ -1369,55 +1352,46 @@
      &          '- Equatorial fields directory: `Equatorial_Slices',    &
      &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
      &          trim(param(i)%dir_name), '/Equatorial_Slices>`_'
+        write(id_out,'(a)') 
 !
-          write(id_out,'(a)') 'Examples of visualized images.'
-          write(id_out,'(a)') '======================================='
-          write(id_out,'(a)') 
-          write(id_out,'(a)') '.. include:: ./G_Avgs_caption.rst'
-          write(id_out,'(a)') 
+        write(id_out,'(a)') 'Parameters.'
+        write(id_out,'(a)') '========================================='
+        write(id_out,'(a)')
+        write(id_out,'(a)') 'The following parameters are used:'
+        write(id_out,'(a)')
+        write(id_out,'(a)') '.. csv-table::'
+        write(id_out,'(a)') '   :file: param.csv'
+        write(id_out,'(a)') '   :encoding: UTF-8'
+        write(id_out,'(a)') '   :header-rows: 1'
+        write(id_out,'(a)')
+        write(id_out,'(a)') 'Examples of visualized images.'
+        write(id_out,'(a)') '======================================='
+        write(id_out,'(a)') 
+        write(id_out,'(a)') '.. include:: ./G_Avgs_caption.rst'
+        write(id_out,'(a)') 
 
-          write(id_out,'(a)') 
-          write(id_out,'(a)')                                           &
-     &             '.. include:: ./Shell_Slices_caption_Bz_0.rst'
-          write(id_out,'(a)') 
-          write(id_out,'(a)')                                           &
-     &             '.. include:: ./Shell_Slices_caption_Ur_2.rst'
-          write(id_out,'(a)') 
-          write(id_out,'(a)')                                           &
-     &             '.. include:: ./Shell_Slices_caption_temp_2.rst'
-          write(id_out,'(a)') 
+        write(id_out,'(a)') 
+        write(id_out,'(a)')                                           &
+     &           '.. include:: ./Shell_Slices_caption_Bz_0.rst'
+        write(id_out,'(a)') 
+        write(id_out,'(a)')                                           &
+     &           '.. include:: ./Shell_Slices_caption_Ur_2.rst'
+        write(id_out,'(a)') 
+        write(id_out,'(a)')                                           &
+     &           '.. include:: ./Shell_Slices_caption_temp_2.rst'
+        write(id_out,'(a)') 
 
-          write(id_out,'(a)') 
-          write(id_out,'(a)')                                           &
-     &             '.. include:: ./AZ_Avgs_caption.rst'
-          write(id_out,'(a)') 
-          write(id_out,'(a)')                                           &
-     &             '.. include:: ./Equatorial_Slices_caption.rst'
-          write(id_out,'(a)') 
+        write(id_out,'(a)') 
+        write(id_out,'(a)') '.. include:: ./AZ_Avgs_caption.rst'
+        write(id_out,'(a)') 
+        write(id_out,'(a)')                                           &
+     &           '.. include:: ./Equatorial_Slices_caption.rst'
+        write(id_out,'(a)') 
 
-          write(id_out,'(a)')
-          write(id_out,'(a)') '.. figure:: ./images/MPower_0.pdf'
-!          write(id_out,'(a)') '   :scale: 30%'
-!          write(id_out,'(a)') '   :height: 1620px'
-          write(id_out,'(a)') '   :width: 800px'
-          write(id_out,'(a)') '   :align: center'
-          write(id_out,'(a)') '   :alt: Alternate Text'
-          write(id_out,'(a)')    
-          write(id_out,'(2a)')                                          &
-     &           'Magnetic energy density spectra as a function',       &
-     &           ' of spherical harmonic degree :math:`l`.'
-
-          write(id_out,'(a)')    
-          write(id_out,'(a)') '.. figure:: ./images/KPower_2.pdf'
-!          write(id_out,'(a)') '   :scale: 30%'
-!          write(id_out,'(a)') '   :height: 1620px'
-          write(id_out,'(a)') '   :width: 800px'
-          write(id_out,'(a)') '   :align: center'
-          write(id_out,'(a)') '   :alt: Alternate Text'
-          write(id_out,'(a)')    
-          write(id_out,'(2a)')                                          &
-     &           'Kinetic energy density spectra as a function',        &
-     &           ' of spherical harmonic degree :math:`l`.'
+        write(id_out,'(a)') '.. include:: ./Spectr_caption_ME_0.rst'
+        write(id_out,'(a)') 
+        write(id_out,'(a)') '.. include:: ./Spectr_caption_KE_2.rst'
+        write(id_out,'(a)') 
 !
         close(id_out)
   95    continue

@@ -39,9 +39,10 @@ def plot_each_Moritz_examples(d):
   
   dir_images =       'images/'
   
-  G_Avgs_caption_file = 'G_Avgs_caption.rst'
-  AZ_Avgs_caption_file = 'AZ_Avgs_caption.rst'
-  Shell_Slices_caption_prefix =    'Shell_Slices_caption_'
+  G_Avgs_caption_file =          'G_Avgs_caption.rst'
+  AZ_Avgs_caption_file =         'AZ_Avgs_caption.rst'
+  Shell_Slices_caption_prefix =  'Shell_Slices_caption_'
+  Shell_Spectra_caption_prefix = 'Spectr_caption_'
   
 #  Copy volume average
   org_G_Avgs = source_dir + dir_G_Avgs
@@ -157,12 +158,13 @@ def plot_each_Moritz_examples(d):
     os.makedirs(dir_images)
   
   init_time = s_plot_G_Avgs_moritz(dest_G_Avgs)
-  s_plot_Shell_Spectra_moritz(dest_Shell_Spectra)
   time_AZ = s_plot_AZ_Avgs_moritz(dest_AZ_Avgs, init_time)
   
-  file_name = dest_dir + Shell_Slices_caption_prefix
-  s_plot_Shell_Slices_moritz(dest_Shell_Slices, file_name, init_time)
-
+  file_prefix = dest_dir + Shell_Slices_caption_prefix
+  s_plot_Shell_Slices_moritz(dest_Shell_Slices, file_prefix, init_time)
+  file_prefix = dest_dir + Shell_Spectra_caption_prefix
+  s_plot_Shell_Spectra_moritz(dest_Shell_Spectra, file_prefix, init_time)
+  
   s_convert_main_input(main_input_org, main_input)
   
   file_name = dest_dir + G_Avgs_caption_file

@@ -8,16 +8,6 @@ Data is stored in the following directory:
 
 - `mheimpel/Uranus75/N5/E1n4/run1 <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/mheimpel/Uranus75/N5/E1n4/run1>`_
 
-Parameters.
-=========================================
-
-The following parameters are used:
-
-.. csv-table::
-   :file: param.csv
-   :encoding: UTF-8
-   :header-rows: 1
-
 Avaiable data.
 ==========================================
 
@@ -32,6 +22,16 @@ The following data for analysis are aviable:
 - Longitudinal averaged data directory: `AZ_Avgs <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/mheimpel/Uranus75/N5/E1n4/run1/AZ_Avgs>`_
 - Fields on spheres directory: `Shell_Slices <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/mheimpel/Uranus75/N5/E1n4/run1/Shell_Slices>`_
 
+Parameters.
+=========================================
+
+The following parameters are used:
+
+.. csv-table::
+   :file: param.csv
+   :encoding: UTF-8
+   :header-rows: 1
+
 Examples of visualized images.
 =======================================
 
@@ -44,9 +44,5 @@ Examples of visualized images.
 .. include:: ./AZ_Avgs_caption.rst
 
 
-.. figure:: ./images/KPower_1.pdf
-   :width: 800px
-   :align: center
-   :alt: Alternate Text
+.. include:: ./Spectr_caption_KE_0.rst
 
-Kinetic energy density spectra as a function of spherical harmonic degree :math:`l`.

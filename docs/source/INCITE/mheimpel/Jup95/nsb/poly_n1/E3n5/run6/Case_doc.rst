@@ -8,16 +8,6 @@ Data is stored in the following directory:
 
 - `mheimpel/Jup95/nsb/poly_n1/E3n5/run6 <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/mheimpel/Jup95/nsb/poly_n1/E3n5/run6>`_
 
-Parameters.
-=========================================
-
-The following parameters are used:
-
-.. csv-table::
-   :file: param.csv
-   :encoding: UTF-8
-   :header-rows: 1
-
 Avaiable data.
 ==========================================
 
@@ -32,6 +22,16 @@ The following data for analysis are aviable:
 - Longitudinal averaged data directory: `AZ_Avgs <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/mheimpel/Jup95/nsb/poly_n1/E3n5/run6/AZ_Avgs>`_
 - Fields on spheres directory: `Shell_Slices <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/mheimpel/Jup95/nsb/poly_n1/E3n5/run6/Shell_Slices>`_
 
+Parameters.
+=========================================
+
+The following parameters are used:
+
+.. csv-table::
+   :file: param.csv
+   :encoding: UTF-8
+   :header-rows: 1
+
 Examples of visualized images.
 =======================================
 
@@ -44,9 +44,5 @@ Examples of visualized images.
 .. include:: ./AZ_Avgs_caption.rst
 
 
-.. figure:: ./images/KPower_1.pdf
-   :width: 800px
-   :align: center
-   :alt: Alternate Text
+.. include:: ./Spectr_caption_KE_0.rst
 
-Kinetic energy density spectra as a function of spherical harmonic degree :math:`l`.
