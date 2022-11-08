@@ -1254,31 +1254,12 @@
           write(id_out,'(a)')    
 
           write(id_out,'(a)')                                           &
-     &            '.. figure:: ./images/Shell_Slices_Ur_1.pdf'
-!          write(id_out,'(a)') '   :scale: 30%'
-!          write(id_out,'(a)') '   :height: 1620px'
-          write(id_out,'(a)') '   :width: 800px'
-          write(id_out,'(a)') '   :align: center'
-!
-          write(id_out,'(a)')    
-          write(id_out,'(2a)')                                          &
-     &             'Radial velocity field :math:`u_r`',                 &
-     &             ' in the fluid shell.'
-
-          write(id_out,'(a)')    
-          write(id_out,'(a)')                                           &
-     &            '.. figure:: ./images/Shell_Slices_temp_1.pdf'
-!          write(id_out,'(a)') '   :scale: 30%'
-!          write(id_out,'(a)') '   :height: 1620px'
-          write(id_out,'(a)') '   :width: 800px'
-          write(id_out,'(a)') '   :align: center'
-!
-          write(id_out,'(a)')    
-          write(id_out,'(2a)')                                          &
-     &             'Temperature :math:`T`',                             &
-     &             ' in the fluid shell.'
-
+     &             '.. include:: ./Shell_Slices_caption_Ur_1.rst'
           write(id_out,'(a)') 
+          write(id_out,'(a)')                                           &
+     &             '.. include:: ./Shell_Slices_caption_temp_1.rst'
+          write(id_out,'(a)') 
+
           write(id_out,'(a)')                                           &
      &             '.. include:: ./AZ_Avgs_caption.rst'
           write(id_out,'(a)') 

@@ -37,17 +37,9 @@ Examples of visualized images.
 
 .. include:: ./G_Avgs_caption.rst
 
-.. figure:: ./images/Shell_Slices_Ur_1.pdf
-   :width: 800px
-   :align: center
+.. include:: ./Shell_Slices_caption_Ur_1.rst
 
-Radial velocity field :math:`u_r` in the fluid shell.
-
-.. figure:: ./images/Shell_Slices_temp_1.pdf
-   :width: 800px
-   :align: center
-
-Temperature :math:`T` in the fluid shell.
+.. include:: ./Shell_Slices_caption_temp_1.rst
 
 .. include:: ./AZ_Avgs_caption.rst
 

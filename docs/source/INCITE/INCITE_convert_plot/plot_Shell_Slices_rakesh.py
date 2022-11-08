@@ -95,6 +95,10 @@ def plot_each_r_Shell_Slices_rakesh(ss, icou, rindex, init_time):
   phi = np.arange(nphi)*2.0*np.pi/nphi - np.pi
   
   depth = ss.radius[0] - ss.radius[rindex]
+  vr =   ss.vals[:,:,rindex,ss.lut[1],tindex]
+  temp = ss.vals[:,:,rindex,ss.lut[501],tindex]
+  br =   ss.vals[:,:,rindex,ss.lut[801],tindex]
+  
   ttitle = 'Temperature $T$'
   utitle = 'Radial Velocity $u_r$'
   btitle = 'Radial Magnetic Field $B_r$'
@@ -104,14 +108,6 @@ def plot_each_r_Shell_Slices_rakesh(ss, icou, rindex, init_time):
   textbox = "$r = r_o - $ " + rtext + " \n $t = " + ttext + "$"
   r_and_t_text = "at :math:`r = r_o - " + rtext + "` and :math:`t = " + ttext + "`"
   
-  
-  sizetuple=(12,5)
-  
-  vr =   ss.vals[:,:,rindex,ss.lut[1],tindex]
-  temp = ss.vals[:,:,rindex,ss.lut[501],tindex]
-  br =   ss.vals[:,:,rindex,ss.lut[801],tindex]
-  
-#     We do a single row of 2 images 
 #     Spacing is default spacing set up by subplot
   figdpi=300
   sizetuple=(12,5)
@@ -249,7 +245,6 @@ def s_plot_Shell_Slices_rakesh(Gpath, caption_prefix, init_time):
   
   print('Step to plot: ', last2_file_name[1])
   
-#  istring = '00040000'
   ss = Shell_Slices(last2_file_name[1])
   r_and_t_textlist = []
   if(ss.nr > 0):
