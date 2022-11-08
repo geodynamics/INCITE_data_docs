@@ -14,7 +14,7 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="J90-ht4-E1n3-1" href="mheimpel/JupNatGeo/E1n3/run1/Case_doc.html" />
@@ -39,7 +39,11 @@
 <h1>Jovian Atomosphere (mheimpel)<a class="headerlink" href="#jovian-atomosphere-mheimpel" title="Permalink to this heading">¶</a></h1>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">¶</a></h2>
-<p>Simulations for Jovian or Uranucian atomosphere have been performed by Moriz Heimpel (Univ. of Alberta). Simulations are thermally drivenconvection simulaiton in a rotating spherical shell modeled on the Jupiter’s atomosphere.</p>
+<dl>
+<dt>Simulations for Jovian or Uranucian atomosphere have been performed by Moriz Heimpel (Univ. of Alberta). Simulations are thermally driven convection simulaiton in a rotating spherical shell modeled on the Jupiter’s atomosphere. It is noted that magnetic field is not take account into these simulations. In the present simulation, anelastic approximation is applied, and system is solved in the non-dimensionally. The ratio of the inner bounday to the outer boundary is set to be <span class="math notranslate nohighlight">\(r_i / r_o = 0.95\)</span> or 0.90 for the Jovian atomosphere model, and to be <span class="math notranslate nohighlight">\(r_i / r_o = 0.75\)</span> forr the Uranus model.</dt><dd><p>The free-slip boundary condition is applied to the velocity. Fixed heat flux (i.e. dT/dr) is applied for the inner and out boundaries.</p>
+<p>Spatial resolution, dimenstionless number, amplidtude of dT/dr, and hyperdiffusivity settings for each case are listed in the following table as a parameter setting in ‘main_input’. The definision of the paremter is described in <a class="reference external" href="https://rayleigh-documentation.readthedocs.io/en/latest/index.html">the Rayleigh document</a>.</p>
+</dd>
+</dl>
 </section>
 <section id="list-of-parameters">
 <h2>List of parameters<a class="headerlink" href="#list-of-parameters" title="Permalink to this heading">¶</a></h2>
@@ -333,7 +337,10 @@
 <td><p>.true.</p></td>
 <td><p>1.2E+02</p></td>
 <td><p>3E+00</p></td>
-<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
 </tr>
 <tr class="row-odd"><td><p>U75-ht1-E1n3-1</p></td>
 <td><p>384</p></td>
@@ -999,7 +1006,10 @@
 <td><p>.true.</p></td>
 <td><p>9E+01</p></td>
 <td><p>3E+00</p></td>
-<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
 </tr>
 <tr class="row-even"><td><p>J95-pn1-ht1-E1n5-6</p></td>
 <td><p>384</p></td>
@@ -2493,7 +2503,10 @@
 <td><p>.true.</p></td>
 <td><p>2.8E+02</p></td>
 <td><p>3E+00</p></td>
-<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
 </tr>
 <tr class="row-odd"><td><p>J95-pn2-ht4-E1n4-1</p></td>
 <td><p>128</p></td>
@@ -2943,7 +2956,10 @@
 <td><p>.true.</p></td>
 <td><p>1.8E+02</p></td>
 <td><p>3E+00</p></td>
-<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
 </tr>
 <tr class="row-even"><td><p>J95-pn1-ht1-E3n6-10Ra-M7</p></td>
 <td><p>1024</p></td>
@@ -3259,7 +3275,7 @@
       &copy;2022, Hiroaki Matsui.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.1.1</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
