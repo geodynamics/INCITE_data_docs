@@ -1025,20 +1025,20 @@
 !, 
         write(id_log,'(a, a2,a)') trim(hd_no_slip), ', ',               &
      &                            trim(param(i)%no_slip_boundaries)
-        write(id_log,'(a, a2,a)') trim(hd_fix_tvar_bottom), ', ',       &
-     &                            trim(param(i)%fix_tvar_bottom)
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_T_bottom), ', ',      &
-     &                                  param(i)%T_bottom
-        write(id_log,'(a, a2,a)')  trim(hd_fix_dtdr_bottom), ', ',      &
-     &                                  trim(param(i)%fix_dtdr_bottom)
+!        write(id_log,'(a, a2,a)') trim(hd_fix_tvar_bottom), ', ',      &
+!     &                            trim(param(i)%fix_tvar_bottom)
+!        write(id_log,'(a, a2,1pe10.2)')  trim(hd_T_bottom), ', ',      &
+!     &                                  param(i)%T_bottom
+!        write(id_log,'(a, a2,a)')  trim(hd_fix_dtdr_bottom), ', ',     &
+!     &                                  trim(param(i)%fix_dtdr_bottom)
         write(id_log,'(a, a2,1pe10.2)')  trim(hd_dTdr_bottom), ', ',   &
      &                                  param(i)%dTdr_bottom
-        write(id_log,'(a, a2,a)') trim(hd_fix_tvar_top), ', ',          &
-     &                                   trim(param(i)%fix_tvar_top)
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_T_top), ', ',         &
-     &                                   param(i)%T_top
-        write(id_log,'(a, a2,a)') trim(hd_fix_dtdr_top), ', ',          &
-     &                                   trim(param(i)%fix_dtdr_top)
+!        write(id_log,'(a, a2,a)') trim(hd_fix_tvar_top), ', ',         &
+!     &                                   trim(param(i)%fix_tvar_top)
+!        write(id_log,'(a, a2,1pe10.2)')  trim(hd_T_top), ', ',         &
+!     &                                   param(i)%T_top
+!        write(id_log,'(a, a2,a)') trim(hd_fix_dtdr_top), ', ',         &
+!     &                                   trim(param(i)%fix_dtdr_top)
         write(id_log,'(a, a2,1pe10.2)')  trim(hd_dTdr_top), ', ',      &
      &                                   param(i)%dTdr_top
 !
@@ -1122,16 +1122,16 @@
      &                                  param(i)%T_bottom
         write(id_log,'(a, a2,a)')  trim(hd_fix_dtdr_bottom), ', ',      &
      &                                  trim(param(i)%fix_dtdr_bottom)
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_dTdr_bottom), ', ',    &
-     &                                  param(i)%dTdr_bottom
-        write(id_log,'(a, a2,a)') trim(hd_fix_tvar_top), ', ',          &
-     &                                   trim(param(i)%fix_tvar_top)
+!        write(id_log,'(a, a2,1pe10.2)')  trim(hd_dTdr_bottom), ', ',   &
+!     &                                  param(i)%dTdr_bottom
+!        write(id_log,'(a, a2,a)') trim(hd_fix_tvar_top), ', ',         &
+!     &                                   trim(param(i)%fix_tvar_top)
         write(id_log,'(a, a2,1pe10.2)')  trim(hd_T_top), ', ',          &
      &                                   param(i)%T_top
-        write(id_log,'(a, a2,a)') trim(hd_fix_dtdr_top), ', ',          &
-     &                                   trim(param(i)%fix_dtdr_top)
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_dTdr_top), ', ',       &
-     &                                   param(i)%dTdr_top
+!        write(id_log,'(a, a2,a)') trim(hd_fix_dtdr_top), ', ',         &
+!     &                                   trim(param(i)%fix_dtdr_top)
+!        write(id_log,'(a, a2,1pe10.2)')  trim(hd_dTdr_top), ', ',      &
+!     &                                   param(i)%dTdr_top
 !
         write(id_log,'(a, a2,i8)')  trim(hd_reference_type), ', ',      &
      &                                   param(i)%reference_type

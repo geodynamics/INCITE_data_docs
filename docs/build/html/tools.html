@@ -14,7 +14,6 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="Geo-9" href="INCITE/ryadav/ensemble4/Pm0.2_Pr1_eta0.35_Ek1E-7_Ra3E10_no-slip_dyn/Case_doc.html" />
@@ -144,10 +143,11 @@ The required compiler and packages can be installed as followings: GCC in Homebr
 <section id="convert-checkpint-data-file">
 <h2>Convert Checkpint data file<a class="headerlink" href="#convert-checkpint-data-file" title="Permalink to this heading">¶</a></h2>
 <p>The checkpoint converter program is performed by the folowing:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">convert_checkpoint</span> <span class="p">[</span><span class="n">INCITE_CHECKPOINT_DIR</span><span class="p">]</span> <span class="p">[</span><span class="n">NEW_CHECKPOINT_DIR</span><span class="p">]</span> <span class="p">[</span><span class="n">START_STEP</span><span class="p">]</span>  <span class="p">[</span><span class="n">END_STEP</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="p">[</span><span class="n">HOMEDIR</span><span class="p">]</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">convert_checkpoint</span> <span class="p">[</span><span class="n">INCITE_CHECKPOINT_DIR</span><span class="p">]</span> <span class="p">[</span><span class="n">NEW_CHECKPOINT_DIR</span><span class="p">]</span> <span class="p">[</span><span class="n">START_STEP</span><span class="p">]</span>  <span class="p">[</span><span class="n">END_STEP</span><span class="p">]</span>
 </pre></div>
 </div>
 <ul class="simple">
+<li><p>[HOMEDIR]/bin is the directrory where the program is stored. The program can run after copying to the directory where the data copied.</p></li>
 <li><p>[INCITE_CHECKPOINT_DIR] is the directrory of the origianl checkpoint data files made by the INCITE project.</p></li>
 <li><p>[NEW_CHECKPOINT_DIR] is the directory for the converted Checkpoint data for Rayleigh 1.0.</p></li>
 <li><p>[START_STEP] is the integer value for the start step to convert</p></li>
@@ -224,7 +224,7 @@ The required compiler and packages can be installed as followings: GCC in Homebr
       &copy;2022, Hiroaki Matsui.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.1.1</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

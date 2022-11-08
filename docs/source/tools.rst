@@ -110,8 +110,9 @@ Convert Checkpint data file
 
 The checkpoint converter program is performed by the folowing::
 
-	% convert_checkpoint [INCITE_CHECKPOINT_DIR] [NEW_CHECKPOINT_DIR] [START_STEP]  [END_STEP]
+	% [HOMEDIR]/bin/convert_checkpoint [INCITE_CHECKPOINT_DIR] [NEW_CHECKPOINT_DIR] [START_STEP]  [END_STEP]
 
+* [HOMEDIR]/bin is the directrory where the program is stored. The program can run after copying to the directory where the data copied.
 * [INCITE_CHECKPOINT_DIR] is the directrory of the origianl checkpoint data files made by the INCITE project.
 * [NEW_CHECKPOINT_DIR] is the directory for the converted Checkpoint data for Rayleigh 1.0.
 * [START_STEP] is the integer value for the start step to convert
