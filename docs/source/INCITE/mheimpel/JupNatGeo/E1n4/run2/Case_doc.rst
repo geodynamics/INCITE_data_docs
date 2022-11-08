@@ -49,11 +49,8 @@ Radial velocity field :math:`u_r` in the fluid shell.
 
 Temperature :math:`T` in the fluid shell.
 
-.. figure:: ./images/AZ_Avgs.png
-   :width: 800px
-   :align: center
+.. include:: ./AZ_Avgs_caption.rst
 
-Temperature :math:`T`, (left) and  zonal velocity field :math:`u_\phi`, (right)  in the fluid shell.
 
 .. figure:: ./images/KPower_1.pdf
    :width: 800px

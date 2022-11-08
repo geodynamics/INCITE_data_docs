@@ -38,31 +38,14 @@ Examples of visualized images.
 .. include:: ./G_Avgs_caption.rst
 
 
-.. figure:: ./images/Shell_Slices_Br_0.pdf
-   :width: 800px
-   :align: center
+.. include:: ./Shell_Slices_caption_Bz_0.rst
 
-Radial magnetic field :math:`B_r` at the outer boundary :math:`r = r_o`.
+.. include:: ./Shell_Slices_caption_Ur_2.rst
 
-.. figure:: ./images/Shell_Slices_Ur_2.pdf
-   :width: 800px
-   :align: center
+.. include:: ./Shell_Slices_caption_temp_2.rst
 
-Radial velocity field :math:`u_r` in the fluid shell.
 
-.. figure:: ./images/Shell_Slices_temp_2.pdf
-   :width: 800px
-   :align: center
-
-Temperature :math:`T` in the fluid shell.
-
-.. figure:: ./images/AZ_Avgs.png
-   :width: 800px
-   :align: center
-
-Temperature :math:`T`, (left),  zonal velocity field :math:`u_\phi`, (middle),  and zonal magnetic field :math:`B_\phi`, (right) in the fluid shell.
 .. include:: ./AZ_Avgs_caption.rst
-
 
 .. include:: ./Equatorial_Slices_caption.rst
 

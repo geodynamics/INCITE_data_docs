@@ -64,6 +64,7 @@
 
 #####################################
 #  Shell Slice
+from find_first_last_Rayleigh_data import find_last2_Rayleigh_data
 from rayleigh_diagnostics import Shell_Slices
 import numpy as np
 import matplotlib.pyplot as plt
@@ -72,56 +73,37 @@ import os
 import math
 
 Shell_Slices_path =         "Shell_Slices/"
-Shell_Slices_caption_file = 'Shell_Slices_caption.rst'
-Shell_Slices_image_prefix =   'images/AZ_Avgs_'
+Shell_Slices_caption_prefix = 'Shell_Slices_caption_'
+Shell_Slices_image_prefix =    'images/Shell_Slices_'
+temp_postfix = 'temp_'
+Ur_postfix =   'Ur_'
+Bz_postfix =   'Bz_'
 
-
-def s_plot_Shell_Slices_rakesh(Gpath):
-  print("path: ", Gpath)
-# Read the data
-  filelist = []
-  filelist = os.listdir(Gpath)
-#  print(filelist)
-  nfile=len(filelist)
-  if(nfile < 1):
-    print('No file')
-    return
-#  print(nfile)
+def plot_each_r_Shell_Slices_rakesh(ss, icou, rindex, init_time):
+  niter = ss.niter
+  tindex = niter - 1 # All example quantities were output with same cadence.  Grab second time-index from all.
   
-  max_step = int(filelist[0])
-  istring = filelist[0]
-  for fname in filelist:
-    istep = int(fname)
-    if(istep > max_step):
-      max_step = istep
-      istring = fname
+  time = ss.time[tindex] - init_time
+  tpow = math.floor(np.log10(time))
+  tnum = time * 10.0**(-tpow)
+  ttext = "{:.3f} \\times 10^{{{:d}}}".format(tnum, tpow)
   
-  print('Step to plot: ', istring)
-  
-#  istring = '00040000'
-  ss = Shell_Slices(istring)
-  plot_each_r_Shell_Slices_rakesh(ss, 0, 0)
-  plot_each_r_Shell_Slices_rakesh(ss, 1, (ss.nr-1))
-  plot_each_r_Shell_Slices_rakesh(ss, 2, (ss.nr-2))
-  plot_each_r_Shell_Slices_rakesh(ss, 3, (ss.nr-3))
-  return
-
-
-
-def plot_each_r_Shell_Slices_rakesh(ss, icou, rindex):
   ntheta = ss.ntheta
   nphi = ss.nphi
   costheta = ss.costheta
   theta = np.arccos(costheta) - np.pi/2.0
   phi = np.arange(nphi)*2.0*np.pi/nphi - np.pi
   
-  
-  tindex = 0 # All example quantities were output with same cadence.  Grab second time-index from all.
-#  rindex = 1 # only output one radius
   depth = ss.radius[0] - ss.radius[rindex]
-  ttitle = 'Temperature $T$ at $r = r_o -$ {:.3f}'.format(depth)
-  utitle = 'Radial Velocity $u_r$ at $r = r_o -$ {:.3f}'.format(depth)
-  btitle = 'Radial Magnetic Field $B_r$ at $r = r_o -$ {:.3f}'.format(depth)
+  ttitle = 'Temperature $T$'
+  utitle = 'Radial Velocity $u_r$'
+  btitle = 'Radial Magnetic Field $B_r$'
+  
+  bbox_props = dict(boxstyle="round", fc="w", ec="0.5", alpha=1.0)
+  rtext = "{:.3f}".format(depth)
+  textbox = "$r = r_o - $ " + rtext + " \n $t = " + ttext + "$"
+  r_and_t_text = "at :math:`r = r_o - " + rtext + "` and :math:`t = " + ttext + "`"
+  
   
   sizetuple=(12,5)
   
@@ -132,70 +114,167 @@ def plot_each_r_Shell_Slices_rakesh(ss, icou, rindex):
 #     We do a single row of 2 images 
 #     Spacing is default spacing set up by subplot
   figdpi=300
-  sizetuple=(6.0*2,3.2)
+  sizetuple=(12,5)
   tsize = 20     # title font size
   cbfsize = 10   # colorbar font size
   
-  fig, ax = plt.subplots(ncols=2,figsize=sizetuple,dpi=figdpi)
-  plt.rcParams.update({'font.size': 14})
   
-  bbox_props = dict(boxstyle="round", fc="w", ec="0.5", alpha=1.0)
-  textbox = "$t = " + ttext + "$"
+  fig = plt.figure(figsize=sizetuple,dpi=figdpi)
+  ax1 = fig.add_subplot(111, projection='mollweide')
   
   v_max = np.max(temp)
   v_min = np.min(temp)
-  plot1 = ax[0].pcolormesh(phi, theta, temp.transpose(), shading='auto', 
+  plot1 = ax1.pcolormesh(phi, theta, temp.transpose(), shading='auto', 
                          cmap='hot',vmin=v_min,vmax=v_max, rasterized=True)
   
-  ax[0].set_xticklabels([])
-  ax[0].set_yticklabels([])
-  ax[0].set_title(ttitle)
+  ax1.set_xticklabels([])
+  ax1.set_yticklabels([])
   
-  cbar = plt.colorbar(plot1, orientation='horizontal', shrink=0.5, aspect = 15, ax=ax[0])
-  cbar.set_label(r'$T$')
-  cbar.tight_layout()
+  ax1.set_title(ttitle)
+  ax1.text(5.4, -1.2, textbox, ha="center", va="center", size=12, bbox=bbox_props)
+  
+  plt.colorbar(plot1, label=r'$T$')
+  plt.tight_layout()
+  savefile = Shell_Slices_image_prefix + temp_postfix + str(icou) + '.pdf'
+  print('Saving figure to: ', savefile)
+  plt.savefig(savefile)
   
   
-  ax[1] = fig.add_subplot(111, projection='mollweide')
+  fig = plt.figure(figsize=sizetuple,dpi=figdpi)
+  ax2 = fig.add_subplot(111, projection='mollweide')
+  
   v_max = np.max(vr)
   v_min = -v_max
-  plot1 = ax[1].pcolormesh(phi, theta, vr.transpose(), shading='auto', 
+  plot1 = ax2.pcolormesh(phi, theta, vr.transpose(), shading='auto', 
                          cmap='seismic',vmin=v_min,vmax=v_max,
                          rasterized=True)
   
-  ax[1].set_xticklabels([])
-  ax[1].set_yticklabels([])
-  ax[1].set_title(utitle)
+  ax2.set_xticklabels([])
+  ax2.set_yticklabels([])
+  ax2.set_title(utitle)
+  ax2.text(5.4, -1.2, textbox, ha="center", va="center", size=12, bbox=bbox_props)
   
-  cbar = plt.colorbar(plot1, orientation='horizontal', shrink=0.5, aspect = 15, ax=ax[1])
-  cbar.set_label(r'$U_r$')
-  cbar.tight_layout()
+  plt.colorbar(plot1, label=r'$U_r$')
+  plt.tight_layout()
+  savefile = Shell_Slices_image_prefix + Ur_postfix + str(icou) + '.pdf'
+  print('Saving figure to: ', savefile)
+  plt.savefig(savefile)
   
-  fig = plt.figure(figsize=sizetuple)
-  ax2 = fig.add_subplot(111, projection='mollweide')
+  
+  fig = plt.figure(figsize=sizetuple,dpi=figdpi)
+  ax3 = fig.add_subplot(111, projection='mollweide')
   
   v_max = np.max(br)
   v_min = -v_max
-  plot1 = ax2.pcolormesh(phi, theta, br.transpose(), shading='auto', 
-                         cmap='seismic',vmin=v_min,vmax=v_max, rasterized=True)
+  plot1 = ax3.pcolormesh(phi, theta, br.transpose(), shading='auto', 
+                         cmap='seismic',vmin=v_min,vmax=v_max,
+                         rasterized=True)
   
-  ax2.set_xticklabels([])
-  ax2.set_yticklabels([])
+  ax3.set_xticklabels([])
+  ax3.set_yticklabels([])
+  ax3.set_title(btitle)
+  ax3.text(5.4, -1.2, textbox, ha="center", va="center", size=12, bbox=bbox_props)
   
-#  ax2.set_xlabel( 'Longitude')
-#  ax2.set_ylabel( 'Latitude')
-  ax2.set_title(btitle)
-  
-  plt.colorbar(plot1, label='$B_r$')
+  plt.colorbar(plot1, label=r'$B_r$')
   plt.tight_layout()
-  savefile = 'images/Shell_Slices_Br_' + str(icou) + '.pdf'
+  savefile = Shell_Slices_image_prefix + Bz_postfix + str(icou) + '.pdf'
   print('Saving figure to: ', savefile)
   plt.savefig(savefile)
+  
+  return r_and_t_text
+
+def write_Shell_Slices_rakesh_captions(caption_prefix, r_and_t_text, icou):
+  caption_file_name = caption_prefix + temp_postfix + str(icou) + '.rst'
+  print('Write ', caption_file_name)
+  fp = open(caption_file_name, 'w')
+  fp.write('\n')
+  
+  ftext = '.. figure:: ./' + Shell_Slices_image_prefix \
+          + temp_postfix + str(icou) + '.pdf' + ' \n'
+  fp.write(ftext)
+  fp.write('   :width: 600px \n')
+  fp.write('   :align: center \n')
+  fp.write('\n')
+  
+  fp.write('Temperature :math:`T` ')
+  fp.write(r_and_t_text)
+  fp.write('\n')
+  fp.write('\n')
+  fp.close()
+  
+  caption_file_name = caption_prefix + Ur_postfix + str(icou) + '.rst'
+  print('Write ', caption_file_name)
+  fp = open(caption_file_name, 'w')
+  fp.write('\n')
+  
+  ftext = '.. figure:: ./' + Shell_Slices_image_prefix \
+          + Ur_postfix + str(icou) + '.pdf' + ' \n'
+  fp.write(ftext)
+  fp.write('   :width: 600px \n')
+  fp.write('   :align: center \n')
+  fp.write('\n')
+  
+  fp.write('Radial component of the velocity field :math:`u_r` ')
+  fp.write(r_and_t_text)
+  fp.write('\n')
+  fp.write('\n')
+  fp.close()
+  
+  caption_file_name = caption_prefix + Bz_postfix + str(icou) + '.rst'
+  print('Write ', caption_file_name)
+  fp = open(caption_file_name, 'w')
+  fp.write('\n')
+  
+  ftext = '.. figure:: ./' + Shell_Slices_image_prefix \
+          + Bz_postfix + str(icou) + '.pdf' + ' \n'
+  fp.write(ftext)
+  fp.write('   :width: 600px \n')
+  fp.write('   :align: center \n')
+  fp.write('\n')
+  
+  fp.write('Radial magnetic field :math:`B_r` ')
+  fp.write(r_and_t_text)
+  fp.write('\n')
+  fp.write('\n')
+  fp.close()
   
   return
 
 
+def s_plot_Shell_Slices_rakesh(Gpath, caption_prefix, init_time):
+#  print("path: ", Gpath)
+  last2_file_name = find_last2_Rayleigh_data(Gpath)
+  if(last2_file_name[0] == 'NO_FILE'):
+    return
+  
+  print('Step to plot: ', last2_file_name[1])
+  
+#  istring = '00040000'
+  ss = Shell_Slices(last2_file_name[1])
+  r_and_t_textlist = []
+  if(ss.nr > 0):
+    text_tmp = plot_each_r_Shell_Slices_rakesh(ss, 0, 0, init_time)
+    write_Shell_Slices_rakesh_captions(caption_prefix, text_tmp, 0)
+    r_and_t_textlist.append(text_tmp)
+  if(ss.nr > 1):
+    text_tmp = plot_each_r_Shell_Slices_rakesh(ss, 1, (ss.nr-1), init_time)
+    write_Shell_Slices_rakesh_captions(caption_prefix, text_tmp, 1)
+    r_and_t_textlist.append(text_tmp)
+  if(ss.nr > 2):
+    text_tmp = plot_each_r_Shell_Slices_rakesh(ss, 2, (ss.nr-2), init_time)
+    write_Shell_Slices_rakesh_captions(caption_prefix, text_tmp, 2)
+    r_and_t_textlist.append(text_tmp)
+  if(ss.nr > 3):
+    text_tmp = plot_each_r_Shell_Slices_rakesh(ss, 3, (ss.nr-3), init_time)
+    write_Shell_Slices_rakesh_captions(caption_prefix, text_tmp, 3)
+    r_and_t_textlist.append(text_tmp)
+  return
+
+
+
 if __name__ == '__main__':
-  s_plot_Shell_Slices_rakesh(Shell_Slices_path)
+  init_time = 0.0
+  s_plot_Shell_Slices_rakesh(Shell_Slices_path, \
+                             Shell_Slices_caption_prefix, init_time)
 
 

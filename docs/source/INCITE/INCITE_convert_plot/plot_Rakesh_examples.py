@@ -44,6 +44,7 @@ def plot_each_Rakesh_examples(d):
   G_Avgs_caption_file =            'G_Avgs_caption.rst'
   Equatorial_Slices_caption_file = 'Equatorial_Slices_caption.rst'
   AZ_Avgs_caption_file =           'AZ_Avgs_caption.rst'
+  Shell_Slices_caption_prefix =    'Shell_Slices_caption_'
   
   
 #  Copy volume average
@@ -186,9 +187,11 @@ def plot_each_Rakesh_examples(d):
   init_time = s_plot_G_Avgs_rakesh(dest_G_Avgs)
   
   s_plot_Shell_Spectra_rakesh(dest_Shell_Spectra)
-  s_plot_Shell_Slices_rakesh(dest_Shell_Slices)
   time_EQ = plot_each_Equatorial_Slices_rakesh(Equatorial_Slices_lastfile, init_time)
   time_AZ = s_plot_AZ_Avgs_rakesh(dest_AZ_Avgs, init_time)
+  
+  file_name = dest_dir + Shell_Slices_caption_prefix
+  s_plot_Shell_Slices_rakesh(dest_Shell_Slices, file_name, init_time)
   
   s_convert_main_input(main_input_org, main_input)
   

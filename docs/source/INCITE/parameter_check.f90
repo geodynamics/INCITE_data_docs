@@ -1395,63 +1395,20 @@
           write(id_out,'(a)') '.. include:: ./G_Avgs_caption.rst'
           write(id_out,'(a)') 
 
-          write(id_out,'(a)')    
+          write(id_out,'(a)') 
           write(id_out,'(a)')                                           &
-     &            '.. figure:: ./images/Shell_Slices_Br_0.pdf'
-!          write(id_out,'(a)') '   :scale: 30%'
-!          write(id_out,'(a)') '   :height: 1620px'
-          write(id_out,'(a)') '   :width: 800px'
-          write(id_out,'(a)') '   :align: center'
-!
-          write(id_out,'(a)')    
-          write(id_out,'(2a)')                                          &
-     &             'Radial magnetic field :math:`B_r`',                 &
-     &             ' at the outer boundary :math:`r = r_o`.'
-
-          write(id_out,'(a)')    
+     &             '.. include:: ./Shell_Slices_caption_Bz_0.rst'
+          write(id_out,'(a)') 
           write(id_out,'(a)')                                           &
-     &            '.. figure:: ./images/Shell_Slices_Ur_2.pdf'
-!          write(id_out,'(a)') '   :scale: 30%'
-!          write(id_out,'(a)') '   :height: 1620px'
-          write(id_out,'(a)') '   :width: 800px'
-          write(id_out,'(a)') '   :align: center'
-!
-          write(id_out,'(a)')    
-          write(id_out,'(2a)')                                          &
-     &             'Radial velocity field :math:`u_r`',                 &
-     &             ' in the fluid shell.'
-
-          write(id_out,'(a)')    
+     &             '.. include:: ./Shell_Slices_caption_Ur_2.rst'
+          write(id_out,'(a)') 
           write(id_out,'(a)')                                           &
-     &            '.. figure:: ./images/Shell_Slices_temp_2.pdf'
-!          write(id_out,'(a)') '   :scale: 30%'
-!          write(id_out,'(a)') '   :height: 1620px'
-          write(id_out,'(a)') '   :width: 800px'
-          write(id_out,'(a)') '   :align: center'
-!
-          write(id_out,'(a)')    
-          write(id_out,'(2a)')                                          &
-     &             'Temperature :math:`T`',                             &
-     &             ' in the fluid shell.'
+     &             '.. include:: ./Shell_Slices_caption_temp_2.rst'
+          write(id_out,'(a)') 
 
-          write(id_out,'(a)')    
-          write(id_out,'(a)')                                           &
-     &            '.. figure:: ./images/AZ_Avgs.png'
-!          write(id_out,'(a)') '   :scale: 30%'
-!          write(id_out,'(a)') '   :height: 1620px'
-          write(id_out,'(a)') '   :width: 800px'
-          write(id_out,'(a)') '   :align: center'
-!
-          write(id_out,'(a)')    
-          write(id_out,'(4a)')                                          &
-     &             'Temperature :math:`T`, (left), ',                   &
-     &             ' zonal velocity field :math:`u_\phi`, (middle), ',  &
-     &             ' and zonal magnetic field :math:`B_\phi`, (right)', &
-     &             ' in the fluid shell.'
-
+          write(id_out,'(a)') 
           write(id_out,'(a)')                                           &
      &             '.. include:: ./AZ_Avgs_caption.rst'
-          write(id_out,'(a)') 
           write(id_out,'(a)') 
           write(id_out,'(a)')                                           &
      &             '.. include:: ./Equatorial_Slices_caption.rst'

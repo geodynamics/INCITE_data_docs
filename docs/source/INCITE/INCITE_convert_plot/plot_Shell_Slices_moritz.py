@@ -134,8 +134,6 @@ def plot_each_r_Shell_Slices_moritz(ss, icou, rindex):
   ax1.set_xticklabels([])
   ax1.set_yticklabels([])
   
-#  ax1.set_xlabel( 'Longitude')
-#  ax1.set_ylabel( 'Latitude')
   ax1.set_title(ttitle)
   
   plt.colorbar(plot1, label=r'$T$')
