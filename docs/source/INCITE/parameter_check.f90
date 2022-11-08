@@ -1458,6 +1458,9 @@
      &             ' and zonal magnetic field :math:`B_\phi`, (right)', &
      &             ' in the fluid shell.'
 
+          write(id_out,'(a)')                                           &
+     &             '.. include:: ./AZ_Avgs_caption.rst'
+          write(id_out,'(a)') 
           write(id_out,'(a)') 
           write(id_out,'(a)')                                           &
      &             '.. include:: ./Equatorial_Slices_caption.rst'

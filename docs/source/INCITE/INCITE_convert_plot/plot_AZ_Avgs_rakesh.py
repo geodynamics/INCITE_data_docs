@@ -57,36 +57,30 @@
 
 # In[13]:
 
+from find_first_last_Rayleigh_data import find_first_last2_Rayleigh_data
 from rayleigh_diagnostics import AZ_Avgs, build_file_list, plot_azav, streamfunction
 import matplotlib.pyplot as plt
 import pylab
+import math
 import numpy
 import os
 #from azavg_util import *
 
-def s_plot_AZ_Avgs_rakesh(path):
-  print("path: ", path)
-  filelist = []
-  filelist = os.listdir(path)
-# print(filelist)
-  nfile=len(filelist)
-  if(nfile < 1):
-    print('No file')
+AZ_Avgs_path =         "AZ_Avgs/"
+AZ_Avgs_caption_file = 'AZ_Avgs_caption.rst'
+AZ_Avgs_image_file =   'images/AZ_Avgs.png'
+
+def s_plot_AZ_Avgs_rakesh(Gpath, init_time):
+  #print("path: ", Gpath)
+  start_last_file_name = find_first_last2_Rayleigh_data(Gpath)
+  if(start_last_file_name[0] == 'NO_FILE'):
     return
-# print(nfile)
-
-  min_step = int(filelist[0])
-  max_step = int(filelist[0])
-  for fname in filelist:
-    istep = int(fname)
-    if(istep < min_step):
-      min_step = istep
-    if(istep > max_step):
-      max_step = istep
-
+  
+  min_step = int(start_last_file_name[0])
+  max_step = int(start_last_file_name[2])
   print('Step range: ', min_step, max_step)
-
-  files = build_file_list(min_step,max_step,path)
+  
+  files = build_file_list(min_step,max_step,Gpath)
   az = AZ_Avgs(files[len(files)-1],path='')
 
 
@@ -109,7 +103,12 @@ def s_plot_AZ_Avgs_rakesh(path):
       tcount+=1
       
   azavg = azavg*(1.0/tcount)  # Time steps were uniform for this run, so a simple average will suffice
-
+  
+  time = az.time[az.niter-1] - init_time
+  tpow = math.floor(numpy.log10(time))
+  tnum = time * 10.0**(-tpow)
+  ttext = "{:.3f} \\times 10^{{{:d}}}".format(tnum, tpow)
+  
   lut = az.lut
   vr = azavg[:,:,lut[1]]
   vtheta = azavg[:,:,lut[2]]
@@ -163,7 +162,10 @@ def s_plot_AZ_Avgs_rakesh(path):
   cbfsize = 10   # colorbar font size
   fig, ax = plt.subplots(ncols=3,figsize=sizetuple,dpi=figdpi)
   plt.rcParams.update({'font.size': 14})
-
+  
+  bbox_props = dict(boxstyle="round", fc="w", ec="0.5", alpha=1.0)
+  textbox = "$t = " + ttext + "$"
+  
 #  temperature
 #  ax1 = f1.add_subplot(1,3,1)
   units = '$T$'
@@ -172,6 +174,7 @@ def s_plot_AZ_Avgs_rakesh(path):
   ax[0].set_xlim(-0.3, 1.0)
   ax[0].set_ylim(-1.0, 1.0)
   ax[0].set_title(r'Temperature $T$',fontsize=tsize)
+  ax[0].text(0.6, -1.2, textbox, ha="center", va="center", size=14, bbox=bbox_props)
   
 #  Differential Rotation
 #  ax1 = f1.add_subplot(1,3,2)
@@ -181,6 +184,7 @@ def s_plot_AZ_Avgs_rakesh(path):
   ax[1].set_xlim(-0.3, 1.0)
   ax[1].set_ylim(-1.0, 1.0)
   ax[1].set_title(r'zonal velocity $u_\phi$',fontsize=tsize)
+  ax[1].text(0.6, -1.2, textbox, ha="center", va="center", size=14, bbox=bbox_props)
   
 #  Toroidal magnetic field
 #  ax1 = f1.add_subplot(1,3,2)
@@ -190,15 +194,43 @@ def s_plot_AZ_Avgs_rakesh(path):
   ax[2].set_xlim(-0.3, 1.0)
   ax[2].set_ylim(-1.0, 1.0)
   ax[2].set_title(r'zonal magnettic field $B_\phi$',fontsize=tsize)
+  ax[2].text(0.6, -1.2, textbox, ha="center", va="center", size=14, bbox=bbox_props)
   
   
-  savefile = 'images/AZ_Avgs.png'
+  savefile = AZ_Avgs_image_file
   print('Saving figure to: ', savefile)
   plt.savefig(savefile)
+  
+  return time
+
+def write_AZ_Avgs_rakesh_captions(caption_file_name, time):
+  print('Write ', caption_file_name)
+  fp = open(caption_file_name, 'w')
+  fp.write('\n')
+  
+  ftext = '.. figure:: ./' + AZ_Avgs_image_file + ' \n'
+  fp.write(ftext)
+  fp.write('   :width: 800px \n')
+  fp.write('   :align: center \n')
+  fp.write('\n')
+  
+  tpow = math.floor(numpy.log10(time))
+  tnum = time * 10.0**(-tpow)
+  ttext = " at :math:`t = {:.3f} \\times 10^{{{:d}}} \\tau_{{\\nu}}`. \n".format(tnum, tpow)
+  fp.write('Temperature :math:`T`, (left),')
+  fp.write(' zonal velocity field :math:`u_\\phi`, (middle),')
+  fp.write(' and zonal magnetic field :math:`B_\\phi`, (right)')
+  fp.write(' in the fluid shell')
+  fp.write(ttext)
+  fp.write('\n')
+  fp.write('\n')
+  
+  fp.close()
   return
 
 if __name__ == '__main__':
-  path = "AZ_Avgs/"
-  s_plot_AZ_Avgs_rakesh(path)
+  init_time = 0.0
+  time = s_plot_AZ_Avgs_rakesh(AZ_Avgs_path, init_time)
+  write_AZ_Avgs_rakesh_captions(AZ_Avgs_caption_file, time)
 
 

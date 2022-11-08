@@ -61,6 +61,8 @@ Temperature :math:`T` in the fluid shell.
    :align: center
 
 Temperature :math:`T`, (left),  zonal velocity field :math:`u_\phi`, (middle),  and zonal magnetic field :math:`B_\phi`, (right) in the fluid shell.
+.. include:: ./AZ_Avgs_caption.rst
+
 
 .. include:: ./Equatorial_Slices_caption.rst
 

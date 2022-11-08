@@ -6,7 +6,7 @@ from plot_G_Avgs_rakesh import s_plot_G_Avgs_rakesh, write_G_Avgs_rakesh_caption
 from plot_Shell_Spectra_rakesh import s_plot_Shell_Spectra_rakesh
 from plot_Shell_Slices_rakesh import s_plot_Shell_Slices_rakesh
 from plot_Equatorial_Slices_rakesh import plot_each_Equatorial_Slices_rakesh, write_Equatorial_Slices_rakesh_captions
-from plot_AZ_Avgs_rakesh import s_plot_AZ_Avgs_rakesh
+from plot_AZ_Avgs_rakesh import s_plot_AZ_Avgs_rakesh, write_AZ_Avgs_rakesh_captions
 from convert_main_input import s_convert_main_input
 from convert import each_convert
 
@@ -43,6 +43,7 @@ def plot_each_Rakesh_examples(d):
   
   G_Avgs_caption_file =            'G_Avgs_caption.rst'
   Equatorial_Slices_caption_file = 'Equatorial_Slices_caption.rst'
+  AZ_Avgs_caption_file =           'AZ_Avgs_caption.rst'
   
   
 #  Copy volume average
@@ -187,7 +188,7 @@ def plot_each_Rakesh_examples(d):
   s_plot_Shell_Spectra_rakesh(dest_Shell_Spectra)
   s_plot_Shell_Slices_rakesh(dest_Shell_Slices)
   time_EQ = plot_each_Equatorial_Slices_rakesh(Equatorial_Slices_lastfile, init_time)
-  s_plot_AZ_Avgs_rakesh(dest_AZ_Avgs)
+  time_AZ = s_plot_AZ_Avgs_rakesh(dest_AZ_Avgs, init_time)
   
   s_convert_main_input(main_input_org, main_input)
   
@@ -195,6 +196,8 @@ def plot_each_Rakesh_examples(d):
   write_G_Avgs_rakesh_captions(file_name)
   file_name = dest_dir + Equatorial_Slices_caption_file
   write_Equatorial_Slices_rakesh_captions(file_name, time_EQ)
+  file_name = dest_dir + AZ_Avgs_caption_file
+  write_AZ_Avgs_rakesh_captions(file_name, time_AZ)
   
   shutil.rmtree(dest_AZ_Avgs)
   shutil.rmtree(dest_Equatorial_Slices)
