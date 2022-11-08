@@ -1,21 +1,23 @@
 # /bin/sh
 
+#    "mheimpel/JupNatGeo/E1n3/run1/" \
+#    "mheimpel/JupNatGeo/E1n3/run2/" \
+#    "mheimpel/JupNatGeo/E1n4/run1/" \
+#    "mheimpel/JupNatGeo/E1n4/run2/" \
+#    "mheimpel/JupNatGeo/E1n4/run3/" \
+#    "mheimpel/JupNatGeo/E1n5/run1/" \
+#    "mheimpel/JupNatGeo/E3n5/run1/" \
+#    "mheimpel/JupNatGeo/E3n6/run1/" \
+#    "mheimpel/JupNatGeo/E3n6/run2/" \
+#    "mheimpel/JupNatGeo/E3n6/run3/" \
+#    "mheimpel/JupNatGeo/E3n6/run4/" \
+#    "mheimpel/JupNatGeo/E3n6/run4a/" \
+#    "mheimpel/JupNatGeo/E3n6/run4b/" \
+#    "mheimpel/JupNatGeo/E3n6/run5/" \
+#    "mheimpel/JupNatGeo/E3n6/run6/" \
+#
+
 python3 INCITE_convert_plot/plot_Moritz_examples.py \
-"mheimpel/JupNatGeo/E1n3/run1/" \
-"mheimpel/JupNatGeo/E1n3/run2/" \
-"mheimpel/JupNatGeo/E1n4/run1/" \
-"mheimpel/JupNatGeo/E1n4/run2/" \
-"mheimpel/JupNatGeo/E1n4/run3/" \
-"mheimpel/JupNatGeo/E1n5/run1/" \
-"mheimpel/JupNatGeo/E3n5/run1/" \
-"mheimpel/JupNatGeo/E3n6/run1/" \
-"mheimpel/JupNatGeo/E3n6/run2/" \
-"mheimpel/JupNatGeo/E3n6/run3/" \
-"mheimpel/JupNatGeo/E3n6/run4/" \
-"mheimpel/JupNatGeo/E3n6/run4a/" \
-"mheimpel/JupNatGeo/E3n6/run4b/" \
-"mheimpel/JupNatGeo/E3n6/run5/" \
-"mheimpel/JupNatGeo/E3n6/run6/" \
 "mheimpel/Jup90/fsb/E3n6/run1/" \
 "mheimpel/Jup90/fsb/E3n6/run2/" \
 "mheimpel/Jup90/fsb/E3n6/run3/" \
