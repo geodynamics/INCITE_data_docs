@@ -1278,19 +1278,10 @@
      &             'Temperature :math:`T`',                             &
      &             ' in the fluid shell.'
 
-          write(id_out,'(a)')    
+          write(id_out,'(a)') 
           write(id_out,'(a)')                                           &
-     &            '.. figure:: ./images/AZ_Avgs.png'
-!          write(id_out,'(a)') '   :scale: 30%'
-!          write(id_out,'(a)') '   :height: 1620px'
-          write(id_out,'(a)') '   :width: 800px'
-          write(id_out,'(a)') '   :align: center'
-!
-          write(id_out,'(a)')    
-          write(id_out,'(4a)')                                          &
-     &             'Temperature :math:`T`, (left) and ',                &
-     &             ' zonal velocity field :math:`u_\phi`, (right) ',    &
-     &             ' in the fluid shell.'
+     &             '.. include:: ./AZ_Avgs_caption.rst'
+          write(id_out,'(a)') 
 
           write(id_out,'(a)')    
           write(id_out,'(a)') '.. figure:: ./images/KPower_1.pdf'

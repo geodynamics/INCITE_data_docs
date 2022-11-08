@@ -165,16 +165,7 @@ def plot_each_Equatorial_Slices_rakesh(istring, init_time):
   t = cbar.ax.xaxis.label
   t.set_fontsize(cbfsize)  # font size for the axis title
   
-#  
-#  plt.tight_layout()
-#  savefile = 'images/Equatorial_Slice_Ur.png'
-#  print('Saving figure to: ', savefile)
-#  plt.savefig(savefile)
-
 #Plot Bz
-#  fig, ax = plt.subplots(figsize=sizetuple,dpi=figdpi)
-#  tsize = 20     # title font size
-#  cbfsize = 10   # colorbar font size
   v_max = numpy.max(field_B)
   v_min = -v_max
   img = ax[1].pcolormesh(X,Y,field_B,cmap='seismic',vmin=v_min,vmax=v_max)
@@ -199,17 +190,7 @@ def plot_each_Equatorial_Slices_rakesh(istring, init_time):
   t = cbar.ax.xaxis.label
   t.set_fontsize(cbfsize)  # font size for the axis title
   
-  
-#  plt.tight_layout()
-#  savefile = 'images/Equatorial_Slice_Bz.png'
-#  print('Saving figure to: ', savefile)
-#  plt.savefig(savefile)
-#  
-  
-  #Plot T
-#  fig, ax = plt.subplots(figsize=sizetuple,dpi=figdpi)
-#  tsize = 20     # title font size
-#  cbfsize = 10   # colorbar font size
+#Plot T
   v_max = numpy.max(field_T)
   v_min = numpy.min(field_T)
   img = ax[2].pcolormesh(X,Y,field_T,cmap='hot',vmin=v_min,vmax=v_max)

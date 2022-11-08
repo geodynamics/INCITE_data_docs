@@ -69,13 +69,18 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import ticker, font_manager
 import os
+import math
+
+Shell_Slices_path =         "Shell_Slices/"
+Shell_Slices_caption_file = 'Shell_Slices_caption.rst'
+Shell_Slices_image_prefix =   'images/AZ_Avgs_'
 
 
-def s_plot_Shell_Slices_rakesh(path):
-  print("path: ", path)
+def s_plot_Shell_Slices_rakesh(Gpath):
+  print("path: ", Gpath)
 # Read the data
   filelist = []
-  filelist = os.listdir(path)
+  filelist = os.listdir(Gpath)
 #  print(filelist)
   nfile=len(filelist)
   if(nfile < 1):
@@ -124,52 +129,47 @@ def plot_each_r_Shell_Slices_rakesh(ss, icou, rindex):
   temp = ss.vals[:,:,rindex,ss.lut[501],tindex]
   br =   ss.vals[:,:,rindex,ss.lut[801],tindex]
   
+#     We do a single row of 2 images 
+#     Spacing is default spacing set up by subplot
+  figdpi=300
+  sizetuple=(6.0*2,3.2)
+  tsize = 20     # title font size
+  cbfsize = 10   # colorbar font size
   
-  fig = plt.figure(figsize=sizetuple)
-  ax1 = fig.add_subplot(111, projection='mollweide')
+  fig, ax = plt.subplots(ncols=2,figsize=sizetuple,dpi=figdpi)
+  plt.rcParams.update({'font.size': 14})
+  
+  bbox_props = dict(boxstyle="round", fc="w", ec="0.5", alpha=1.0)
+  textbox = "$t = " + ttext + "$"
   
   v_max = np.max(temp)
   v_min = np.min(temp)
-  plot1 = ax1.pcolormesh(phi, theta, temp.transpose(), shading='auto', 
+  plot1 = ax[0].pcolormesh(phi, theta, temp.transpose(), shading='auto', 
                          cmap='hot',vmin=v_min,vmax=v_max, rasterized=True)
   
-  ax1.set_xticklabels([])
-  ax1.set_yticklabels([])
+  ax[0].set_xticklabels([])
+  ax[0].set_yticklabels([])
+  ax[0].set_title(ttitle)
   
-#  ax1.set_xlabel( 'Longitude')
-#  ax1.set_ylabel( 'Latitude')
-  ax1.set_title(ttitle)
-  
-  plt.colorbar(plot1, label='$T$')
-  plt.tight_layout()
-  savefile = 'images/Shell_Slices_temp_' + str(icou) + '.pdf'
-  print('Saving figure to: ', savefile)
-  plt.savefig(savefile)
+  cbar = plt.colorbar(plot1, orientation='horizontal', shrink=0.5, aspect = 15, ax=ax[0])
+  cbar.set_label(r'$T$')
+  cbar.tight_layout()
   
   
-  fig = plt.figure(figsize=sizetuple)
-  ax2 = fig.add_subplot(111, projection='mollweide')
-  
+  ax[1] = fig.add_subplot(111, projection='mollweide')
   v_max = np.max(vr)
   v_min = -v_max
-  plot1 = ax2.pcolormesh(phi, theta, vr.transpose(), shading='auto', 
+  plot1 = ax[1].pcolormesh(phi, theta, vr.transpose(), shading='auto', 
                          cmap='seismic',vmin=v_min,vmax=v_max,
                          rasterized=True)
   
-  ax2.set_xticklabels([])
-  ax2.set_yticklabels([])
+  ax[1].set_xticklabels([])
+  ax[1].set_yticklabels([])
+  ax[1].set_title(utitle)
   
-#  ax2.set_xlabel( 'Longitude')
-#  ax2.set_ylabel( 'Latitude')
-  ax2.set_title(utitle)
-  
-  plt.colorbar(plot1, label='$U_r$')
-  plt.tight_layout()
-  savefile = 'images/Shell_Slices_Ur_' + str(icou) + '.pdf'
-  print('Saving figure to: ', savefile)
-  plt.savefig(savefile)
-  
-  
+  cbar = plt.colorbar(plot1, orientation='horizontal', shrink=0.5, aspect = 15, ax=ax[1])
+  cbar.set_label(r'$U_r$')
+  cbar.tight_layout()
   
   fig = plt.figure(figsize=sizetuple)
   ax2 = fig.add_subplot(111, projection='mollweide')
@@ -196,7 +196,6 @@ def plot_each_r_Shell_Slices_rakesh(ss, icou, rindex):
 
 
 if __name__ == '__main__':
-  path = "Shell_Slices"
-  s_plot_Shell_Slices_rakesh(path)
+  s_plot_Shell_Slices_rakesh(Shell_Slices_path)
 
 
