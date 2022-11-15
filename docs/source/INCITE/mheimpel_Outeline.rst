@@ -15,7 +15,7 @@ List of parameters
 =================================
 
 .. csv-table:: 
-   :file: mheimpel_parameters.csv
+   :file: moritz_parameters.csv
    :encoding: UTF-8
    :header-rows: 1
 

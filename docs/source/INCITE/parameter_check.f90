@@ -19,6 +19,8 @@
 !
         integer :: N_r = -1
         integer :: N_theta = -1
+        integer :: npcol = -1
+        integer :: nprow = -1
         real*8 :: aspect_ratio = -1.0d0
         real*8 :: shell_depth = -1.0d0
         character(len=255) :: chebyshev = cdef
@@ -56,6 +58,14 @@
         real*8 :: hyperdiffusion_beta =    -1.0e30
       end type INCITE_PARAMS
 !
+!
+      type parameter_label
+!>        label name
+        character(len=255) :: label
+!>        math expression
+        character(len=255) :: math
+      end type parameter_label
+!
 !>      Structure of field label
       type run_def
 !>        Field name
@@ -77,64 +87,115 @@
       type(INCITE_PARAMS), allocatable :: rakesh_param(:)
 !
       character(len=11), parameter :: main_input = '/main_input'
-      character(len=255), parameter :: hd_Nr = 'n_r'
-      character(len=255), parameter :: hd_Nt = 'n_theta'
-      character(len=255), parameter :: hd_aspect = 'aspect_ratio'
-      character(len=255), parameter :: hd_shell = 'shell_depth'
-      character(len=255), parameter :: hd_chebyshev = 'chebyshev'
 !
-      character(len=255), parameter :: hd_rotation =  'rotation'
-      character(len=255), parameter :: hd_magnetism = 'magnetism'
-      character(len=255), parameter :: hd_viscous =   'viscous_heating'
-      character(len=255), parameter :: hd_ohmic =     'ohmic_heating'
+      type(parameter_label), parameter :: hd_Nr                         &
+     &    = parameter_label(label = 'n_r',                              &
+     &                       math = ':math:`N_{r}`')
+      type(parameter_label), parameter :: hd_Nt                         &
+     &    = parameter_label(label = 'n_theta',                          &
+     &                       math = ':math:`N_{\theta}`')
+      type(parameter_label), parameter :: hd_Npcol                      &
+     &    = parameter_label(label = 'npcol',                            &
+     &                       math = ':math:`Np_{column}`')
+      type(parameter_label), parameter :: hd_Nprow                      &
+     &    = parameter_label(label = 'nprow',                            &
+     &                       math = ':math:`Np_{row}`')
+      type(parameter_label), parameter :: hd_aspect                     &
+     &    = parameter_label(label = 'aspect_ratio',                     &
+     &                       math = ':math:`r_o / r_i`')
+      type(parameter_label), parameter :: hd_shell                      &
+     &    = parameter_label(label = 'shell_depth',                      &
+     &                       math = ':math:`r_o - r_i`')
+      type(parameter_label), parameter :: hd_chebyshev                  &
+     &    = parameter_label(label = 'chebyshev',                        &
+     &                      math = 'Chebyshev grid')
 !
-      character(len=255), parameter :: hd_Ek = 'Ekman_Number'
-      character(len=255), parameter :: hd_Pr = 'Prandtl_Number'
-      character(len=255), parameter                                     &
-     &                   :: hd_Pm = 'Magnetic_Prandtl_Number'
-      character(len=255), parameter :: hd_Ra = 'Rayleigh_Number'
-      character(len=255), parameter                                     &
-     &                   :: hd_mod_Ra = 'Modified_Rayleigh_Number'
+      type(parameter_label), parameter :: hd_rotation                   &
+     &    = parameter_label(label = 'rotation',                         &
+     &                    math = 'rotation')
+      type(parameter_label), parameter :: hd_magnetism                  &
+     &    = parameter_label(label = 'magnetism',                        &
+     &                    math = 'magnetism')
+      type(parameter_label), parameter :: hd_viscous                    &
+     &    = parameter_label(label = 'viscous_heating',                  &
+     &                    math = 'viscous heating')
+      type(parameter_label), parameter :: hd_ohmic                      &
+     &    = parameter_label(label = 'ohmic_heating',                    &
+     &                    math = 'Ohmic heating')
 !
-      character(len=255), parameter                                     &
-     &                   :: hd_no_slip =         'no_slip_boundaries'
-      character(len=255), parameter                                     &
-     &                   :: hd_fix_tvar_bottom = 'fix_tvar_bottom'
-      character(len=255), parameter                                     &
-     &                   :: hd_fix_dtdr_bottom = 'fix_dtdr_bottom'
-      character(len=255), parameter                                     &
-     &                   :: hd_fix_tvar_top =    'fix_tvar_top'
-      character(len=255), parameter                                     &
-     &                   :: hd_fix_dtdr_top =    'fix_dtdr_top'
+      type(parameter_label), parameter :: hd_Ek                         &
+     &    = parameter_label(label = 'Ekman_Number',                     &
+     &                    math = ':math:`E = \frac{\nu}{\Omega L^2}`')
+      type(parameter_label), parameter :: hd_Pr                         &
+     &    = parameter_label(label = 'Prandtl_Number',                   &
+     &                       math = ':math:`Pr`')
+      type(parameter_label), parameter :: hd_Pm                         &
+     &    = parameter_label(label = 'Magnetic_Prandtl_Number',          &
+     &                       math = ':math:`Pm`')
+      type(parameter_label), parameter :: hd_Ra                         &
+     &    = parameter_label(label = 'Rayleigh_Number',                  &
+     &                       math = ':math:`Ra`')
+      type(parameter_label), parameter :: hd_mod_Ra                     &
+     &    = parameter_label(label = 'Modified_Rayleigh_Number',         &
+     &                      math = ':math:`Ram`')
 !
-      character(len=255), parameter                                     &
-     &                   :: hd_T_bottom =    'T_bottom'
-      character(len=255), parameter                                     &
-     &                   :: hd_dTdr_bottom = 'dTdr_bottom'
-      character(len=255), parameter                                     &
-     &                   :: hd_T_top =       'T_top'
-      character(len=255), parameter                                     &
-     &                   :: hd_dTdr_top =     'dTdr_top'
+      type(parameter_label), parameter :: hd_no_slip                    &
+     &    = parameter_label(label = 'no_slip_boundaries',               &
+     &                    math = 'Non slip boundary')
+      type(parameter_label), parameter :: hd_fix_tvar_bottom            &
+     &    = parameter_label(label = 'fix_tvar_bottom',                  &
+     &            math = 'Fixed :math:`T` at :math:`r_i`')
+      type(parameter_label), parameter :: hd_fix_dtdr_bottom            &
+     &    = parameter_label(label = 'fix_dtdr_bottom',                  &
+     &            math = 'Fixed :math:`\frac{dT}{dr}` at :math:`r_i`')
+      type(parameter_label), parameter :: hd_fix_tvar_top               &
+     &    = parameter_label(label = 'fix_tvar_top',                     &
+     &            math = 'Fixed :math:`T` at :math:`r_o`')
+      type(parameter_label), parameter :: hd_fix_dtdr_top               &
+     &    = parameter_label(label = 'fix_dtdr_top',                     &
+     &            math = 'Fixed :math:`\frac{dT}{dr}` at :math:`r_o`')
 !
-      character(len=255), parameter                                     &
-     &              :: hd_reference_type =  'reference_type'
-      character(len=255), parameter                                     &
-     &              :: hd_heating_type =  'heating_type'
-      character(len=255), parameter                                     &
-     &              :: hd_poly_n =  'poly_n'
-      character(len=255), parameter                                     &
-     &              :: hd_poly_Nrho =  'poly_Nrho'
-      character(len=255), parameter                                     &
-     &              :: hd_gravity_power =  'gravity_power'
-      character(len=255), parameter                                     &
-     &              :: hd_dimensional =  'dimensional'
+      type(parameter_label), parameter :: hd_T_bottom                   &
+     &    = parameter_label(label = 'T_bottom',                         &
+     &                      math = ':math:`T(r_i)`')
+      type(parameter_label), parameter :: hd_dTdr_bottom                &
+     &    = parameter_label(label = 'dTdr_bottom',                      &
+     &                      math = ':math:`\frac{dT}{dr}|_{r=r_i}`')
+      type(parameter_label), parameter :: hd_T_top                      &
+     &    = parameter_label(label = 'T_top',                            &
+     &                      math = ':math:`T(r_o)`')
+      type(parameter_label), parameter :: hd_dTdr_top                   &
+     &    = parameter_label(label = 'dTdr_top',                         &
+     &                      math = ':math:`\frac{dT}{dr}|_{r=r_o}`')
 !
-      character(len=255), parameter                                     &
-     &              :: hd_hyperdiffusion =     'hyperdiffusion'
-      character(len=255), parameter                                     &
-     &              :: hd_hyperdiffusion_alpha = 'hyperdiffusion_alpha'
-      character(len=255), parameter                                     &
-     &              :: hd_hyperdiffusion_beta =  'hyperdiffusion_beta'
+      type(parameter_label), parameter :: hd_reference_type             &
+     &    = parameter_label(label = 'reference_type',                   &
+     &                      math = 'Reference type')
+      type(parameter_label), parameter :: hd_heating_type               &
+     &    = parameter_label(label = 'heating_type',                     &
+     &                      math = 'Heating type')
+      type(parameter_label), parameter :: hd_poly_n                     &
+     &    = parameter_label(label = 'poly_n',                           &
+     &                      math = ':math:`n_{\p}`')
+      type(parameter_label), parameter :: hd_poly_Nrho                  &
+     &    = parameter_label(label = 'poly_Nrho',                        &
+     &                      math = ':math:`n_{\rho}`')
+      type(parameter_label), parameter :: hd_gravity_power              &
+     &    = parameter_label(label = 'gravity_power',                    &
+     &                      math = ':math:`n_{g}`')
+      type(parameter_label), parameter :: hd_dimensional                &
+     &    = parameter_label(label = 'dimensional',                      &
+     &                      math = 'Dimensional')
+!
+      type(parameter_label), parameter :: hd_hyperdiffusion             &
+     &    = parameter_label(label = 'hyperdiffusion',                   &
+     &                      math = 'Hyper-diffusion')
+      type(parameter_label), parameter :: hd_hyperdiffusion_alpha       &
+     &    = parameter_label(label = 'hyperdiffusion_alpha',             &
+     &                      math = ':math:`\alpha`')
+      type(parameter_label), parameter :: hd_hyperdiffusion_beta        &
+     &    = parameter_label(label = 'hyperdiffusion_beta',              &
+     &                      math = ':math:`\beta`')
 !
       character(len=255), parameter                                     &
      &              :: hd_publication =  'Publication'
@@ -233,73 +294,79 @@
 !          write(*,*) 'line', l
           if(len_first(l) .le. 0) cycle
 !
-          if(get_int_param(log_text(l), hd_Nr, param(i)%N_r)) cycle
-          if(get_int_param(log_text(l), hd_Nt, param(i)%N_theta)) cycle
-          if(get_real_param(log_text(l), hd_aspect,                     &
+          if(get_int_param(log_text(l), hd_Nr%label,                    &
+     &                     param(i)%N_r)) cycle
+          if(get_int_param(log_text(l), hd_Nt%label,                    &
+     &                     param(i)%N_theta)) cycle
+          if(get_int_param(log_text(l), hd_Npcol%label,                 &
+     &                     param(i)%npcol)) cycle
+          if(get_int_param(log_text(l), hd_Nprow%label,                 &
+     &                     param(i)%nprow)) cycle
+          if(get_real_param(log_text(l), hd_aspect%label,               &
      &                      param(i)%aspect_ratio)) cycle
-          if(get_real_param(log_text(l), hd_shell,                      &
+          if(get_real_param(log_text(l), hd_shell%label,                &
      &                      param(i)%shell_depth)) cycle
-          if(get_char_param(log_text(l), hd_chebyshev,                  &
+          if(get_char_param(log_text(l), hd_chebyshev%label,            &
      &                      param(i)%chebyshev)) cycle
 !
-          if(get_char_param(log_text(l), hd_rotation,                   &
+          if(get_char_param(log_text(l), hd_rotation%label,             &
      &                      param(i)%rotation)) cycle
-          if(get_char_param(log_text(l), hd_magnetism,                  &
+          if(get_char_param(log_text(l), hd_magnetism%label,            &
      &                      param(i)%magnetism)) cycle
-          if(get_char_param(log_text(l), hd_viscous,                    &
+          if(get_char_param(log_text(l), hd_viscous%label,              &
      &                      param(i)%viscous_heating)) cycle
-          if(get_char_param(log_text(l), hd_ohmic,                      &
+          if(get_char_param(log_text(l), hd_ohmic%label,                &
      &                      param(i)%ohmic_heating)) cycle
 !
-          if(get_real_param(log_text(l), hd_Ek,                         &
+          if(get_real_param(log_text(l), hd_Ek%label,                   &
      &                      param(i)%Ekman_Number)) cycle
-          if(get_real_param(log_text(l), hd_Pr,                         &
+          if(get_real_param(log_text(l), hd_Pr%label,                   &
      &                      param(i)%Prandtl_Number)) cycle
-          if(get_real_param(log_text(l), hd_Pm,                         &
+          if(get_real_param(log_text(l), hd_Pm%label,                   &
      &                      param(i)%Magnetic_Prandtl_Number)) cycle
-          if(get_real_param(log_text(l), hd_Ra,                         &
+          if(get_real_param(log_text(l), hd_Ra%label,                   &
      &                      param(i)%Rayleigh_Number)) cycle
-          if(get_real_param(log_text(l), hd_mod_Ra,                     &
+          if(get_real_param(log_text(l), hd_mod_Ra%label,               &
      &                      param(i)%Modified_Rayleigh_Number)) cycle
 !
-          if(get_char_param(log_text(l), hd_no_slip,                    &
+          if(get_char_param(log_text(l), hd_no_slip%label,              &
      &                      param(i)%no_slip_boundaries)) cycle
-          if(get_char_param(log_text(l), hd_fix_tvar_bottom,            &
+          if(get_char_param(log_text(l), hd_fix_tvar_bottom%label,      &
      &                      param(i)%fix_tvar_bottom)) cycle
-          if(get_char_param(log_text(l), hd_fix_dtdr_bottom,            &
+          if(get_char_param(log_text(l), hd_fix_dtdr_bottom%label,      &
      &                      param(i)%fix_dtdr_bottom)) cycle
-          if(get_char_param(log_text(l), hd_fix_tvar_top,               &
+          if(get_char_param(log_text(l), hd_fix_tvar_top%label,         &
      &                      param(i)%fix_tvar_top)) cycle
-          if(get_char_param(log_text(l), hd_fix_dtdr_top,               &
+          if(get_char_param(log_text(l), hd_fix_dtdr_top%label,         &
      &                      param(i)%fix_dtdr_top)) cycle
 !
-          if(get_real_param(log_text(l), hd_T_bottom,                   &
+          if(get_real_param(log_text(l), hd_T_bottom%label,             &
      &                      param(i)%T_bottom)) cycle
-          if(get_real_param(log_text(l), hd_dTdr_bottom,                &
+          if(get_real_param(log_text(l), hd_dTdr_bottom%label,          &
      &                      param(i)%dTdr_bottom)) cycle
-          if(get_real_param(log_text(l), hd_T_top,                      &
+          if(get_real_param(log_text(l), hd_T_top%label,                &
      &                      param(i)%T_top)) cycle
-          if(get_real_param(log_text(l), hd_dTdr_top,                   &
+          if(get_real_param(log_text(l), hd_dTdr_top%label,             &
      &                      param(i)%dTdr_top)) cycle
 !
-          if(get_int_param(log_text(l), hd_reference_type,              &
+          if(get_int_param(log_text(l), hd_reference_type%label,        &
      &                      param(i)%reference_type)) cycle
-          if(get_int_param(log_text(l), hd_heating_type,                &
+          if(get_int_param(log_text(l), hd_heating_type%label,          &
      &                      param(i)%heating_type)) cycle
-          if(get_real_param(log_text(l), hd_poly_n,                     &
+          if(get_real_param(log_text(l), hd_poly_n%label,               &
      &                      param(i)%poly_n)) cycle
-          if(get_real_param(log_text(l), hd_poly_Nrho,                  &
+          if(get_real_param(log_text(l), hd_poly_Nrho%label,            &
      &                      param(i)%poly_Nrho)) cycle
-          if(get_real_param(log_text(l), hd_gravity_power,              &
+          if(get_real_param(log_text(l), hd_gravity_power%label,        &
      &                      param(i)%gravity_power)) cycle
-          if(get_char_param(log_text(l), hd_dimensional,                &
+          if(get_char_param(log_text(l), hd_dimensional%label,          &
      &                      param(i)%dimensional)) cycle
 !
-          if(get_char_param(log_text(l), hd_hyperdiffusion,             &
+          if(get_char_param(log_text(l), hd_hyperdiffusion%label,       &
      &                      param(i)%hyperdiffusion)) cycle
-          if(get_real_param(log_text(l), hd_hyperdiffusion_alpha,       &
+          if(get_real_param(log_text(l), hd_hyperdiffusion_alpha%label, &
      &                      param(i)%hyperdiffusion_alpha)) cycle
-          if(get_real_param(log_text(l), hd_hyperdiffusion_beta,        &
+          if(get_real_param(log_text(l), hd_hyperdiffusion_beta%label,  &
      &                      param(i)%hyperdiffusion_beta)) cycle
         end do
 !        if(param(i)%aspect_ratio) .eq. -1.0)                           &
@@ -358,7 +425,7 @@
 !
 !
       file_name = 'parameters.csv'
-      call write_all_runs__params_csv(file_name, num_runs, param)
+      call write_all_runs_params_csv(file_name, num_runs, param)
 !      call write_all_params_for_each_run(num_runs, param)
 !
       file_name = 'moritz_parameters.csv'
@@ -441,7 +508,7 @@
 !
 ! -----------------------------------------------------------------------
 !
-      subroutine write_all_runs__params_csv(fname, num_runs, param)
+      subroutine write_all_runs_params_csv(fname, num_runs, param)
 !
       implicit none
 !
@@ -455,65 +522,78 @@
       write(*,*) 'output all paramter list in ', trim(fname)
       open(id_out, file=fname)
       write(id_out,'(a, a2)', ADVANCE='NO') 'id, folder', ', '
-      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Nr), ', '
-      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Nt), ', '
-      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_aspect), ', '
-      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_shell), ', '
-      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_chebyshev), ', '
-!
-      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_rotation), ', '
-      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_magnetism), ', '
-      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_viscous), ', '
-      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_ohmic), ', '
-!
-      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Ek), ', '
-      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Pr), ', '
-      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Pm), ', '
-      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Ra), ', '
-      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_mod_Ra), ', '
-!
-      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_no_slip), ', '
+      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Nr%math), ', '
+      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Nt%math), ', '
+      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Npcol%math), ', '
+      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Nprow%math), ', '
+      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_aspect%math), ', '
+      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_shell%math), ', '
       write(id_out,'(a, a2)', ADVANCE='NO')                             &
-     &                       trim(hd_fix_tvar_bottom), ', '
-      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_T_bottom), ', '
-      write(id_out,'(a, a2)', ADVANCE='NO')                             &
-     &                       trim(hd_fix_dtdr_bottom), ', '
-      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_dTdr_bottom), ', '
-      write(id_out,'(a, a2)', ADVANCE='NO')                             &
-     &                       trim(hd_fix_tvar_top), ', '
-      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_T_top), ', '
-      write(id_out,'(a, a2)', ADVANCE='NO')                             &
-     &                       trim(hd_fix_dtdr_top), ', '
-      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_dTdr_top), ', '
+     &                       trim(hd_chebyshev%math), ', '
 !
       write(id_out,'(a, a2)', ADVANCE='NO')                             &
-     &                       trim(hd_reference_type), ', '
+     &                       trim(hd_rotation%math), ', '
       write(id_out,'(a, a2)', ADVANCE='NO')                             &
-     &                       trim(hd_heating_type), ', '
+     &                       trim(hd_magnetism%math), ', '
       write(id_out,'(a, a2)', ADVANCE='NO')                             &
-     &                       trim(hd_poly_n), ', '
-      write(id_out,'(a, a2)', ADVANCE='NO')                             &
-     &                       trim(hd_poly_Nrho), ', '
-      write(id_out,'(a, a2)', ADVANCE='NO')                             &
-     &                       trim(hd_gravity_power), ', '
-      write(id_out,'(a, a2)', ADVANCE='NO')                             &
-     &                       trim(hd_dimensional), ', '
+     &                       trim(hd_viscous%math), ', '
+      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_ohmic%math), ', '
+!
+      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Ek%math), ', '
+      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Pr%math), ', '
+      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Pm%math), ', '
+      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Ra%math), ', '
+      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_mod_Ra%math), ', '
 !
       write(id_out,'(a, a2)', ADVANCE='NO')                             &
-     &                       trim(hd_hyperdiffusion), ', '
+     &                       trim(hd_no_slip%math), ', '
       write(id_out,'(a, a2)', ADVANCE='NO')                             &
-     &                       trim(hd_hyperdiffusion_alpha), ', '
+     &                       trim(hd_fix_tvar_bottom%math), ', '
       write(id_out,'(a, a2)', ADVANCE='NO')                             &
-     &                       trim(hd_hyperdiffusion_beta), ', '
+     &                       trim(hd_T_bottom%math), ', '
+      write(id_out,'(a, a2)', ADVANCE='NO')                             &
+     &                       trim(hd_fix_dtdr_bottom%math), ', '
+      write(id_out,'(a, a2)', ADVANCE='NO')                             &
+     &                       trim(hd_dTdr_bottom%math), ', '
+      write(id_out,'(a, a2)', ADVANCE='NO')                             &
+     &                       trim(hd_fix_tvar_top%math), ', '
+      write(id_out,'(a, a2)', ADVANCE='NO')                             &
+     &                       trim(hd_T_top%math), ', '
+      write(id_out,'(a, a2)', ADVANCE='NO')                             &
+     &                       trim(hd_fix_dtdr_top%math), ', '
+      write(id_out,'(a, a2)', ADVANCE='NO')                             &
+     &                       trim(hd_dTdr_top%math), ', '
+!
+      write(id_out,'(a, a2)', ADVANCE='NO')                             &
+     &                       trim(hd_reference_type%math), ', '
+      write(id_out,'(a, a2)', ADVANCE='NO')                             &
+     &                       trim(hd_heating_type%math), ', '
+      write(id_out,'(a, a2)', ADVANCE='NO')                             &
+     &                       trim(hd_poly_n%math), ', '
+      write(id_out,'(a, a2)', ADVANCE='NO')                             &
+     &                       trim(hd_poly_Nrho%math), ', '
+      write(id_out,'(a, a2)', ADVANCE='NO')                             &
+     &                       trim(hd_gravity_power%math), ', '
+!      write(id_out,'(a, a2)', ADVANCE='NO')                            &
+!     &                       trim(hd_dimensional%math), ', '
+!
+      write(id_out,'(a, a2)', ADVANCE='NO')                             &
+     &                       trim(hd_hyperdiffusion%math), ', '
+      write(id_out,'(a, a2)', ADVANCE='NO')                             &
+     &                       trim(hd_hyperdiffusion_alpha%math), ', '
+      write(id_out,'(a, a2)', ADVANCE='NO')                             &
+     &                       trim(hd_hyperdiffusion_beta%math), ', '
 !
       write(id_out,*)
       do i = 1, num_runs
         write(id_out,'(i4,a2)', ADVANCE='NO') i, ', '
 !        write(id_out,'(i8,a2)', ADVANCE='NO') istack_runs(i),', '
-        write(id_out,'(a,a2)', ADVANCE='NO')                            &
-     &                        trim(param(i)%dir_name),', '
+!        write(id_out,'(2a)', ADVANCE='NO')                             &
+!     &                         trim(runs(i)%name), '_ , '
         write(id_out,'(i8,a2)', ADVANCE='NO') param(i)%N_r,', '
         write(id_out,'(i8,a2)', ADVANCE='NO') param(i)%N_theta,', '
+        write(id_out,'(i8,a2)', ADVANCE='NO') param(i)%npcol,', '
+        write(id_out,'(i8,a2)', ADVANCE='NO') param(i)%nprow,', '
         write(id_out,'(1pe23.12,a2)', ADVANCE='NO')                     &
      &              param(i)%aspect_ratio,', '
         write(id_out,'(1pe23.12,a2)', ADVANCE='NO')                     &
@@ -569,8 +649,8 @@
      &                 param(i)%poly_Nrho,', '
         write(id_out,'(1pe23.12,a2)', ADVANCE='NO')                     &
      &                 param(i)%gravity_power,', '
-        write(id_out,'(a,a2)', ADVANCE='NO')                            &
-     &               trim(param(i)%dimensional), ', '
+!        write(id_out,'(a,a2)', ADVANCE='NO')                           &
+!     &               trim(param(i)%dimensional), ', '
 !
         write(id_out,'(a,a2)', ADVANCE='NO')                            &
      &               trim(param(i)%hyperdiffusion), ', '
@@ -583,7 +663,7 @@
       end do
       close(id_out)
 !
-      end subroutine write_all_runs__params_csv
+      end subroutine write_all_runs_params_csv
 !
 ! -----------------------------------------------------------------------
 !
@@ -603,65 +683,77 @@
       write(*,*) 'output Moritz paramter list in ', trim(fname)
       open(id_out, file=fname)
       write(id_out,'(a, a2)', ADVANCE='NO') 'Run name ', ', '
-      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Nr), ', '
-      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Nt), ', '
-      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_aspect), ', '
-!      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_shell), ', '
-!      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_chebyshev), ', '
+      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Nr%math), ', '
+      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Nt%math), ', '
+!      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Npcol%math), ', '
+!      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Nprow%math), ', '
+      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_aspect%math), ', '
+!      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_shell%math), ', '
+!      write(id_out,'(a, a2)', ADVANCE='NO')                            &
+!     &                       trim(hd_chebyshev%math), ', '
 !
-!      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_rotation), ', '
-!      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_magnetism), ', '
-!      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_viscous), ', '
-!      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_ohmic), ', '
+!      write(id_out,'(a, a2)', ADVANCE='NO')                            &
+!     &                       trim(hd_rotation%math), ', '
+!      write(id_out,'(a, a2)', ADVANCE='NO')                            &
+!     &                       trim(hd_magnetism%math), ', '
+!      write(id_out,'(a, a2)', ADVANCE='NO')                            &
+!     &                       trim(hd_viscous%math), ', '
+!      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_ohmic%math), ', '
 !
-      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Ek), ', '
-      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Pr), ', '
-!      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Pm), ', '
-!      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Ra), ', '
-      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_mod_Ra), ', '
+      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Ek%math), ', '
+      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Pr%math), ', '
+!      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Pm%math), ', '
+!      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Ra%math), ', '
+      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_mod_Ra%math), ', '
 !
-!      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_no_slip), ', '
 !      write(id_out,'(a, a2)', ADVANCE='NO')                            &
-!     &                       trim(hd_fix_tvar_bottom), ', '
-!      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_T_bottom), ', '
+!     &                       trim(hd_no_slip%math), ', '
 !      write(id_out,'(a, a2)', ADVANCE='NO')                            &
-!     &                       trim(hd_fix_dtdr_bottom), ', '
-      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_dTdr_bottom), ', '
+!     &                       trim(hd_fix_tvar_bottom%math), ', '
 !      write(id_out,'(a, a2)', ADVANCE='NO')                            &
-!     &                       trim(hd_fix_tvar_top), ', '
-!      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_T_top), ', '
+!     &                       trim(hd_T_bottom%math), ', '
 !      write(id_out,'(a, a2)', ADVANCE='NO')                            &
-!     &                       trim(hd_fix_dtdr_top), ', '
-      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_dTdr_top), ', '
-!
+!     &                       trim(hd_fix_dtdr_bottom%math), ', '
       write(id_out,'(a, a2)', ADVANCE='NO')                             &
-     &                       trim(hd_reference_type), ', '
-      write(id_out,'(a, a2)', ADVANCE='NO')                             &
-     &                       trim(hd_heating_type), ', '
-      write(id_out,'(a, a2)', ADVANCE='NO')                             &
-     &                       trim(hd_poly_n), ', '
-      write(id_out,'(a, a2)', ADVANCE='NO')                             &
-     &                       trim(hd_poly_Nrho), ', '
+     &                       trim(hd_dTdr_bottom%math), ', '
 !      write(id_out,'(a, a2)', ADVANCE='NO')                            &
-!     &                       trim(hd_gravity_power), ', '
+!     &                       trim(hd_fix_tvar_top%math), ', '
+!      write(id_out,'(a, a2)', ADVANCE='NO') trim(hd_T_top%math), ', '
 !      write(id_out,'(a, a2)', ADVANCE='NO')                            &
-!     &                       trim(hd_dimensional), ', '
+!     &                       trim(hd_fix_dtdr_top%math), ', '
+      write(id_out,'(a, a2)', ADVANCE='NO')                             &
+     &                        trim(hd_dTdr_top%math), ', '
 !
       write(id_out,'(a, a2)', ADVANCE='NO')                             &
-     &                       trim(hd_hyperdiffusion), ', '
+     &                       trim(hd_reference_type%math), ', '
       write(id_out,'(a, a2)', ADVANCE='NO')                             &
-     &                       trim(hd_hyperdiffusion_alpha), ', '
+     &                       trim(hd_heating_type%math), ', '
       write(id_out,'(a, a2)', ADVANCE='NO')                             &
-     &                       trim(hd_hyperdiffusion_beta), ', '
+     &                       trim(hd_poly_n%math), ', '
+      write(id_out,'(a, a2)', ADVANCE='NO')                             &
+     &                       trim(hd_poly_Nrho%math), ', '
+      write(id_out,'(a, a2)', ADVANCE='NO')                             &
+     &                       trim(hd_gravity_power%math), ', '
+!      write(id_out,'(a, a2)', ADVANCE='NO')                            &
+!     &                       trim(hd_dimensional%math), ', '
+!
+      write(id_out,'(a, a2)', ADVANCE='NO')                             &
+     &                       trim(hd_hyperdiffusion%math), ', '
+      write(id_out,'(a, a2)', ADVANCE='NO')                             &
+     &                       trim(hd_hyperdiffusion_alpha%math), ', '
+      write(id_out,'(a, a2)', ADVANCE='NO')                             &
+     &                       trim(hd_hyperdiffusion_beta%math), ', '
       write(id_out,'(a, a2)', ADVANCE='NO')                             &
      &                       trim(hd_publication), ', '
 !
       write(id_out,*)
       do i = 1, n_runs
-        write(id_out,'(a,a2)', ADVANCE='NO')                            &
-     &                        trim(runs(i)%name),', '
+        write(id_out,'(2a)', ADVANCE='NO')                              &
+     &                         trim(runs(i)%name), '_ , '
         write(id_out,'(i8,a2)', ADVANCE='NO') param(i)%N_r,', '
         write(id_out,'(i8,a2)', ADVANCE='NO') param(i)%N_theta,', '
+!        write(id_out,'(i8,a2)', ADVANCE='NO') param(i)%npcol,', '
+!        write(id_out,'(i8,a2)', ADVANCE='NO') param(i)%nprow,', '
         write(id_out,'(1pe10.2,a2)', ADVANCE='NO')                      &
      &              param(i)%aspect_ratio,', '
 !        write(id_out,'(1pe10.2,a2)', ADVANCE='NO')                     &
@@ -715,8 +807,8 @@
      &                 param(i)%poly_n,', '
         write(id_out,'(1pe10.2,a2)', ADVANCE='NO')                     &
      &                 param(i)%poly_Nrho,', '
-!        write(id_out,'(1pe10.2,a2)', ADVANCE='NO')                     &
-!     &                 param(i)%gravity_power,', '
+        write(id_out,'(1pe10.2,a2)', ADVANCE='NO')                      &
+     &                 param(i)%gravity_power,', '
 !        write(id_out,'(a,a2)', ADVANCE='NO')                           &
 !     &               trim(param(i)%dimensional), ', '
 !
@@ -751,66 +843,79 @@
       write(*,*) 'output Rakesh paramter list in ', trim(fname)
       open(id_out, file=fname)
       write(id_out,'(a, a2)', ADVANCE='NO') 'Run name ', ', '
-      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Nr), ', '
-      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Nt), ', '
-!      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_aspect), ', '
-!      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_shell), ', '
-!      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_chebyshev), ', '
-!
-!      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_rotation), ', '
-!      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_magnetism), ', '
-!      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_viscous), ', '
-!      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_ohmic), ', '
-!
-      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Ek), ', '
-      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Pr), ', '
-      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Pm), ', '
-      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Ra), ', '
-!      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_mod_Ra), ', '
-!
-!      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_no_slip), ', '
+      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Nr%math), ', '
+      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Nt%math), ', '
+!      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Npcol%math), ', '
+!      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Nprow%math), ', '
 !      write(id_out,'(a, a2)', ADVANCE='NO')                            &
-!     &                       trim(hd_fix_tvar_bottom), ', '
-!      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_T_bottom), ', '
+!     &                       trim(hd_aspect%math), ', '
+!      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_shell%math), ', '
 !      write(id_out,'(a, a2)', ADVANCE='NO')                            &
-!     &                       trim(hd_fix_dtdr_bottom), ', '
-!      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_dTdr_bottom), ', '
+!     &                       trim(hd_chebyshev%math), ', '
+!
+!      write(id_out,'(a, a2)', ADVANCE='NO')                            &
+!     &                       trim(hd_rotation%math), ', '
+!      write(id_out,'(a, a2)', ADVANCE='NO')                            &
+!     &                       trim(hd_magnetism%math), ', '
+!      write(id_out,'(a, a2)', ADVANCE='NO')                            &
+!     &                       trim(hd_viscous%math), ', '
+!      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_ohmic%math), ', '
+!
+      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Ek%math), ', '
+      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Pr%math), ', '
+      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Pm%math), ', '
+      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_Ra%math), ', '
+!      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_mod_Ra%math), ', '
+!
+!      write(id_out,'(a, a2)', ADVANCE='NO')                            &
+!     &                       trim(hd_no_slip%math), ', '
+!      write(id_out,'(a, a2)', ADVANCE='NO')                            &
+!     &                       trim(hd_fix_tvar_bottom%math), ', '
+!      write(id_out,'(a, a2)', ADVANCE='NO')                            &
+!     &                       trim(hd_T_bottom%math), ', '
+!      write(id_out,'(a, a2)', ADVANCE='NO')                            &
+!     &                       trim(hd_fix_dtdr_bottom%math), ', '
+!      write(id_out,'(a, a2)', ADVANCE='NO')                            &
+!     &                       trim(hd_dTdr_bottom%math), ', '
 !      write(id_out,'(a, a2)', ADVANCE='NO')                            &
 !     &                       trim(hd_fix_tvar_top), ', '
-!      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_T_top), ', '
+!      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_T_top%math), ', '
 !      write(id_out,'(a, a2)', ADVANCE='NO')                            &
-!     &                       trim(hd_fix_dtdr_top), ', '
-!      write(id_out,'(a, a2)', ADVANCE='NO')  trim(hd_dTdr_top), ', '
+!     &                       trim(hd_fix_dtdr_top%math), ', '
+!      write(id_out,'(a, a2)', ADVANCE='NO')                            &
+!     &                       trim(hd_dTdr_top%math), ', '
 !
 !      write(id_out,'(a, a2)', ADVANCE='NO')                            &
-!     &                       trim(hd_reference_type), ', '
+!     &                       trim(hd_reference_type%math), ', '
 !      write(id_out,'(a, a2)', ADVANCE='NO')                            &
-!     &                       trim(hd_heating_type), ', '
+!     &                       trim(hd_heating_type%math), ', '
 !      write(id_out,'(a, a2)', ADVANCE='NO')                            &
-!     &                       trim(hd_poly_n), ', '
+!     &                       trim(hd_poly_n%math), ', '
 !      write(id_out,'(a, a2)', ADVANCE='NO')                            &
-!     &                       trim(hd_poly_Nrho), ', '
+!     &                       trim(hd_poly_Nrho%math), ', '
 !      write(id_out,'(a, a2)', ADVANCE='NO')                            &
-!     &                       trim(hd_gravity_power), ', '
+!     &                       trim(hd_gravity_power%math), ', '
 !      write(id_out,'(a, a2)', ADVANCE='NO')                            &
-!     &                       trim(hd_dimensional), ', '
+!     &                       trim(hd_dimensional%math), ', '
 !
       write(id_out,'(a, a2)', ADVANCE='NO')                             &
-     &                       trim(hd_hyperdiffusion), ', '
+     &                       trim(hd_hyperdiffusion%math), ', '
       write(id_out,'(a, a2)', ADVANCE='NO')                             &
-     &                       trim(hd_hyperdiffusion_alpha), ', '
+     &                       trim(hd_hyperdiffusion_alpha%math), ', '
       write(id_out,'(a, a2)', ADVANCE='NO')                             &
-     &                       trim(hd_hyperdiffusion_beta), ', '
+     &                       trim(hd_hyperdiffusion_beta%math), ', '
       write(id_out,'(a, a2)', ADVANCE='NO')                             &
      &                       trim(hd_publication)
 !
       write(id_out,*)
       do i = 1, n_runs
 !        write(id_out,'(i4,a2)', ADVANCE='NO') i, ', '
-        write(id_out,'(a,a2)', ADVANCE='NO')                            &
-     &                        trim(runs(i)%name),', '
+        write(id_out,'(2a)', ADVANCE='NO')                              &
+     &                         trim(runs(i)%name), '_ , '
         write(id_out,'(i8,a2)', ADVANCE='NO') param(i)%N_r,', '
         write(id_out,'(i8,a2)', ADVANCE='NO') param(i)%N_theta,', '
+!        write(id_out,'(i8,a2)', ADVANCE='NO') param(i)%npcol,', '
+!        write(id_out,'(i8,a2)', ADVANCE='NO') param(i)%nprow,', '
 !        write(id_out,'(1pe10.2,a2)', ADVANCE='NO')                    &
 !     &              param(i)%aspect_ratio,', '
 !        write(id_out,'(1pe10.2,a2)', ADVANCE='NO')                    &
@@ -903,74 +1008,146 @@
         open(id_log, file=fname, err=98)
 !
         write(id_log,'(a)')  'Name, Parameter'
-        write(id_log,'(a, a2,i8)')  trim(hd_Nr), ', ', param(i)%N_r
-        write(id_log,'(a, a2,i8)')  trim(hd_Nt), ', ', param(i)%N_theta
-        write(id_log,'(a, a2,1pe23.12)')  trim(hd_aspect), ', ',        &
-     &                                  param(i)%aspect_ratio
-        write(id_log,'(a, a2,1pe23.12)')  trim(hd_shell), ', ',      &
-     &                                  param(i)%shell_depth
-        write(id_log,'(a, a2,a)')  trim(hd_chebyshev), ', ',      &
-     &                                  trim(param(i)%chebyshev)
+        write(id_log,'(2(a,a2),i8)')                                    &
+     &                       trim(hd_Nr%math), ', ',                    &
+     &                       trim(hd_Nr%label), ', ',                   &
+     &                       param(i)%N_r
+        write(id_log,'(2(a,a2),i8)')                                    &
+     &                       trim(hd_Nt%math), ', ',                    &
+     &                       trim(hd_Nt%label), ', ',                   &
+     &                       param(i)%N_theta
+        write(id_log,'(2(a,a2),i8)')                                    &
+     &                       trim(hd_Npcol%math), ', ',                 &
+     &                       trim(hd_Npcol%label), ', ',                &
+     &                       param(i)%npcol
+        write(id_log,'(2(a,a2),i8)')                                    &
+     &                       trim(hd_Nprow%math), ', ',                 &
+     &                       trim(hd_Nprow%label), ', ',                &
+     &                       param(i)%nprow
+        write(id_log,'(2(a,a2),1pe10.2)')                               &
+     &                       trim(hd_aspect%math), ', ',                &
+     &                       trim(hd_aspect%label), ', ',               &
+     &                       param(i)%aspect_ratio
+        write(id_log,'(2(a,a2),1pe10.2)')                               &
+     &                       trim(hd_shell%math), ', ',                 &
+     &                       trim(hd_shell%label), ', ',                &
+     &                       param(i)%shell_depth
+        write(id_log,'(2(a,a2),a)')                                     &
+     &                       trim(hd_chebyshev%math), ', ',             &
+     &                       trim(hd_chebyshev%label), ', ',            &
+     &                       trim(param(i)%chebyshev)
 !, 
-        write(id_log,'(a, a2,a)')  trim(hd_rotation), ', ',      &
-     &                                  trim(param(i)%rotation)
-        write(id_log,'(a, a2,a)')  trim(hd_magnetism), ', ',      &
-     &                                  trim(param(i)%magnetism)
-        write(id_log,'(a, a2,a)')  trim(hd_viscous), ', ',              &
-     &                                  trim(param(i)%viscous_heating)
-        write(id_log,'(a, a2,a)')  trim(hd_ohmic), ', ',                &
-     &                                  trim(param(i)%ohmic_heating)
+        write(id_log,'(2(a,a2),a)')                                     &
+     &                       trim(hd_rotation%math), ', ',              &
+     &                       trim(hd_rotation%label), ', ',             &
+     &                       param(i)%rotation
+        write(id_log,'(2(a,a2),a)')                                     &
+     &                       trim(hd_magnetism%math), ', ',             &
+     &                       trim(hd_magnetism%label), ', ',            &
+     &                       param(i)%magnetism
+        write(id_log,'(2(a,a2),a)')                                     &
+     &                       trim(hd_viscous%math), ', ',               &
+     &                       trim(hd_viscous%label), ', ',              &
+     &                       param(i)%viscous_heating
+        write(id_log,'(2(a,a2),a)')                                     &
+     &                       trim(hd_ohmic%math), ', ',                 &
+     &                       trim(hd_ohmic%label), ', ',                &
+     &                       param(i)%ohmic_heating
 !, 
-        write(id_log,'(a, a2,1pe23.12)')  trim(hd_Ek), ', ',            &
-     &                            param(i)%Ekman_Number
-        write(id_log,'(a, a2,1pe23.12)')  trim(hd_Pr), ', ',            &
-     &                            param(i)%Prandtl_Number
-        write(id_log,'(a, a2,1pe23.12)')  trim(hd_Pm), ', ',            &
-     &                            param(i)%Magnetic_Prandtl_Number
-        write(id_log,'(a, a2,1pe23.12)')  trim(hd_Ra), ', ',            &
-     &                            param(i)%Rayleigh_Number
-        write(id_log,'(a, a2,1pe23.12)')  trim(hd_mod_Ra), ', ',        &
-     &                            param(i)%Modified_Rayleigh_Number
+        write(id_log,'(2(a,a2),1pe23.12)')                              &
+     &                       trim(hd_Ek%math), ', ',                    &
+     &                       trim(hd_Ek%label), ', ',                   &
+     &                       param(i)%Ekman_Number
+        write(id_log,'(2(a,a2),1pe23.12)')                              &
+     &                       trim(hd_Pr%math), ', ',                    &
+     &                       trim(hd_Pr%label), ', ',                   &
+     &                       param(i)%Prandtl_Number
+        write(id_log,'(2(a,a2),1pe23.12)')                              &
+     &                       trim(hd_Pm%math), ', ',                    &
+     &                       trim(hd_Pm%label), ', ',                   &
+     &                       param(i)%Magnetic_Prandtl_Number
+        write(id_log,'(2(a,a2),1pe23.12)')                              &
+     &                       trim(hd_Ra%math), ', ',                    &
+     &                       trim(hd_Ra%label), ', ',                   &
+     &                       param(i)%Modified_Rayleigh_Number
+        write(id_log,'(2(a,a2),1pe23.12)')                              &
+     &                       trim(hd_mod_Ra%math), ', ',                &
+     &                       trim(hd_mod_Ra%label), ', ',               &
+     &                       param(i)%Modified_Rayleigh_Number
 !, 
-        write(id_log,'(a, a2,a)') trim(hd_no_slip), ', ',               &
-     &                            trim(param(i)%no_slip_boundaries)
-        write(id_log,'(a, a2,a)') trim(hd_fix_tvar_bottom), ', ',       &
-     &                            trim(param(i)%fix_tvar_bottom)
-        write(id_log,'(a, a2,1pe23.12)')  trim(hd_T_bottom), ', ',      &
-     &                                  param(i)%T_bottom
-        write(id_log,'(a, a2,a)')  trim(hd_fix_dtdr_bottom), ', ',      &
-     &                                  trim(param(i)%fix_dtdr_bottom)
-        write(id_log,'(a, a2,1pe23.12)')  trim(hd_dTdr_bottom), ', ',   &
-     &                                  param(i)%dTdr_bottom
-        write(id_log,'(a, a2,a)') trim(hd_fix_tvar_top), ', ',          &
-     &                                   trim(param(i)%fix_tvar_top)
-        write(id_log,'(a, a2,1pe23.12)')  trim(hd_T_top), ', ',         &
-     &                                   param(i)%T_top
-        write(id_log,'(a, a2,a)') trim(hd_fix_dtdr_top), ', ',          &
-     &                                   trim(param(i)%fix_dtdr_top)
-        write(id_log,'(a, a2,1pe23.12)')  trim(hd_dTdr_top), ', ',      &
-     &                                   param(i)%dTdr_top
+        write(id_log,'(2(a,a2),a)')                                     &
+     &                       trim(hd_no_slip%math), ', ',               &
+     &                       trim(hd_no_slip%label), ', ',              &
+     &                       param(i)%no_slip_boundaries
+        write(id_log,'(2(a,a2),a)')                                     &
+     &                       trim(hd_fix_tvar_bottom%math), ', ',       &
+     &                       trim(hd_fix_tvar_bottom%label), ', ',      &
+     &                       param(i)%fix_tvar_bottom
+        write(id_log,'(2(a,a2),1pe23.12)')                              &
+     &                       trim(hd_T_bottom%math), ', ',              &
+     &                       trim(hd_T_bottom%label), ', ',             &
+     &                       param(i)%T_bottom
+        write(id_log,'(2(a,a2),a)')                                     &
+     &                       trim(hd_fix_dtdr_bottom%math), ', ',       &
+     &                       trim(hd_fix_dtdr_bottom%label), ', ',      &
+     &                       param(i)%fix_dtdr_bottom
+        write(id_log,'(2(a,a2),1pe23.12)')                              &
+     &                       trim(hd_dTdr_bottom%math), ', ',           &
+     &                       trim(hd_dTdr_bottom%label), ', ',          &
+     &                       param(i)%dTdr_bottom
+        write(id_log,'(2(a,a2),a)')                                     &
+     &                       trim(hd_fix_tvar_top%math), ', ',          &
+     &                       trim(hd_fix_tvar_top%label), ', ',         &
+     &                       param(i)%fix_tvar_top
+        write(id_log,'(2(a,a2),1pe23.12)')                              &
+     &                       trim(hd_T_top%math), ', ',                 &
+     &                       trim(hd_T_top%label), ', ',                &
+     &                       param(i)%T_top
+        write(id_log,'(2(a,a2),a)')                                     &
+     &                       trim(hd_fix_dtdr_top%math), ', ',          &
+     &                       trim(hd_fix_dtdr_top%label), ', ',         &
+     &                       param(i)%fix_dtdr_top
+        write(id_log,'(2(a,a2),1pe23.12)')                              &
+     &                       trim(hd_dTdr_top%math), ', ',              &
+     &                       trim(hd_dTdr_top%label), ', ',             &
+     &                       param(i)%dTdr_top
 !
-        write(id_log,'(a, a2,i8)')  trim(hd_reference_type), ', ',      &
-     &                                   param(i)%reference_type
-        write(id_log,'(a, a2,i8)')  trim(hd_heating_type), ', ',        &
-     &                                   param(i)%heating_type
-        write(id_log,'(a, a2,1pe23.12)')  trim(hd_poly_n), ', ',        &
-     &                                   param(i)%poly_n
-        write(id_log,'(a, a2,1pe23.12)')  trim(hd_poly_Nrho), ', ',     &
-     &                                   param(i)%poly_Nrho
-        write(id_log,'(a, a2,1pe23.12)')  trim(hd_gravity_power), ', ', &
-     &                                   param(i)%gravity_power
-        write(id_log,'(a, a2,a)') trim(hd_dimensional), ', ',           &
-     &                                   trim(param(i)%dimensional)
+        write(id_log,'(2(a,a2),i4)')                                    &
+     &                       trim(hd_reference_type%math), ', ',        &
+     &                       trim(hd_reference_type%label), ', ',       &
+     &                       param(i)%reference_type
+        write(id_log,'(2(a,a2),i4)')                                    &
+     &                       trim(hd_heating_type%math), ', ',          &
+     &                       trim(hd_heating_type%label), ', ',         &
+     &                       param(i)%heating_type
+        write(id_log,'(2(a,a2),1pe23.12)')                              &
+     &                       trim(hd_poly_n%math), ', ',                &
+     &                       trim(hd_poly_n%label), ', ',               &
+     &                       param(i)%poly_n
+        write(id_log,'(2(a,a2),1pe23.12)')                              &
+     &                       trim(hd_poly_Nrho%math), ', ',             &
+     &                       trim(hd_poly_Nrho%label), ', ',            &
+     &                       param(i)%poly_Nrho
+        write(id_log,'(2(a,a2),1pe23.12)')                              &
+     &                       trim(hd_gravity_power%math), ', ',         &
+     &                       trim(hd_gravity_power%label), ', ',        &
+     &                       param(i)%gravity_power
+!        write(id_log,'(2(a,a2),a)')                                    &
+!     &                             trim(hd_dimensional%math), ', ',    &
+!     &                             trim(hd_dimensional%label), ', ',   &
+!     &                                   trim(param(i)%dimensional)
 !
-        write(id_log,'(a, a2,a)') trim(hd_hyperdiffusion), ', ',        &
+        write(id_log,'(2(a,a2),a)')                                     &
+     &                             trim(hd_hyperdiffusion%math), ', ',  &
+     &                             trim(hd_hyperdiffusion%label), ', ', &
      &                                   trim(param(i)%hyperdiffusion)
-        write(id_log,'(a, a2,1pe23.12)')                                &
-     &                       trim(hd_hyperdiffusion_alpha), ', ',       &
+        write(id_log,'(2(a,a2),1pe23.12)')                              &
+     &                       trim(hd_hyperdiffusion_alpha%math), ', ',  &
+     &                       trim(hd_hyperdiffusion_alpha%label), ', ', &
      &                       param(i)%hyperdiffusion_alpha
-        write(id_log,'(a, a2,1pe23.12)')                                &
-     &                       trim(hd_hyperdiffusion_beta), ', ',        &
+        write(id_log,'(2(a,a2),1pe23.12)')                              &
+     &                       trim(hd_hyperdiffusion_beta%math), ', ',   &
+     &                       trim(hd_hyperdiffusion_beta%label), ', ',  &
      &                       param(i)%hyperdiffusion_beta
         close(id_log)
   98    continue
@@ -994,74 +1171,146 @@
         open(id_log, file=fname, err=98)
 !
         write(id_log,'(a)')  'Name, Parameter'
-        write(id_log,'(a, a2,i8)')  trim(hd_Nr), ', ', param(i)%N_r
-        write(id_log,'(a, a2,i8)')  trim(hd_Nt), ', ', param(i)%N_theta
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_aspect), ', ',        &
-     &                                  param(i)%aspect_ratio
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_shell), ', ',      &
-     &                                  param(i)%shell_depth
-        write(id_log,'(a, a2,a)')  trim(hd_chebyshev), ', ',      &
-     &                                  trim(param(i)%chebyshev)
+        write(id_log,'(2(a,a2),i8)')                                    &
+     &                       trim(hd_Nr%math), ', ',                    &
+     &                       trim(hd_Nr%label), ', ',                   &
+     &                       param(i)%N_r
+        write(id_log,'(2(a,a2),i8)')                                    &
+     &                       trim(hd_Nt%math), ', ',                    &
+     &                       trim(hd_Nt%label), ', ',                   &
+     &                       param(i)%N_theta
+        write(id_log,'(2(a,a2),i8)')                                    &
+     &                       trim(hd_Npcol%math), ', ',                 &
+     &                       trim(hd_Npcol%label), ', ',                &
+     &                       param(i)%npcol
+        write(id_log,'(2(a,a2),i8)')                                    &
+     &                       trim(hd_Nprow%math), ', ',                 &
+     &                       trim(hd_Nprow%label), ', ',                &
+     &                       param(i)%nprow
+        write(id_log,'(2(a,a2),1pe10.2)')                               &
+     &                       trim(hd_aspect%math), ', ',                &
+     &                       trim(hd_aspect%label), ', ',               &
+     &                       param(i)%aspect_ratio
+        write(id_log,'(2(a,a2),1pe10.2)')                               &
+     &                       trim(hd_shell%math), ', ',                 &
+     &                       trim(hd_shell%label), ', ',                &
+     &                       param(i)%shell_depth
+        write(id_log,'(2(a,a2),a)')                                     &
+     &                       trim(hd_chebyshev%math), ', ',             &
+     &                       trim(hd_chebyshev%label), ', ',            &
+     &                       trim(param(i)%chebyshev)
 !, 
-        write(id_log,'(a, a2,a)')  trim(hd_rotation), ', ',      &
-     &                                  trim(param(i)%rotation)
-        write(id_log,'(a, a2,a)')  trim(hd_magnetism), ', ',      &
-     &                                  trim(param(i)%magnetism)
-        write(id_log,'(a, a2,a)')  trim(hd_viscous), ', ',              &
-     &                                  trim(param(i)%viscous_heating)
-        write(id_log,'(a, a2,a)')  trim(hd_ohmic), ', ',                &
-     &                                  trim(param(i)%ohmic_heating)
+        write(id_log,'(2(a,a2),a)')                                     &
+     &                       trim(hd_rotation%math), ', ',              &
+     &                       trim(hd_rotation%label), ', ',             &
+     &                       param(i)%rotation
+        write(id_log,'(2(a,a2),a)')                                     &
+     &                       trim(hd_magnetism%math), ', ',             &
+     &                       trim(hd_magnetism%label), ', ',            &
+     &                       param(i)%magnetism
+        write(id_log,'(2(a,a2),a)')                                     &
+     &                       trim(hd_viscous%math), ', ',               &
+     &                       trim(hd_viscous%label), ', ',              &
+     &                       param(i)%viscous_heating
+!        write(id_log,'(2(a,a2),a)')                                    &
+!     &                       trim(hd_ohmic%math), ', ',                &
+!     &                       trim(hd_ohmic%label), ', ',               &
+!     &                       param(i)%ohmic_heating
 !, 
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_Ek), ', ',            &
-     &                            param(i)%Ekman_Number
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_Pr), ', ',            &
-     &                            param(i)%Prandtl_Number
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_Pm), ', ',            &
-     &                            param(i)%Magnetic_Prandtl_Number
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_Ra), ', ',            &
-     &                            param(i)%Rayleigh_Number
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_mod_Ra), ', ',        &
-     &                            param(i)%Modified_Rayleigh_Number
-!, 
-        write(id_log,'(a, a2,a)') trim(hd_no_slip), ', ',               &
-     &                            trim(param(i)%no_slip_boundaries)
-!        write(id_log,'(a, a2,a)') trim(hd_fix_tvar_bottom), ', ',      &
-!     &                            trim(param(i)%fix_tvar_bottom)
-!        write(id_log,'(a, a2,1pe10.2)')  trim(hd_T_bottom), ', ',      &
-!     &                                  param(i)%T_bottom
-!        write(id_log,'(a, a2,a)')  trim(hd_fix_dtdr_bottom), ', ',     &
-!     &                                  trim(param(i)%fix_dtdr_bottom)
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_dTdr_bottom), ', ',   &
-     &                                  param(i)%dTdr_bottom
-!        write(id_log,'(a, a2,a)') trim(hd_fix_tvar_top), ', ',         &
-!     &                                   trim(param(i)%fix_tvar_top)
-!        write(id_log,'(a, a2,1pe10.2)')  trim(hd_T_top), ', ',         &
-!     &                                   param(i)%T_top
-!        write(id_log,'(a, a2,a)') trim(hd_fix_dtdr_top), ', ',         &
-!     &                                   trim(param(i)%fix_dtdr_top)
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_dTdr_top), ', ',      &
-     &                                   param(i)%dTdr_top
+        write(id_log,'(2(a,a2),1pe23.12)')                              &
+     &                       trim(hd_Ek%math), ', ',                    &
+     &                       trim(hd_Ek%label), ', ',                   &
+     &                       param(i)%Ekman_Number
+        write(id_log,'(2(a,a2),1pe23.12)')                              &
+     &                       trim(hd_Pr%math), ', ',                    &
+     &                       trim(hd_Pr%label), ', ',                   &
+     &                       param(i)%Prandtl_Number
+!        write(id_log,'(2(a,a2),1pe23.12)')                             &
+!     &                       trim(hd_Pm%math), ', ',                   &
+!     &                       trim(hd_Pm%label), ', ',                  &
+!     &                       param(i)%Magnetic_Prandtl_Number
+!        write(id_log,'(2(a,a2),1pe23.12)')                             &
+!     &                       trim(hd_Ra%math), ', ',                   &
+!     &                       trim(hd_Ra%label), ', ',                  &
+!     &                       param(i)%Modified_Rayleigh_Number
+        write(id_log,'(2(a,a2),1pe23.12)')                              &
+     &                       trim(hd_mod_Ra%math), ', ',                &
+     &                       trim(hd_mod_Ra%label), ', ',               &
+     &                       param(i)%Modified_Rayleigh_Number
 !
-        write(id_log,'(a, a2,i8)')  trim(hd_reference_type), ', ',      &
-     &                                   param(i)%reference_type
-        write(id_log,'(a, a2,i8)')  trim(hd_heating_type), ', ',        &
-     &                                   param(i)%heating_type
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_poly_n), ', ',        &
-     &                                   param(i)%poly_n
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_poly_Nrho), ', ',     &
-     &                                   param(i)%poly_Nrho
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_gravity_power), ', ', &
-     &                                   param(i)%gravity_power
-        write(id_log,'(a, a2,a)') trim(hd_dimensional), ', ',           &
-     &                                   trim(param(i)%dimensional)
+        write(id_log,'(2(a,a2),a)')                                     &
+     &                       trim(hd_no_slip%math), ', ',               &
+     &                       trim(hd_no_slip%label), ', ',              &
+     &                       param(i)%no_slip_boundaries
+!        write(id_log,'(2(a,a2),a)')                                    &
+!     &                       trim(hd_fix_tvar_bottom%math), ', ',      &
+!     &                       trim(hd_fix_tvar_bottom%label), ', ',     &
+!     &                       param(i)%fix_tvar_bottom
+!        write(id_log,'(2(a,a2),1pe23.12)')                             &
+!     &                       trim(hd_T_bottom%math), ', ',             &
+!     &                       trim(hd_T_bottom%label), ', ',            &
+!     &                       param(i)%T_bottom
+        write(id_log,'(2(a,a2),a)')                                     &
+     &                       trim(hd_fix_dtdr_bottom%math), ', ',       &
+     &                       trim(hd_fix_dtdr_bottom%label), ', ',      &
+     &                       param(i)%fix_dtdr_bottom
+        write(id_log,'(2(a,a2),1pe23.12)')                              &
+     &                       trim(hd_dTdr_bottom%math), ', ',           &
+     &                       trim(hd_dTdr_bottom%label), ', ',          &
+     &                       param(i)%dTdr_bottom
+!        write(id_log,'(2(a,a2),a)')                                    &
+!     &                       trim(hd_fix_tvar_top%math), ', ',         &
+!     &                       trim(hd_fix_tvar_top%label), ', ',        &
+!     &                       param(i)%fix_tvar_top
+!        write(id_log,'(2(a,a2),1pe23.12)')                             &
+!     &                       trim(hd_T_top%math), ', ',                &
+!     &                       trim(hd_T_top%label), ', ',               &
+!     &                       param(i)%T_top
+        write(id_log,'(2(a,a2),a)')                                     &
+     &                       trim(hd_fix_dtdr_top%math), ', ',          &
+     &                       trim(hd_fix_dtdr_top%label), ', ',         &
+     &                       param(i)%fix_dtdr_top
+        write(id_log,'(2(a,a2),1pe23.12)')                              &
+     &                       trim(hd_dTdr_top%math), ', ',              &
+     &                       trim(hd_dTdr_top%label), ', ',             &
+     &                       param(i)%dTdr_top
 !
-        write(id_log,'(a, a2,a)') trim(hd_hyperdiffusion), ', ',        &
+        write(id_log,'(2(a,a2),i4)')                                    &
+     &                       trim(hd_reference_type%math), ', ',        &
+     &                       trim(hd_reference_type%label), ', ',       &
+     &                       param(i)%reference_type
+        write(id_log,'(2(a,a2),i4)')                                    &
+     &                       trim(hd_heating_type%math), ', ',          &
+     &                       trim(hd_heating_type%label), ', ',         &
+     &                       param(i)%heating_type
+        write(id_log,'(2(a,a2),1pe23.12)')                              &
+     &                       trim(hd_poly_n%math), ', ',                &
+     &                       trim(hd_poly_n%label), ', ',               &
+     &                       param(i)%poly_n
+        write(id_log,'(2(a,a2),1pe23.12)')                              &
+     &                       trim(hd_poly_Nrho%math), ', ',             &
+     &                       trim(hd_poly_Nrho%label), ', ',            &
+     &                       param(i)%poly_Nrho
+        write(id_log,'(2(a,a2),1pe23.12)')                              &
+     &                       trim(hd_gravity_power%math), ', ',         &
+     &                       trim(hd_gravity_power%label), ', ',        &
+     &                       param(i)%gravity_power
+!        write(id_log,'(2(a,a2),a)')                                    &
+!     &                             trim(hd_dimensional%math), ', ',    &
+!     &                             trim(hd_dimensional%label), ', ',   &
+!     &                                   trim(param(i)%dimensional)
+!
+        write(id_log,'(2(a,a2),a)')                                     &
+     &                             trim(hd_hyperdiffusion%math), ', ',  &
+     &                             trim(hd_hyperdiffusion%label), ', ', &
      &                                   trim(param(i)%hyperdiffusion)
-        write(id_log,'(a, a2,1pe10.2)')                                &
-     &                       trim(hd_hyperdiffusion_alpha), ', ',       &
+        write(id_log,'(2(a,a2),1pe23.12)')                              &
+     &                       trim(hd_hyperdiffusion_alpha%math), ', ',  &
+     &                       trim(hd_hyperdiffusion_alpha%label), ', ', &
      &                       param(i)%hyperdiffusion_alpha
-        write(id_log,'(a, a2,1pe10.2)')                                &
-     &                       trim(hd_hyperdiffusion_beta), ', ',        &
+        write(id_log,'(2(a,a2),1pe23.12)')                              &
+     &                       trim(hd_hyperdiffusion_beta%math), ', ',   &
+     &                       trim(hd_hyperdiffusion_beta%label), ', ',  &
      &                       param(i)%hyperdiffusion_beta
         close(id_log)
   98    continue
@@ -1085,74 +1334,146 @@
         open(id_log, file=fname, err=98)
 !
         write(id_log,'(a)')  'Name, Parameter'
-        write(id_log,'(a, a2,i8)')  trim(hd_Nr), ', ', param(i)%N_r
-        write(id_log,'(a, a2,i8)')  trim(hd_Nt), ', ', param(i)%N_theta
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_aspect), ', ',        &
-     &                                  param(i)%aspect_ratio
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_shell), ', ',      &
-     &                                  param(i)%shell_depth
-        write(id_log,'(a, a2,a)')  trim(hd_chebyshev), ', ',      &
-     &                                  trim(param(i)%chebyshev)
+        write(id_log,'(2(a,a2),i8)')                                    &
+     &                       trim(hd_Nr%math), ', ',                    &
+     &                       trim(hd_Nr%label), ', ',                   &
+     &                       param(i)%N_r
+        write(id_log,'(2(a,a2),i8)')                                    &
+     &                       trim(hd_Nt%math), ', ',                    &
+     &                       trim(hd_Nt%label), ', ',                   &
+     &                       param(i)%N_theta
+        write(id_log,'(2(a,a2),i8)')                                    &
+     &                       trim(hd_Npcol%math), ', ',                 &
+     &                       trim(hd_Npcol%label), ', ',                &
+     &                       param(i)%npcol
+        write(id_log,'(2(a,a2),i8)')                                    &
+     &                       trim(hd_Nprow%math), ', ',                 &
+     &                       trim(hd_Nprow%label), ', ',                &
+     &                       param(i)%nprow
+        write(id_log,'(2(a,a2),1pe10.2)')                               &
+     &                       trim(hd_aspect%math), ', ',                &
+     &                       trim(hd_aspect%label), ', ',               &
+     &                       param(i)%aspect_ratio
+        write(id_log,'(2(a,a2),1pe10.2)')                               &
+     &                       trim(hd_shell%math), ', ',                 &
+     &                       trim(hd_shell%label), ', ',                &
+     &                       param(i)%shell_depth
+        write(id_log,'(2(a,a2),a)')                                     &
+     &                       trim(hd_chebyshev%math), ', ',             &
+     &                       trim(hd_chebyshev%label), ', ',            &
+     &                       trim(param(i)%chebyshev)
 !, 
-        write(id_log,'(a, a2,a)')  trim(hd_rotation), ', ',             &
-     &                                  trim(param(i)%rotation)
-        write(id_log,'(a, a2,a)')  trim(hd_magnetism), ', ',            &
-     &                                  trim(param(i)%magnetism)
-        write(id_log,'(a, a2,a)')  trim(hd_viscous), ', ',              &
-     &                                  trim(param(i)%viscous_heating)
-        write(id_log,'(a, a2,a)')  trim(hd_ohmic), ', ',                &
-     &                                  trim(param(i)%ohmic_heating)
+        write(id_log,'(2(a,a2),a)')                                     &
+     &                       trim(hd_rotation%math), ', ',              &
+     &                       trim(hd_rotation%label), ', ',             &
+     &                       param(i)%rotation
+        write(id_log,'(2(a,a2),a)')                                     &
+     &                       trim(hd_magnetism%math), ', ',             &
+     &                       trim(hd_magnetism%label), ', ',            &
+     &                       param(i)%magnetism
+        write(id_log,'(2(a,a2),a)')                                     &
+     &                       trim(hd_viscous%math), ', ',               &
+     &                       trim(hd_viscous%label), ', ',              &
+     &                       param(i)%viscous_heating
+        write(id_log,'(2(a,a2),a)')                                     &
+     &                       trim(hd_ohmic%math), ', ',                 &
+     &                       trim(hd_ohmic%label), ', ',                &
+     &                       param(i)%ohmic_heating
 !, 
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_Ek), ', ',             &
-     &                            param(i)%Ekman_Number
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_Pr), ', ',             &
-     &                            param(i)%Prandtl_Number
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_Pm), ', ',             &
-     &                            param(i)%Magnetic_Prandtl_Number
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_Ra), ', ',             &
-     &                            param(i)%Rayleigh_Number
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_mod_Ra), ', ',         &
-     &                            param(i)%Modified_Rayleigh_Number
+        write(id_log,'(2(a,a2),1pe23.12)')                              &
+     &                       trim(hd_Ek%math), ', ',                    &
+     &                       trim(hd_Ek%label), ', ',                   &
+     &                       param(i)%Ekman_Number
+        write(id_log,'(2(a,a2),1pe23.12)')                              &
+     &                       trim(hd_Pr%math), ', ',                    &
+     &                       trim(hd_Pr%label), ', ',                   &
+     &                       param(i)%Prandtl_Number
+        write(id_log,'(2(a,a2),1pe23.12)')                              &
+     &                       trim(hd_Pm%math), ', ',                    &
+     &                       trim(hd_Pm%label), ', ',                   &
+     &                       param(i)%Magnetic_Prandtl_Number
+        write(id_log,'(2(a,a2),1pe23.12)')                              &
+     &                       trim(hd_Ra%math), ', ',                    &
+     &                       trim(hd_Ra%label), ', ',                   &
+     &                       param(i)%Modified_Rayleigh_Number
+        write(id_log,'(2(a,a2),1pe23.12)')                              &
+     &                       trim(hd_mod_Ra%math), ', ',                &
+     &                       trim(hd_mod_Ra%label), ', ',               &
+     &                       param(i)%Modified_Rayleigh_Number
 !, 
-        write(id_log,'(a, a2,a)') trim(hd_no_slip), ', ',               &
-     &                            trim(param(i)%no_slip_boundaries)
-        write(id_log,'(a, a2,a)') trim(hd_fix_tvar_bottom), ', ',       &
-     &                            trim(param(i)%fix_tvar_bottom)
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_T_bottom), ', ',       &
-     &                                  param(i)%T_bottom
-        write(id_log,'(a, a2,a)')  trim(hd_fix_dtdr_bottom), ', ',      &
-     &                                  trim(param(i)%fix_dtdr_bottom)
-!        write(id_log,'(a, a2,1pe10.2)')  trim(hd_dTdr_bottom), ', ',   &
-!     &                                  param(i)%dTdr_bottom
-!        write(id_log,'(a, a2,a)') trim(hd_fix_tvar_top), ', ',         &
-!     &                                   trim(param(i)%fix_tvar_top)
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_T_top), ', ',          &
-     &                                   param(i)%T_top
-!        write(id_log,'(a, a2,a)') trim(hd_fix_dtdr_top), ', ',         &
-!     &                                   trim(param(i)%fix_dtdr_top)
-!        write(id_log,'(a, a2,1pe10.2)')  trim(hd_dTdr_top), ', ',      &
-!     &                                   param(i)%dTdr_top
+        write(id_log,'(2(a,a2),a)')                                     &
+     &                       trim(hd_no_slip%math), ', ',               &
+     &                       trim(hd_no_slip%label), ', ',              &
+     &                       param(i)%no_slip_boundaries
+        write(id_log,'(2(a,a2),a)')                                     &
+     &                       trim(hd_fix_tvar_bottom%math), ', ',       &
+     &                       trim(hd_fix_tvar_bottom%label), ', ',      &
+     &                       param(i)%fix_tvar_bottom
+        write(id_log,'(2(a,a2),1pe23.12)')                              &
+     &                       trim(hd_T_bottom%math), ', ',              &
+     &                       trim(hd_T_bottom%label), ', ',             &
+     &                       param(i)%T_bottom
+!        write(id_log,'(2(a,a2),a)')                                    &
+!     &                       trim(hd_fix_dtdr_bottom%math), ', ',      &
+!     &                       trim(hd_fix_dtdr_bottom%label), ', ',     &
+!     &                       param(i)%fix_dtdr_bottom
+!        write(id_log,'(2(a,a2),1pe23.12)')                             &
+!     &                       trim(hd_dTdr_bottom%math), ', ',          &
+!     &                       trim(hd_dTdr_bottom%label), ', ',         &
+!     &                       param(i)%dTdr_bottom
+        write(id_log,'(2(a,a2),a)')                                     &
+     &                       trim(hd_fix_tvar_top%math), ', ',          &
+     &                       trim(hd_fix_tvar_top%label), ', ',         &
+     &                       param(i)%fix_tvar_top
+        write(id_log,'(2(a,a2),1pe23.12)')                              &
+     &                       trim(hd_T_top%math), ', ',                 &
+     &                       trim(hd_T_top%label), ', ',                &
+     &                       param(i)%T_top
+!        write(id_log,'(2(a,a2),a)')                                    &
+!     &                       trim(hd_fix_dtdr_top%math), ', ',         &
+!     &                       trim(hd_fix_dtdr_top%label), ', ',        &
+!     &                       param(i)%fix_dtdr_top
+!        write(id_log,'(2(a,a2),1pe23.12)')                             &
+!     &                       trim(hd_dTdr_top%math), ', ',             &
+!     &                       trim(hd_dTdr_top%label), ', ',            &
+!     &                       param(i)%dTdr_top
 !
-        write(id_log,'(a, a2,i8)')  trim(hd_reference_type), ', ',      &
-     &                                   param(i)%reference_type
-        write(id_log,'(a, a2,i8)')  trim(hd_heating_type), ', ',        &
-     &                                   param(i)%heating_type
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_poly_n), ', ',         &
-     &                                   param(i)%poly_n
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_poly_Nrho), ', ',      &
-     &                                   param(i)%poly_Nrho
-        write(id_log,'(a, a2,1pe10.2)')  trim(hd_gravity_power), ', ',  &
-     &                                   param(i)%gravity_power
-        write(id_log,'(a, a2,a)') trim(hd_dimensional), ', ',           &
-     &                                   trim(param(i)%dimensional)
+        write(id_log,'(2(a,a2),i4)')                                    &
+     &                       trim(hd_reference_type%math), ', ',        &
+     &                       trim(hd_reference_type%label), ', ',       &
+     &                       param(i)%reference_type
+        write(id_log,'(2(a,a2),i4)')                                    &
+     &                       trim(hd_heating_type%math), ', ',          &
+     &                       trim(hd_heating_type%label), ', ',         &
+     &                       param(i)%heating_type
+!        write(id_log,'(2(a,a2),1pe23.12)')                             &
+!     &                       trim(hd_poly_n%math), ', ',               &
+!     &                       trim(hd_poly_n%label), ', ',              &
+!     &                       param(i)%poly_n
+!        write(id_log,'(2(a,a2),1pe23.12)')                             &
+!     &                       trim(hd_poly_Nrho%math), ', ',            &
+!     &                       trim(hd_poly_Nrho%label), ', ',           &
+!     &                       param(i)%poly_Nrho
+        write(id_log,'(2(a,a2),1pe23.12)')                              &
+     &                       trim(hd_gravity_power%math), ', ',         &
+     &                       trim(hd_gravity_power%label), ', ',        &
+     &                       param(i)%gravity_power
+!        write(id_log,'(2(a,a2),a)')                                    &
+!     &                             trim(hd_dimensional%math), ', ',    &
+!     &                             trim(hd_dimensional%label), ', ',   &
+!     &                                   trim(param(i)%dimensional)
 !
-        write(id_log,'(a, a2,a)') trim(hd_hyperdiffusion), ', ',        &
-     &                                   trim(param(i)%hyperdiffusion)
-        write(id_log,'(a, a2,1pe10.2)')                                 &
-     &                       trim(hd_hyperdiffusion_alpha), ', ',       &
+        write(id_log,'(2(a,a2),a)')                                     &
+     &                             trim(hd_hyperdiffusion%math), ', ',  &
+     &                             trim(hd_hyperdiffusion%label), ', ', &
+     &                             trim(param(i)%hyperdiffusion)
+        write(id_log,'(2(a,a2),1pe23.12)')                              &
+     &                       trim(hd_hyperdiffusion_alpha%math), ', ',  &
+     &                       trim(hd_hyperdiffusion_alpha%label), ', ', &
      &                       param(i)%hyperdiffusion_alpha
-        write(id_log,'(a, a2,1pe10.2)')                                 &
-     &                       trim(hd_hyperdiffusion_beta), ', ',        &
+        write(id_log,'(2(a,a2),1pe23.12)')                              &
+     &                       trim(hd_hyperdiffusion_beta%math), ', ',   &
+     &                       trim(hd_hyperdiffusion_beta%label), ', ',  &
      &                       param(i)%hyperdiffusion_beta
         close(id_log)
   98    continue
@@ -1178,6 +1499,8 @@
      &                        '/Case_doc.rst'
         write(*,*) 'Output Sphinx document ', trim(fname)
         open(id_out, file=fname, err=95)
+        write(id_out,'(3a)') '.. _', trim(runs(i)%name), ':'
+        write(id_out,'(a)')
         write(id_out,'(a)')                                             &
      &    '-----------------------------------------------------------'
         write(id_out,'(a)') trim(runs(i)%name)
@@ -1189,7 +1512,7 @@
         write(id_out,'(a)') 'Data is stored in the following directory:'
         write(id_out,'(a)')
         write(id_out,'(5a)') '- `', trim(param(i)%dir_name),            &
-     &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
+     &          ' <https://incite.geodynamics.org/DATA/',     &
      &          trim(param(i)%dir_name), '>`_'
         write(id_out,'(a)')
 !
@@ -1202,38 +1525,38 @@
 !
         write(id_out,'(4a)')                                            &
      &          '- Parameter file (original): `main_input.org',         &
-     &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
+     &          ' <https://incite.geodynamics.org/DATA/',               &
      &          trim(param(i)%dir_name), '/main_input.org>`_'
-        write(id_out,'(4a)')                                            &
-     &          '- Parameter file (for current version): `main_input',  &
-     &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
-     &          trim(param(i)%dir_name), '/main_input>`_'
+!        write(id_out,'(4a)')                                           &
+!     &          '- Parameter file (for current version): `main_input', &
+!     &          ' <https://incite.geodynamics.org/DATA/',              &
+!     &          trim(param(i)%dir_name), '/main_input>`_'
 !
         write(id_out,'(4a)')                                            &
-     &          '- Checkpoint data directory: `Checkpoint',             &
-     &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
-     &          trim(param(i)%dir_name), '/Checkpoint>`_'
+     &          '- Checkpoint data directory: `Checkpoints',            &
+     &          ' <https://incite.geodynamics.org/DATA/',               &
+     &          trim(param(i)%dir_name), '/Checkpoints>`_'
 !
         write(id_out,'(4a)')                                            &
      &          '- Global averaged data directory: `G_Avgs',            &
-     &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
+     &          ' <https://incite.geodynamics.org/DATA/',               &
      &          trim(param(i)%dir_name), '/G_Avgs>`_'
         write(id_out,'(4a)')                                            &
      &          '- Sphere averaged data directory: `Shell_Avgs',        &
-     &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
+     &          ' <https://incite.geodynamics.org/DATA/',               &
      &          trim(param(i)%dir_name), '/Shell_Avgs>`_'
         write(id_out,'(4a)')                                            &
      &          '- Shell spectrum data directory: `Shell_Spectra',      &
-     &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
+     &          ' <https://incite.geodynamics.org/DATA/',               &
      &          trim(param(i)%dir_name), '/Shell_Spectra>`_'
 !
         write(id_out,'(4a)')                                            &
      &          '- Longitudinal averaged data directory: `AZ_Avgs',     &
-     &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
+     &          ' <https://incite.geodynamics.org/DATA/',               &
      &          trim(param(i)%dir_name), '/AZ_Avgs>`_'
         write(id_out,'(4a)')                                            &
      &          '- Fields on spheres directory: `Shell_Slices',         &
-     &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
+     &          ' <https://incite.geodynamics.org/DATA/',               &
      &          trim(param(i)%dir_name), '/Shell_Slices>`_'
         write(id_out,'(a)')
 !
@@ -1292,6 +1615,8 @@
      &                        '/Case_doc.rst'
         write(*,*) 'Output Sphinx document ', trim(fname)
         open(id_out, file=fname, err=95)
+        write(id_out,'(3a)') '.. _',trim(runs(i)%name), ':'
+        write(id_out,'(a)')
         write(id_out,'(a)')                                             &
      &    '-----------------------------------------------------------'
         write(id_out,'(a)') trim(runs(i)%name)
@@ -1303,7 +1628,7 @@
         write(id_out,'(a)') 'Data is stored in the following directory:'
         write(id_out,'(a)')
         write(id_out,'(5a)') '- `', trim(param(i)%dir_name),            &
-     &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
+     &          ' <https://incite.geodynamics.org/DATA/',               &
      &          trim(param(i)%dir_name), '>`_'
         write(id_out,'(a)')
 !
@@ -1315,42 +1640,42 @@
         write(id_out,'(a)')
         write(id_out,'(4a)')                                            &
      &          '- Parameter file (original): `main_input.org',         &
-     &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
+     &          ' <https://incite.geodynamics.org/DATA/',               &
      &          trim(param(i)%dir_name), '/main_input.org>`_'
-        write(id_out,'(4a)')                                            &
-     &          '- Parameter file (for current version): `main_input',  &
-     &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
-     &          trim(param(i)%dir_name), '/main_input>`_'
+!        write(id_out,'(4a)')                                           &
+!     &          '- Parameter file (for current version): `main_input', &
+!     &          ' <https://incite.geodynamics.org/DATA/',              &
+!     &          trim(param(i)%dir_name), '/main_input>`_'
 !
         write(id_out,'(4a)')                                            &
-     &          '- Checkpoint data directory: `Checkpoint',             &
-     &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
-     &          trim(param(i)%dir_name), '/Checkpoint>`_'
+     &          '- Checkpoint data directory: `Checkpoints',            &
+     &          ' <https://incite.geodynamics.org/DATA/',               &
+     &          trim(param(i)%dir_name), '/Checkpoints>`_'
 !
         write(id_out,'(4a)')                                            &
      &          '- Global averaged data directory: `G_Avgs',            &
-     &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
+     &          ' <https://incite.geodynamics.org/DATA/',               &
      &          trim(param(i)%dir_name), '/G_Avgs>`_'
         write(id_out,'(4a)')                                            &
      &          '- Sphere averaged data directory: `Shell_Avgs',        &
-     &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
+     &          ' <https://incite.geodynamics.org/DATA/',               &
      &          trim(param(i)%dir_name), '/Shell_Avgs>`_'
         write(id_out,'(4a)')                                            &
      &          '- Shell spectrum data directory: `Shell_Spectra',      &
-     &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
+     &          ' <https://incite.geodynamics.org/DATA/',               &
      &          trim(param(i)%dir_name), '/Shell_Spectra>`_'
 !
         write(id_out,'(4a)')                                            &
      &          '- Longitudinal averaged data directory: `AZ_Avgs',     &
-     &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
+     &          ' <https://incite.geodynamics.org/DATA/',               &
      &          trim(param(i)%dir_name), '/AZ_Avgs>`_'
         write(id_out,'(4a)')                                            &
      &          '- Fields on spheres directory: `Shell_Slices',         &
-     &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
+     &          ' <https://incite.geodynamics.org/DATA/',               &
      &          trim(param(i)%dir_name), '/Shell_Slices>`_'
         write(id_out,'(4a)')                                            &
      &          '- Equatorial fields directory: `Equatorial_Slices',    &
-     &          ' <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/',     &
+     &          ' <https://incite.geodynamics.org/DATA/',               &
      &          trim(param(i)%dir_name), '/Equatorial_Slices>`_'
         write(id_out,'(a)') 
 !
