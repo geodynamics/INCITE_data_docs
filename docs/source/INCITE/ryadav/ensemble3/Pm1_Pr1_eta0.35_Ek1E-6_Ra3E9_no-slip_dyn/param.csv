@@ -1,33 +1,28 @@
 Name, Parameter
-n_r,      256
-n_theta,      768
-aspect_ratio,   3.50E-01
-shell_depth,   1.00E+00
-chebyshev, .true.
-rotation, .True.
-magnetism, .true.
-viscous_heating, .false.
-ohmic_heating, .false.
-Ekman_Number,   1.00E-06
-Prandtl_Number,   1.00E+00
-Magnetic_Prandtl_Number,   1.00E+00
-Rayleigh_Number,   3.00E+09
-Modified_Rayleigh_Number,  -1.00E+00
-no_slip_boundaries, .true.
-fix_tvar_bottom, .true.
-T_bottom,   1.00E+00
-fix_dtdr_bottom, .DEFAULT.
-dTdr_bottom,   0.00E+00
-fix_tvar_top, .true.
-T_top,   0.00E+00
-fix_dtdr_top, .false.
-dTdr_top,   0.00E+00
-reference_type,        1
-heating_type,        0
-poly_n,  -1.00E+30
-poly_Nrho,  -1.00E+30
-gravity_power,   1.00E+00
-dimensional, .false.
-hyperdiffusion, .true.
-hyperdiffusion_alpha,   3.00E+00
-hyperdiffusion_beta,   6.00E+00
+:math:`N_{r}`, n_r,      256
+:math:`N_{\theta}`, n_theta,      768
+:math:`Np_{column}`, npcol,      128
+:math:`Np_{row}`, nprow,      256
+:math:`r_o / r_i`, aspect_ratio,   3.50E-01
+:math:`r_o - r_i`, shell_depth,   1.00E+00
+Chebyshev grid, chebyshev, .true.
+rotation, rotation, .True.                                                                                                                                                                                                                                                         
+magnetism, magnetism, .true.                                                                                                                                                                                                                                                         
+viscous heating, viscous_heating, .false.                                                                                                                                                                                                                                                        
+Ohmic heating, ohmic_heating, .false.                                                                                                                                                                                                                                                        
+:math:`E = \frac{\nu}{\Omega L^2}`, Ekman_Number,      1.000000000000E-06
+:math:`Pr`, Prandtl_Number,      1.000000000000E+00
+:math:`Pm`, Magnetic_Prandtl_Number,      1.000000000000E+00
+:math:`Ra`, Rayleigh_Number,     -1.000000000000E+00
+:math:`Ram`, Modified_Rayleigh_Number,     -1.000000000000E+00
+Non slip boundary, no_slip_boundaries, .true.                                                                                                                                                                                                                                                         
+Fixed :math:`T` at :math:`r_i`, fix_tvar_bottom, .true.                                                                                                                                                                                                                                                         
+:math:`T(r_i)`, T_bottom,      1.000000000000E+00
+Fixed :math:`T` at :math:`r_o`, fix_tvar_top, .true.                                                                                                                                                                                                                                                         
+:math:`T(r_o)`, T_top,      0.000000000000E+00
+Reference type, reference_type,    1
+Heating type, heating_type,    0
+:math:`n_{g}`, gravity_power,      1.000000000000E+00
+Hyper-diffusion, hyperdiffusion, .true.
+:math:`\alpha`, hyperdiffusion_alpha,      3.000000000000E+00
+:math:`\beta`, hyperdiffusion_beta,      6.000000000000E+00

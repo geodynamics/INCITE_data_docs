@@ -1,3 +1,5 @@
+.. _J95-pn1-ht1-E3n6-10Ra-M10:
+
 -----------------------------------------------------------
 J95-pn1-ht1-E3n6-10Ra-M10
 -----------------------------------------------------------
@@ -6,21 +8,20 @@ Directory.
 =========================================
 Data is stored in the following directory:
 
-- `mheimpel/Jup95/nsb/poly_n1/E3n6/10xRa/runM10 <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/mheimpel/Jup95/nsb/poly_n1/E3n6/10xRa/runM10>`_
+- `mheimpel/Jup95/nsb/poly_n1/E3n6/10xRa/runM10 <https://incite.geodynamics.org/DATA/mheimpel/Jup95/nsb/poly_n1/E3n6/10xRa/runM10>`_
 
 Avaiable data.
 ==========================================
 
 The following data for analysis are aviable:
 
-- Parameter file (original): `main_input.org <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/mheimpel/Jup95/nsb/poly_n1/E3n6/10xRa/runM10/main_input.org>`_
-- Parameter file (for current version): `main_input <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/mheimpel/Jup95/nsb/poly_n1/E3n6/10xRa/runM10/main_input>`_
-- Checkpoint data directory: `Checkpoint <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/mheimpel/Jup95/nsb/poly_n1/E3n6/10xRa/runM10/Checkpoint>`_
-- Global averaged data directory: `G_Avgs <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/mheimpel/Jup95/nsb/poly_n1/E3n6/10xRa/runM10/G_Avgs>`_
-- Sphere averaged data directory: `Shell_Avgs <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/mheimpel/Jup95/nsb/poly_n1/E3n6/10xRa/runM10/Shell_Avgs>`_
-- Shell spectrum data directory: `Shell_Spectra <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/mheimpel/Jup95/nsb/poly_n1/E3n6/10xRa/runM10/Shell_Spectra>`_
-- Longitudinal averaged data directory: `AZ_Avgs <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/mheimpel/Jup95/nsb/poly_n1/E3n6/10xRa/runM10/AZ_Avgs>`_
-- Fields on spheres directory: `Shell_Slices <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/mheimpel/Jup95/nsb/poly_n1/E3n6/10xRa/runM10/Shell_Slices>`_
+- Parameter file (original): `main_input.org <https://incite.geodynamics.org/DATA/mheimpel/Jup95/nsb/poly_n1/E3n6/10xRa/runM10/main_input.org>`_
+- Checkpoint data directory: `Checkpoints <https://incite.geodynamics.org/DATA/mheimpel/Jup95/nsb/poly_n1/E3n6/10xRa/runM10/Checkpoints>`_
+- Global averaged data directory: `G_Avgs <https://incite.geodynamics.org/DATA/mheimpel/Jup95/nsb/poly_n1/E3n6/10xRa/runM10/G_Avgs>`_
+- Sphere averaged data directory: `Shell_Avgs <https://incite.geodynamics.org/DATA/mheimpel/Jup95/nsb/poly_n1/E3n6/10xRa/runM10/Shell_Avgs>`_
+- Shell spectrum data directory: `Shell_Spectra <https://incite.geodynamics.org/DATA/mheimpel/Jup95/nsb/poly_n1/E3n6/10xRa/runM10/Shell_Spectra>`_
+- Longitudinal averaged data directory: `AZ_Avgs <https://incite.geodynamics.org/DATA/mheimpel/Jup95/nsb/poly_n1/E3n6/10xRa/runM10/AZ_Avgs>`_
+- Fields on spheres directory: `Shell_Slices <https://incite.geodynamics.org/DATA/mheimpel/Jup95/nsb/poly_n1/E3n6/10xRa/runM10/Shell_Slices>`_
 
 Parameters.
 =========================================
