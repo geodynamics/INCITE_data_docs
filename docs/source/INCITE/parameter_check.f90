@@ -748,8 +748,8 @@
 !
       write(id_out,*)
       do i = 1, n_runs
-        write(id_out,'(2a)', ADVANCE='NO')                              &
-     &                         trim(runs(i)%name), '_ , '
+        write(id_out,'(3a)', ADVANCE='NO')                              &
+     &                 ':ref:`', trim(runs(i)%name), '`, '
         write(id_out,'(i8,a2)', ADVANCE='NO') param(i)%N_r,', '
         write(id_out,'(i8,a2)', ADVANCE='NO') param(i)%N_theta,', '
 !        write(id_out,'(i8,a2)', ADVANCE='NO') param(i)%npcol,', '
@@ -910,8 +910,8 @@
       write(id_out,*)
       do i = 1, n_runs
 !        write(id_out,'(i4,a2)', ADVANCE='NO') i, ', '
-        write(id_out,'(2a)', ADVANCE='NO')                              &
-     &                         trim(runs(i)%name), '_ , '
+        write(id_out,'(3a)', ADVANCE='NO')                              &
+     &                 ':ref:`', trim(runs(i)%name), '`, '
         write(id_out,'(i8,a2)', ADVANCE='NO') param(i)%N_r,', '
         write(id_out,'(i8,a2)', ADVANCE='NO') param(i)%N_theta,', '
 !        write(id_out,'(i8,a2)', ADVANCE='NO') param(i)%npcol,', '
@@ -1500,7 +1500,6 @@
         write(*,*) 'Output Sphinx document ', trim(fname)
         open(id_out, file=fname, err=95)
         write(id_out,'(3a)') '.. _', trim(runs(i)%name), ':'
-        write(id_out,'(a)')
         write(id_out,'(a)')                                             &
      &    '-----------------------------------------------------------'
         write(id_out,'(a)') trim(runs(i)%name)
@@ -1616,7 +1615,6 @@
         write(*,*) 'Output Sphinx document ', trim(fname)
         open(id_out, file=fname, err=95)
         write(id_out,'(3a)') '.. _',trim(runs(i)%name), ':'
-        write(id_out,'(a)')
         write(id_out,'(a)')                                             &
      &    '-----------------------------------------------------------'
         write(id_out,'(a)') trim(runs(i)%name)
