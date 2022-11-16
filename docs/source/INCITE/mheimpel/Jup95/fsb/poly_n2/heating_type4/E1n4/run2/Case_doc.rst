@@ -9,7 +9,7 @@ Data is stored in the following directory:
 
 - `mheimpel/Jup95/fsb/poly_n2/heating_type4/E1n4/run2 <https://incite.geodynamics.org/DATA/mheimpel/Jup95/fsb/poly_n2/heating_type4/E1n4/run2>`_
 
-Avaiable data.
+Available data.
 ==========================================
 
 The following data for analysis are aviable:
