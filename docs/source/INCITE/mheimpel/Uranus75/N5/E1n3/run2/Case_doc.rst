@@ -9,7 +9,7 @@ Data is stored in the following directory:
 
 - `mheimpel/Uranus75/N5/E1n3/run2 <https://incite.geodynamics.org/DATA/mheimpel/Uranus75/N5/E1n3/run2>`_
 
-Avaiable data.
+Available data.
 ==========================================
 
 The following data for analysis are aviable:
