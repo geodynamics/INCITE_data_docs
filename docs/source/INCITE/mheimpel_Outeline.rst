@@ -18,9 +18,8 @@ and :math:`r_i / r_o = 0.75` for the Uranus model.
 
 List of parameters
 =================================
-
-.. csv-table::
-   :file: mheimpel_parameters.csv
+.. csv-table:: 
+   :file: moritz_parameters.csv
    :encoding: UTF-8
    :header-rows: 1
 
