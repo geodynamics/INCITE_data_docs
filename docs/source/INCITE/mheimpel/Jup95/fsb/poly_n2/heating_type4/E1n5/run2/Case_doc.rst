@@ -11,7 +11,7 @@ Data is stored in the following directory:
 Avaiable data.
 ==========================================
 
-The following data for analysis are aviable:
+The following data for analysis are available:
 
 - Parameter file (original): `main_input.org <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/mheimpel/Jup95/fsb/poly_n2/heating_type4/E1n5/run2/main_input.org>`_
 - Parameter file (for current version): `main_input <https://farm.cse.ucdavis.edu/~hrmatsui/INCITE/mheimpel/Jup95/fsb/poly_n2/heating_type4/E1n5/run2/main_input>`_
@@ -45,4 +45,3 @@ Examples of visualized images.
 
 
 .. include:: ./Spectr_caption_KE_0.rst
-

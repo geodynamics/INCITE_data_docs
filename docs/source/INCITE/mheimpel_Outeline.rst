@@ -1,20 +1,25 @@
 
-Jovian Atomosphere (mheimpel)
+Jovian Atmosphere (mheimpel)
 -------------------------------------------
 
 Overview
 =================================
 
-Simulations for Jovian or Uranucian atomosphere have been performed by Moriz Heimpel (Univ. of Alberta). Simulations are thermally driven convection simulaiton in a rotating spherical shell modeled on the Jupiter's atomosphere. It is noted that magnetic field is not take account into these simulations. In the present simulation, anelastic approximation is applied, and system is solved in the non-dimensionally. The ratio of the inner bounday to the outer boundary is set to be :math:`r_i / r_o = 0.95` or 0.90 for the Jovian atomosphere model, and to be :math:`r_i / r_o = 0.75` forr the Uranus model.
- The free-slip boundary condition is applied to the velocity. Fixed heat flux (i.e. dT/dr) is applied for the inner and out boundaries.
- 
- Spatial resolution, dimenstionless number, amplidtude of dT/dr, and hyperdiffusivity settings for each case are listed in the following table as a parameter setting in 'main_input'. The definision of the paremter is described in `the Rayleigh document <https://rayleigh-documentation.readthedocs.io/en/latest/index.html>`_.
+Simulations for Jovian or Uranucian atmosphere have been performed by Moritz Heimpel (Univ. of Alberta).
+Simulations are thermally driven convection simulations in a rotating spherical shell modeled on Jupiter's atmosphere.
+It is noted that magnetic field is not taken into account in these simulations. In the present simulation, the anelastic approximation is
+applied, and the system is solved non-dimensionally. The ratio of the inner boundary to the outer boundary is set to :math:`r_i / r_o = 0.95` or 0.90 for the Jovian atmosphere model,
+and :math:`r_i / r_o = 0.75` for the Uranus model.
+ The free-slip boundary condition is applied to the velocity. Fixed heat flux (i.e. dT/dr) is applied to the inner and outer boundaries.
+
+ Spatial resolution, dimensionless number, amplitude of dT/dr, and hyperdiffusivity settings for each case are listed in the following table as a parameter setting in 'main_input'.
+ The definition of the parameters is described in `the Rayleigh document <https://rayleigh-documentation.readthedocs.io/en/latest/index.html>`_.
 
 
 List of parameters
 =================================
 
-.. csv-table:: 
+.. csv-table::
    :file: mheimpel_parameters.csv
    :encoding: UTF-8
    :header-rows: 1
