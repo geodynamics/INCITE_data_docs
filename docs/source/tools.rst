@@ -6,30 +6,36 @@ Data conversion program
    :maxdepth: 1
    :caption: Contents:
 
-Simulations under the INCITE project are performed by pre-released version on Rayleigh V.0.99 on ALCF Mira which has IBM Blue Gene/q processor. Consequently, data conversion is required to post-processing and continue the simulation from the checkpoint file.
+Simulations under the INCITE project were performed with the pre-released version of Rayleigh V.0.99 on ALCF `Mira <https://www.alcf.anl.gov/alcf-resources/mira>'_ configured with IBM Blue Gene/Q processors.
+Consequently, data conversion is required for post-processing and to continue simulations from the checkpoint file.
 
-The tools consists of threee programs:
-* Conversion program for parameter file 'main_input'
-* Conversion program for output data except for checkpoints
-* Conversion program for the checkpoint data in the folder 'Checkpints'
+The data conversion tools consists of three programs. Conversion programs for:
+* parameter file `main_input`
+* output data except for checkpoints
+*  the checkpoint data in the folder `Checkpoints`
 
 Requirement
 -------------------------------------------
-The checkpint data conversion program is written in Fortran95 and C, and the other programs are written by Python 3. Consequently, the following compiler and libraries are required:
+The checkpoint data conversion program is written in Fortran95 and C. The other programs are written in Python 3. Consequently, the following compilers and libraries are required:
 
-* C compiler
-* Fortran compiler 
-* Python 3 compiler
+* C
+* Fortran
+* Python 3
 * numpy (https://numpy.org)
 * matplotlib (https://matplotlib.org)
 
 Installation of compiler and library
 -------------------------------------------
-Here is a simple installation procedure for Linux (Ubuntu) and Mac OS. There are a number of package managers for the both Linux and Mac OS, please install requiremnet compilers and libraries as you like.
+The following are simple examples of the installation procedures for Linux (Ubuntu) and Mac OS.
+There are a number of package managers available for both Linux and Mac OS that can install the required
+compilers and libraries.
 
 Ubuntu
 ```````````````````````````````````````````
-GCC, the GNU Compiler Collection (\url{https://gcc.gnu.org}) is already installed in the most of Linux distributions. However, packages for development are need to be installed. For Ubuntu 20, for example, the required compilers and  libraries can be installed by using \verb|apt| command as following::
+GCC, the GNU Compiler Collection (\url{https://gcc.gnu.org}) is already installed in most
+Linux distributions. However, packages for development are need to be installed.
+For Ubuntu 20, for example, the required compilers and  libraries can be installed by
+using \verb|apt| command as following::
 
 	% sudo apt install build-essential gfortran python3
 	% sudo apt install pip
@@ -42,14 +48,17 @@ Then, Python libraries numpy and matplotlib are installed by pip::
 
 Mac OS
 ```````````````````````````````````````````
-For MacOS, any fortran compiler needs to be installed because Xcode does not have fortran compiler. The easiest way is installing GCC by using a package manager such as macports (\url{https://www.macports.org}) or homebrew (\url{https://brew.sh/index}).
-The required compiler and packages can be installed as followings: GCC in Homebrew includes gfortran compiler.::
+Xcode (Apple) does not have a fortran compiler.
+The easiest way to install a fortran compiler is by installing GCC by using a package manager such as
+macports (\url{https://www.macports.org}) or homebrew (\url{https://brew.sh/index}).
+
+GCC in Homebrew includes the gfortran compiler. The compiler and packages can be installed as follows:
 
 	% brew install gcc
 
 Directories
 -------------------------------------------
-The top directory of source file src contains the following directories::
+The top directory for the source files, src,  contains the following directories::
 
 	% ls src
 	.		C_src		Makefile.in	config.status	configure.ac
@@ -61,9 +70,9 @@ The top directory of source file src contains the following directories::
 * work            Work directory for build
 * INCITE_convert  Python source directory
 
-Build Checkpoint converter program
+Build checkpoint converter program
 -------------------------------------------
-The configure script is used for configuration to install. The simplest way to install programs is the following process in the top directory.::
+The configure script is used for configuration of the install. The simplest way to install programs is the following process. From the top directory.::
 
 	%pwd
 	[HOMEDIR]
@@ -78,43 +87,44 @@ The program "INCITE_checkpoint_converter" can be found in [HOMEDIR]/bin director
 	.				INCITE_checkpoint_converter
 
 
-After the build, object modules in work directory can be deleted by the following command::
+After the build, object modules in the work directory can be deleted by the following command::
 
 	% make clean
 
-To revert the initial repository strucure, type the following command::
+To revert the initial repository structure, type the following command::
 
 	% make distclean
 
 Convert parameter file
 -------------------------------------------
-The checkpoint converter program is performed by the folowing::
+The checkpoint converter program is performed by executing the following::
 
 	% INCITE_convert/convert_main_input.py [INCITE_MAIN_INPUT] [NEW_MAIN_INPUT] [START_STEP]  [END_STEP]
 
-* [INCITE_MAIN_INPUT] is the file name of the origianl parameter file for the INCITE project.
-* [NEW_MAIN_INPUT] is the file name of the new parameter file made by the INCITE project.
+* [INCITE_MAIN_INPUT] is the file name of the original parameter file.
+* [NEW_MAIN_INPUT] is the file name of the new parameter file.
 
 
-Convert data file except for Checkpint
+Convert data file except for checkpoint
 -------------------------------------------
 
-CAUTION: This program overwrits the original data. I strongly recommend to run this program to copied data.::
+CAUTION: This program overwrites the original data. Copy the data to a new directory before running the conversion program::
 
 	% INCITE_convert/convert.py [FILES_TO_CONVERT]
 
-* [FILES_TO_CONVERT] is the file names to be converted. Regular expressions for UNIX can be used for this file name list.
+* [FILES_TO_CONVERT] are the file names to be converted. Regular expressions for UNIX can be used for this file name list.
 
-Convert Checkpint data file
+Convert checkpoint data file
 -------------------------------------------
 
-The checkpoint converter program is performed by the folowing::
+CAUTION: This program overwrites the original data. Copy the data to a new directory before running the conversion program.
+
+The checkpoint converter program is performed by executing the following::
 
 	% [HOMEDIR]/bin/convert_checkpoint [INCITE_CHECKPOINT_DIR] [NEW_CHECKPOINT_DIR] [START_STEP]  [END_STEP]
 
-* [HOMEDIR]/bin is the directrory where the program is stored. The program can run after copying to the directory where the data copied.
-* [INCITE_CHECKPOINT_DIR] is the directrory of the origianl checkpoint data files made by the INCITE project.
-* [NEW_CHECKPOINT_DIR] is the directory for the converted Checkpoint data for Rayleigh 1.0.
-* [START_STEP] is the integer value for the start step to convert
-* [END_STEP] is the integer value for the start step to convert
-
+* [HOMEDIR]/bin is the directory where the program is stored.
+* [INCITE_CHECKPOINT_DIR] is the directory of the copies of the original checkpoint data files.
+* [NEW_CHECKPOINT_DIR] is the directory for the converted checkpoint data for Rayleigh 1.0.
+* [START_STEP] is the integer value for the start step to convert.
+* [END_STEP] is the integer value for the start step to convert.
