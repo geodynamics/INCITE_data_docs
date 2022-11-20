@@ -9,7 +9,7 @@ Data is stored in the following directory:
 
 - `ryadav/ensemble2/Pm0.05_Pr1_eta0.35_Ek1E-6_Ra2.5E10_no-slip_dyn <https://incite.geodynamics.org/DATA/ryadav/ensemble2/Pm0.05_Pr1_eta0.35_Ek1E-6_Ra2.5E10_no-slip_dyn>`_
 
-Avaiable data.
+Available data.
 ==========================================
 
 The following data for analysis are aviable:
