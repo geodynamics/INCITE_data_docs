@@ -37,6 +37,8 @@ Examples of visualized images.
 
 .. include:: ./G_Avgs_caption.rst
 
+.. include:: ./Shell_Slices_caption_Uphi_0.rst
+
 .. include:: ./Shell_Slices_caption_Ur_1.rst
 
 .. include:: ./Shell_Slices_caption_temp_1.rst
