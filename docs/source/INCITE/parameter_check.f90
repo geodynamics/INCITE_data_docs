@@ -1515,7 +1515,7 @@
      &          trim(param(i)%dir_name), '>`_'
         write(id_out,'(a)')
 !
-        write(id_out,'(a)') 'Avaiable data.'
+        write(id_out,'(a)') 'Available data.'
         write(id_out,'(a)') '=========================================='
         write(id_out,'(a)')
         write(id_out,'(a)')                                             &
@@ -1630,7 +1630,7 @@
      &          trim(param(i)%dir_name), '>`_'
         write(id_out,'(a)')
 !
-        write(id_out,'(a)') 'Avaiable data.'
+        write(id_out,'(a)') 'Available data.'
         write(id_out,'(a)') '=========================================='
         write(id_out,'(a)')
         write(id_out,'(a)')                                             &
