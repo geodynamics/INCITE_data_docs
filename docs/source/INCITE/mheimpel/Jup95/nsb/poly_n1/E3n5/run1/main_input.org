@@ -1,0 +1,93 @@
+! This setup is similar to the non-dimensional anelastic run
+! of Heimpel et al., 2016, Nature Geoscience Letters, 9, 19
+&problemsize_namelist
+ n_r = 256
+ n_theta = 1152 
+ nprow = 128
+ npcol = 128
+ aspect_ratio = 0.95d0
+ shell_depth = 1.0d0
+/
+&numerical_controls_namelist
+ chebyshev = .true.
+/
+&physical_controls_namelist
+ rotation  = .true.
+/
+&temporal_controls_namelist
+ max_time_step = 0.05d0  ! timescale is 1/Omega, fastest wave is 1/2 that - divide by 10 to be safe
+ max_iterations = 10000
+ max_time_minutes = 57
+ alpha_implicit = 0.51d0
+ check_frequency = 2000
+ cflmin = 0.4d0
+ cflmax = 0.6d0
+ quicksave_interval =  1000
+ num_quicksaves = 2 
+ save_last_timestep = .true.
+/
+&io_controls_namelist
+/
+&output_namelist
+shellslice_levels    = 16,64,128
+shellslice_values    = 1,2,3,64,65,103 !vr, vtheta, vphi, s, p, vorticity
+shellslice_frequency = 1000
+shellslice_nrec      = 1
+
+shellspectra_levels    = 16,64,128
+shellspectra_values    = 1,2,3,64,65, 112 !vr, vtheta, vphi, s, p, enstrophy
+shellspectra_frequency = 1000
+shellspectra_nrec      = 1
+
+azavg_values = 3,1,2,64,65 ! vphi, vr, vtheta, s, p
+azavg_frequency = 1000
+azavg_nrec = 1
+
+! velocities, flux balances, kinetic energies
+shellavg_values = 1,2,3,64,70,  117,119,120,121,122,123,  125,130,131,132,134,135,136  !
+shellavg_frequency = 9000000
+shellavg_nrec = 2
+
+
+!various kinetic energies
+globalavg_values = 125,126,127,128 !125=total, 126=radial, 127=theta, 128=phi
+globalavg_frequency = 20
+globalavg_nrec = 100
+
+full3d_values = 4
+full3d_frequency = 9000000
+/
+
+&Boundary_Conditions_Namelist
+no_slip_bottom = .true.
+stress_free_top = .true.
+dTdr_top    =  2000.0d0
+dTdr_bottom = -1.0d0
+fix_dtdr_top = .true.
+fix_dtdr_bottom = .true.
+/
+&Initial_Conditions_Namelist
+conductive_profile = .true.  !ell =0 entropy is conductive
+init_type = -1
+magnetic_init_type = 7
+mag_amp = 1.0d0
+temp_amp = 0.0d0
+temp_w = 0.01d4
+restart_iter = 0
+/
+&Test_Namelist
+/
+&Reference_Namelist
+reference_type = 3
+Ekman_Number = 3.0d-5
+Prandtl_Number =1.0d0
+Modified_Rayleigh_Number = 0.5d0
+heating_type = 1
+poly_n = 1.0d0
+poly_Nrho = 5.0d0
+/
+&Transport_Namelist
+hyperdiffusion = .true.
+hyperdiffusion_alpha = 20.0d0
+hyperdiffusion_beta = 3.0d0
+/
