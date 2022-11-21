@@ -1,0 +1,7 @@
+
+.. figure:: ./images/Shell_Slices_temp_2.pdf 
+   :width: 600px 
+   :align: center 
+
+Temperature :math:`T` at :math:`r = r_o - 0.485` and :math:`t = 9.971 \times 10^{2}`
+
