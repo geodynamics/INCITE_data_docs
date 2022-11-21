@@ -1,0 +1,90 @@
+&problemsize_namelist
+ n_r = 128
+ n_theta = 512
+ nprow = 128
+ npcol = 64
+ aspect_ratio = 0.9d0
+ shell_depth = 1.0d0
+/
+&numerical_controls_namelist
+ chebyshev = .true.
+/
+&physical_controls_namelist
+ rotation  = .true.
+/
+&temporal_controls_namelist
+ max_time_step = 0.1d0  ! timescale is 1/Omega, fastest wave is 1/2 that - divide by 5
+ max_iterations = 40000
+ alpha_implicit = 0.51d0
+ check_frequency = 10000
+ cflmin = 0.4d0
+ cflmax = 0.6d0
+ quicksave_interval =  1000
+ num_quicksaves = 3 
+ save_last_timestep = .true.
+/
+&io_controls_namelist
+/
+&output_namelist
+shellslice_levels    = 1,32,64,
+shellslice_values    = 1,2,3,64,65,103,112 !vr, vtheta, vphi, s, p, wr, enstrophy
+shellslice_frequency = 5000
+shellslice_nrec      = 4
+
+shellspectra_levels    = 1,32,64,
+shellspectra_values    = 1,2,3,64,65,103,112 !vr, vtheta, vphi, s, p, enstrophy
+shellspectra_frequency = 5000
+shellspectra_nrec      = 4
+
+azavg_values = 3,61,62,64,65 ! vphi, rho_vr, rho_vtheta, s, p
+azavg_frequency = 1000
+azavg_nrec = 5
+
+! velocities, flux balances, kinetic energies
+shellavg_values = 1,2,3,64,70,  117,119,120,121,122,123,  125,130,131,132,134,135,136  !
+shellavg_frequency = 100
+shellavg_nrec = 100
+
+!various kinetic energies
+globalavg_values = 125,126,127,130,131,132,134,135,136 !radial=126, theta=127, phi=128
+globalavg_frequency = 20
+globalavg_nrec = 100
+
+full3d_values = 4
+full3d_frequency = 9000000
+/
+
+&Boundary_Conditions_Namelist
+no_slip_boundaries = .false.
+dTdr_top    =  35.0d0
+dTdr_bottom = -1.0d0
+fix_dtdr_top = .true.
+fix_dtdr_bottom = .true.
+/
+&Initial_Conditions_Namelist
+conductive_profile = .true.
+init_type = -1   !7: random, -1: restart, 6: benchmark
+magnetic_init_type = 7
+mag_amp = 1.0d0
+temp_amp = 1.0d-2
+temp_w = 0.01d4
+restart_iter = 0
+/
+&Test_Namelist
+/
+&Reference_Namelist
+reference_type = 4
+Ekman_Number = 1.0d-4
+Prandtl_Number = 1.0d0
+Modified_Rayleigh_Number = 0.08d0
+heating_type = 4
+poly_n = 2.0d0
+poly_Nrho = 3.0d0
+/
+&NonDimensionalization_Namelist
+/
+&Transport_Namelist
+hyperdiffusion = .true.
+hyperdiffusion_alpha = 10.0d0
+hyperdiffusion_beta = 3.0d0
+/
