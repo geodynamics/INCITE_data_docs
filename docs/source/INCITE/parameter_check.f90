@@ -1515,7 +1515,7 @@
      &          trim(param(i)%dir_name), '>`_'
         write(id_out,'(a)')
 !
-        write(id_out,'(a)') 'Avaiable data.'
+        write(id_out,'(a)') 'Available data.'
         write(id_out,'(a)') '=========================================='
         write(id_out,'(a)')
         write(id_out,'(a)')                                             &
@@ -1577,6 +1577,9 @@
         write(id_out,'(a)')    
 
         write(id_out,'(a)')                                             &
+     &             '.. include:: ./Shell_Slices_caption_Uphi_0.rst'
+        write(id_out,'(a)') 
+        write(id_out,'(a)')                                             &
      &             '.. include:: ./Shell_Slices_caption_Ur_1.rst'
         write(id_out,'(a)') 
         write(id_out,'(a)')                                             &
@@ -1630,7 +1633,7 @@
      &          trim(param(i)%dir_name), '>`_'
         write(id_out,'(a)')
 !
-        write(id_out,'(a)') 'Avaiable data.'
+        write(id_out,'(a)') 'Available data.'
         write(id_out,'(a)') '=========================================='
         write(id_out,'(a)')
         write(id_out,'(a)')                                             &
