@@ -103,10 +103,12 @@ def plot_each_r_Shell_Slices_moritz(ss, icou, rindex, flag_same_snapshot,
   
   depth = ss.radius[0] - ss.radius[rindex]
   vr =   ss.vals[:,:,rindex,ss.lut[1],tindex]
+  vphi = ss.vals[:,:,rindex,ss.lut[3],tindex]
   temp = ss.vals[:,:,rindex,ss.lut[501],tindex]
   
-  ttitle = 'Temperature $T$'
-  utitle = 'Radial Velocity $u_r$'
+  ttitle = 'Entropy $s$'
+  utitle =  'Radial Velocity $u_r$'
+  uptitle = 'Azimuthal Velocity $u_{\phi}$'
   
   bbox_props = dict(boxstyle="round", fc="w", ec="0.5", alpha=1.0)
   rtext = "{:.3f}".format(depth)
@@ -133,7 +135,7 @@ def plot_each_r_Shell_Slices_moritz(ss, icou, rindex, flag_same_snapshot,
   ax1.set_title(ttitle)
   ax1.text(5.4, -1.2, textbox, ha="center", va="center", size=12, bbox=bbox_props)
   
-  plt.colorbar(plot1, label=r'$T$')
+  plt.colorbar(plot1, label=r'$S$')
   plt.tight_layout()
   savefile = Shell_Slices_image_prefix + temp_postfix + str(icou) + '.pdf'
   print('Saving figure to: ', savefile)
@@ -154,52 +156,11 @@ def plot_each_r_Shell_Slices_moritz(ss, icou, rindex, flag_same_snapshot,
   ax2.set_title(utitle)
   ax2.text(5.4, -1.2, textbox, ha="center", va="center", size=12, bbox=bbox_props)
   
-  plt.colorbar(plot1, label=r'$U_r$')
+  plt.colorbar(plot1, label=r'$U_{\phi}$')
   plt.tight_layout()
   savefile = Shell_Slices_image_prefix + Ur_postfix + str(icou) + '.pdf'
   print('Saving figure to: ', savefile)
   plt.savefig(savefile)
-  
-  return r_and_t_text
-
-def plot_each_Uphi_Shell_Slices_moritz(ss, icou, rindex, flag_same_snapshot, 
-                                       init_time, time_AZ):
-  niter = ss.niter
-  tindex = niter - 1 # All example quantities were output with same cadence.  Grab second time-index from all.
-  print('Slice', tindex, ss.time[tindex], init_time)
-  if(flag_same_snapshot == 0):
-    time = ss.time[tindex] - init_time
-  else:
-    time = time_AZ
-  print('time', time)
-  
-  tpow = math.floor(np.log10(time))
-  tnum = time * 10.0**(-tpow)
-  ttext = "{:.3f} \\times 10^{{{:d}}}".format(tnum, tpow)
-  
-  ntheta = ss.ntheta
-  nphi = ss.nphi
-  costheta = ss.costheta
-  theta = np.arccos(costheta) - np.pi/2.0
-  phi = np.arange(nphi)*2.0*np.pi/nphi - np.pi
-  
-  depth = ss.radius[0] - ss.radius[rindex]
-  vphi =   ss.vals[:,:,rindex,ss.lut[3],tindex]
-  
-  ttitle = 'Temperature $T$'
-  utitle = 'Radial Velocity $u_\phi$'
-  
-  bbox_props = dict(boxstyle="round", fc="w", ec="0.5", alpha=1.0)
-  rtext = "{:.3f}".format(depth)
-  textbox = "$r = r_o - $ " + rtext + " \n $t = " + ttext + "$"
-  r_and_t_text = "at :math:`r = r_o - " + rtext + "` and :math:`t = " + ttext + "`"
-  
-#     Spacing is default spacing set up by subplot
-  figdpi=300
-  sizetuple=(12,5)
-  tsize = 20     # title font size
-  cbfsize = 10   # colorbar font size
-  
   
   fig = plt.figure(figsize=sizetuple,dpi=figdpi)
   ax3 = fig.add_subplot(111, projection='mollweide')
@@ -212,10 +173,10 @@ def plot_each_Uphi_Shell_Slices_moritz(ss, icou, rindex, flag_same_snapshot,
   
   ax3.set_xticklabels([])
   ax3.set_yticklabels([])
-  ax3.set_title(utitle)
+  ax3.set_title(uptitle)
   ax3.text(5.4, -1.2, textbox, ha="center", va="center", size=12, bbox=bbox_props)
   
-  plt.colorbar(plot1, label=r'$U_r$')
+  plt.colorbar(plot1, label=r'$U_{\phi}$')
   plt.tight_layout()
   savefile = Shell_Slices_image_prefix + Uphi_postfix + str(icou) + '.pdf'
   print('Saving figure to: ', savefile)
@@ -237,7 +198,7 @@ def write_Shell_Slices_moritz_captions(caption_prefix, r_and_t_text, icou):
   fp.write('   :align: center \n')
   fp.write('\n')
   
-  fp.write('Temperature :math:`T` ')
+  fp.write('Entropy :math:`S` ')
   fp.write(r_and_t_text)
   fp.write('\n')
   fp.write('\n')
@@ -256,6 +217,24 @@ def write_Shell_Slices_moritz_captions(caption_prefix, r_and_t_text, icou):
   fp.write('\n')
   
   fp.write('Radial component of the velocity field :math:`u_r` ')
+  fp.write(r_and_t_text)
+  fp.write('\n')
+  fp.write('\n')
+  fp.close()
+  
+  caption_file_name = caption_prefix + Uphi_postfix + str(icou) + '.rst'
+  print('Write ', caption_file_name)
+  fp = open(caption_file_name, 'w')
+  fp.write('\n')
+  
+  ftext = '.. figure:: ./' + Shell_Slices_image_prefix \
+          + Uphi_postfix + str(icou) + '.pdf' + ' \n'
+  fp.write(ftext)
+  fp.write('   :width: 600px \n')
+  fp.write('   :align: center \n')
+  fp.write('\n')
+  
+  fp.write('azimuthal component of the velocity field :math:`u_{\phi}` ')
   fp.write(r_and_t_text)
   fp.write('\n')
   fp.write('\n')

@@ -122,21 +122,24 @@ def plot_each_Moritz_examples(d):
          and (AZ_Avgs_lastfile == Shell_Slices_lastfile)):
     flag_same_snapshot = 1
   
-  if((flag_same_snapshot == 0):
+  if(flag_same_snapshot == 0):
     if(int(AZ_Avgs_lastfile) <= int(Shell_Spectra_lastfile)
          and int(AZ_Avgs_lastfile) <= int(Shell_Slices_lastfile)):
       Shell_Spectra_lastfile = AZ_Avgs_lastfile
       Shell_Spectra_lastfile = AZ_Avgs_lastfile
+      flag_same_snapshot = 1
     
     if(int(Shell_Spectra_lastfile) <= int(AZ_Avgs_lastfile)
          and int(Shell_Spectra_lastfile) <= int(Shell_Slices_lastfile)):
       AZ_Avgs_lastfile =      Shell_Spectra_lastfile
       Shell_Slices_lastfile = Shell_Spectra_lastfile
+      flag_same_snapshot = 1
     
     if(int(Shell_Slices_lastfile) <= int(AZ_Avgs_lastfile)
          and int(Shell_Slices_lastfile) <= int(Shell_Spectra_lastfile)):
       AZ_Avgs_lastfile =       Shell_Slices_lastfile
       Shell_Spectra_lastfile = Shell_Slices_lastfile
+      flag_same_snapshot = 1
   
 #  Convert shell spectra
   print('Last file in ', org_Shell_Spectra, ':   ', Shell_Spectra_lastfile)

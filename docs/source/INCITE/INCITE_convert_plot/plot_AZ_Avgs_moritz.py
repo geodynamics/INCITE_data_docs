@@ -169,7 +169,7 @@ def s_plot_AZ_Avgs_moritz(Gpath, init_time):
             boundsfactor = 2.0, boundstype='rms', units=units, fontsize = cbfsize)
   ax[0].set_xlim(-0.3, 1.0)
   ax[0].set_ylim(-1.0, 1.0)
-  ax[0].set_title(r'Temperature perturbation',fontsize=tsize)
+  ax[0].set_title(r'Entropy perturbation',fontsize=tsize)
   ax[0].text(0.6, -1.2, textbox, ha="center", va="center", size=14, bbox=bbox_props)
   
 #  Differential Rotation
@@ -208,7 +208,7 @@ def write_AZ_Avgs_moritz_captions(caption_file_name, time):
   tnum = time * 10.0**(-tpow)
   ttext = " at :math:`t = {:.3f} \\times 10^{{{:d}}} \\tau_{{\\nu}}`. \n".format(tnum, tpow)
   fp.write('Longitudinal average of')
-  fp.write(' temperature perturbation :math:`T - (4\\pi r^{2})^{-1} \\int T dS` (left)')
+  fp.write('Entropy perturbation :math:`S - (4\\pi r^{2})^{-1} \\int S dS` (left)')
   fp.write(' and zonal velocity field :math:`u_\\phi` (right)')
   fp.write(' in the fluid shell')
   fp.write(ttext)
