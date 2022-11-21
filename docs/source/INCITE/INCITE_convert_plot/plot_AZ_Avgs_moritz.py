@@ -104,6 +104,7 @@ def s_plot_AZ_Avgs_moritz(Gpath, init_time):
       
   azavg = azavg*(1.0/tcount)  # Time steps were uniform for this run, so a simple average will suffice
   
+  print('AZ', az.niter, az.time[az.niter-1] - init_time)
   time = az.time[az.niter-1] - init_time
   tpow = math.floor(numpy.log10(time))
   tnum = time * 10.0**(-tpow)

@@ -72,7 +72,7 @@ def plot_each_Moritz_examples(d):
       filename = dest_Shell_Avgs + f
       each_convert(filename)
   
-#  Convert shell spectra
+#  Find last snaoshot for shell spectra
   org_Shell_Spectra = source_dir + dir_Shell_Spectra
   dest_Shell_Spectra = dest_dir + dir_Shell_Spectra
   filelist = []
@@ -86,17 +86,8 @@ def plot_each_Moritz_examples(d):
       max_step = istep
       lastfile = fname
   Shell_Spectra_lastfile = lastfile
-  print('Last file in ', org_Shell_Spectra, ':   ', Shell_Spectra_lastfile)
-  if(os.path.isdir(dest_Shell_Spectra) == False):
-    os.makedirs(dest_Shell_Spectra)
   
-  org_filepath = org_Shell_Spectra + Shell_Spectra_lastfile
-  dest_filepath = dest_Shell_Spectra + Shell_Spectra_lastfile
-  shutil.copy(org_filepath, dest_filepath)
-  each_convert(dest_filepath)
-  
-  
-#  Convert shell slice
+#  Find last snaoshot for shell slices
   org_Shell_Slices = source_dir + dir_Shell_Slices
   dest_Shell_Slices = dest_dir + dir_Shell_Slices
   filelist = []
@@ -110,17 +101,8 @@ def plot_each_Moritz_examples(d):
       max_step = istep
       lastfile = fname
   Shell_Slices_lastfile = lastfile
-  print('Last file in ', org_Shell_Slices, ':   ', Shell_Slices_lastfile)
-  if(os.path.isdir(dest_Shell_Slices) == False):
-    os.makedirs(dest_Shell_Slices)
   
-  org_filepath = org_Shell_Slices + Shell_Slices_lastfile
-  dest_filepath = dest_Shell_Slices + Shell_Slices_lastfile
-  shutil.copy(org_filepath, dest_filepath)
-  each_convert(dest_filepath)
-  
-  
-#  Convert zonal mean
+#  Find last zonal mean file
   org_AZ_Avgs = source_dir + dir_AZ_Avgs
   dest_AZ_Avgs = dest_dir + dir_AZ_Avgs
   filelist = []
@@ -134,6 +116,49 @@ def plot_each_Moritz_examples(d):
       max_step = istep
       lastfile = fname
   AZ_Avgs_lastfile = lastfile
+  
+  flag_same_snapshot = 0
+  if((AZ_Avgs_lastfile == Shell_Spectra_lastfile)
+         and (AZ_Avgs_lastfile == Shell_Slices_lastfile)):
+    flag_same_snapshot = 1
+  
+  if((flag_same_snapshot == 0):
+    if(int(AZ_Avgs_lastfile) <= int(Shell_Spectra_lastfile)
+         and int(AZ_Avgs_lastfile) <= int(Shell_Slices_lastfile)):
+      Shell_Spectra_lastfile = AZ_Avgs_lastfile
+      Shell_Spectra_lastfile = AZ_Avgs_lastfile
+    
+    if(int(Shell_Spectra_lastfile) <= int(AZ_Avgs_lastfile)
+         and int(Shell_Spectra_lastfile) <= int(Shell_Slices_lastfile)):
+      AZ_Avgs_lastfile =      Shell_Spectra_lastfile
+      Shell_Slices_lastfile = Shell_Spectra_lastfile
+    
+    if(int(Shell_Slices_lastfile) <= int(AZ_Avgs_lastfile)
+         and int(Shell_Slices_lastfile) <= int(Shell_Spectra_lastfile)):
+      AZ_Avgs_lastfile =       Shell_Slices_lastfile
+      Shell_Spectra_lastfile = Shell_Slices_lastfile
+  
+#  Convert shell spectra
+  print('Last file in ', org_Shell_Spectra, ':   ', Shell_Spectra_lastfile)
+  if(os.path.isdir(dest_Shell_Spectra) == False):
+    os.makedirs(dest_Shell_Spectra)
+  
+  org_filepath = org_Shell_Spectra + Shell_Spectra_lastfile
+  dest_filepath = dest_Shell_Spectra + Shell_Spectra_lastfile
+  shutil.copy(org_filepath, dest_filepath)
+  each_convert(dest_filepath)
+  
+  
+  print('Last file in ', org_Shell_Slices, ':   ', Shell_Slices_lastfile)
+  if(os.path.isdir(dest_Shell_Slices) == False):
+    os.makedirs(dest_Shell_Slices)
+  
+  org_filepath = org_Shell_Slices + Shell_Slices_lastfile
+  dest_filepath = dest_Shell_Slices + Shell_Slices_lastfile
+  shutil.copy(org_filepath, dest_filepath)
+  each_convert(dest_filepath)
+  
+#  Convert zonal mean
   print('Last file in ', org_AZ_Avgs, ':   ', AZ_Avgs_lastfile)
   if(os.path.isdir(dest_AZ_Avgs) == False):
     os.makedirs(dest_AZ_Avgs)
@@ -157,13 +182,16 @@ def plot_each_Moritz_examples(d):
   if(os.path.isdir(dir_images) == False):
     os.makedirs(dir_images)
   
+  
   init_time = s_plot_G_Avgs_moritz(dest_G_Avgs)
   time_AZ = s_plot_AZ_Avgs_moritz(dest_AZ_Avgs, init_time)
   
-  file_prefix = dest_dir + Shell_Slices_caption_prefix
-  s_plot_Shell_Slices_moritz(dest_Shell_Slices, file_prefix, init_time)
   file_prefix = dest_dir + Shell_Spectra_caption_prefix
-  s_plot_Shell_Spectra_moritz(dest_Shell_Spectra, file_prefix, init_time)
+  s_plot_Shell_Spectra_moritz(dest_Shell_Spectra, file_prefix, 
+                              flag_same_snapshot, init_time, time_AZ)
+  file_prefix = dest_dir + Shell_Slices_caption_prefix
+  s_plot_Shell_Slices_moritz(dest_Shell_Slices, file_prefix, 
+                             flag_same_snapshot, init_time, time_AZ)
   
   s_convert_main_input(main_input_org, main_input)
   

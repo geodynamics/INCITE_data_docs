@@ -77,13 +77,20 @@ Shell_Slices_caption_prefix = 'Shell_Slices_caption_'
 Shell_Slices_image_prefix =    'images/Shell_Slices_'
 temp_postfix = 'temp_'
 Ur_postfix =   'Ur_'
+Uphi_postfix =   'Uphi_'
 
 
-def plot_each_r_Shell_Slices_moritz(ss, icou, rindex, init_time):
+def plot_each_r_Shell_Slices_moritz(ss, icou, rindex, flag_same_snapshot, 
+                                    init_time, time_AZ):
   niter = ss.niter
   tindex = niter - 1 # All example quantities were output with same cadence.  Grab second time-index from all.
+  print('Slice', tindex, ss.time[tindex], init_time)
+  if(flag_same_snapshot == 0):
+    time = ss.time[tindex] - init_time
+  else:
+    time = time_AZ
+  print('time', time)
   
-  time = ss.time[tindex] - init_time
   tpow = math.floor(np.log10(time))
   tnum = time * 10.0**(-tpow)
   ttext = "{:.3f} \\times 10^{{{:d}}}".format(tnum, tpow)
@@ -155,6 +162,67 @@ def plot_each_r_Shell_Slices_moritz(ss, icou, rindex, init_time):
   
   return r_and_t_text
 
+def plot_each_Uphi_Shell_Slices_moritz(ss, icou, rindex, flag_same_snapshot, 
+                                       init_time, time_AZ):
+  niter = ss.niter
+  tindex = niter - 1 # All example quantities were output with same cadence.  Grab second time-index from all.
+  print('Slice', tindex, ss.time[tindex], init_time)
+  if(flag_same_snapshot == 0):
+    time = ss.time[tindex] - init_time
+  else:
+    time = time_AZ
+  print('time', time)
+  
+  tpow = math.floor(np.log10(time))
+  tnum = time * 10.0**(-tpow)
+  ttext = "{:.3f} \\times 10^{{{:d}}}".format(tnum, tpow)
+  
+  ntheta = ss.ntheta
+  nphi = ss.nphi
+  costheta = ss.costheta
+  theta = np.arccos(costheta) - np.pi/2.0
+  phi = np.arange(nphi)*2.0*np.pi/nphi - np.pi
+  
+  depth = ss.radius[0] - ss.radius[rindex]
+  vphi =   ss.vals[:,:,rindex,ss.lut[3],tindex]
+  
+  ttitle = 'Temperature $T$'
+  utitle = 'Radial Velocity $u_\phi$'
+  
+  bbox_props = dict(boxstyle="round", fc="w", ec="0.5", alpha=1.0)
+  rtext = "{:.3f}".format(depth)
+  textbox = "$r = r_o - $ " + rtext + " \n $t = " + ttext + "$"
+  r_and_t_text = "at :math:`r = r_o - " + rtext + "` and :math:`t = " + ttext + "`"
+  
+#     Spacing is default spacing set up by subplot
+  figdpi=300
+  sizetuple=(12,5)
+  tsize = 20     # title font size
+  cbfsize = 10   # colorbar font size
+  
+  
+  fig = plt.figure(figsize=sizetuple,dpi=figdpi)
+  ax3 = fig.add_subplot(111, projection='mollweide')
+  
+  v_max = np.max(vphi)
+  v_min = -v_max
+  plot1 = ax3.pcolormesh(phi, theta, vphi.transpose(), shading='auto', 
+                         cmap='seismic',vmin=v_min,vmax=v_max,
+                         rasterized=True)
+  
+  ax3.set_xticklabels([])
+  ax3.set_yticklabels([])
+  ax3.set_title(utitle)
+  ax3.text(5.4, -1.2, textbox, ha="center", va="center", size=12, bbox=bbox_props)
+  
+  plt.colorbar(plot1, label=r'$U_r$')
+  plt.tight_layout()
+  savefile = Shell_Slices_image_prefix + Uphi_postfix + str(icou) + '.pdf'
+  print('Saving figure to: ', savefile)
+  plt.savefig(savefile)
+  
+  return r_and_t_text
+
 
 def write_Shell_Slices_moritz_captions(caption_prefix, r_and_t_text, icou):
   caption_file_name = caption_prefix + temp_postfix + str(icou) + '.rst'
@@ -196,7 +264,8 @@ def write_Shell_Slices_moritz_captions(caption_prefix, r_and_t_text, icou):
   return
 
 
-def s_plot_Shell_Slices_moritz(Gpath, caption_prefix, init_time):
+def s_plot_Shell_Slices_moritz(Gpath, caption_prefix, 
+                               flag_same_snapshot, init_time, time_AZ):
 #  print("path: ", Gpath)
   last2_file_name = find_last2_Rayleigh_data(Gpath)
   if(last2_file_name[0] == 'NO_FILE'):
@@ -210,8 +279,32 @@ def s_plot_Shell_Slices_moritz(Gpath, caption_prefix, init_time):
   r_and_t_textlist = []
   icou = 0
   for rindex in ss.rad_inds:
-    text_tmp = plot_each_r_Shell_Slices_moritz(ss, icou, icou, init_time)
+    text_tmp = plot_each_r_Shell_Slices_moritz(ss, icou, icou, 
+                                               flag_same_snapshot, init_time, time_AZ)
     write_Shell_Slices_moritz_captions(caption_prefix, text_tmp, icou)
+    icou = icou + 1
+    r_and_t_textlist.append(text_tmp)
+  
+  return
+
+def s_plot_Shell_Slices_Uphi_moritz(Gpath, caption_prefix, 
+                               flag_same_snapshot, init_time, time_AZ):
+#  print("path: ", Gpath)
+  last2_file_name = find_last2_Rayleigh_data(Gpath)
+  if(last2_file_name[0] == 'NO_FILE'):
+    return
+  
+  print('Step to plot: ', last2_file_name[1])
+  
+  ss = Shell_Slices(last2_file_name[1])
+  print(ss.radius)
+  
+  r_and_t_textlist = []
+  icou = 0
+  for rindex in ss.rad_inds:
+    text_tmp = plot_each_Uphi_Shell_Slices_moritz(ss, icou, icou, 
+                                               flag_same_snapshot, init_time, time_AZ)
+#    write_Shell_Slices_moritz_captions(caption_prefix, text_tmp, icou)
     icou = icou + 1
     r_and_t_textlist.append(text_tmp)
   
@@ -219,8 +312,7 @@ def s_plot_Shell_Slices_moritz(Gpath, caption_prefix, init_time):
 
 
 if __name__ == '__main__':
-  init_time = 0.0
   s_plot_Shell_Slices_moritz(Shell_Slices_path, \
-                             Shell_Slices_caption_prefix, init_time)
+                             Shell_Slices_caption_prefix, 0, 0.0, 0)
 
 

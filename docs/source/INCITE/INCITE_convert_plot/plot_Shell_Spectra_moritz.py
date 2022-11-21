@@ -76,11 +76,18 @@ Shell_Spectra_image_prefix =   'images/SSpectr_'
 KE_postfix =   'KE_'
 
 
-def plot_each_Shell_Spectra_moritz(vpower, icou, rindex, init_time):
+def plot_each_Shell_Spectra_moritz(vpower, icou, rindex, flag_same_snapshot, 
+                                    init_time, time_AZ):
   niter = vpower.niter
   tindex = niter - 1 # All example quantities were output with same cadence.  Grab second time-index from all.
   
-  time = vpower.time[tindex] - init_time
+  print('Spectr', tindex, vpower.time[tindex], init_time)
+  if(flag_same_snapshot == 0):
+    time = vpower.time[tindex] - init_time
+  else:
+    time = time_AZ
+  print('time', time)
+  
   tpow = math.floor(numpy.log10(time))
   tnum = time * 10.0**(-tpow)
   ttext = "{:.3f} \\times 10^{{{:d}}}".format(tnum, tpow)
@@ -137,7 +144,8 @@ def write_Shell_Spectr_moritz_captions(caption_prefix, r_and_t_text, icou):
   return
 
 
-def s_plot_Shell_Spectra_moritz(Gpath, caption_prefix, init_time):
+def s_plot_Shell_Spectra_moritz(Gpath, caption_prefix, 
+                                flag_same_snapshot, init_time, time_AZ):
   last2_file_name = find_last2_Rayleigh_data(Gpath)
   if(last2_file_name[0] == 'NO_FILE'):
     return
@@ -149,7 +157,8 @@ def s_plot_Shell_Spectra_moritz(Gpath, caption_prefix, init_time):
   r_and_t_textlist = []
   icou = 0
   for rindex in vpower.rad_inds:
-    text_tmp = plot_each_Shell_Spectra_moritz(vpower, icou, icou, init_time)
+    text_tmp = plot_each_Shell_Spectra_moritz(vpower, icou, icou, 
+                                              flag_same_snapshot, init_time, time_AZ)
     write_Shell_Spectr_moritz_captions(caption_prefix, text_tmp, icou)
     r_and_t_textlist.append(text_tmp)
     icou = icou + 1
@@ -158,6 +167,5 @@ def s_plot_Shell_Spectra_moritz(Gpath, caption_prefix, init_time):
 
 
 if __name__ == '__main__':
-  init_time = 0.0
   s_plot_Shell_Spectra_moritz(Shell_Spectra_path, \
-                              Shell_Spectra_caption_prefix, init_time)
+                              Shell_Spectra_caption_prefix, 0, 0.0, 0)
