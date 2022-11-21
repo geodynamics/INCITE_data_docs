@@ -1,0 +1,80 @@
+&problemsize_namelist
+n_r = 384
+n_theta = 768
+nprow = 128
+npcol = 128
+aspect_ratio = 0.95d0
+shell_depth = 1.0d0
+/
+&numerical_controls_namelist
+chebyshev = .true.
+/
+&physical_controls_namelist
+rotation = .true.
+/
+&temporal_controls_namelist
+max_time_step = 0.05d0  
+max_iterations = 7000
+alpha_implicit = 0.51d0
+check_frequency = 1000
+cflmin = 0.4d0
+cflmax = 0.6d0
+quicksave_interval = 700
+num_quicksaves = 2
+save_last_timestep = .true.
+/
+&io_controls_namelist
+/
+&output_namelist
+shellslice_levels = 1,192
+shellslice_values = 1,2,3,501,502,301
+shellslice_frequency = 7000
+shellslice_nrec = 1
+shellspectra_levels = 1,128,256
+shellspectra_values = 1,2,3,501,502,310
+shellspectra_frequency = 7000
+shellspectra_nrec = 1
+azavg_values = 3,1,2,501,502
+azavg_frequency = 7000
+azavg_nrec = 1
+shellavg_values = 1,2,3,501,507,1923,1455,1935,1433,1470,1434,401,406,407,408,410,411,412
+shellavg_frequency = 9000000
+shellavg_nrec = 2
+globalavg_values = 401,402,403,404
+globalavg_frequency = 20
+globalavg_nrec = 100
+full3d_values = 4
+full3d_frequency = 9000000
+/
+&boundary_conditions_namelist
+no_slip_boundaries = .false.
+dtdr_top = 250.0d0
+dtdr_bottom = -1.0d0
+fix_dtdr_top = .true.
+fix_dtdr_bottom = .true.
+/
+&initial_conditions_namelist
+conductive_profile = .true.  
+init_type = -1
+magnetic_init_type = 7
+mag_amp = 1.0d0
+temp_amp = 0.0d0
+temp_w = 0.01d4
+restart_iter = 0
+/
+&test_namelist
+/
+&reference_namelist
+reference_type = 3
+ekman_number = 3.0d-5
+prandtl_number = 1.0d0
+modified_rayleigh_number = 1.25d0
+heating_type = 1
+poly_n = 2.0d0
+poly_nrho = 7.0d0
+/
+&transport_namelist
+hyperdiffusion = .true.
+hyperdiffusion_alpha = 60.0d0
+hyperdiffusion_beta = 3.0d0
+/
