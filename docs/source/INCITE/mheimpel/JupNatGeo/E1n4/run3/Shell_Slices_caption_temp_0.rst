@@ -1,0 +1,7 @@
+
+.. figure:: ./images/Shell_Slices_temp_0.pdf 
+   :width: 600px 
+   :align: center 
+
+Entropy :math:`S` at :math:`r = r_o` and :math:`t = 3.117 \times 10^{2}`
+
