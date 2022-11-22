@@ -3,6 +3,6 @@
    :width: 800px 
    :align: center 
 
-Longitudinal average ofEntropy perturbation :math:`S - (4\pi r^{2})^{-1} \int S dS` (left) and zonal velocity field :math:`u_\phi` (right) in the fluid shell at :math:`t = 1.226 \times 10^{2} \tau_{\nu}`. 
+Longitudinal average ofEntropy perturbation :math:`S - (4\pi r^{2})^{-1} \int S dS` (left) and zonal velocity field :math:`u_\phi` (right) in the fluid shell at :math:`t = 6.131 \times 10^{1} \tau_{\nu}`. 
 
 
