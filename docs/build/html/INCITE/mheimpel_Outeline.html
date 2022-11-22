@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Jovian Atomosphere (mheimpel) &#8212; INCITE DATA  documentation</title>
+    <title>Jovian Atmosphere (mheimpel) &#8212; INCITE DATA  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -14,6 +14,7 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -35,15 +36,19 @@
 
           <div class="body" role="main">
             
-  <section id="jovian-atomosphere-mheimpel">
-<h1>Jovian Atomosphere (mheimpel)<a class="headerlink" href="#jovian-atomosphere-mheimpel" title="Permalink to this heading">¶</a></h1>
+  <section id="jovian-atmosphere-mheimpel">
+<h1>Jovian Atmosphere (mheimpel)<a class="headerlink" href="#jovian-atmosphere-mheimpel" title="Permalink to this heading">¶</a></h1>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">¶</a></h2>
-<dl>
-<dt>Simulations for Jovian or Uranucian atomosphere have been performed by Moriz Heimpel (Univ. of Alberta). Simulations are thermally driven convection simulaiton in a rotating spherical shell modeled on the Jupiter’s atomosphere. It is noted that magnetic field is not take account into these simulations. In the present simulation, anelastic approximation is applied, and system is solved in the non-dimensionally. The ratio of the inner bounday to the outer boundary is set to be <span class="math notranslate nohighlight">\(r_i / r_o = 0.95\)</span> or 0.90 for the Jovian atomosphere model, and to be <span class="math notranslate nohighlight">\(r_i / r_o = 0.75\)</span> forr the Uranus model.</dt><dd><p>The free-slip boundary condition is applied to the velocity. Fixed heat flux (i.e. dT/dr) is applied for the inner and out boundaries.</p>
-<p>Spatial resolution, dimenstionless number, amplidtude of dT/dr, and hyperdiffusivity settings for each case are listed in the following table as a parameter setting in ‘main_input’. The definision of the paremter is described in <a class="reference external" href="https://rayleigh-documentation.readthedocs.io/en/latest/index.html">the Rayleigh document</a>.</p>
-</dd>
-</dl>
+<p>Simulations for the Jovian or Uranucian atmosphere have been performed by Moritz Heimpel (Univ. of Alberta).
+Simulations are thermally driven convection simulations in a rotating spherical shell modeled on Jupiter’s atmosphere.
+It is noted that magnetic field is not taken into account in these simulations. In the present simulations, the anelastic approximation is applied, and system is solved non-dimensionally.
+The ratio of the inner bounday to the outer boundary is set to be <span class="math notranslate nohighlight">\(r_i / r_o = 0.95\)</span> or 0.90 for the Jovian atmosphere model, and <span class="math notranslate nohighlight">\(r_i / r_o = 0.75\)</span> for the Uranus model.</p>
+<blockquote>
+<div><p>The free-slip boundary condition is applied to the velocity. Fixed heat flux (i.e. dT/dr) is applied to the inner and outer boundaries.</p>
+<p>Spatial resolution, dimensionless number, amplitude of dT/dr, and hyperdiffusivity settings for each case are listed in the following table as a parameter setting in ‘main_input’.
+The definition of each parameter is described in <a class="reference external" href="https://rayleigh-documentation.readthedocs.io/en/latest/index.html">the Rayleigh document</a>.</p>
+</div></blockquote>
 </section>
 <section id="list-of-parameters">
 <h2>List of parameters<a class="headerlink" href="#list-of-parameters" title="Permalink to this heading">¶</a></h2>
@@ -371,7 +376,7 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup90/nsb/E3n6/run1/Case_doc.html#j90-pn2-ht4-e3n6-1"><span class="std std-ref">J90-pn2-ht4-E3n6-1</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup90/fsb/E3n6/run1/Case_doc.html#j90-pn2-ht4-e3n6-1"><span class="std std-ref">J90-pn2-ht4-E3n6-1</span></a></p></td>
 <td><p>384</p></td>
 <td><p>1152</p></td>
 <td><p>9.00E-01</p></td>
@@ -387,46 +392,6 @@
 <td><p>-1.00E+30</p></td>
 <td><p>.true.</p></td>
 <td><p>1.20E+02</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup90/fsb/E3n6/run2/Case_doc.html#j90-pn2-ht4-e3n6-2"><span class="std std-ref">J90-pn2-ht4-E3n6-2</span></a></p></td>
-<td><p>384</p></td>
-<td><p>1152</p></td>
-<td><p>9.00E-01</p></td>
-<td><p>3.00E-06</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>4.00E-02</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>2.50E+02</p></td>
-<td><p>3</p></td>
-<td><p>4</p></td>
-<td><p>2.00E+00</p></td>
-<td><p>5.70E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>1.20E+02</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup90/fsb/E3n6/run3/Case_doc.html#j90-pn2-ht4-e3n6-3"><span class="std std-ref">J90-pn2-ht4-E3n6-3</span></a></p></td>
-<td><p>512</p></td>
-<td><p>1536</p></td>
-<td><p>9.00E-01</p></td>
-<td><p>3.00E-06</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>4.80E-02</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>1.00E+03</p></td>
-<td><p>3</p></td>
-<td><p>4</p></td>
-<td><p>2.00E+00</p></td>
-<td><p>6.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>9.00E+01</p></td>
 <td><p>3.00E+00</p></td>
 <td></td>
 <td></td>
@@ -611,46 +576,6 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup90/nsb/E1n5/run1/Case_doc.html#j90-pn2-ht4-e1n5-1"><span class="std std-ref">J90-pn2-ht4-E1n5-1</span></a></p></td>
-<td><p>384</p></td>
-<td><p>768</p></td>
-<td><p>9.00E-01</p></td>
-<td><p>1.00E-05</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>2.20E-01</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>2.50E+02</p></td>
-<td><p>3</p></td>
-<td><p>4</p></td>
-<td><p>2.00E+00</p></td>
-<td><p>5.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>9.00E+01</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup90/nsb/E1n5/run2/Case_doc.html#j90-pn2-ht4-e1n5-2"><span class="std std-ref">J90-pn2-ht4-E1n5-2</span></a></p></td>
-<td><p>384</p></td>
-<td><p>768</p></td>
-<td><p>9.00E-01</p></td>
-<td><p>1.00E-05</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>1.20E-01</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>2.50E+02</p></td>
-<td><p>3</p></td>
-<td><p>4</p></td>
-<td><p>2.00E+00</p></td>
-<td><p>5.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>6.00E+01</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup90/nsb/E3n5/run1/Case_doc.html#j90-pn2-ht4-e3n5-1"><span class="std std-ref">J90-pn2-ht4-E3n5-1</span></a></p></td>
 <td><p>256</p></td>
 <td><p>768</p></td>
@@ -711,13 +636,13 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup90/nsb/E3n6/run1/Case_doc.html#j90-pn2-ht4-e3n6-1"><span class="std std-ref">J90-pn2-ht4-E3n6-1</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup90/nsb/E1n5/run1/Case_doc.html#j90-pn2-ht4-e1n5-1"><span class="std std-ref">J90-pn2-ht4-E1n5-1</span></a></p></td>
 <td><p>384</p></td>
-<td><p>1152</p></td>
+<td><p>768</p></td>
 <td><p>9.00E-01</p></td>
-<td><p>3.00E-06</p></td>
+<td><p>1.00E-05</p></td>
 <td><p>1.00E+00</p></td>
-<td><p>1.00E-01</p></td>
+<td><p>2.20E-01</p></td>
 <td><p>-1.00E+00</p></td>
 <td><p>2.50E+02</p></td>
 <td><p>3</p></td>
@@ -731,7 +656,27 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n1/E1n4/run1/Case_doc.html#j95-pn1-ht1-e1n4-1"><span class="std std-ref">J95-pn1-ht1-E1n4-1</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup90/nsb/E1n5/run2/Case_doc.html#j90-pn2-ht4-e1n5-2"><span class="std std-ref">J90-pn2-ht4-E1n5-2</span></a></p></td>
+<td><p>384</p></td>
+<td><p>768</p></td>
+<td><p>9.00E-01</p></td>
+<td><p>1.00E-05</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>1.20E-01</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>2.50E+02</p></td>
+<td><p>3</p></td>
+<td><p>4</p></td>
+<td><p>2.00E+00</p></td>
+<td><p>5.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>6.00E+01</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n1/E1n4/run1/Case_doc.html#j95-pn1-ht1-e1n4-1"><span class="std std-ref">J95-pn1-ht1-E1n4-1</span></a></p></td>
 <td><p>384</p></td>
 <td><p>768</p></td>
 <td><p>9.50E-01</p></td>
@@ -751,11 +696,71 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n1/E1n4/run2/Case_doc.html#j95-pn1-ht1-e1n4-2"><span class="std std-ref">J95-pn1-ht1-E1n4-2</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n1/E1n4/run2/Case_doc.html#j95-pn1-ht1-e1n4-2"><span class="std std-ref">J95-pn1-ht1-E1n4-2</span></a></p></td>
 <td><p>384</p></td>
 <td><p>768</p></td>
 <td><p>9.50E-01</p></td>
 <td><p>1.00E-04</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>2.50E+02</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>5.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>6.00E+01</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n1/E3n5/run1a/Case_doc.html#j95-pn1-ht1-e3n5-1a"><span class="std std-ref">J95-pn1-ht1-E3n5-1a</span></a></p></td>
+<td><p>384</p></td>
+<td><p>768</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>6.00E-05</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>2.50E+02</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>5.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>6.00E+01</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n1/E3n5/run1b/Case_doc.html#j95-pn1-ht1-e3n5-1b"><span class="std std-ref">J95-pn1-ht1-E3n5-1b</span></a></p></td>
+<td><p>384</p></td>
+<td><p>768</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>4.00E-05</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>2.50E+02</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>5.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>6.00E+01</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n1/E3n5/run1c/Case_doc.html#j95-pn1-ht1-e3n5-1c"><span class="std std-ref">J95-pn1-ht1-E3n5-1c</span></a></p></td>
+<td><p>384</p></td>
+<td><p>768</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>3.00E-05</p></td>
 <td><p>1.00E+00</p></td>
 <td><p>1.00E+00</p></td>
 <td><p>-1.00E+00</p></td>
@@ -851,7 +856,7 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n5/run3/Case_doc.html#j95-pn1-ht1-e1n5-3"><span class="std std-ref">J95-pn1-ht1-E1n5-3</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n1/E1n5/run3/Case_doc.html#j95-pn1-ht1-e1n5-3"><span class="std std-ref">J95-pn1-ht1-E1n5-3</span></a></p></td>
 <td><p>384</p></td>
 <td><p>1152</p></td>
 <td><p>9.50E-01</p></td>
@@ -911,7 +916,7 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n1/E1n5/run6/Case_doc.html#j95-pn1-ht1-e1n5-6"><span class="std std-ref">J95-pn1-ht1-E1n5-6</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n1/E1n5/run7/Case_doc.html#j95-pn1-ht1-e1n5-7"><span class="std std-ref">J95-pn1-ht1-E1n5-7</span></a></p></td>
 <td><p>384</p></td>
 <td><p>1152</p></td>
 <td><p>9.50E-01</p></td>
@@ -927,86 +932,6 @@
 <td><p>-1.00E+30</p></td>
 <td><p>.true.</p></td>
 <td><p>9.00E+01</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n1/E1n5/run7/Case_doc.html#j95-pn1-ht1-e1n5-7"><span class="std std-ref">J95-pn1-ht1-E1n5-7</span></a></p></td>
-<td><p>384</p></td>
-<td><p>1152</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>1.00E-05</p></td>
-<td><p>3.00E-01</p></td>
-<td><p>7.50E-01</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>2.50E+02</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>9.00E+01</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n1/E3n5/run1a/Case_doc.html#j95-pn1-ht1-e3n5-1a"><span class="std std-ref">J95-pn1-ht1-E3n5-1a</span></a></p></td>
-<td><p>384</p></td>
-<td><p>768</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>6.00E-05</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>2.50E+02</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>6.00E+01</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n1/E3n5/run1b/Case_doc.html#j95-pn1-ht1-e3n5-1b"><span class="std std-ref">J95-pn1-ht1-E3n5-1b</span></a></p></td>
-<td><p>384</p></td>
-<td><p>768</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>4.00E-05</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>2.50E+02</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>6.00E+01</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n1/E3n5/run1c/Case_doc.html#j95-pn1-ht1-e3n5-1c"><span class="std std-ref">J95-pn1-ht1-E3n5-1c</span></a></p></td>
-<td><p>384</p></td>
-<td><p>768</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>3.00E-05</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>2.50E+02</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>6.00E+01</p></td>
 <td><p>3.00E+00</p></td>
 <td></td>
 <td></td>
@@ -1027,6 +952,166 @@
 <td><p>-1.00E+30</p></td>
 <td><p>.true.</p></td>
 <td><p>1.05E+02</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E3n5/run1/Case_doc.html#j95-pn1-ht1-e3n5-1"><span class="std std-ref">J95-pn1-ht1-E3n5-1</span></a></p></td>
+<td><p>256</p></td>
+<td><p>1152</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>3.00E-05</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>5.00E-01</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>2.00E+03</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>5.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>2.00E+01</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E3n5/run2/Case_doc.html#j95-pn1-ht1-e3n5-2"><span class="std std-ref">J95-pn1-ht1-E3n5-2</span></a></p></td>
+<td><p>256</p></td>
+<td><p>1152</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>3.00E-05</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>6.67E-01</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>1.50E+03</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>5.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>4.00E+01</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E3n5/run3/Case_doc.html#j95-pn1-ht1-e3n5-3"><span class="std std-ref">J95-pn1-ht1-E3n5-3</span></a></p></td>
+<td><p>384</p></td>
+<td><p>1152</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>3.00E-05</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>8.00E-01</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>1.25E+03</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>5.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>8.00E+01</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E3n5/run4/Case_doc.html#j95-pn1-ht1-e3n5-4"><span class="std std-ref">J95-pn1-ht1-E3n5-4</span></a></p></td>
+<td><p>384</p></td>
+<td><p>1152</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>3.00E-05</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>1.00E+03</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>5.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>1.20E+02</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E3n5/run5/Case_doc.html#j95-pn1-ht1-e3n5-5"><span class="std std-ref">J95-pn1-ht1-E3n5-5</span></a></p></td>
+<td><p>512</p></td>
+<td><p>1152</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>3.00E-05</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>2.50E+00</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>4.00E+02</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>5.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>1.20E+02</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E3n5/run6/Case_doc.html#j95-pn1-ht1-e3n5-6"><span class="std std-ref">J95-pn1-ht1-E3n5-6</span></a></p></td>
+<td><p>512</p></td>
+<td><p>1152</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>3.00E-05</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>1.25E+00</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>8.00E+02</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>5.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>1.20E+02</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E3n5/run7/Case_doc.html#j95-pn1-ht1-e3n5-7"><span class="std std-ref">J95-pn1-ht1-E3n5-7</span></a></p></td>
+<td><p>512</p></td>
+<td><p>1152</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>3.00E-05</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>5.00E+00</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>2.00E+02</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>5.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>1.20E+02</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E3n5/run8/Case_doc.html#j95-pn1-ht1-e3n5-8"><span class="std std-ref">J95-pn1-ht1-E3n5-8</span></a></p></td>
+<td><p>512</p></td>
+<td><p>1152</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>3.00E-05</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>1.00E+01</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>1.00E+02</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>5.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>1.20E+02</p></td>
 <td><p>3.00E+00</p></td>
 <td></td>
 <td></td>
@@ -1071,27 +1156,7 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n5/run3/Case_doc.html#j95-pn1-ht1-e1n5-3"><span class="std std-ref">J95-pn1-ht1-E1n5-3</span></a></p></td>
-<td><p>384</p></td>
-<td><p>1536</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>1.00E-05</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E-01</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>2.00E+03</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>4.00E+01</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n5/run4/Case_doc.html#j95-pn1-ht1-e1n5-4"><span class="std std-ref">J95-pn1-ht1-E1n5-4</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n5/run4/Case_doc.html#j95-pn1-ht1-e1n5-4"><span class="std std-ref">J95-pn1-ht1-E1n5-4</span></a></p></td>
 <td><p>512</p></td>
 <td><p>1152</p></td>
 <td><p>9.50E-01</p></td>
@@ -1100,466 +1165,6 @@
 <td><p>2.00E+00</p></td>
 <td><p>-1.00E+00</p></td>
 <td><p>5.00E+02</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>1.20E+02</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n6/run1a/Case_doc.html#j95-pn1-ht1-e1n6-1a"><span class="std std-ref">J95-pn1-ht1-E1n6-1a</span></a></p></td>
-<td><p>1024</p></td>
-<td><p>1536</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>1.50E-06</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E-01</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>2.00E+03</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>1.80E+02</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n6/run1b/Case_doc.html#j95-pn1-ht1-e1n6-1b"><span class="std std-ref">J95-pn1-ht1-E1n6-1b</span></a></p></td>
-<td><p>1024</p></td>
-<td><p>1536</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>1.00E-06</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E-01</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>2.00E+03</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>1.80E+02</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n6/run1c/Case_doc.html#j95-pn1-ht1-e1n6-1c"><span class="std std-ref">J95-pn1-ht1-E1n6-1c</span></a></p></td>
-<td><p>1024</p></td>
-<td><p>1536</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>1.00E-06</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E-01</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>2.00E+03</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>1.80E+02</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n6/run1d/Case_doc.html#j95-pn1-ht1-e1n6-1d"><span class="std std-ref">J95-pn1-ht1-E1n6-1d</span></a></p></td>
-<td><p>1024</p></td>
-<td><p>2304</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>1.00E-06</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E-01</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>2.00E+03</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>1.80E+02</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n6/run2/Case_doc.html#j95-pn1-ht1-e1n6-2"><span class="std std-ref">J95-pn1-ht1-E1n6-2</span></a></p></td>
-<td><p>1024</p></td>
-<td><p>1536</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>1.00E-06</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>6.25E-01</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>1.60E+03</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>2.40E+02</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n6/run3/Case_doc.html#j95-pn1-ht1-e1n6-3"><span class="std std-ref">J95-pn1-ht1-E1n6-3</span></a></p></td>
-<td><p>1024</p></td>
-<td><p>1536</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>1.00E-06</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>6.25E-01</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>1.60E+03</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>2.40E+02</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n6/run4/Case_doc.html#j95-pn1-ht1-e1n6-4"><span class="std std-ref">J95-pn1-ht1-E1n6-4</span></a></p></td>
-<td><p>1024</p></td>
-<td><p>1536</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>1.00E-06</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>6.25E-01</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>1.60E+03</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>2.40E+02</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n6/runM1/Case_doc.html#j95-pn1-ht1-e1n6-m1"><span class="std std-ref">J95-pn1-ht1-E1n6-M1</span></a></p></td>
-<td><p>1024</p></td>
-<td><p>1536</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>1.00E-06</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E-01</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>2.00E+03</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>1.80E+02</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n6/runM2/Case_doc.html#j95-pn1-ht1-e1n6-m2"><span class="std std-ref">J95-pn1-ht1-E1n6-M2</span></a></p></td>
-<td><p>1024</p></td>
-<td><p>1536</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>1.00E-06</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E-01</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>2.00E+03</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>1.80E+02</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n6/runM3/Case_doc.html#j95-pn1-ht1-e1n6-m3"><span class="std std-ref">J95-pn1-ht1-E1n6-M3</span></a></p></td>
-<td><p>1024</p></td>
-<td><p>1536</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>1.00E-06</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E-01</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>2.00E+03</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>1.80E+02</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n6/runM4/Case_doc.html#j95-pn1-ht1-e1n6-m4"><span class="std std-ref">J95-pn1-ht1-E1n6-M4</span></a></p></td>
-<td><p>1024</p></td>
-<td><p>1536</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>1.00E-06</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>6.25E-01</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>1.60E+03</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>2.40E+02</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n6/runM5/Case_doc.html#j95-pn1-ht1-e1n6-m5"><span class="std std-ref">J95-pn1-ht1-E1n6-M5</span></a></p></td>
-<td><p>1024</p></td>
-<td><p>1536</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>1.00E-06</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>6.25E-01</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>1.60E+03</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>2.40E+02</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n6/runM6/Case_doc.html#j95-pn1-ht1-e1n6-m6"><span class="std std-ref">J95-pn1-ht1-E1n6-M6</span></a></p></td>
-<td><p>1024</p></td>
-<td><p>1536</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>1.00E-06</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>6.25E-01</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>1.60E+03</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>2.40E+02</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n6/runM7/Case_doc.html#j95-pn1-ht1-e1n6-m7"><span class="std std-ref">J95-pn1-ht1-E1n6-M7</span></a></p></td>
-<td><p>1024</p></td>
-<td><p>1536</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>1.00E-06</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>6.25E-01</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>1.60E+03</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>2.40E+02</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E2n6/run1/Case_doc.html#j95-pn1-ht1-e2n6-1"><span class="std std-ref">J95-pn1-ht1-E2n6-1</span></a></p></td>
-<td><p>1024</p></td>
-<td><p>1536</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>2.00E-06</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>2.00E+00</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>5.00E+02</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>2.40E+02</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E3n5/run1/Case_doc.html#j95-pn1-ht1-e3n5-1"><span class="std std-ref">J95-pn1-ht1-E3n5-1</span></a></p></td>
-<td><p>256</p></td>
-<td><p>1152</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>3.00E-05</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E-01</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>2.00E+03</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>2.00E+01</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E3n5/run2/Case_doc.html#j95-pn1-ht1-e3n5-2"><span class="std std-ref">J95-pn1-ht1-E3n5-2</span></a></p></td>
-<td><p>256</p></td>
-<td><p>1152</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>3.00E-05</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>6.67E-01</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>1.50E+03</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>4.00E+01</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E3n5/run3/Case_doc.html#j95-pn1-ht1-e3n5-3"><span class="std std-ref">J95-pn1-ht1-E3n5-3</span></a></p></td>
-<td><p>384</p></td>
-<td><p>1152</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>3.00E-05</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>8.00E-01</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>1.25E+03</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>8.00E+01</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E3n5/run4/Case_doc.html#j95-pn1-ht1-e3n5-4"><span class="std std-ref">J95-pn1-ht1-E3n5-4</span></a></p></td>
-<td><p>384</p></td>
-<td><p>1152</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>3.00E-05</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>1.00E+03</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>1.20E+02</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E3n5/run5/Case_doc.html#j95-pn1-ht1-e3n5-5"><span class="std std-ref">J95-pn1-ht1-E3n5-5</span></a></p></td>
-<td><p>512</p></td>
-<td><p>1152</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>3.00E-05</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>2.50E+00</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>4.00E+02</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>1.20E+02</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E3n5/run6/Case_doc.html#j95-pn1-ht1-e3n5-6"><span class="std std-ref">J95-pn1-ht1-E3n5-6</span></a></p></td>
-<td><p>512</p></td>
-<td><p>1152</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>3.00E-05</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>1.25E+00</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>8.00E+02</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>1.20E+02</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E3n5/run7/Case_doc.html#j95-pn1-ht1-e3n5-7"><span class="std std-ref">J95-pn1-ht1-E3n5-7</span></a></p></td>
-<td><p>512</p></td>
-<td><p>1152</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>3.00E-05</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E+00</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>2.00E+02</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>1.20E+02</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E3n5/run8/Case_doc.html#j95-pn1-ht1-e3n5-8"><span class="std std-ref">J95-pn1-ht1-E3n5-8</span></a></p></td>
-<td><p>512</p></td>
-<td><p>1152</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>3.00E-05</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>1.00E+01</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>1.00E+02</p></td>
 <td><p>3</p></td>
 <td><p>1</p></td>
 <td><p>1.00E+00</p></td>
@@ -1631,27 +1236,7 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E3n6/run4/Case_doc.html#j95-pn1-ht1-e3n6-4"><span class="std std-ref">J95-pn1-ht1-E3n6-4</span></a></p></td>
-<td><p>1024</p></td>
-<td><p>1536</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>3.00E-06</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E-01</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>2.00E+03</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>1.20E+02</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E3n6/run5/Case_doc.html#j95-pn1-ht1-e3n6-5"><span class="std std-ref">J95-pn1-ht1-E3n6-5</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E3n6/run5/Case_doc.html#j95-pn1-ht1-e3n6-5"><span class="std std-ref">J95-pn1-ht1-E3n6-5</span></a></p></td>
 <td><p>768</p></td>
 <td><p>1152</p></td>
 <td><p>9.50E-01</p></td>
@@ -1671,7 +1256,7 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E3n6/run6/Case_doc.html#j95-pn1-ht1-e3n6-6"><span class="std std-ref">J95-pn1-ht1-E3n6-6</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E3n6/run6/Case_doc.html#j95-pn1-ht1-e3n6-6"><span class="std std-ref">J95-pn1-ht1-E3n6-6</span></a></p></td>
 <td><p>512</p></td>
 <td><p>1152</p></td>
 <td><p>9.50E-01</p></td>
@@ -1691,7 +1276,7 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E3n6/run7/Case_doc.html#j95-pn1-ht1-e3n6-7"><span class="std std-ref">J95-pn1-ht1-E3n6-7</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E3n6/run7/Case_doc.html#j95-pn1-ht1-e3n6-7"><span class="std std-ref">J95-pn1-ht1-E3n6-7</span></a></p></td>
 <td><p>512</p></td>
 <td><p>1536</p></td>
 <td><p>9.50E-01</p></td>
@@ -1711,7 +1296,7 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E3n6/run8/Case_doc.html#j95-pn1-ht1-e3n6-8"><span class="std std-ref">J95-pn1-ht1-E3n6-8</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E3n6/run8/Case_doc.html#j95-pn1-ht1-e3n6-8"><span class="std std-ref">J95-pn1-ht1-E3n6-8</span></a></p></td>
 <td><p>1024</p></td>
 <td><p>1536</p></td>
 <td><p>9.50E-01</p></td>
@@ -1731,7 +1316,7 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E3n6/runM1/Case_doc.html#j95-pn1-ht1-e3n6-m1"><span class="std std-ref">J95-pn1-ht1-E3n6-M1</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E3n6/runM1/Case_doc.html#j95-pn1-ht1-e3n6-m1"><span class="std std-ref">J95-pn1-ht1-E3n6-M1</span></a></p></td>
 <td><p>1024</p></td>
 <td><p>1536</p></td>
 <td><p>9.50E-01</p></td>
@@ -1747,6 +1332,266 @@
 <td><p>-1.00E+30</p></td>
 <td><p>.true.</p></td>
 <td><p>1.20E+02</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E2n6/run1/Case_doc.html#j95-pn1-ht1-e2n6-1"><span class="std std-ref">J95-pn1-ht1-E2n6-1</span></a></p></td>
+<td><p>1024</p></td>
+<td><p>1536</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>2.00E-06</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>2.00E+00</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>5.00E+02</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>5.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>2.40E+02</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n6/run1a/Case_doc.html#j95-pn1-ht1-e1n6-1a"><span class="std std-ref">J95-pn1-ht1-E1n6-1a</span></a></p></td>
+<td><p>1024</p></td>
+<td><p>1536</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>1.50E-06</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>5.00E-01</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>2.00E+03</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>5.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>1.80E+02</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n6/run1b/Case_doc.html#j95-pn1-ht1-e1n6-1b"><span class="std std-ref">J95-pn1-ht1-E1n6-1b</span></a></p></td>
+<td><p>1024</p></td>
+<td><p>1536</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>1.00E-06</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>5.00E-01</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>2.00E+03</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>5.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>1.80E+02</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n6/run1c/Case_doc.html#j95-pn1-ht1-e1n6-1c"><span class="std std-ref">J95-pn1-ht1-E1n6-1c</span></a></p></td>
+<td><p>1024</p></td>
+<td><p>1536</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>1.00E-06</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>5.00E-01</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>2.00E+03</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>5.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>1.80E+02</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n6/run2/Case_doc.html#j95-pn1-ht1-e1n6-2"><span class="std std-ref">J95-pn1-ht1-E1n6-2</span></a></p></td>
+<td><p>1024</p></td>
+<td><p>1536</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>1.00E-06</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>6.25E-01</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>1.60E+03</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>5.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>2.40E+02</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n6/run3/Case_doc.html#j95-pn1-ht1-e1n6-3"><span class="std std-ref">J95-pn1-ht1-E1n6-3</span></a></p></td>
+<td><p>1024</p></td>
+<td><p>1536</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>1.00E-06</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>6.25E-01</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>1.60E+03</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>5.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>2.40E+02</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n6/run4/Case_doc.html#j95-pn1-ht1-e1n6-4"><span class="std std-ref">J95-pn1-ht1-E1n6-4</span></a></p></td>
+<td><p>1024</p></td>
+<td><p>1536</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>1.00E-06</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>6.25E-01</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>1.60E+03</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>5.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>2.40E+02</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n6/runM1/Case_doc.html#j95-pn1-ht1-e1n6-m1"><span class="std std-ref">J95-pn1-ht1-E1n6-M1</span></a></p></td>
+<td><p>1024</p></td>
+<td><p>1536</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>1.00E-06</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>5.00E-01</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>2.00E+03</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>5.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>1.80E+02</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n6/runM2/Case_doc.html#j95-pn1-ht1-e1n6-m2"><span class="std std-ref">J95-pn1-ht1-E1n6-M2</span></a></p></td>
+<td><p>1024</p></td>
+<td><p>1536</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>1.00E-06</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>5.00E-01</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>2.00E+03</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>5.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>1.80E+02</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n6/runM3/Case_doc.html#j95-pn1-ht1-e1n6-m3"><span class="std std-ref">J95-pn1-ht1-E1n6-M3</span></a></p></td>
+<td><p>1024</p></td>
+<td><p>1536</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>1.00E-06</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>5.00E-01</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>2.00E+03</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>5.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>1.80E+02</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n6/runM4/Case_doc.html#j95-pn1-ht1-e1n6-m4"><span class="std std-ref">J95-pn1-ht1-E1n6-M4</span></a></p></td>
+<td><p>1024</p></td>
+<td><p>1536</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>1.00E-06</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>6.25E-01</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>1.60E+03</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>5.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>2.40E+02</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n6/runM5/Case_doc.html#j95-pn1-ht1-e1n6-m5"><span class="std std-ref">J95-pn1-ht1-E1n6-M5</span></a></p></td>
+<td><p>1024</p></td>
+<td><p>1536</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>1.00E-06</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>6.25E-01</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>1.60E+03</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>5.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>2.40E+02</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n6/runM6/Case_doc.html#j95-pn1-ht1-e1n6-m6"><span class="std std-ref">J95-pn1-ht1-E1n6-M6</span></a></p></td>
+<td><p>1024</p></td>
+<td><p>1536</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>1.00E-06</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>6.25E-01</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>1.60E+03</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>5.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>2.40E+02</p></td>
 <td><p>3.00E+00</p></td>
 <td></td>
 <td></td>
@@ -1771,46 +1616,6 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n2/E1n5/run1/Case_doc.html#j95-pn2-ht1-e1n5-1"><span class="std std-ref">J95-pn2-ht1-E1n5-1</span></a></p></td>
-<td><p>512</p></td>
-<td><p>768</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>1.00E-05</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>1.20E+00</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>2.50E+02</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>2.00E+00</p></td>
-<td><p>7.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>9.00E+01</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n2/E1n5/run2/Case_doc.html#j95-pn2-ht1-e1n5-2"><span class="std std-ref">J95-pn2-ht1-E1n5-2</span></a></p></td>
-<td><p>512</p></td>
-<td><p>768</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>1.00E-05</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>1.20E+00</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>1.50E+02</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>2.00E+00</p></td>
-<td><p>7.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>9.00E+01</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n2/E3n5/run1/Case_doc.html#j95-pn2-ht1-e3n5-1"><span class="std std-ref">J95-pn2-ht1-E3n5-1</span></a></p></td>
 <td><p>384</p></td>
 <td><p>768</p></td>
@@ -1831,73 +1636,13 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E1n4/run1/Case_doc.html#j95-pn2-ht1-e1n4-1"><span class="std std-ref">J95-pn2-ht1-E1n4-1</span></a></p></td>
-<td><p>384</p></td>
-<td><p>768</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>1.00E-04</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>1.50E+00</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>2.50E+02</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>2.00E+00</p></td>
-<td><p>7.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>6.00E+01</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E1n4/run2/Case_doc.html#j95-pn2-ht1-e1n4-2"><span class="std std-ref">J95-pn2-ht1-E1n4-2</span></a></p></td>
-<td><p>384</p></td>
-<td><p>768</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>3.00E-05</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>1.25E+00</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>2.50E+02</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>2.00E+00</p></td>
-<td><p>7.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>4.00E+01</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E1n4/run3/Case_doc.html#j95-pn2-ht1-e1n4-3"><span class="std std-ref">J95-pn2-ht1-E1n4-3</span></a></p></td>
-<td><p>384</p></td>
-<td><p>768</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>1.00E-04</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>1.50E+00</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>2.50E+02</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>2.00E+00</p></td>
-<td><p>7.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>3.00E+01</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E1n5/run01/Case_doc.html#j95-pn2-ht1-e1n5-01"><span class="std std-ref">J95-pn2-ht1-E1n5-01</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n2/E1n5/run1/Case_doc.html#j95-pn2-ht1-e1n5-1"><span class="std std-ref">J95-pn2-ht1-E1n5-1</span></a></p></td>
 <td><p>512</p></td>
 <td><p>768</p></td>
 <td><p>9.50E-01</p></td>
 <td><p>1.00E-05</p></td>
 <td><p>1.00E+00</p></td>
-<td><p>1.25E+00</p></td>
+<td><p>1.20E+00</p></td>
 <td><p>-1.00E+00</p></td>
 <td><p>2.50E+02</p></td>
 <td><p>3</p></td>
@@ -1911,202 +1656,22 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E1n5/run02/Case_doc.html#j95-pn2-ht1-e1n5-02"><span class="std std-ref">J95-pn2-ht1-E1n5-02</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n2/E1n5/run2/Case_doc.html#j95-pn2-ht1-e1n5-2"><span class="std std-ref">J95-pn2-ht1-E1n5-2</span></a></p></td>
 <td><p>512</p></td>
 <td><p>768</p></td>
 <td><p>9.50E-01</p></td>
 <td><p>1.00E-05</p></td>
 <td><p>1.00E+00</p></td>
-<td><p>1.25E+00</p></td>
+<td><p>1.20E+00</p></td>
 <td><p>-1.00E+00</p></td>
-<td><p>2.50E+02</p></td>
+<td><p>1.50E+02</p></td>
 <td><p>3</p></td>
 <td><p>1</p></td>
 <td><p>2.00E+00</p></td>
 <td><p>7.00E+00</p></td>
 <td><p>-1.00E+30</p></td>
 <td><p>.true.</p></td>
-<td><p>6.00E+01</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E1n5/run03/Case_doc.html#j95-pn2-ht1-e1n5-03"><span class="std std-ref">J95-pn2-ht1-E1n5-03</span></a></p></td>
-<td><p>512</p></td>
-<td><p>1152</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>1.00E-05</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>2.50E+02</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>2.00E+00</p></td>
-<td><p>7.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>1.35E+02</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E1n5/run04/Case_doc.html#j95-pn2-ht1-e1n5-04"><span class="std std-ref">J95-pn2-ht1-E1n5-04</span></a></p></td>
-<td><p>512</p></td>
-<td><p>1536</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>1.00E-05</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>9.00E-01</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>2.50E+02</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>2.00E+00</p></td>
-<td><p>7.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>1.80E+02</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n2/E1n5/run1/Case_doc.html#j95-pn2-ht1-e1n5-1"><span class="std std-ref">J95-pn2-ht1-E1n5-1</span></a></p></td>
-<td><p>512</p></td>
-<td><p>1536</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>1.00E-05</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>9.00E-01</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>2.50E+02</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>2.00E+00</p></td>
-<td><p>7.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>1.80E+02</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E1n6/run01/Case_doc.html#j95-pn2-ht1-e1n6-01"><span class="std std-ref">J95-pn2-ht1-E1n6-01</span></a></p></td>
-<td><p>1024</p></td>
-<td><p>1536</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>1.00E-06</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>6.00E-01</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>2.50E+02</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>2.00E+00</p></td>
-<td><p>7.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>3.00E+02</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E1n6/run02/Case_doc.html#j95-pn2-ht1-e1n6-02"><span class="std std-ref">J95-pn2-ht1-E1n6-02</span></a></p></td>
-<td><p>1024</p></td>
-<td><p>1536</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>1.00E-06</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>6.00E-01</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>2.50E+02</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>2.00E+00</p></td>
-<td><p>7.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>3.00E+02</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E1n6/runR1/Case_doc.html#j95-pn2-ht1-e1n6-r1"><span class="std std-ref">J95-pn2-ht1-E1n6-R1</span></a></p></td>
-<td><p>1024</p></td>
-<td><p>1536</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>1.00E-06</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E-01</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>2.50E+02</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>2.00E+00</p></td>
-<td><p>7.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>3.00E+02</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E1n6/runR2/Case_doc.html#j95-pn2-ht1-e1n6-r2"><span class="std std-ref">J95-pn2-ht1-E1n6-R2</span></a></p></td>
-<td><p>1024</p></td>
-<td><p>1536</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>1.00E-06</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E-01</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>2.50E+02</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>2.00E+00</p></td>
-<td><p>7.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>3.00E+02</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E1n6/runR3/Case_doc.html#j95-pn2-ht1-e1n6-r3"><span class="std std-ref">J95-pn2-ht1-E1n6-R3</span></a></p></td>
-<td><p>768</p></td>
-<td><p>1536</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>1.00E-06</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E-01</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>2.50E+02</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>2.00E+00</p></td>
-<td><p>7.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>3.00E+02</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E1n6/runR4/Case_doc.html#j95-pn2-ht1-e1n6-r4"><span class="std std-ref">J95-pn2-ht1-E1n6-R4</span></a></p></td>
-<td><p>768</p></td>
-<td><p>1536</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>1.00E-06</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E-01</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>2.50E+02</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>2.00E+00</p></td>
-<td><p>7.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>3.00E+02</p></td>
+<td><p>9.00E+01</p></td>
 <td><p>3.00E+00</p></td>
 <td></td>
 <td></td>
@@ -2171,7 +1736,67 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n2/E3n5/run1/Case_doc.html#j95-pn2-ht1-e3n5-1"><span class="std std-ref">J95-pn2-ht1-E3n5-1</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E1n4/run1/Case_doc.html#j95-pn2-ht1-e1n4-1"><span class="std std-ref">J95-pn2-ht1-E1n4-1</span></a></p></td>
+<td><p>384</p></td>
+<td><p>768</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>1.00E-04</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>1.50E+00</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>2.50E+02</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>2.00E+00</p></td>
+<td><p>7.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>6.00E+01</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E1n4/run2/Case_doc.html#j95-pn2-ht1-e1n4-2"><span class="std std-ref">J95-pn2-ht1-E1n4-2</span></a></p></td>
+<td><p>384</p></td>
+<td><p>768</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>3.00E-05</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>1.25E+00</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>2.50E+02</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>2.00E+00</p></td>
+<td><p>7.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>4.00E+01</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E1n4/run3/Case_doc.html#j95-pn2-ht1-e1n4-3"><span class="std std-ref">J95-pn2-ht1-E1n4-3</span></a></p></td>
+<td><p>384</p></td>
+<td><p>768</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>1.00E-04</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>1.50E+00</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>2.50E+02</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>2.00E+00</p></td>
+<td><p>7.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>3.00E+01</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n2/E3n5/run1/Case_doc.html#j95-pn2-ht1-e3n5-1"><span class="std std-ref">J95-pn2-ht1-E3n5-1</span></a></p></td>
 <td><p>384</p></td>
 <td><p>768</p></td>
 <td><p>9.50E-01</p></td>
@@ -2191,27 +1816,7 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n5/run2/Case_doc.html#j95-pn2-ht1-e3n5-2"><span class="std std-ref">J95-pn2-ht1-E3n5-2</span></a></p></td>
-<td><p>384</p></td>
-<td><p>768</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>3.00E-05</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>1.25E+00</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>2.50E+02</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>2.00E+00</p></td>
-<td><p>7.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>6.00E+01</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n5/run3/Case_doc.html#j95-pn2-ht1-e3n5-3"><span class="std std-ref">J95-pn2-ht1-E3n5-3</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n5/run2/Case_doc.html#j95-pn2-ht1-e3n5-2"><span class="std std-ref">J95-pn2-ht1-E3n5-2</span></a></p></td>
 <td><p>384</p></td>
 <td><p>768</p></td>
 <td><p>9.50E-01</p></td>
@@ -2311,7 +1916,107 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n6/run01/Case_doc.html#j95-pn2-ht1-e3n6-01"><span class="std std-ref">J95-pn2-ht1-E3n6-01</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E1n5/run01/Case_doc.html#j95-pn2-ht1-e1n5-01"><span class="std std-ref">J95-pn2-ht1-E1n5-01</span></a></p></td>
+<td><p>512</p></td>
+<td><p>768</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>1.00E-05</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>1.25E+00</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>2.50E+02</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>2.00E+00</p></td>
+<td><p>7.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>9.00E+01</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E1n5/run02/Case_doc.html#j95-pn2-ht1-e1n5-02"><span class="std std-ref">J95-pn2-ht1-E1n5-02</span></a></p></td>
+<td><p>512</p></td>
+<td><p>768</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>1.00E-05</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>1.25E+00</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>2.50E+02</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>2.00E+00</p></td>
+<td><p>7.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>6.00E+01</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E1n5/run03/Case_doc.html#j95-pn2-ht1-e1n5-03"><span class="std std-ref">J95-pn2-ht1-E1n5-03</span></a></p></td>
+<td><p>512</p></td>
+<td><p>1152</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>1.00E-05</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>2.50E+02</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>2.00E+00</p></td>
+<td><p>7.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>1.35E+02</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E1n5/run04/Case_doc.html#j95-pn2-ht1-e1n5-04"><span class="std std-ref">J95-pn2-ht1-E1n5-04</span></a></p></td>
+<td><p>512</p></td>
+<td><p>1536</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>1.00E-05</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>9.00E-01</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>2.50E+02</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>2.00E+00</p></td>
+<td><p>7.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>1.80E+02</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n2/E1n5/run1/Case_doc.html#j95-pn2-ht1-e1n5-1"><span class="std std-ref">J95-pn2-ht1-E1n5-1</span></a></p></td>
+<td><p>512</p></td>
+<td><p>1536</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>1.00E-05</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>9.00E-01</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>2.50E+02</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>2.00E+00</p></td>
+<td><p>7.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>1.80E+02</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n6/run01/Case_doc.html#j95-pn2-ht1-e3n6-01"><span class="std std-ref">J95-pn2-ht1-E3n6-01</span></a></p></td>
 <td><p>512</p></td>
 <td><p>1536</p></td>
 <td><p>9.50E-01</p></td>
@@ -2331,7 +2036,7 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n6/run02/Case_doc.html#j95-pn2-ht1-e3n6-02"><span class="std std-ref">J95-pn2-ht1-E3n6-02</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n6/run02/Case_doc.html#j95-pn2-ht1-e3n6-02"><span class="std std-ref">J95-pn2-ht1-E3n6-02</span></a></p></td>
 <td><p>512</p></td>
 <td><p>1536</p></td>
 <td><p>9.50E-01</p></td>
@@ -2351,7 +2056,7 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n6/run03/Case_doc.html#j95-pn2-ht1-e3n6-03"><span class="std std-ref">J95-pn2-ht1-E3n6-03</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n6/run03/Case_doc.html#j95-pn2-ht1-e3n6-03"><span class="std std-ref">J95-pn2-ht1-E3n6-03</span></a></p></td>
 <td><p>512</p></td>
 <td><p>1536</p></td>
 <td><p>9.50E-01</p></td>
@@ -2371,7 +2076,7 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n6/run04/Case_doc.html#j95-pn2-ht1-e3n6-04"><span class="std std-ref">J95-pn2-ht1-E3n6-04</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n6/run04/Case_doc.html#j95-pn2-ht1-e3n6-04"><span class="std std-ref">J95-pn2-ht1-E3n6-04</span></a></p></td>
 <td><p>512</p></td>
 <td><p>1536</p></td>
 <td><p>9.50E-01</p></td>
@@ -2391,7 +2096,7 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n6/run05/Case_doc.html#j95-pn2-ht1-e3n6-05"><span class="std std-ref">J95-pn2-ht1-E3n6-05</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n6/run05/Case_doc.html#j95-pn2-ht1-e3n6-05"><span class="std std-ref">J95-pn2-ht1-E3n6-05</span></a></p></td>
 <td><p>512</p></td>
 <td><p>1536</p></td>
 <td><p>9.50E-01</p></td>
@@ -2411,7 +2116,7 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n6/run1/Case_doc.html#j95-pn2-ht1-e3n6-1"><span class="std std-ref">J95-pn2-ht1-E3n6-1</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n6/run1/Case_doc.html#j95-pn2-ht1-e3n6-1"><span class="std std-ref">J95-pn2-ht1-E3n6-1</span></a></p></td>
 <td><p>512</p></td>
 <td><p>1536</p></td>
 <td><p>9.50E-01</p></td>
@@ -2431,7 +2136,7 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n6/run2/Case_doc.html#j95-pn2-ht1-e3n6-2"><span class="std std-ref">J95-pn2-ht1-E3n6-2</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n6/run2/Case_doc.html#j95-pn2-ht1-e3n6-2"><span class="std std-ref">J95-pn2-ht1-E3n6-2</span></a></p></td>
 <td><p>512</p></td>
 <td><p>1536</p></td>
 <td><p>9.50E-01</p></td>
@@ -2451,7 +2156,7 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n6/run3/Case_doc.html#j95-pn2-ht1-e3n6-3"><span class="std std-ref">J95-pn2-ht1-E3n6-3</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n6/run3/Case_doc.html#j95-pn2-ht1-e3n6-3"><span class="std std-ref">J95-pn2-ht1-E3n6-3</span></a></p></td>
 <td><p>512</p></td>
 <td><p>1536</p></td>
 <td><p>9.50E-01</p></td>
@@ -2471,7 +2176,7 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n6/run4/Case_doc.html#j95-pn2-ht1-e3n6-4"><span class="std std-ref">J95-pn2-ht1-E3n6-4</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n6/run4/Case_doc.html#j95-pn2-ht1-e3n6-4"><span class="std std-ref">J95-pn2-ht1-E3n6-4</span></a></p></td>
 <td><p>512</p></td>
 <td><p>1536</p></td>
 <td><p>9.50E-01</p></td>
@@ -2491,7 +2196,7 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n6/run5/Case_doc.html#j95-pn2-ht1-e3n6-5"><span class="std std-ref">J95-pn2-ht1-E3n6-5</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n6/run5/Case_doc.html#j95-pn2-ht1-e3n6-5"><span class="std std-ref">J95-pn2-ht1-E3n6-5</span></a></p></td>
 <td><p>512</p></td>
 <td><p>1536</p></td>
 <td><p>9.50E-01</p></td>
@@ -2511,7 +2216,7 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n6/run6/Case_doc.html#j95-pn2-ht1-e3n6-6"><span class="std std-ref">J95-pn2-ht1-E3n6-6</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n6/run6/Case_doc.html#j95-pn2-ht1-e3n6-6"><span class="std std-ref">J95-pn2-ht1-E3n6-6</span></a></p></td>
 <td><p>512</p></td>
 <td><p>1536</p></td>
 <td><p>9.50E-01</p></td>
@@ -2531,7 +2236,7 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n6/runM7/Case_doc.html#j95-pn2-ht1-e3n6-m7"><span class="std std-ref">J95-pn2-ht1-E3n6-M7</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n6/runM7/Case_doc.html#j95-pn2-ht1-e3n6-m7"><span class="std std-ref">J95-pn2-ht1-E3n6-M7</span></a></p></td>
 <td><p>512</p></td>
 <td><p>1536</p></td>
 <td><p>9.50E-01</p></td>
@@ -2551,7 +2256,7 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n6/runM8/Case_doc.html#j95-pn2-ht1-e3n6-m8"><span class="std std-ref">J95-pn2-ht1-E3n6-M8</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n6/runM8/Case_doc.html#j95-pn2-ht1-e3n6-m8"><span class="std std-ref">J95-pn2-ht1-E3n6-M8</span></a></p></td>
 <td><p>512</p></td>
 <td><p>1536</p></td>
 <td><p>9.50E-01</p></td>
@@ -2567,106 +2272,6 @@
 <td><p>-1.00E+30</p></td>
 <td><p>.true.</p></td>
 <td><p>2.80E+02</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type4/E1n4/run1/Case_doc.html#j95-pn2-ht4-e1n4-1"><span class="std std-ref">J95-pn2-ht4-E1n4-1</span></a></p></td>
-<td><p>128</p></td>
-<td><p>768</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>1.00E-04</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>1.00E-01</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>1.75E+02</p></td>
-<td><p>3</p></td>
-<td><p>4</p></td>
-<td><p>2.00E+00</p></td>
-<td><p>5.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>3.00E+01</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type4/E1n4/run2/Case_doc.html#j95-pn2-ht4-e1n4-2"><span class="std std-ref">J95-pn2-ht4-E1n4-2</span></a></p></td>
-<td><p>128</p></td>
-<td><p>768</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>1.00E-04</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>1.00E-01</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>8.00E+02</p></td>
-<td><p>3</p></td>
-<td><p>4</p></td>
-<td><p>2.00E+00</p></td>
-<td><p>6.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>3.00E+01</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type4/E1n5/run1a/Case_doc.html#j95-pn2-ht4-e1n5-1a"><span class="std std-ref">J95-pn2-ht4-E1n5-1a</span></a></p></td>
-<td><p>256</p></td>
-<td><p>1152</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>1.50E-05</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>1.00E-01</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>8.00E+02</p></td>
-<td><p>3</p></td>
-<td><p>4</p></td>
-<td><p>2.00E+00</p></td>
-<td><p>6.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>7.50E+01</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type4/E1n5/run1b/Case_doc.html#j95-pn2-ht4-e1n5-1b"><span class="std std-ref">J95-pn2-ht4-E1n5-1b</span></a></p></td>
-<td><p>256</p></td>
-<td><p>1152</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>1.00E-05</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>1.00E-01</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>8.00E+02</p></td>
-<td><p>3</p></td>
-<td><p>4</p></td>
-<td><p>2.00E+00</p></td>
-<td><p>6.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>1.00E+02</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type4/E1n5/run2/Case_doc.html#j95-pn2-ht4-e1n5-2"><span class="std std-ref">J95-pn2-ht4-E1n5-2</span></a></p></td>
-<td><p>256</p></td>
-<td><p>1152</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>1.00E-05</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>1.00E-01</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>8.00E+02</p></td>
-<td><p>3</p></td>
-<td><p>4</p></td>
-<td><p>2.00E+00</p></td>
-<td><p>6.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>1.00E+02</p></td>
 <td><p>3.00E+00</p></td>
 <td></td>
 <td></td>
@@ -2711,6 +2316,46 @@
 <td></td>
 <td></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type4/E1n4/run1/Case_doc.html#j95-pn2-ht4-e1n4-1"><span class="std std-ref">J95-pn2-ht4-E1n4-1</span></a></p></td>
+<td><p>128</p></td>
+<td><p>768</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>1.00E-04</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>1.00E-01</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>1.75E+02</p></td>
+<td><p>3</p></td>
+<td><p>4</p></td>
+<td><p>2.00E+00</p></td>
+<td><p>5.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>3.00E+01</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type4/E1n4/run2/Case_doc.html#j95-pn2-ht4-e1n4-2"><span class="std std-ref">J95-pn2-ht4-E1n4-2</span></a></p></td>
+<td><p>128</p></td>
+<td><p>768</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>1.00E-04</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>1.00E-01</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>8.00E+02</p></td>
+<td><p>3</p></td>
+<td><p>4</p></td>
+<td><p>2.00E+00</p></td>
+<td><p>6.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>3.00E+01</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
 <tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type4/E3n5/run1a/Case_doc.html#j95-pn2-ht4-e3n5-1a"><span class="std std-ref">J95-pn2-ht4-E3n5-1a</span></a></p></td>
 <td><p>256</p></td>
 <td><p>1152</p></td>
@@ -2751,7 +2396,67 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n5/10xRa/run1/Case_doc.html#j95-pn1-ht1-e1n5-10ra-1"><span class="std std-ref">J95-pn1-ht1-E1n5-10Ra-1</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type4/E1n5/run1a/Case_doc.html#j95-pn2-ht4-e1n5-1a"><span class="std std-ref">J95-pn2-ht4-E1n5-1a</span></a></p></td>
+<td><p>256</p></td>
+<td><p>1152</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>1.50E-05</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>1.00E-01</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>8.00E+02</p></td>
+<td><p>3</p></td>
+<td><p>4</p></td>
+<td><p>2.00E+00</p></td>
+<td><p>6.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>7.50E+01</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type4/E1n5/run1b/Case_doc.html#j95-pn2-ht4-e1n5-1b"><span class="std std-ref">J95-pn2-ht4-E1n5-1b</span></a></p></td>
+<td><p>256</p></td>
+<td><p>1152</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>1.00E-05</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>1.00E-01</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>8.00E+02</p></td>
+<td><p>3</p></td>
+<td><p>4</p></td>
+<td><p>2.00E+00</p></td>
+<td><p>6.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>1.00E+02</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/fsb/poly_n2/heating_type4/E1n5/run2/Case_doc.html#j95-pn2-ht4-e1n5-2"><span class="std std-ref">J95-pn2-ht4-E1n5-2</span></a></p></td>
+<td><p>256</p></td>
+<td><p>1152</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>1.00E-05</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>1.00E-01</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>8.00E+02</p></td>
+<td><p>3</p></td>
+<td><p>4</p></td>
+<td><p>2.00E+00</p></td>
+<td><p>6.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>1.00E+02</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n5/10xRa/run1/Case_doc.html#j95-pn1-ht1-e1n5-10ra-1"><span class="std std-ref">J95-pn1-ht1-E1n5-10Ra-1</span></a></p></td>
 <td><p>768</p></td>
 <td><p>1152</p></td>
 <td><p>9.50E-01</p></td>
@@ -2771,7 +2476,7 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n5/10xRa/run2/Case_doc.html#j95-pn1-ht1-e1n5-10ra-2"><span class="std std-ref">J95-pn1-ht1-E1n5-10Ra-2</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n5/10xRa/run2/Case_doc.html#j95-pn1-ht1-e1n5-10ra-2"><span class="std std-ref">J95-pn1-ht1-E1n5-10Ra-2</span></a></p></td>
 <td><p>1024</p></td>
 <td><p>1536</p></td>
 <td><p>9.50E-01</p></td>
@@ -2791,7 +2496,7 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n5/10xRa/runM1/Case_doc.html#j95-pn1-ht1-e1n5-10ra-m1"><span class="std std-ref">J95-pn1-ht1-E1n5-10Ra-M1</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n5/10xRa/runM1/Case_doc.html#j95-pn1-ht1-e1n5-10ra-m1"><span class="std std-ref">J95-pn1-ht1-E1n5-10Ra-M1</span></a></p></td>
 <td><p>1024</p></td>
 <td><p>1536</p></td>
 <td><p>9.50E-01</p></td>
@@ -2807,106 +2512,6 @@
 <td><p>-1.00E+30</p></td>
 <td><p>.true.</p></td>
 <td><p>1.80E+02</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n6/4xRa/run1/Case_doc.html#j95-pn1-ht1-e1n6-4ra-1"><span class="std std-ref">J95-pn1-ht1-E1n6-4Ra-1</span></a></p></td>
-<td><p>1024</p></td>
-<td><p>1536</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>1.60E-06</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>2.00E+00</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>5.00E+02</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>2.40E+02</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n6/4xRa/run2/Case_doc.html#j95-pn1-ht1-e1n6-4ra-2"><span class="std std-ref">J95-pn1-ht1-E1n6-4Ra-2</span></a></p></td>
-<td><p>1024</p></td>
-<td><p>1536</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>1.25E-06</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>2.00E+00</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>5.00E+02</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>2.40E+02</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n6/4xRa/runM1/Case_doc.html#j95-pn1-ht1-e1n6-4ra-m1"><span class="std std-ref">J95-pn1-ht1-E1n6-4Ra-M1</span></a></p></td>
-<td><p>1024</p></td>
-<td><p>1536</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>1.60E-06</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>2.00E+00</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>5.00E+02</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>2.40E+02</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n6/4xRa/runM2/Case_doc.html#j95-pn1-ht1-e1n6-4ra-m2"><span class="std std-ref">J95-pn1-ht1-E1n6-4Ra-M2</span></a></p></td>
-<td><p>1024</p></td>
-<td><p>1536</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>1.60E-06</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>2.00E+00</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>5.00E+02</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>2.40E+02</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n6/4xRa/runM3/Case_doc.html#j95-pn1-ht1-e1n6-4ra-m3"><span class="std std-ref">J95-pn1-ht1-E1n6-4Ra-M3</span></a></p></td>
-<td><p>1024</p></td>
-<td><p>1536</p></td>
-<td><p>9.50E-01</p></td>
-<td><p>1.60E-06</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>2.00E+00</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>5.00E+02</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>5.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>2.40E+02</p></td>
 <td><p>3.00E+00</p></td>
 <td></td>
 <td></td>
@@ -3151,6 +2756,86 @@
 <td></td>
 <td></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n6/4xRa/run1/Case_doc.html#j95-pn1-ht1-e1n6-4ra-1"><span class="std std-ref">J95-pn1-ht1-E1n6-4Ra-1</span></a></p></td>
+<td><p>1024</p></td>
+<td><p>1536</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>1.60E-06</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>2.00E+00</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>5.00E+02</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>5.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>2.40E+02</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n6/4xRa/runM1/Case_doc.html#j95-pn1-ht1-e1n6-4ra-m1"><span class="std std-ref">J95-pn1-ht1-E1n6-4Ra-M1</span></a></p></td>
+<td><p>1024</p></td>
+<td><p>1536</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>1.60E-06</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>2.00E+00</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>5.00E+02</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>5.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>2.40E+02</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n6/4xRa/runM2/Case_doc.html#j95-pn1-ht1-e1n6-4ra-m2"><span class="std std-ref">J95-pn1-ht1-E1n6-4Ra-M2</span></a></p></td>
+<td><p>1024</p></td>
+<td><p>1536</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>1.60E-06</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>2.00E+00</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>5.00E+02</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>5.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>2.40E+02</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Jup95/nsb/poly_n1/E1n6/4xRa/runM3/Case_doc.html#j95-pn1-ht1-e1n6-4ra-m3"><span class="std std-ref">J95-pn1-ht1-E1n6-4Ra-M3</span></a></p></td>
+<td><p>1024</p></td>
+<td><p>1536</p></td>
+<td><p>9.50E-01</p></td>
+<td><p>1.60E-06</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>2.00E+00</p></td>
+<td><p>-1.00E+00</p></td>
+<td><p>5.00E+02</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>1.00E+00</p></td>
+<td><p>5.00E+00</p></td>
+<td><p>-1.00E+30</p></td>
+<td><p>.true.</p></td>
+<td><p>2.40E+02</p></td>
+<td><p>3.00E+00</p></td>
+<td></td>
+<td></td>
+</tr>
 <tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Uranus75/N5/E1n3/run1/Case_doc.html#u75-ht1-e1n3-1"><span class="std std-ref">U75-ht1-E1n3-1</span></a></p></td>
 <td><p>384</p></td>
 <td><p>576</p></td>
@@ -3171,27 +2856,7 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Uranus75/N5/E1n4/run1/Case_doc.html#u75-ht1-e1n4-1"><span class="std std-ref">U75-ht1-E1n4-1</span></a></p></td>
-<td><p>384</p></td>
-<td><p>576</p></td>
-<td><p>7.50E-01</p></td>
-<td><p>1.00E-04</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>1.50E+01</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>1.25E+02</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>2.00E+00</p></td>
-<td><p>7.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>1.00E+01</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Uranus75/N5/E3n4/run1/Case_doc.html#u75-ht1-e3n4-1"><span class="std std-ref">U75-ht1-E3n4-1</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Uranus75/E3n4/run1/Case_doc.html#u75-ht1-e3n4-1"><span class="std std-ref">U75-ht1-E3n4-1</span></a></p></td>
 <td><p>384</p></td>
 <td><p>576</p></td>
 <td><p>7.50E-01</p></td>
@@ -3211,7 +2876,7 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Uranus75/E3n4/run2/Case_doc.html#u75-ht1-e3n4-2"><span class="std std-ref">U75-ht1-E3n4-2</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Uranus75/E3n4/run2/Case_doc.html#u75-ht1-e3n4-2"><span class="std std-ref">U75-ht1-E3n4-2</span></a></p></td>
 <td><p>384</p></td>
 <td><p>576</p></td>
 <td><p>7.50E-01</p></td>
@@ -3231,7 +2896,7 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Uranus75/E3n4/run3/Case_doc.html#u75-ht1-e3n4-3"><span class="std std-ref">U75-ht1-E3n4-3</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Uranus75/E3n4/run3/Case_doc.html#u75-ht1-e3n4-3"><span class="std std-ref">U75-ht1-E3n4-3</span></a></p></td>
 <td><p>384</p></td>
 <td><p>576</p></td>
 <td><p>7.50E-01</p></td>
@@ -3251,7 +2916,7 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Uranus75/E3n4/run4/Case_doc.html#u75-ht1-e3n4-4"><span class="std std-ref">U75-ht1-E3n4-4</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Uranus75/E3n4/run4/Case_doc.html#u75-ht1-e3n4-4"><span class="std std-ref">U75-ht1-E3n4-4</span></a></p></td>
 <td><p>384</p></td>
 <td><p>576</p></td>
 <td><p>7.50E-01</p></td>
@@ -3271,7 +2936,7 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Uranus75/N5/E1n3/run1/Case_doc.html#u75-ht1-e1n3-1"><span class="std std-ref">U75-ht1-E1n3-1</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Uranus75/N5/E1n3/run1/Case_doc.html#u75-ht1-e1n3-1"><span class="std std-ref">U75-ht1-E1n3-1</span></a></p></td>
 <td><p>256</p></td>
 <td><p>384</p></td>
 <td><p>7.50E-01</p></td>
@@ -3291,7 +2956,7 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Uranus75/N5/E1n3/run2/Case_doc.html#u75-ht1-e1n3-2"><span class="std std-ref">U75-ht1-E1n3-2</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Uranus75/N5/E1n3/run2/Case_doc.html#u75-ht1-e1n3-2"><span class="std std-ref">U75-ht1-E1n3-2</span></a></p></td>
 <td><p>256</p></td>
 <td><p>384</p></td>
 <td><p>7.50E-01</p></td>
@@ -3311,7 +2976,7 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mheimpel/Uranus75/N5/E1n4/run1/Case_doc.html#u75-ht1-e1n4-1"><span class="std std-ref">U75-ht1-E1n4-1</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Uranus75/N5/E1n4/run1/Case_doc.html#u75-ht1-e1n4-1"><span class="std std-ref">U75-ht1-E1n4-1</span></a></p></td>
 <td><p>384</p></td>
 <td><p>576</p></td>
 <td><p>7.50E-01</p></td>
@@ -3331,31 +2996,11 @@
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mheimpel/Uranus75/N5/E3n4/run1/Case_doc.html#u75-ht1-e3n4-1"><span class="std std-ref">U75-ht1-E3n4-1</span></a></p></td>
-<td><p>192</p></td>
-<td><p>384</p></td>
-<td><p>7.50E-01</p></td>
-<td><p>3.00E-04</p></td>
-<td><p>1.00E+00</p></td>
-<td><p>1.00E+01</p></td>
-<td><p>-1.00E+00</p></td>
-<td><p>2.30E+01</p></td>
-<td><p>3</p></td>
-<td><p>1</p></td>
-<td><p>2.00E+00</p></td>
-<td><p>5.00E+00</p></td>
-<td><p>-1.00E+30</p></td>
-<td><p>.true.</p></td>
-<td><p>1.00E+01</p></td>
-<td><p>3.00E+00</p></td>
-<td></td>
-<td></td>
-</tr>
 </tbody>
 </table>
 </section>
-<section id="link-to-each-case">
-<h2>Link to each case<a class="headerlink" href="#link-to-each-case" title="Permalink to this heading">¶</a></h2>
+<section id="links-to-each-case">
+<h2>Links to each case<a class="headerlink" href="#links-to-each-case" title="Permalink to this heading">¶</a></h2>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents of runs:</span></p>
 <ul>
@@ -3548,10 +3193,10 @@
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../citation.html">Citation and Acknowledgement</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Jovian Atomosphere (mheimpel)</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Jovian Atmosphere (mheimpel)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#list-of-parameters">List of parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#link-to-each-case">Link to each case</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#links-to-each-case">Links to each case</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="ryadav_Outeline.html">Geodynamo (ryadav)</a></li>
@@ -3593,7 +3238,7 @@
       &copy;2022, Hiroaki Matsui.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.1.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
