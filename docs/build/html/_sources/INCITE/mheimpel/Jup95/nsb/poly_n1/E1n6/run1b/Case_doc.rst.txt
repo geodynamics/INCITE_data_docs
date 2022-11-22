@@ -9,7 +9,7 @@ Data is stored in the following directory:
 
 - `mheimpel/Jup95/nsb/poly_n1/E1n6/run1b <https://incite.geodynamics.org/DATA/mheimpel/Jup95/nsb/poly_n1/E1n6/run1b>`_
 
-Avaiable data.
+Available data.
 ==========================================
 
 The following data for analysis are aviable:
@@ -36,6 +36,8 @@ Examples of visualized images.
 =======================================
 
 .. include:: ./G_Avgs_caption.rst
+
+.. include:: ./Shell_Slices_caption_Uphi_0.rst
 
 .. include:: ./Shell_Slices_caption_Ur_1.rst
 
