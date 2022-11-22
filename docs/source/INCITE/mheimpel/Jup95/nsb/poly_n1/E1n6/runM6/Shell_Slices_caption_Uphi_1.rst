@@ -3,5 +3,5 @@
    :width: 600px 
    :align: center 
 
-azimuthal component of the velocity field :math:`u_{\phi}` at :math:`r = r_o - 0.037` and :math:`t = 5.077 \times 10^{3}`
+azimuthal component of the velocity field :math:`u_{\phi}` at :math:`r = r_o - 0.037` and :math:`t = 5.192 \times 10^{3}`
 
