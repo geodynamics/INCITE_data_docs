@@ -3,3 +3,5 @@
 a.out
 *.mod
 *.plist
+docs/build/
+
