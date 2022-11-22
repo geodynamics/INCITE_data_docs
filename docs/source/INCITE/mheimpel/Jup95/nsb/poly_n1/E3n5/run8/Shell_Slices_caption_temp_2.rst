@@ -3,5 +3,5 @@
    :width: 600px 
    :align: center 
 
-Temperature :math:`T` at :math:`r = r_o - 0.143` and :math:`t = 3.071 \times 10^{2}`
+Entropy :math:`S` at :math:`r = r_o - 0.143` and :math:`t = 3.071 \times 10^{2}`
 

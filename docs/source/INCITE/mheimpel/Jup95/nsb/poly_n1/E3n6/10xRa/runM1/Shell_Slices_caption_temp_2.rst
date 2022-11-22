@@ -3,5 +3,5 @@
    :width: 600px 
    :align: center 
 
-Entropy :math:`S` at :math:`r = r_o - 0.037` and :math:`t = 4.965 \times 10^{2}`
+Entropy :math:`S` at :math:`r = r_o - 0.037` and :math:`t = 5.160 \times 10^{2}`
 
