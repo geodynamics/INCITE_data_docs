@@ -18,7 +18,7 @@ The following parameters are used:
    :encoding: UTF-8
    :header-rows: 1
 
-Avaiable data.
+Available data.
 ==========================================
 
 The following data for analysis are aviable:
