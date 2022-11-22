@@ -3,5 +3,5 @@
    :width: 600px 
    :align: center 
 
-Kinetic energy density spectra as a function of spherical harmonic degree :math:`l` at :math:`r = r_o - 0.000` and :math:`t = 9.981 \times 10^{0}`
+Kinetic energy density spectra as a function of spherical harmonic degree :math:`l` at :math:`r = r_o` and :math:`t = 9.981 \times 10^{0}`
 
