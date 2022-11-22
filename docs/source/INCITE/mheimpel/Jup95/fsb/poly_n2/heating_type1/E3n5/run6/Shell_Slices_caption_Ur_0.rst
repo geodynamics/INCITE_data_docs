@@ -3,5 +3,5 @@
    :width: 600px 
    :align: center 
 
-Radial component of the velocity field :math:`u_r` at :math:`r = r_o - 0.000` and :math:`t = 3.897 \times 10^{1}`
+Radial component of the velocity field :math:`u_r` at :math:`r = r_o` and :math:`t = 3.992 \times 10^{1}`
 
