@@ -127,6 +127,7 @@ def plot_each_Moritz_examples(d):
   org_filepath = org_Shell_Spectra + Shell_Spectra_lastfile
   dest_filepath = dest_Shell_Spectra + Shell_Spectra_lastfile
   shutil.copy(org_filepath, dest_filepath)
+  print('dest_filepath', dest_filepath)
   each_convert(dest_filepath)
   
   
@@ -165,14 +166,12 @@ def plot_each_Moritz_examples(d):
   
   
   init_time = s_plot_G_Avgs_moritz(dest_G_Avgs)
-  time_AZ = s_plot_AZ_Avgs_moritz(dest_AZ_Avgs, init_time)
+  time_AZ = s_plot_AZ_Avgs_moritz(dest_AZ_Avgs, -1E12)
   
   file_prefix = dest_dir + Shell_Spectra_caption_prefix
-  s_plot_Shell_Spectra_moritz(dest_Shell_Spectra, file_prefix, 
-                              flag_same_snapshot, init_time, time_AZ)
+  s_plot_Shell_Spectra_moritz(dest_Shell_Spectra, file_prefix, time_AZ)
   file_prefix = dest_dir + Shell_Slices_caption_prefix
-  s_plot_Shell_Slices_moritz(dest_Shell_Slices, file_prefix, 
-                             flag_same_snapshot, init_time, time_AZ)
+  s_plot_Shell_Slices_moritz(dest_Shell_Slices, file_prefix, time_AZ)
   
   s_convert_main_input(main_input_org, main_input)
   

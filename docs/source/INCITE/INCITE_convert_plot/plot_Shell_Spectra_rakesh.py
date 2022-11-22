@@ -91,15 +91,20 @@ def plot_each_Shell_Spectra_rakesh(vpower, icou, rindex, init_time):
   bpower = vpower.mpower
   lmax = vpower.lmax
 #  rindex = 0
-  depth = vpower.radius[0] - vpower.radius[rindex]
 #  print(vpower.radius)
 
   bbox_props = dict(boxstyle="round", fc="w", ec="0.5", alpha=1.0)
-  rtext = "{:.3f}".format(depth)
-  textbox = " at $r = r_o - $ " + rtext + " and $t = " + ttext + "$"
   title_u = 'Velocity Power \n ' + textbox
   title_B = 'Magnetic Field Power \n ' + textbox
-  r_and_t_text = "at :math:`r = r_o - " + rtext + "` and :math:`t = " + ttext + "`"
+  
+  depth = vpower.radius[0] - vpower.radius[rindex]
+  if(depth == 0.0):
+    textbox = " at $r = r_o$ and $t = " + ttext + "$"
+    r_and_t_text = "at :math:`r = r_o` and :math:`t = " + ttext + "`"
+  else:
+    rtext = "{:.3f}".format(depth)
+    textbox = " at $r = r_o - $ " + rtext + " and $t = " + ttext + "$"
+    r_and_t_text = "at :math:`r = r_o - " + rtext + "` and :math:`t = " + ttext + "`"
   
   fig, ax = plt.subplots(nrows=1, figsize=(6,4))
   ax.plot(kpower[:,rindex,tindex,0], label='Total')

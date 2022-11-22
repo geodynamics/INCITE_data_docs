@@ -76,31 +76,31 @@ Shell_Spectra_image_prefix =   'images/SSpectr_'
 KE_postfix =   'KE_'
 
 
-def plot_each_Shell_Spectra_moritz(vpower, icou, rindex, flag_same_snapshot, 
-                                    init_time, time_AZ):
+def plot_each_Shell_Spectra_moritz(vpower, icou, rindex, time_SSpecctra):
   niter = vpower.niter
   tindex = niter - 1 # All example quantities were output with same cadence.  Grab second time-index from all.
   
-  print('Spectr', tindex, vpower.time[tindex], init_time)
-  if(flag_same_snapshot == 0):
-    time = vpower.time[tindex] - init_time
-  else:
-    time = time_AZ
-  print('time', time)
+  time = time_SSpecctra
+  print('Spectr', tindex, vpower.iters[tindex], vpower.time[tindex], time)
   
   tpow = math.floor(numpy.log10(time))
   tnum = time * 10.0**(-tpow)
   ttext = "{:.3f} \\times 10^{{{:d}}}".format(tnum, tpow)
   
   kpower = vpower.power
-  depth = vpower.radius[0] - vpower.radius[rindex]
   lmax = vpower.lmax
   
   bbox_props = dict(boxstyle="round", fc="w", ec="0.5", alpha=1.0)
-  rtext = "{:.3f}".format(depth)
-  textbox = " at $r = r_o - $ " + rtext + " and $t = " + ttext + "$"
+  
+  depth = vpower.radius[0] - vpower.radius[rindex]
+  if(depth == 0.0):
+    textbox = " at $r = r_o$ and $t = " + ttext + "$"
+    r_and_t_text = "at :math:`r = r_o` and :math:`t = " + ttext + "`"
+  else:
+    rtext = "{:.3f}".format(depth)
+    textbox = " at $r = r_o - $ " + rtext + " and $t = " + ttext + "$"
+    r_and_t_text = "at :math:`r = r_o - " + rtext + "` and :math:`t = " + ttext + "`"
   title_u = 'Velocity Power \n ' + textbox
-  r_and_t_text = "at :math:`r = r_o - " + rtext + "` and :math:`t = " + ttext + "`"
   
   fig, ax = plt.subplots(nrows=1, figsize=(6,4))
   ax.plot(kpower[:,rindex,tindex,0], label='Total')
@@ -144,8 +144,7 @@ def write_Shell_Spectr_moritz_captions(caption_prefix, r_and_t_text, icou):
   return
 
 
-def s_plot_Shell_Spectra_moritz(Gpath, caption_prefix, 
-                                flag_same_snapshot, init_time, time_AZ):
+def s_plot_Shell_Spectra_moritz(Gpath, caption_prefix, time_SSpecctra):
   last2_file_name = find_last2_Rayleigh_data(Gpath)
   if(last2_file_name[0] == 'NO_FILE'):
     return
@@ -157,8 +156,7 @@ def s_plot_Shell_Spectra_moritz(Gpath, caption_prefix,
   r_and_t_textlist = []
   icou = 0
   for rindex in vpower.rad_inds:
-    text_tmp = plot_each_Shell_Spectra_moritz(vpower, icou, icou, 
-                                              flag_same_snapshot, init_time, time_AZ)
+    text_tmp = plot_each_Shell_Spectra_moritz(vpower, icou, icou, time_SSpecctra)
     write_Shell_Spectr_moritz_captions(caption_prefix, text_tmp, icou)
     r_and_t_textlist.append(text_tmp)
     icou = icou + 1
@@ -168,4 +166,4 @@ def s_plot_Shell_Spectra_moritz(Gpath, caption_prefix,
 
 if __name__ == '__main__':
   s_plot_Shell_Spectra_moritz(Shell_Spectra_path, \
-                              Shell_Spectra_caption_prefix, 0, 0.0, 0)
+                              Shell_Spectra_caption_prefix, 0, 0, 0.0)

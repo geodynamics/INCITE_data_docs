@@ -70,7 +70,7 @@ AZ_Avgs_path =         "AZ_Avgs/"
 AZ_Avgs_caption_file = 'AZ_Avgs_caption.rst'
 AZ_Avgs_image_file =   'images/AZ_Avgs.png'
 
-def s_plot_AZ_Avgs_moritz(Gpath, init_time):
+def s_plot_AZ_Avgs_moritz(Gpath, time_AZ):
 #  print("path: ", Gpath)
   start_last_file_name = find_first_last2_Rayleigh_data(Gpath)
   if(start_last_file_name[0] == 'NO_FILE'):
@@ -104,15 +104,20 @@ def s_plot_AZ_Avgs_moritz(Gpath, init_time):
       
   azavg = azavg*(1.0/tcount)  # Time steps were uniform for this run, so a simple average will suffice
   
-  print('AZ', az.niter, az.time[az.niter-1] - init_time)
-  time = az.time[az.niter-1] - init_time
+  if(time_AZ == -1E12):
+    time = az.time[0]
+  else:
+    time = time_AZ
+  
+  print('AZ', az.niter, time_AZ, time)
+  
   tpow = math.floor(numpy.log10(time))
   tnum = time * 10.0**(-tpow)
   ttext = "{:.3f} \\times 10^{{{:d}}}".format(tnum, tpow)
   
   lut = az.lut
-  vr = azavg[:,:,lut[1]]
-  vtheta = azavg[:,:,lut[2]]
+#   vr = azavg[:,:,lut[1]]
+#   vtheta = azavg[:,:,lut[2]]
   vphi = azavg[:,:,lut[3]]
 # rhovr = azavg[:,:,lut[201]]
 # rhovtheta = azavg[:,:,lut[202]]

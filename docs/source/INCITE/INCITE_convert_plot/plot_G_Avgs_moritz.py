@@ -82,7 +82,7 @@ def s_plot_G_Avgs_moritz(G_path):
   max_step = int(start_end2_files[1])
   max2step = int(start_end2_files[2])
   
-  print('Step range: ', min_step, max_step)
+  print('File range: ', min_step, max_step)
   
 # Build a list of all files ranging from iteration 0 million to 1 million
   files = build_file_list(min_step,max_step,path=G_path)
@@ -151,7 +151,7 @@ def s_plot_G_Avgs_moritz(G_path):
 #as part of the GlobalAverage data structure.  We define several variables to
 #hold those indices here:
   lut = a.lut
-  print('lut',lut)
+#  print('lut',lut)
   ke  = lut[401]  # Kinetic Energy (KE)
   rke = lut[402]  # KE associated with radial motion
   tke = lut[403]  # KE associated with theta motion
@@ -175,9 +175,9 @@ def s_plot_G_Avgs_moritz(G_path):
   print(ke)
   sizetuple=(10,3)
   fig, ax = plt.subplots(ncols=1, figsize=sizetuple)
-  ax.plot(time, gavgs[:,0], label='KE')
-#  ax.plot(time, gavgs[:,mke],label='MKE')
-#  ax.plot(time, gavgs[:,fke], label='FKE')
+  ax.plot(time[0:time.size-2], gavgs[0:time.size-2,0], label='KE')
+#  ax.plot(time[0:time.size-2], gavgs[0:time.size-2,mke],label='MKE')
+#  ax.plot(time[0:time.size-2], gavgs[0:time.size-2,fke], label='FKE')
   ax.legend(loc='center right', shadow=True)
 #  ax.set_xlim([0,0.2])
   ax.set_title('Entire Time-Trace')
@@ -222,6 +222,106 @@ def write_G_Avgs_moritz_captions(caption_file_name):
   
   fp.close()
   return
+
+def s_find_Viz_time_moritz(G_path, istep_AZ, istep_SSlice, istep_SSpectr):
+  start_end2_files = find_first_last2_Rayleigh_data(G_path)
+  print(start_end2_files)
+  if(start_end2_files[0] == 'NO_FILE'):
+    return
+  
+  min_step = int(start_end2_files[0])
+  max_step = int(start_end2_files[1])
+  max2step = int(start_end2_files[2])
+  
+  print('File range: ', min_step, max_step)
+  
+# Build a list of all files ranging from iteration 0 million to 1 million
+  files = build_file_list(min_step,max_step,path=G_path)
+#  print(files)
+  
+  
+# We can create an instance of the G_Avgs class by initializing it with a filename.  The optional keyword parameter *path* is used to specify the directory.  If *path* is not specified, its value will default to the subdirectory name associated with the datastructure (*G_Avgs* in this instance).  
+# 
+# Each class was programmed with a **docstring** describing the class attributes.   Once you created an instance of a rayleigh_diagnostics class, you can view its attributes using the help function as shown below.
+  
+# In[3]:
+  
+  a = G_Avgs(filename=files[0],path='')  # Here, files[0]='G_Avgs/00010000'
+#  a= G_Avgs(filename='00010000') would yield an equivalent result
+  
+#  help(a)
+# Examining the docstring, we see a few important attributes that are common to the other outputs discussed in this document:
+# 1.  niter -- the number of time steps in the file
+# 2.  nq   -- the number of output variables stored in the file
+# 3.  qv   -- the menu codes for those variables
+# 4.  vals -- the actual data
+# 5.  time -- the simulation time corresponding to each output dump
+# 
+# The first step in plotting a time series is to collate the data.
+  
+# Loop over all files and concatenate their data into a single array
+  nfiles = len(files)
+  i0 = 0
+  for i,f in enumerate(files):
+    a = G_Avgs(filename=f,path='')
+    nq = a.nq
+    niter = a.niter
+    print('a.niter', a.niter)
+    if (i == 0):
+      gavgs = numpy.zeros((niter,nq),dtype='float64')
+      iters = numpy.zeros(niter,dtype='int32')
+      time = numpy.zeros(niter,dtype='float64')
+    else:
+      gavgs = numpy.resize(gavgs, (gavgs.shape[0] + niter, gavgs.shape[1]))
+      iters = numpy.resize(iters, iters.shape[0] + niter)
+      time = numpy.resize(time, time.shape[0] + niter)
+    
+    i1 = i0 + niter
+    
+    gavgs[i0:i1,:] = a.vals
+    time[i0:i1] = a.time
+    iters[i0:i1] = a.iters
+    
+    i0 = i1
+  
+  time_out = numpy.zeros(4,dtype='float64')
+  time_out[0] = time[0]
+  
+  time = time - time[0]
+  
+  print('Step range', iters[0], iters[iters.size-1])
+  print('istep_AZ',     istep_AZ)
+  print('istep_SSlice', istep_SSlice)
+  print('istep_SSpectr', istep_SSpectr)
+  
+  icou = 0
+  for istep in iters:
+#    print('time: ', istep, time[icou], time[icou]-time[0])
+    if(istep >= istep_AZ):
+      time_out[1] = time[icou]
+      print('Break istep_AZ', istep_AZ, istep, time_out[1])
+      break
+    icou = icou + 1
+  
+  icou = 0
+  for istep in iters:
+    if(istep >= istep_SSlice):
+      time_out[2] = time[icou]
+      print('Break istep_SSlice', istep_SSlice, istep, time_out[2])
+      break
+    icou = icou + 1
+  
+  icou = 0
+  for istep in iters:
+    if(istep >= istep_SSpectr):
+      time_out[3] = time[icou]
+      print('Break istep_SSpectr', istep_SSpectr, istep, time_out[3])
+      break
+    icou = icou + 1
+  print('Total data counts: ', time_out.size)
+  print('time_out: ', time_out)
+  return time_out
+
 
 if __name__ == '__main__':
   ini_time = s_plot_G_Avgs_moritz(G_Avgs_path)

@@ -104,9 +104,13 @@ def plot_each_r_Shell_Slices_rakesh(ss, icou, rindex, init_time):
   btitle = 'Radial Magnetic Field $B_r$'
   
   bbox_props = dict(boxstyle="round", fc="w", ec="0.5", alpha=1.0)
-  rtext = "{:.3f}".format(depth)
-  textbox = "$r = r_o - $ " + rtext + " \n $t = " + ttext + "$"
-  r_and_t_text = "at :math:`r = r_o - " + rtext + "` and :math:`t = " + ttext + "`"
+  if(depth == 0.0):
+    textbox = "$r = r_o$ \n $t = " + ttext + "$"
+    r_and_t_text = "at :math:`r = r_o` and :math:`t = " + ttext + "`"
+  else:
+    rtext = "{:.3f}".format(depth)
+    textbox = "$r = r_o - $ " + rtext + " \n $t = " + ttext + "$"
+    r_and_t_text = "at :math:`r = r_o - " + rtext + "` and :math:`t = " + ttext + "`"
   
 #     Spacing is default spacing set up by subplot
   figdpi=300
