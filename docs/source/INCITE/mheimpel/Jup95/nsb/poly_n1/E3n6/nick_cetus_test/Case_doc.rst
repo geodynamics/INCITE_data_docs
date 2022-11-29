@@ -21,7 +21,7 @@ The following parameters are used:
 Available data.
 ==========================================
 
-The following data for analysis are aviable:
+The following data for analysis are available:
 
 .. csv-table::
    :file: outputs.csv

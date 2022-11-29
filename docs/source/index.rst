@@ -7,7 +7,7 @@ Stellar Magnetism Through High Performance Computing* project as part of the Geo
 the Computational Infrastructure for Geodynamics (`CIG <https://geodynamics.org/>`_ ).
 Computational time on *Mira* and support was provided through the DOE INCITE project.
 More information about this project can be found
-on the `project page <https://geodynamics.org/projects/dynamofrontiers>`_ .
+on the `project page <https://geodynamics.org/projects/dynamofrontiers>`_.
 
 Data
 ----

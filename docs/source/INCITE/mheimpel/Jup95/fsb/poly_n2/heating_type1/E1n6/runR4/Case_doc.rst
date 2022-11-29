@@ -12,7 +12,7 @@ Data is stored in the following directory:
 Available data.
 ==========================================
 
-The following data for analysis are aviable:
+The following data for analysis are available:
 
 - Parameter file (original): `main_input.org <https://incite.geodynamics.org/DATA/mheimpel/Jup95/fsb/poly_n2/heating_type1/E1n6/runR4/main_input.org>`_
 - Checkpoint data directory: `Checkpoints <https://incite.geodynamics.org/DATA/mheimpel/Jup95/fsb/poly_n2/heating_type1/E1n6/runR4/Checkpoints>`_
