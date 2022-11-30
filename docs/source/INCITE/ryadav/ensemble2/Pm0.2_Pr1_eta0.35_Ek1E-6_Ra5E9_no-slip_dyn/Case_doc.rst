@@ -12,7 +12,7 @@ Data is stored in the following directory:
 Available data.
 ==========================================
 
-The following data for analysis are aviable:
+The following data for analysis are available:
 
 - Parameter file (original): `main_input.org <https://incite.geodynamics.org/DATA/ryadav/ensemble2/Pm0.2_Pr1_eta0.35_Ek1E-6_Ra5E9_no-slip_dyn/main_input.org>`_
 - Checkpoint data directory: `Checkpoints <https://incite.geodynamics.org/DATA/ryadav/ensemble2/Pm0.2_Pr1_eta0.35_Ek1E-6_Ra5E9_no-slip_dyn/Checkpoints>`_
