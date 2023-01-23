@@ -34,6 +34,15 @@ The thermally driven convection is assumed with the Boussinesq approximation. Th
 Spatial resolution, dimensionless number, and hyperdiffusivity settings for each case are listed in the following table as a parameter setting in 'main_input'.
 The definition of each parameter is described in `the Rayleigh document <https://rayleigh-documentation.readthedocs.io/en/latest/index.html>`_.
 
+
+Publications
+=================================
+The data is used for the following paper:
+
+#. Cao, H., and Yadav, R. K., and Aurnou, J. M., Geomagnetic polar minima do not arise from steady meridional circulation, Proceedings of the National Academy of Sciences, 115, 11186--11191, 2018.
+
+- :ref:`Geo-5`
+
 List of parameters
 =================================
 
@@ -41,6 +50,3 @@ List of parameters
    :file: rakesh_parameters.csv
    :encoding: UTF-8
    :header-rows: 1
-
-Here is the link to tako1label_
-    :ref:`tako1label`

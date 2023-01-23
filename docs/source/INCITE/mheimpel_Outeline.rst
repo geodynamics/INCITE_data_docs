@@ -15,6 +15,17 @@ The ratio of the inner bounday to the outer boundary is set to be :math:`r_i / r
  The definition of each parameter is described in `the Rayleigh document <https://rayleigh-documentation.readthedocs.io/en/latest/index.html>`_.
 
 
+Publications
+=================================
+The data is used for the following paper:
+
+#. Heimpel, M.H., and Rakesh, K.Y., and Featherstone, N.A., and Aurnou J.M., Polar and mid-latitude vortices and zonal flows on Jupiter and Saturn, *Icarus*, **379**, 114942, Doi:https://doi.org/10.1016/j.icarus.2022.114942, 2022.
+
+    - :ref:`J95-pn1-ht1-E3n6-10Ra-M6`
+    - :ref:`J95-pn2-ht1-E3n6-M8`
+    - :ref:`J95-pn1-ht1-E1n5-5`
+    - :ref:`J90-ht4-E3n6-6`
+
 List of parameters
 =================================
 
@@ -23,174 +34,33 @@ List of parameters
    :encoding: UTF-8
    :header-rows: 1
 
-Links to each case
+Definition of parameters
 =================================
 
-.. toctree::
-    :maxdepth: 1
-    :caption: Contents of runs:
+#. Geometry and spatial resolution
 
-    mheimpel/JupNatGeo/E1n3/run1/Case_doc
-    mheimpel/JupNatGeo/E1n3/run2/Case_doc
-    mheimpel/JupNatGeo/E1n4/run1/Case_doc
-    mheimpel/JupNatGeo/E1n4/run2/Case_doc
-    mheimpel/JupNatGeo/E1n4/run3/Case_doc
-    mheimpel/JupNatGeo/E1n5/run1/Case_doc
-    mheimpel/JupNatGeo/E3n5/run1/Case_doc
-    mheimpel/JupNatGeo/E3n6/run1/Case_doc
-    mheimpel/JupNatGeo/E3n6/run2/Case_doc
-    mheimpel/JupNatGeo/E3n6/run3/Case_doc
-    mheimpel/JupNatGeo/E3n6/run4/Case_doc
-    mheimpel/JupNatGeo/E3n6/run4a/Case_doc
-    mheimpel/JupNatGeo/E3n6/run4b/Case_doc
-    mheimpel/JupNatGeo/E3n6/run5/Case_doc
-    mheimpel/JupNatGeo/E3n6/run6/Case_doc
-    mheimpel/Jup90/fsb/E3n6/run1/Case_doc
-    mheimpel/Jup90/fsb/E3n6/run2/Case_doc
-    mheimpel/Jup90/fsb/E3n6/run3/Case_doc
-    mheimpel/Jup90/fsb/E3n6/runM1/Case_doc
-    mheimpel/Jup90/fsb/E3n6/runM2/Case_doc
-    mheimpel/Jup90/fsb/E3n6/runM3/Case_doc
-    mheimpel/Jup90/fsb/E3n6/runM4/Case_doc
-    mheimpel/Jup90/fsb/E3n6/runM5/Case_doc
-    mheimpel/Jup90/fsb/E3n6/runM6/Case_doc
-    mheimpel/Jup90/nsb/E1n4/run1/Case_doc
-    mheimpel/Jup90/nsb/E1n4/run2/Case_doc
-    mheimpel/Jup90/nsb/E1n4/run3/Case_doc
-    mheimpel/Jup90/nsb/E1n5/run1/Case_doc
-    mheimpel/Jup90/nsb/E1n5/run2/Case_doc
-    mheimpel/Jup90/nsb/E3n5/run1/Case_doc
-    mheimpel/Jup90/nsb/E3n5/run2/Case_doc
-    mheimpel/Jup90/nsb/E3n5/run3/Case_doc
-    mheimpel/Jup90/nsb/E3n6/run1/Case_doc
-    mheimpel/Jup95/fsb/poly_n1/E1n4/run1/Case_doc
-    mheimpel/Jup95/fsb/poly_n1/E1n4/run2/Case_doc
-    mheimpel/Jup95/fsb/poly_n1/E1n5/run1a/Case_doc
-    mheimpel/Jup95/fsb/poly_n1/E1n5/run1b/Case_doc
-    mheimpel/Jup95/fsb/poly_n1/E1n5/run1c/Case_doc
-    mheimpel/Jup95/fsb/poly_n1/E1n5/run2/Case_doc
-    mheimpel/Jup95/fsb/poly_n1/E1n5/run3/Case_doc
-    mheimpel/Jup95/fsb/poly_n1/E1n5/run4/Case_doc
-    mheimpel/Jup95/fsb/poly_n1/E1n5/run5/Case_doc
-    mheimpel/Jup95/fsb/poly_n1/E1n5/run6/Case_doc
-    mheimpel/Jup95/fsb/poly_n1/E1n5/run7/Case_doc
-    mheimpel/Jup95/fsb/poly_n1/E3n5/run1a/Case_doc
-    mheimpel/Jup95/fsb/poly_n1/E3n5/run1b/Case_doc
-    mheimpel/Jup95/fsb/poly_n1/E3n5/run1c/Case_doc
-    mheimpel/Jup95/fsb/poly_n1/E3n6/run1a/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E1n5/run1/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E1n5/run2/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E1n5/run3/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E1n5/run4/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E1n6/run1a/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E1n6/run1b/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E1n6/run1c/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E1n6/run1d/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E1n6/run2/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E1n6/run3/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E1n6/run4/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E1n6/runM1/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E1n6/runM2/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E1n6/runM3/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E1n6/runM4/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E1n6/runM5/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E1n6/runM6/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E1n6/runM7/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E2n6/run1/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E3n5/run1/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E3n5/run2/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E3n5/run3/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E3n5/run4/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E3n5/run5/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E3n5/run6/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E3n5/run7/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E3n5/run8/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E3n6/run1/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E3n6/run2/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E3n6/run3/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E3n6/run4/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E3n6/run5/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E3n6/run6/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E3n6/run7/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E3n6/run8/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E3n6/runM1/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E3n7/run1a/Case_doc
-    mheimpel/Jup95/nsb/poly_n2/E1n5/run1/Case_doc
-    mheimpel/Jup95/nsb/poly_n2/E1n5/run2/Case_doc
-    mheimpel/Jup95/nsb/poly_n2/E3n5/run1/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type1/E1n4/run1/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type1/E1n4/run2/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type1/E1n4/run3/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type1/E1n5/run01/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type1/E1n5/run02/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type1/E1n5/run03/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type1/E1n5/run04/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type1/E1n5/run1/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type1/E1n6/run01/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type1/E1n6/run02/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type1/E1n6/runR1/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type1/E1n6/runR2/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type1/E1n6/runR3/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type1/E1n6/runR4/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n4/run1/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n4/run2/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n4/run3/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n5/run1/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n5/run2/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n5/run3/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n5/run4/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n5/run5/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n5/run6/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n5/run7/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n6/run01/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n6/run02/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n6/run03/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n6/run04/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n6/run05/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n6/run1/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n6/run2/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n6/run3/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n6/run4/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n6/run5/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n6/run6/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n6/runM7/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type1/E3n6/runM8/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type4/E1n4/run1/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type4/E1n4/run2/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type4/E1n5/run1a/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type4/E1n5/run1b/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type4/E1n5/run2/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type4/E3n4/run1/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type4/E3n4/run1a/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type4/E3n5/run1a/Case_doc
-    mheimpel/Jup95/fsb/poly_n2/heating_type4/E3n5/run1b/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E1n5/10xRa/run1/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E1n5/10xRa/run2/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E1n5/10xRa/runM1/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E1n6/4xRa/run1/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E1n6/4xRa/run2/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E1n6/4xRa/runM1/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E1n6/4xRa/runM2/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E1n6/4xRa/runM3/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E3n6/10xRa/run1/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E3n6/10xRa/runM1/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E3n6/10xRa/runM10/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E3n6/10xRa/runM2/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E3n6/10xRa/runM3/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E3n6/10xRa/runM4/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E3n6/10xRa/runM5/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E3n6/10xRa/runM6/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E3n6/10xRa/runM7/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E3n6/10xRa/runM8/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E3n6/10xRa/runM9/Case_doc
-    mheimpel/Jup95/nsb/poly_n1/E3n6/Prp3/run1/Case_doc
-    mheimpel/Uranus75/E1n3/run1/Case_doc
-    mheimpel/Uranus75/E1n4/run1/Case_doc
-    mheimpel/Uranus75/E3n4/run1/Case_doc
-    mheimpel/Uranus75/E3n4/run2/Case_doc
-    mheimpel/Uranus75/E3n4/run3/Case_doc
-    mheimpel/Uranus75/E3n4/run4/Case_doc
-    mheimpel/Uranus75/N5/E1n3/run1/Case_doc
-    mheimpel/Uranus75/N5/E1n3/run2/Case_doc
-    mheimpel/Uranus75/N5/E1n4/run1/Case_doc
-    mheimpel/Uranus75/N5/E3n4/run1/Case_doc
+    - :math:`N_{r}`: Number of radial grid points
+    - :math:`N_{\theta}`: Number of meridional grid points
+    - :math:`r_i / r_o`: Ratio of inner boundary to outer boundary radii
+
+#. Dimensionless numbers
+
+    - :math:`E = \frac{\nu}{\Omega L^2}`: Ekman number
+    - :math:`Pr = \frac{\kappa}{\nu}`: Prandtl number
+    - :math:`Ram = \frac{\alpha g_{o} T}{\nu \Omega}`: Modified Rayleigh number
+    - :math:`\frac{dT}{dr}|_{r=r_i}`: Temperature gradient at inner boundary
+    - :math:`- \frac{dT}{dr}|_{r=r_o}`: Temperature gradient at the outer boundary
+
+#. Reference states 
+
+    - Reference type: Integer flag for reference state 
+    - Heating type: Integer flag for heating type
+    - :math:`n_{p}`: 
+    - :math:`n_{\rho}`: 
+    - :math:`n_{g}`: Radial gravity profile
+
+#. Hyperdiffusivity parameters 
+
+    - Hyper-diffusion: Integer flag for hyperdiffusivity
+    - :math:`\alpha`: 
+    - :math:`\beta`: 
