@@ -1,4 +1,4 @@
-Run name , :math:`N_{r}`, :math:`N_{\theta}`, :math:`E = \frac{\nu}{\Omega L^2}`, :math:`Pr`, :math:`Pm`, :math:`Ra`, Hyper-diffusion, :math:`\alpha`, :math:`\beta`
+Run name , :math:`N_{r}`, :math:`N_{\theta}`,:math:`E`, :math:`Pr`, :math:`Pm`, :math:`Ra`, Hyper-diffusion, :math:`\alpha`, :math:`\beta`
 :ref:`Geo-1`,      512,     1536,   1.00E-06,   1.00E+00,   5.00E-02,   2.50E+10, .TRUE.,   3.00E+00,   7.00E+00
 :ref:`Geo-2`,      512,      768,   1.00E-06,   1.00E+00,   1.00E-01,   1.00E+10, .TRUE.,   4.00E+00,   7.00E+00
 :ref:`Geo-3`,      512,      768,   1.00E-06,   1.00E+00,   2.00E-01,   5.00E+09, .FALSE.,   5.00E+00,   7.00E+00

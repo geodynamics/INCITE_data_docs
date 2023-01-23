@@ -50,3 +50,25 @@ List of parameters
    :file: rakesh_parameters.csv
    :encoding: UTF-8
    :header-rows: 1
+
+Definition of parameters
+=================================
+
+#. Geometry and spatial resolution
+
+    - :math:`N_{r}`: Number of radial grid points
+    - :math:`N_{\theta}`: Number of meridional grid points
+
+#. Dimensionless numbers
+
+    - :math:`E = \frac{\nu}{\Omega L^2}`: Ekman number
+    - :math:`Pr = \frac{\kappa}{\nu}`: Prandtl number
+    - :math:`Pm = \frac{\eta}{\nu}`: Magnetic Prandtl number
+    - :math:`Ra = \frac{\alpha g_{o} T L^3}{\kappa \nu}`: Rayleigh number
+
+#. Hyperdiffusivity parameters 
+    - Hyper-diffusion: Flag for hyperdiffusivity
+  Set this to variable to .true. to enable hyperdiffusion.  The default value is .false.  When active, diffusivities :math:`\nu`, :math:`\kappa`, and :math:`\eta`,  are multiplied by an additional factor as:
+     :math:`\{\nu,\kappa,\eta\}\rightarrow\{\nu,\kappa,\eta\}\left(1+\alpha\left(\frac{\ell-1}{\ell_\mathrm{max}-1}\right)^\beta\right)`
+    - :math:`\alpha`: The value of :math:`\alpha` when hyper diffusion is active.
+    - :math:`\beta`:  The value of :math:`\beta` when hyper diffusion is active.

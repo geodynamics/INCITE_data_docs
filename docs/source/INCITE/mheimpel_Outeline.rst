@@ -48,19 +48,35 @@ Definition of parameters
     - :math:`E = \frac{\nu}{\Omega L^2}`: Ekman number
     - :math:`Pr = \frac{\kappa}{\nu}`: Prandtl number
     - :math:`Ram = \frac{\alpha g_{o} T}{\nu \Omega}`: Modified Rayleigh number
+
+#. Boundary conditions
+
     - :math:`\frac{dT}{dr}|_{r=r_i}`: Temperature gradient at inner boundary
     - :math:`- \frac{dT}{dr}|_{r=r_o}`: Temperature gradient at the outer boundary
 
 #. Reference states 
 
-    - Reference type: Integer flag for reference state 
-    - Heating type: Integer flag for heating type
-    - :math:`n_{p}`: 
-    - :math:`n_{\rho}`: 
-    - :math:`n_{g}`: Radial gravity profile
+    - Reference type: Integer value that determines the fluid approximation and background state by integer:
+
+      - 1:  Boussinesq + nondimensional
+      - 2:  Anelastic + polytropic background state (dimensional)
+      - 3:  Anelastic + polytropic background state (non-dimensional)
+      - 4:  Custom reference-state (read from file)
+ 
+    - Heating type: Integer value that determines the form of the internal heating function :math:`Q(r)`:
+
+      - 0: no internal heating :math:`Q(r) = 0`.
+      - 1: :math:`Q(r)\propto\overline{\rho}(r)\overline{T}(r)`.
+      - 4: :math:`Q(r)` is a constant function of radius.
+
+    - :math:`n_{p}`: The polytropic index used to describe the background state for reference types 2 and 3
+    - :math:`n_{\rho}`: Number of density scaleheights spanning the interval :math:`r_\mathrm{min}\le r\le r_\mathrm{max}` for reference types 2 and 3.
+    - :math:`n_{g}`: Specifies the value of *n* (real number) used to determine the radial variation of gravitational acceleration *g* in reference type 1, where :math:`g\propto\left(\frac{r}{r_\mathrm{max}}\right)^n`.
+
 
 #. Hyperdiffusivity parameters 
-
-    - Hyper-diffusion: Integer flag for hyperdiffusivity
-    - :math:`\alpha`: 
-    - :math:`\beta`: 
+    - Hyper-diffusion: Flag for hyperdiffusivity
+  Set this to variable to .true. to enable hyperdiffusion.  The default value is .false.  When active, diffusivities :math:`\nu`, :math:`\kappa`, and :math:`\eta`,  are multiplied by an additional factor as:
+     :math:`\{\nu,\kappa,\eta\}\rightarrow\{\nu,\kappa,\eta\}\left(1+\alpha\left(\frac{\ell-1}{\ell_\mathrm{max}-1}\right)^\beta\right)`
+    - :math:`\alpha`: The value of :math:`\alpha` when hyper diffusion is active.
+    - :math:`\beta`:  The value of :math:`\beta` when hyper diffusion is active.
