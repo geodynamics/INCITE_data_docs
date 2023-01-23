@@ -64,10 +64,10 @@ import os
 
 G_Avgs_path = "G_Avgs"
 G_Avgs_caption_file = 'G_Avgs_caption.rst'
-G_Avgs_energy_trace_file = 'images/energy_trace.pdf'
-G_Avgs_kinetic_energy_trace_file = 'images/kinetic_energy_trace.pdf'
-G_Avgs_magnetic_energy_trace_file = 'images/magnetic_energy_trace.pdf'
-G_Avgs_me_ke_ratio_file = 'images/me_ke_ratio.pdf'
+G_Avgs_energy_trace_file = 'images/energy_trace.png'
+G_Avgs_kinetic_energy_trace_file = 'images/kinetic_energy_trace.png'
+G_Avgs_magnetic_energy_trace_file = 'images/magnetic_energy_trace.png'
+G_Avgs_me_ke_ratio_file = 'images/me_ke_ratio.png'
 
 # The preamble for each plotting example will look similar to that above.  We import the numpy and matplotlib.pyplot modules, aliasing the latter to *plt*.   We also import two items from *rayleigh_diagnostics*: a helper function *build_file_list* and the *GlobalAverage* class. 
 # 

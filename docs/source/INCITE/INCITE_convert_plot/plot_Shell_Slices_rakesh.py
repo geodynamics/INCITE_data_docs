@@ -177,7 +177,7 @@ def plot_each_r_Shell_Slices_rakesh(ss, icou, rindex, init_time):
   
   plt.colorbar(plot1, label=r'$B_r$')
   plt.tight_layout()
-  savefile = Shell_Slices_image_prefix + Bz_postfix + str(icou) + '.pdf'
+  savefile = Shell_Slices_image_prefix + Bz_postfix + str(icou) + '.png'
   print('Saving figure to: ', savefile)
   plt.savefig(savefile)
   
@@ -190,7 +190,7 @@ def write_Shell_Slices_rakesh_captions(caption_prefix, r_and_t_text, icou):
   fp.write('\n')
   
   ftext = '.. figure:: ./' + Shell_Slices_image_prefix \
-          + temp_postfix + str(icou) + '.pdf' + ' \n'
+          + temp_postfix + str(icou) + '.png' + ' \n'
   fp.write(ftext)
   fp.write('   :width: 600px \n')
   fp.write('   :align: center \n')
@@ -208,7 +208,7 @@ def write_Shell_Slices_rakesh_captions(caption_prefix, r_and_t_text, icou):
   fp.write('\n')
   
   ftext = '.. figure:: ./' + Shell_Slices_image_prefix \
-          + Ur_postfix + str(icou) + '.pdf' + ' \n'
+          + Ur_postfix + str(icou) + '.png' + ' \n'
   fp.write(ftext)
   fp.write('   :width: 600px \n')
   fp.write('   :align: center \n')
@@ -226,7 +226,7 @@ def write_Shell_Slices_rakesh_captions(caption_prefix, r_and_t_text, icou):
   fp.write('\n')
   
   ftext = '.. figure:: ./' + Shell_Slices_image_prefix \
-          + Bz_postfix + str(icou) + '.pdf' + ' \n'
+          + Bz_postfix + str(icou) + '.png' + ' \n'
   fp.write(ftext)
   fp.write('   :width: 600px \n')
   fp.write('   :align: center \n')

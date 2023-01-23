@@ -120,7 +120,7 @@ def plot_each_Shell_Spectra_rakesh(vpower, icou, rindex, init_time):
   ax.set_xlabel(r'Degree $\ell$')
   
   plt.tight_layout()
-  savefile = Shell_Spectra_image_prefix + KE_postfix + str(icou) + '.pdf'
+  savefile = Shell_Spectra_image_prefix + KE_postfix + str(icou) + '.png'
   print('Saving figure to: ', savefile)
   plt.savefig(savefile)
 
@@ -138,7 +138,7 @@ def plot_each_Shell_Spectra_rakesh(vpower, icou, rindex, init_time):
   ax.set_xlabel(r'Degree $\ell$')
   
   plt.tight_layout()
-  savefile = Shell_Spectra_image_prefix + ME_postfix + str(icou) + '.pdf'
+  savefile = Shell_Spectra_image_prefix + ME_postfix + str(icou) + '.png'
   print('Saving figure to: ', savefile)
   plt.savefig(savefile)
   return r_and_t_text
@@ -150,7 +150,7 @@ def write_Shell_Spectr_rakesh_captions(caption_prefix, r_and_t_text, icou):
   fp.write('\n')
   
   ftext = '.. figure:: ./' + Shell_Spectra_image_prefix \
-          + KE_postfix + str(icou) + '.pdf' + ' \n'
+          + KE_postfix + str(icou) + '.png' + ' \n'
   fp.write(ftext)
   fp.write('   :width: 600px \n')
   fp.write('   :align: center \n')
@@ -169,7 +169,7 @@ def write_Shell_Spectr_rakesh_captions(caption_prefix, r_and_t_text, icou):
   fp.write('\n')
   
   ftext = '.. figure:: ./' + Shell_Spectra_image_prefix \
-          + ME_postfix + str(icou) + '.pdf' + ' \n'
+          + ME_postfix + str(icou) + '.png' + ' \n'
   fp.write(ftext)
   fp.write('   :width: 600px \n')
   fp.write('   :align: center \n')
