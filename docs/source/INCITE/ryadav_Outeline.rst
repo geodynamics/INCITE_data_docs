@@ -3,24 +3,6 @@ Geodynamo (ryadav)
 -------------------------------------------
 .. _tako2label:
 
-Links to each case
-=================================
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Contents of runs:
-
-   ryadav/ensemble2/Pm0.05_Pr1_eta0.35_Ek1E-6_Ra2.5E10_no-slip_dyn/Case_doc
-   ryadav/ensemble2/Pm0.1_Pr1_eta0.35_Ek1E-6_Ra1E10_no-slip_dyn/Case_doc
-   ryadav/ensemble2/Pm0.2_Pr1_eta0.35_Ek1E-6_Ra5E9_no-slip_dyn/Case_doc
-   ryadav/ensemble3/Pm0.05_Pr0.1_eta0.35_Ek1E-6_Ra2.5E9_no-slip_dyn/Case_doc
-   ryadav/ensemble3/Pm0.5_Pr1_eta0.35_Ek1E-6_Ra3E9_no-slip_dyn/Case_doc
-   ryadav/ensemble3/Pm1_Pr1_eta0.35_Ek1E-6_Ra3E9_no-slip_dyn/Case_doc
-   ryadav/ensemble4/Pm0.03_Pr1_eta0.35_Ek1E-7_Ra3E11_no-slip_dyn/Case_doc
-   ryadav/ensemble4/Pm0.05_Pr1_eta0.35_Ek1E-7_Ra1.5E11_no-slip_dyn/Case_doc
-   ryadav/ensemble4/Pm0.2_Pr1_eta0.35_Ek1E-7_Ra3E10_no-slip_dyn/Case_doc
-
-
 Overview
 =================================
 
