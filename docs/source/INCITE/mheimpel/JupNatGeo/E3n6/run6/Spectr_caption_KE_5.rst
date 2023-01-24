@@ -1,5 +1,5 @@
 
-.. figure:: ./images/SSpectr_KE_5.pdf 
+.. figure:: ./images/SSpectr_KE_5.png 
    :width: 600px 
    :align: center 
 
