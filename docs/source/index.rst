@@ -26,6 +26,7 @@ Parameters for each simulation are described in the file `main_input`.
    :caption: Contents:
 
    citation
+   publication
    INCITE/mheimpel_Outeline
    INCITE/ryadav_Outeline
    tools
