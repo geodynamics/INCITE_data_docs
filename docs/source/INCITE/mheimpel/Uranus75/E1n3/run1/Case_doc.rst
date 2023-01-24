@@ -12,7 +12,7 @@ Data is stored in the following directory:
 Available data.
 ==========================================
 
-The following data for analysis are available:
+The following data for analysis are aviable:
 
 - Parameter file (original): `main_input.org <https://incite.geodynamics.org/DATA/mheimpel/Uranus75/E1n3/run1/main_input.org>`_
 - Checkpoint data directory: `Checkpoints <https://incite.geodynamics.org/DATA/mheimpel/Uranus75/E1n3/run1/Checkpoints>`_
@@ -25,7 +25,8 @@ The following data for analysis are available:
 Parameters.
 =========================================
 
-The following parameters are used:
+The following parameters are used. 
+See `Input Parameters documentation <https://rayleigh-documentation.readthedocs.io/en/latest/doc/source/Namelist_Definitions/Namelist_Variables.html>`_ for the definitions.
 
 .. csv-table::
    :file: param.csv
