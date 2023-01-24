@@ -1,5 +1,5 @@
 
-.. figure:: ./images/Shell_Slices_temp_5.pdf 
+.. figure:: ./images/Shell_Slices_temp_5.png 
    :width: 600px 
    :align: center 
 
