@@ -1,5 +1,5 @@
 
-.. figure:: ./images/energy_trace.pdf 
+.. figure:: ./images/energy_trace.png 
    :width: 800px 
    :align: center 
 
