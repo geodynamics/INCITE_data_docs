@@ -994,6 +994,8 @@
      &                 param(i)%hyperdiffusion_alpha,', '
         write(id_out,'(1pe10.2)', ADVANCE='NO')                         &
      &                 param(i)%hyperdiffusion_beta
+!
+        write(id_out,*)
       end do
       close(id_out)
 !
