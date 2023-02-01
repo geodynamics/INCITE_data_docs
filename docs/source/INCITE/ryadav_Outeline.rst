@@ -42,8 +42,8 @@ Definition of parameters
 #. Dimensionless numbers
 
     - :math:`E = \frac{\nu}{\Omega L^2}`: Ekman number
-    - :math:`Pr = \frac{\kappa}{\nu}`: Prandtl number
-    - :math:`Pm = \frac{\eta}{\nu}`: Magnetic Prandtl number
+    - :math:`Pr = \frac{\nu}{\kappa}`: Prandtl number
+    - :math:`Pm = \frac{\nu}{\eta}`: Magnetic Prandtl number
     - :math:`Ra = \frac{\alpha g_{o} T L^3}{\kappa \nu}`: Rayleigh number
 
 #. Hyperdiffusivity parameters 

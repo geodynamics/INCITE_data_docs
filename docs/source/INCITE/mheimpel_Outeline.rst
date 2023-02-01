@@ -41,7 +41,7 @@ Definition of parameters
 #. Dimensionless numbers
 
     - :math:`E = \frac{\nu}{\Omega L^2}`: Ekman number
-    - :math:`Pr = \frac{\kappa}{\nu}`: Prandtl number
+    - :math:`Pr = \frac{\nu}{\kappa}`: Prandtl number
     - :math:`Ram = \frac{\alpha g_{o} T}{\nu \Omega}`: Modified Rayleigh number
 
 #. Boundary conditions
