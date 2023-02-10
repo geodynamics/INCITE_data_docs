@@ -3,6 +3,12 @@ Geodynamo (ryadav)
 -------------------------------------------
 .. _tako2label:
 
+.. toctree::
+   :glob:
+   :hidden:
+
+   ./ryadav/*/*/Case_doc
+
 Overview
 =================================
 
