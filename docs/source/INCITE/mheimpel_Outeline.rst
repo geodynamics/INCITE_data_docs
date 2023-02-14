@@ -2,6 +2,12 @@
 Jovian Atmosphere (mheimpel)
 -------------------------------------------
 
+.. toctree::
+   :glob:
+   :hidden:
+
+   ./mheimpel/**/Case_doc
+
 Overview
 =================================
 
