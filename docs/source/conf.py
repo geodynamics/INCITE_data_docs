@@ -18,7 +18,7 @@ extensions = []
 templates_path = ['_templates']
 exclude_patterns = []
 
-html_logo = "_static/images/cig_logo_dots.png"
+html_logo = "_static/images/logo.jpg"
 html_title = "CIG INCITE data"
 html_theme = 'sphinx_book_theme'
 html_theme_options = {
@@ -39,6 +39,7 @@ html_theme_options = {
     "use_repository_button": True,
     "use_edit_page_button": False,
     "use_issues_button": False,
+    "extra_navbar": "<p><img src=\"/en/latest/_static/images/cig_logo_dots.png\" alt=\"CIG Logo\" height=\"80px\"  style=\"padding: 5px;\"/></p>",
     "home_page_in_toc": True,
 }
 
