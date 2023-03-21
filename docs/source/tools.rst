@@ -12,7 +12,7 @@ Consequently, data conversion is required for post-processing and to continue si
 The data conversion tools consists of three programs. Conversion programs for:
 * parameter file `main_input`
 * output data except for checkpoints
-*  the checkpoint data in the folder `Checkpoints`
+* the checkpoint data in the folder `Checkpoints`
 
 Requirement
 -------------------------------------------
