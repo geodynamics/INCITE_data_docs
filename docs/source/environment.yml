@@ -1,0 +1,6 @@
+name: INCITE
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - sphinx-book-theme
